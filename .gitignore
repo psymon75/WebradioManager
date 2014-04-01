@@ -172,3 +172,4 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+doc/Schema/sc_trans_win64_10_07_2011.exe

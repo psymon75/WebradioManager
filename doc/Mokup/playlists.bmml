@@ -1,0 +1,10 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1133" measuredH="603" mockupW="763" mockupH="514">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::TabBar" x="370" y="89" w="763" h="514" measuredW="396" measuredH="100" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>2</selectedIndex>
+        <text>Status%2CLibrary%2CPlaylists%2CTimetable%2CTranscoders%2CServer</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
