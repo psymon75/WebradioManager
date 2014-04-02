@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WebradioManager
 {
-    public partial class Form1 : Form
+    public partial class SelectionView : Form
     {
-        public Form1()
+        public SelectionView()
         {
             InitializeComponent();
         }
