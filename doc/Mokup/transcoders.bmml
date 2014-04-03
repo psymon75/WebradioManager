@@ -101,13 +101,13 @@
         <text>Create</text>
       </controlProperties>
     </control>
-    <control controlID="24" controlTypeID="com.balsamiq.mockups::List" x="703" y="170" w="175" h="190" measuredW="100" measuredH="126" zOrder="20" locked="false" isInGroup="-1">
+    <control controlID="24" controlTypeID="com.balsamiq.mockups::List" x="703" y="170" w="175" h="155" measuredW="100" measuredH="126" zOrder="20" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Webradio%20name%201%0AWebradio%20name%202%0AWebradio%20name%203%0Aetc...</text>
+        <text>Transcoder%201%0ATranscoder%202%0ATranscoder%203%0Aetc...</text>
         <verticalScrollbar>true</verticalScrollbar>
       </controlProperties>
     </control>
-    <control controlID="31" controlTypeID="com.balsamiq.mockups::FieldSet" x="703" y="418" w="516" h="203" measuredW="200" measuredH="170" zOrder="22" locked="false" isInGroup="-1">
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::FieldSet" x="703" y="419" w="516" h="202" measuredW="200" measuredH="170" zOrder="22" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Logs</text>
       </controlProperties>
@@ -229,9 +229,24 @@
         </control>
       </groupChildrenDescriptors>
     </control>
-    <control controlID="56" controlTypeID="com.balsamiq.mockups::Button" x="760" y="360" w="-1" h="-1" measuredW="61" measuredH="27" zOrder="40" locked="false" isInGroup="-1">
+    <control controlID="56" controlTypeID="com.balsamiq.mockups::Button" x="760" y="325" w="-1" h="-1" measuredW="61" measuredH="27" zOrder="40" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Delete</text>
+      </controlProperties>
+    </control>
+    <control controlID="58" controlTypeID="com.balsamiq.mockups::FieldSet" x="703" y="352" w="181" h="60" measuredW="200" measuredH="170" zOrder="41" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>History</text>
+      </controlProperties>
+    </control>
+    <control controlID="59" controlTypeID="com.balsamiq.mockups::Button" x="719" y="372" w="-1" h="-1" measuredW="54" measuredH="27" zOrder="42" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Show</text>
+      </controlProperties>
+    </control>
+    <control controlID="60" controlTypeID="com.balsamiq.mockups::Button" x="803" y="372" w="-1" h="-1" measuredW="55" measuredH="27" zOrder="43" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Clear</text>
       </controlProperties>
     </control>
   </controls>
