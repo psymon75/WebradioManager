@@ -84,7 +84,7 @@
         <text/>
       </controlProperties>
     </control>
-    <control controlID="16" controlTypeID="com.balsamiq.mockups::Button" x="516" y="282" w="-1" h="-1" measuredW="52" measuredH="27" zOrder="16" locked="false" isInGroup="-1">
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::Button" x="521" y="312" w="-1" h="-1" measuredW="52" measuredH="27" zOrder="16" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Save</text>
       </controlProperties>
@@ -97,6 +97,16 @@
     <control controlID="19" controlTypeID="com.balsamiq.mockups::Button" x="863" y="145" w="-1" h="-1" measuredW="167" measuredH="27" zOrder="18" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Show%20web%20administration</text>
+      </controlProperties>
+    </control>
+    <control controlID="20" controlTypeID="com.balsamiq.mockups::Label" x="449" y="279" w="-1" h="-1" measuredW="76" measuredH="21" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Max%20listener%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="21" controlTypeID="com.balsamiq.mockups::NumericStepper" x="555" y="277" w="-1" h="-1" measuredW="50" measuredH="24" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>32</text>
       </controlProperties>
     </control>
   </controls>
