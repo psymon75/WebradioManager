@@ -10,6 +10,11 @@ namespace WebradioManager
         private List<Webradio> _webradios;
         private List<IController> _observers;
 
+        public WMModel()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public List<IController> Observers
         {
             get { return _observers; }

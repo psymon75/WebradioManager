@@ -9,6 +9,18 @@ namespace WebradioManager
     {
         private List<Music> _musics;
         private string _name;
+        private string _filename;
+
+        public Playlist(string name, string filename)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public string Filename
+        {
+            get { return _filename; }
+            set { _filename = value; }
+        }
 
         public string Name
         {

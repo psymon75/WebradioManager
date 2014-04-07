@@ -10,6 +10,11 @@ namespace WebradioManager
         private SelectionView _view;
         private WMModel _model;
 
+        public SelectionController(SelectionView view)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public WMModel Model
         {
             get { return _model; }

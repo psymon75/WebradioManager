@@ -49,5 +49,26 @@ namespace WebradioManager
             get { return _loopatend; }
             set { _loopatend = value; }
         }
+
+        private Playlist _playlist;
+
+        public Playlist Playlist
+        {
+            get { return _playlist; }
+            set { _playlist = value; }
+        }
+
+        public CalendarEvent(string name, DateTime starttime, DateTime duration, int repeat, int priority, bool shuffle, @true loopatend)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private int _priority;
+
+        public int Priority
+        {
+            get { return _priority; }
+            set { _priority = value; }
+        }
     }
 }

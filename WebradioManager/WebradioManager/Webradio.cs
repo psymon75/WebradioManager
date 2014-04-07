@@ -11,6 +11,11 @@ namespace WebradioManager
         private Calendar _calendar;
         private string _name;
 
+        public Webradio(string name)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public string Name
         {
             get { return _name; }
