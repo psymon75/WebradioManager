@@ -14,6 +14,13 @@ namespace WebradioManager
     public partial class AdminView : Form
     {
         List<Appointment> m_Appointments;
+        private AdminController _controller;
+
+        public AdminController Controller
+        {
+            get { return _controller; }
+            set { _controller = value; }
+        }
 
         public AdminView()
         {

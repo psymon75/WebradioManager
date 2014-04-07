@@ -12,6 +12,14 @@ namespace WebradioManager
 {
     public partial class SelectionView : Form
     {
+        private SelectionController _controller;
+
+        public SelectionController Controller
+        {
+            get { return _controller; }
+            set { _controller = value; }
+        }
+    
         public SelectionView()
         {
             InitializeComponent();
