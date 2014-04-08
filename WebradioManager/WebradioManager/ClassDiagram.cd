@@ -7,7 +7,7 @@
       <FileName>Webradio.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="WebradioManager.Calendar">
+  <Class Name="WebradioManager.WebradioCalendar">
     <Position X="6" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAAAAAAAAAAQAQAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
@@ -43,7 +43,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="WebradioManager.AdminController">
-    <Position X="4.75" Y="2" Width="1.5" />
+    <Position X="4.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAgAAAAAAAAABAAAAACgAAAAAAAA=</HashCode>
       <FileName>AdminController.cs</FileName>

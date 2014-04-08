@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WebradioManager
 {
-    public class Calendar
+    public class WebradioCalendar
     {
         private List<CalendarEvent> _events;
         private string _filename;

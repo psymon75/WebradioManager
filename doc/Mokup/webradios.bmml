@@ -10,7 +10,7 @@
         <text>WebradioName1%0AWebradioName2%0AEtc...</text>
       </controlProperties>
     </control>
-    <control controlID="2" controlTypeID="com.balsamiq.mockups::Button" x="392" y="261" w="-1" h="-1" measuredW="55" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Button" x="300" y="258" w="-1" h="-1" measuredW="55" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Open</text>
       </controlProperties>
@@ -38,6 +38,16 @@
     <control controlID="7" controlTypeID="com.balsamiq.mockups::Button" x="392" y="372" w="-1" h="-1" measuredW="63" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Create</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Button" x="370" y="258" w="-1" h="-1" measuredW="77" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Duplicate</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Button" x="471" y="258" w="-1" h="-1" measuredW="61" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Delete</text>
       </controlProperties>
     </control>
   </controls>

@@ -7,7 +7,7 @@ namespace WebradioManager
 {
     public class BddControls
     {
-        private const string BDD_FILENAME = 1;
+        private const string BDD_FILENAME = "";
 
         public BddControls()
         {

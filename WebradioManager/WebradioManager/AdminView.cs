@@ -26,35 +26,7 @@ namespace WebradioManager
         {
             InitializeComponent();
 
-            m_Appointments = new List<Appointment>();
-
-            DateTime m_Date = DateTime.Now;
-
-            m_Date = m_Date.AddHours(10 - m_Date.Hour);
-            m_Date = m_Date.AddMinutes(-m_Date.Minute);
-
-            Appointment m_Appointment = new Appointment();
-            m_Appointment.StartDate = m_Date;
-            m_Appointment.EndDate = m_Date.AddHours(2);
-            m_Appointment.Title = "Playlist1";
-
-            m_Appointments.Add(m_Appointment);
-
-            m_Appointment = new Appointment();
-            m_Appointment.StartDate = m_Date.AddHours(2);
-            m_Appointment.EndDate = m_Date.AddHours(3);
-            m_Appointment.Title = "Playlist2";
-            m_Appointment.Color = System.Drawing.Color.LightBlue;
-   
-
-            m_Appointments.Add(m_Appointment);
-
             
-
-            dayView1.StartDate = DateTime.Now;
-            dayView1.NewAppointment += new NewAppointmentEventHandler(dayView1_NewAppointment);
-            dayView1.ResolveAppointments += new Calendar.ResolveAppointmentsEventHandler(this.dayView1_ResolveAppointments);
-            dayView1.SelectionChanged += dayView1_SelectionChanged;
         }
 
         void dayView1_SelectionChanged(object sender, EventArgs e)
@@ -90,5 +62,6 @@ namespace WebradioManager
 
             m_Appointments.Add(m_Appointment);
         }
+
     }
 }

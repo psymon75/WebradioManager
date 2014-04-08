@@ -8,7 +8,7 @@ namespace WebradioManager
     public class Webradio
     {
         private List<Playlist> _playlists;
-        private Calendar _calendar;
+        private WebradioCalendar _calendar;
         private string _name;
 
         public Webradio(string name)
@@ -22,7 +22,7 @@ namespace WebradioManager
             set { _name = value; }
         }
 
-        public Calendar Calendar
+        public WebradioCalendar Calendar
         {
             get { return _calendar; }
             set { _calendar = value; }

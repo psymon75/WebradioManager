@@ -58,7 +58,7 @@ namespace WebradioManager
             set { _playlist = value; }
         }
 
-        public CalendarEvent(string name, DateTime starttime, DateTime duration, int repeat, int priority, bool shuffle, @true loopatend)
+        public CalendarEvent(string name, DateTime starttime, DateTime duration, int repeat, int priority, bool shuffle, bool loopatend)
         {
             throw new System.NotImplementedException();
         }
