@@ -13,7 +13,6 @@ namespace WebradioManager
 {
     public partial class AdminView : Form
     {
-        List<Appointment> m_Appointments;
         private AdminController _controller;
 
         public AdminController Controller
@@ -44,23 +43,11 @@ namespace WebradioManager
         {
             List<Appointment> m_Apps = new List<Appointment>();
 
-            foreach (Appointment m_App in m_Appointments)
-                if ((m_App.StartDate >= args.StartDate) &&
-                    (m_App.StartDate <= args.EndDate))
-                    m_Apps.Add(m_App);
-
-            args.Appointments = m_Apps;
         }
 
         void dayView1_NewAppointment(object sender, NewAppointmentEventArgs args)
         {
-            Appointment m_Appointment = new Appointment();
 
-            m_Appointment.StartDate = args.StartDate;
-            m_Appointment.EndDate = args.EndDate;
-            m_Appointment.Title = args.Title;
-
-            m_Appointments.Add(m_Appointment);
         }
 
     }

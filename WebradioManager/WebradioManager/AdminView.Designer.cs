@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Calendar.DrawTool drawTool2 = new Calendar.DrawTool();
+            Calendar.DrawTool drawTool1 = new Calendar.DrawTool();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminView));
+            this.dvwTimetable = new Calendar.DayView();
             this.mnsMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,7 +54,19 @@
             this.btnImportFolderMusic = new System.Windows.Forms.Button();
             this.txbSearchMusic = new System.Windows.Forms.TextBox();
             this.tbpPlaylists = new System.Windows.Forms.TabPage();
+            this.dgvPlaylistContent = new System.Windows.Forms.DataGridView();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnDeletePlaylistAd = new System.Windows.Forms.Button();
+            this.lsbPlaylistsAd = new System.Windows.Forms.ListBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnDeletePlaylistMusic = new System.Windows.Forms.Button();
+            this.lsbPlaylistsMusic = new System.Windows.Forms.ListBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.nudDurationGenerate = new System.Windows.Forms.NumericUpDown();
+            this.btnGeneratePlaylist = new System.Windows.Forms.Button();
+            this.cmbGenderGenerate = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.cmbTypePlaylistGenerate = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -66,44 +79,105 @@
             this.txbPlaylistName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tbpTimetable = new System.Windows.Forms.TabPage();
-            this.tbpTranscoders = new System.Windows.Forms.TabPage();
-            this.tbpServer = new System.Windows.Forms.TabPage();
-            this.cmbGenderGenerate = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnGeneratePlaylist = new System.Windows.Forms.Button();
-            this.nudDurationGenerate = new System.Windows.Forms.NumericUpDown();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.lsbPlaylistsMusic = new System.Windows.Forms.ListBox();
-            this.lsbPlaylistsAd = new System.Windows.Forms.ListBox();
-            this.btnDeletePlaylistMusic = new System.Windows.Forms.Button();
-            this.btnDeletePlaylistAd = new System.Windows.Forms.Button();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.dgvPlaylistContent = new System.Windows.Forms.DataGridView();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txbEventName = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cmbPlaylistEvent = new System.Windows.Forms.ComboBox();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.ckbMonday = new System.Windows.Forms.CheckBox();
-            this.ckbTuesday = new System.Windows.Forms.CheckBox();
-            this.ckbWednesday = new System.Windows.Forms.CheckBox();
-            this.ckbThursday = new System.Windows.Forms.CheckBox();
-            this.ckbFriday = new System.Windows.Forms.CheckBox();
-            this.ckbSaturday = new System.Windows.Forms.CheckBox();
-            this.ckbSunday = new System.Windows.Forms.CheckBox();
-            this.ckbAll = new System.Windows.Forms.CheckBox();
-            this.txbStartTime = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.btnCreateEvent = new System.Windows.Forms.Button();
+            this.nudPriority = new System.Windows.Forms.NumericUpDown();
+            this.label11 = new System.Windows.Forms.Label();
+            this.ckbShuffle = new System.Windows.Forms.CheckBox();
             this.txbDuration = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.ckbShuffle = new System.Windows.Forms.CheckBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.nudPriority = new System.Windows.Forms.NumericUpDown();
-            this.btnCreateEvent = new System.Windows.Forms.Button();
-            this.dayView1 = new Calendar.DayView();
+            this.txbStartTime = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.ckbAll = new System.Windows.Forms.CheckBox();
+            this.ckbSunday = new System.Windows.Forms.CheckBox();
+            this.ckbSaturday = new System.Windows.Forms.CheckBox();
+            this.ckbFriday = new System.Windows.Forms.CheckBox();
+            this.ckbThursday = new System.Windows.Forms.CheckBox();
+            this.ckbWednesday = new System.Windows.Forms.CheckBox();
+            this.ckbTuesday = new System.Windows.Forms.CheckBox();
+            this.ckbMonday = new System.Windows.Forms.CheckBox();
+            this.cmbPlaylistEvent = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txbEventName = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbpTranscoders = new System.Windows.Forms.TabPage();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.btnDeleteTranscoder = new System.Windows.Forms.Button();
+            this.lsbTranscoders = new System.Windows.Forms.ListBox();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.txbTranscoderName = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.btnCreateTranscoder = new System.Windows.Forms.Button();
+            this.txbServerPassword = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.nupPort = new System.Windows.Forms.NumericUpDown();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txbServerIp = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txbStreamUrl = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txbStreamName = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.cmbSampleRate = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cmbBitrate = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.cmbEncoder = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tbpServer = new System.Windows.Forms.TabPage();
+            this.txbTranscoderNameEdit = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txbServerPasswordEdit = new System.Windows.Forms.TextBox();
+            this.nudPortEdit = new System.Windows.Forms.NumericUpDown();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txbServerIpEdit = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txbStreamUrlEdit = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txbStreamNameEdit = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.cmbSampleRateEdit = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.cmbBitrateEdit = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.cmbEncoderEdit = new System.Windows.Forms.ComboBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.btnShowHistory = new System.Windows.Forms.Button();
+            this.btnClearHistory = new System.Windows.Forms.Button();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.lsbTranscoderLog = new System.Windows.Forms.ListBox();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.lblStatusTranscoder = new System.Windows.Forms.Label();
+            this.btnStartTranscoder = new System.Windows.Forms.Button();
+            this.btnStopTranscoder = new System.Windows.Forms.Button();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.lblStatusServer = new System.Windows.Forms.Label();
+            this.btnStartServer = new System.Windows.Forms.Button();
+            this.btnStopServer = new System.Windows.Forms.Button();
+            this.btnShowWebInterface = new System.Windows.Forms.Button();
+            this.btnShowWebAdministration = new System.Windows.Forms.Button();
+            this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.nudPortServer = new System.Windows.Forms.NumericUpDown();
+            this.label33 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label35 = new System.Windows.Forms.Label();
+            this.btnSaveServer = new System.Windows.Forms.Button();
+            this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.lsbLogServer = new System.Windows.Forms.ListBox();
+            this.btnClearLogServer = new System.Windows.Forms.Button();
+            this.btnClearLogTranscoder = new System.Windows.Forms.Button();
             this.mnsMain.SuspendLayout();
             this.tbcTabs.SuspendLayout();
             this.tbpLibrary.SuspendLayout();
@@ -112,18 +186,57 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMusics)).BeginInit();
             this.tbpPlaylists.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylistContent)).BeginInit();
+            this.groupBox6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDurationGenerate)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.tbpTimetable.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDurationGenerate)).BeginInit();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylistContent)).BeginInit();
-            this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
-            this.groupBox10.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPriority)).BeginInit();
+            this.groupBox10.SuspendLayout();
+            this.tbpTranscoders.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupPort)).BeginInit();
+            this.tbpServer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPortEdit)).BeginInit();
+            this.groupBox13.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            this.groupBox15.SuspendLayout();
+            this.groupBox16.SuspendLayout();
+            this.groupBox17.SuspendLayout();
+            this.groupBox18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPortServer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.groupBox19.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // dvwTimetable
+            // 
+            drawTool1.DayView = this.dvwTimetable;
+            this.dvwTimetable.ActiveTool = drawTool1;
+            this.dvwTimetable.AmPmDisplay = false;
+            this.dvwTimetable.AppHeightMode = Calendar.DayView.AppHeightDrawMode.TrueHeightAll;
+            this.dvwTimetable.DaysToShow = 7;
+            this.dvwTimetable.DrawAllAppBorder = false;
+            this.dvwTimetable.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.dvwTimetable.Location = new System.Drawing.Point(7, 20);
+            this.dvwTimetable.MinHalfHourApp = false;
+            this.dvwTimetable.Name = "dvwTimetable";
+            this.dvwTimetable.SelectionEnd = new System.DateTime(((long)(0)));
+            this.dvwTimetable.SelectionStart = new System.DateTime(((long)(0)));
+            this.dvwTimetable.Size = new System.Drawing.Size(807, 332);
+            this.dvwTimetable.SlotsPerHour = 2;
+            this.dvwTimetable.StartDate = new System.DateTime(((long)(0)));
+            this.dvwTimetable.TabIndex = 0;
+            this.dvwTimetable.Text = "dayView1";
+            this.dvwTimetable.WorkingHourEnd = 23;
+            this.dvwTimetable.WorkingHourStart = 0;
+            this.dvwTimetable.WorkingMinuteEnd = 59;
+            this.dvwTimetable.WorkingMinuteStart = 0;
             // 
             // mnsMain
             // 
@@ -352,6 +465,79 @@
             this.tbpPlaylists.Text = "Playlists";
             this.tbpPlaylists.UseVisualStyleBackColor = true;
             // 
+            // dgvPlaylistContent
+            // 
+            this.dgvPlaylistContent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPlaylistContent.Location = new System.Drawing.Point(188, 155);
+            this.dgvPlaylistContent.Name = "dgvPlaylistContent";
+            this.dgvPlaylistContent.Size = new System.Drawing.Size(636, 287);
+            this.dgvPlaylistContent.TabIndex = 5;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Location = new System.Drawing.Point(188, 79);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(636, 69);
+            this.groupBox7.TabIndex = 4;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Informations";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.btnDeletePlaylistAd);
+            this.groupBox6.Controls.Add(this.lsbPlaylistsAd);
+            this.groupBox6.Location = new System.Drawing.Point(9, 261);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(172, 181);
+            this.groupBox6.TabIndex = 3;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Ad";
+            // 
+            // btnDeletePlaylistAd
+            // 
+            this.btnDeletePlaylistAd.Location = new System.Drawing.Point(48, 152);
+            this.btnDeletePlaylistAd.Name = "btnDeletePlaylistAd";
+            this.btnDeletePlaylistAd.Size = new System.Drawing.Size(75, 23);
+            this.btnDeletePlaylistAd.TabIndex = 2;
+            this.btnDeletePlaylistAd.Text = "Delete";
+            this.btnDeletePlaylistAd.UseVisualStyleBackColor = true;
+            // 
+            // lsbPlaylistsAd
+            // 
+            this.lsbPlaylistsAd.FormattingEnabled = true;
+            this.lsbPlaylistsAd.Location = new System.Drawing.Point(7, 19);
+            this.lsbPlaylistsAd.Name = "lsbPlaylistsAd";
+            this.lsbPlaylistsAd.Size = new System.Drawing.Size(159, 121);
+            this.lsbPlaylistsAd.TabIndex = 1;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnDeletePlaylistMusic);
+            this.groupBox5.Controls.Add(this.lsbPlaylistsMusic);
+            this.groupBox5.Location = new System.Drawing.Point(9, 79);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(172, 181);
+            this.groupBox5.TabIndex = 2;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Music";
+            // 
+            // btnDeletePlaylistMusic
+            // 
+            this.btnDeletePlaylistMusic.Location = new System.Drawing.Point(48, 152);
+            this.btnDeletePlaylistMusic.Name = "btnDeletePlaylistMusic";
+            this.btnDeletePlaylistMusic.Size = new System.Drawing.Size(75, 23);
+            this.btnDeletePlaylistMusic.TabIndex = 1;
+            this.btnDeletePlaylistMusic.Text = "Delete";
+            this.btnDeletePlaylistMusic.UseVisualStyleBackColor = true;
+            // 
+            // lsbPlaylistsMusic
+            // 
+            this.lsbPlaylistsMusic.FormattingEnabled = true;
+            this.lsbPlaylistsMusic.Location = new System.Drawing.Point(7, 20);
+            this.lsbPlaylistsMusic.Name = "lsbPlaylistsMusic";
+            this.lsbPlaylistsMusic.Size = new System.Drawing.Size(159, 121);
+            this.lsbPlaylistsMusic.TabIndex = 0;
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.nudDurationGenerate);
@@ -369,6 +555,47 @@
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Generate";
+            // 
+            // nudDurationGenerate
+            // 
+            this.nudDurationGenerate.Location = new System.Drawing.Point(161, 35);
+            this.nudDurationGenerate.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.nudDurationGenerate.Name = "nudDurationGenerate";
+            this.nudDurationGenerate.Size = new System.Drawing.Size(77, 20);
+            this.nudDurationGenerate.TabIndex = 12;
+            // 
+            // btnGeneratePlaylist
+            // 
+            this.btnGeneratePlaylist.Location = new System.Drawing.Point(462, 32);
+            this.btnGeneratePlaylist.Name = "btnGeneratePlaylist";
+            this.btnGeneratePlaylist.Size = new System.Drawing.Size(75, 23);
+            this.btnGeneratePlaylist.TabIndex = 11;
+            this.btnGeneratePlaylist.Text = "Generate";
+            this.btnGeneratePlaylist.UseVisualStyleBackColor = true;
+            // 
+            // cmbGenderGenerate
+            // 
+            this.cmbGenderGenerate.FormattingEnabled = true;
+            this.cmbGenderGenerate.Items.AddRange(new object[] {
+            "Music",
+            "Ad"});
+            this.cmbGenderGenerate.Location = new System.Drawing.Point(352, 37);
+            this.cmbGenderGenerate.Name = "cmbGenderGenerate";
+            this.cmbGenderGenerate.Size = new System.Drawing.Size(93, 21);
+            this.cmbGenderGenerate.TabIndex = 10;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(349, 20);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 13);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Gender :";
             // 
             // cmbTypePlaylistGenerate
             // 
@@ -485,137 +712,15 @@
             this.tbpTimetable.Text = "Timetable";
             this.tbpTimetable.UseVisualStyleBackColor = true;
             // 
-            // tbpTranscoders
+            // groupBox9
             // 
-            this.tbpTranscoders.Location = new System.Drawing.Point(4, 22);
-            this.tbpTranscoders.Name = "tbpTranscoders";
-            this.tbpTranscoders.Size = new System.Drawing.Size(832, 445);
-            this.tbpTranscoders.TabIndex = 4;
-            this.tbpTranscoders.Text = "Transcoders";
-            this.tbpTranscoders.UseVisualStyleBackColor = true;
-            // 
-            // tbpServer
-            // 
-            this.tbpServer.Location = new System.Drawing.Point(4, 22);
-            this.tbpServer.Name = "tbpServer";
-            this.tbpServer.Size = new System.Drawing.Size(832, 445);
-            this.tbpServer.TabIndex = 5;
-            this.tbpServer.Text = "Server";
-            this.tbpServer.UseVisualStyleBackColor = true;
-            // 
-            // cmbGenderGenerate
-            // 
-            this.cmbGenderGenerate.FormattingEnabled = true;
-            this.cmbGenderGenerate.Items.AddRange(new object[] {
-            "Music",
-            "Ad"});
-            this.cmbGenderGenerate.Location = new System.Drawing.Point(352, 37);
-            this.cmbGenderGenerate.Name = "cmbGenderGenerate";
-            this.cmbGenderGenerate.Size = new System.Drawing.Size(93, 21);
-            this.cmbGenderGenerate.TabIndex = 10;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(349, 20);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 13);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Gender :";
-            // 
-            // btnGeneratePlaylist
-            // 
-            this.btnGeneratePlaylist.Location = new System.Drawing.Point(462, 32);
-            this.btnGeneratePlaylist.Name = "btnGeneratePlaylist";
-            this.btnGeneratePlaylist.Size = new System.Drawing.Size(75, 23);
-            this.btnGeneratePlaylist.TabIndex = 11;
-            this.btnGeneratePlaylist.Text = "Generate";
-            this.btnGeneratePlaylist.UseVisualStyleBackColor = true;
-            // 
-            // nudDurationGenerate
-            // 
-            this.nudDurationGenerate.Location = new System.Drawing.Point(161, 35);
-            this.nudDurationGenerate.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            this.nudDurationGenerate.Name = "nudDurationGenerate";
-            this.nudDurationGenerate.Size = new System.Drawing.Size(77, 20);
-            this.nudDurationGenerate.TabIndex = 12;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.btnDeletePlaylistMusic);
-            this.groupBox5.Controls.Add(this.lsbPlaylistsMusic);
-            this.groupBox5.Location = new System.Drawing.Point(9, 79);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(172, 181);
-            this.groupBox5.TabIndex = 2;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Music";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.btnDeletePlaylistAd);
-            this.groupBox6.Controls.Add(this.lsbPlaylistsAd);
-            this.groupBox6.Location = new System.Drawing.Point(9, 261);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(172, 181);
-            this.groupBox6.TabIndex = 3;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Ad";
-            // 
-            // lsbPlaylistsMusic
-            // 
-            this.lsbPlaylistsMusic.FormattingEnabled = true;
-            this.lsbPlaylistsMusic.Location = new System.Drawing.Point(7, 20);
-            this.lsbPlaylistsMusic.Name = "lsbPlaylistsMusic";
-            this.lsbPlaylistsMusic.Size = new System.Drawing.Size(159, 121);
-            this.lsbPlaylistsMusic.TabIndex = 0;
-            // 
-            // lsbPlaylistsAd
-            // 
-            this.lsbPlaylistsAd.FormattingEnabled = true;
-            this.lsbPlaylistsAd.Location = new System.Drawing.Point(7, 19);
-            this.lsbPlaylistsAd.Name = "lsbPlaylistsAd";
-            this.lsbPlaylistsAd.Size = new System.Drawing.Size(159, 121);
-            this.lsbPlaylistsAd.TabIndex = 1;
-            // 
-            // btnDeletePlaylistMusic
-            // 
-            this.btnDeletePlaylistMusic.Location = new System.Drawing.Point(48, 152);
-            this.btnDeletePlaylistMusic.Name = "btnDeletePlaylistMusic";
-            this.btnDeletePlaylistMusic.Size = new System.Drawing.Size(75, 23);
-            this.btnDeletePlaylistMusic.TabIndex = 1;
-            this.btnDeletePlaylistMusic.Text = "Delete";
-            this.btnDeletePlaylistMusic.UseVisualStyleBackColor = true;
-            // 
-            // btnDeletePlaylistAd
-            // 
-            this.btnDeletePlaylistAd.Location = new System.Drawing.Point(48, 152);
-            this.btnDeletePlaylistAd.Name = "btnDeletePlaylistAd";
-            this.btnDeletePlaylistAd.Size = new System.Drawing.Size(75, 23);
-            this.btnDeletePlaylistAd.TabIndex = 2;
-            this.btnDeletePlaylistAd.Text = "Delete";
-            this.btnDeletePlaylistAd.UseVisualStyleBackColor = true;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Location = new System.Drawing.Point(188, 79);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(636, 69);
-            this.groupBox7.TabIndex = 4;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Informations";
-            // 
-            // dgvPlaylistContent
-            // 
-            this.dgvPlaylistContent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPlaylistContent.Location = new System.Drawing.Point(188, 155);
-            this.dgvPlaylistContent.Name = "dgvPlaylistContent";
-            this.dgvPlaylistContent.Size = new System.Drawing.Size(636, 287);
-            this.dgvPlaylistContent.TabIndex = 5;
+            this.groupBox9.Controls.Add(this.dvwTimetable);
+            this.groupBox9.Location = new System.Drawing.Point(4, 84);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(820, 358);
+            this.groupBox9.TabIndex = 1;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Timetable";
             // 
             // groupBox8
             // 
@@ -639,48 +744,72 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Create event";
             // 
-            // groupBox9
+            // btnCreateEvent
             // 
-            this.groupBox9.Controls.Add(this.dayView1);
-            this.groupBox9.Location = new System.Drawing.Point(4, 84);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(820, 358);
-            this.groupBox9.TabIndex = 1;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Timetable";
+            this.btnCreateEvent.Location = new System.Drawing.Point(760, 28);
+            this.btnCreateEvent.Name = "btnCreateEvent";
+            this.btnCreateEvent.Size = new System.Drawing.Size(54, 23);
+            this.btnCreateEvent.TabIndex = 12;
+            this.btnCreateEvent.Text = "Create";
+            this.btnCreateEvent.UseVisualStyleBackColor = true;
             // 
-            // label7
+            // nudPriority
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 20);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 13);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Name :";
+            this.nudPriority.Location = new System.Drawing.Point(692, 44);
+            this.nudPriority.Name = "nudPriority";
+            this.nudPriority.Size = new System.Drawing.Size(47, 20);
+            this.nudPriority.TabIndex = 11;
             // 
-            // txbEventName
+            // label11
             // 
-            this.txbEventName.Location = new System.Drawing.Point(54, 17);
-            this.txbEventName.Name = "txbEventName";
-            this.txbEventName.Size = new System.Drawing.Size(100, 20);
-            this.txbEventName.TabIndex = 1;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(642, 47);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(44, 13);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "Priority :";
             // 
-            // label8
+            // ckbShuffle
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(7, 48);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(45, 13);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "Playlist :";
+            this.ckbShuffle.AutoSize = true;
+            this.ckbShuffle.Location = new System.Drawing.Point(642, 20);
+            this.ckbShuffle.Name = "ckbShuffle";
+            this.ckbShuffle.Size = new System.Drawing.Size(59, 17);
+            this.ckbShuffle.TabIndex = 9;
+            this.ckbShuffle.Text = "Shuffle";
+            this.ckbShuffle.UseVisualStyleBackColor = true;
             // 
-            // cmbPlaylistEvent
+            // txbDuration
             // 
-            this.cmbPlaylistEvent.FormattingEnabled = true;
-            this.cmbPlaylistEvent.Location = new System.Drawing.Point(54, 45);
-            this.cmbPlaylistEvent.Name = "cmbPlaylistEvent";
-            this.cmbPlaylistEvent.Size = new System.Drawing.Size(118, 21);
-            this.cmbPlaylistEvent.TabIndex = 3;
+            this.txbDuration.Location = new System.Drawing.Point(536, 43);
+            this.txbDuration.Name = "txbDuration";
+            this.txbDuration.Size = new System.Drawing.Size(100, 20);
+            this.txbDuration.TabIndex = 8;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(473, 46);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 13);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "Duration :";
+            // 
+            // txbStartTime
+            // 
+            this.txbStartTime.Location = new System.Drawing.Point(536, 17);
+            this.txbStartTime.Name = "txbStartTime";
+            this.txbStartTime.Size = new System.Drawing.Size(100, 20);
+            this.txbStartTime.TabIndex = 6;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(473, 20);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(57, 13);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Start time :";
             // 
             // groupBox10
             // 
@@ -699,65 +828,15 @@
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Event days";
             // 
-            // ckbMonday
+            // ckbAll
             // 
-            this.ckbMonday.AutoSize = true;
-            this.ckbMonday.Location = new System.Drawing.Point(7, 20);
-            this.ckbMonday.Name = "ckbMonday";
-            this.ckbMonday.Size = new System.Drawing.Size(43, 17);
-            this.ckbMonday.TabIndex = 0;
-            this.ckbMonday.Text = "MO";
-            this.ckbMonday.UseVisualStyleBackColor = true;
-            // 
-            // ckbTuesday
-            // 
-            this.ckbTuesday.AutoSize = true;
-            this.ckbTuesday.Location = new System.Drawing.Point(56, 20);
-            this.ckbTuesday.Name = "ckbTuesday";
-            this.ckbTuesday.Size = new System.Drawing.Size(41, 17);
-            this.ckbTuesday.TabIndex = 1;
-            this.ckbTuesday.Text = "TU";
-            this.ckbTuesday.UseVisualStyleBackColor = true;
-            // 
-            // ckbWednesday
-            // 
-            this.ckbWednesday.AutoSize = true;
-            this.ckbWednesday.Location = new System.Drawing.Point(103, 20);
-            this.ckbWednesday.Name = "ckbWednesday";
-            this.ckbWednesday.Size = new System.Drawing.Size(44, 17);
-            this.ckbWednesday.TabIndex = 2;
-            this.ckbWednesday.Text = "WE";
-            this.ckbWednesday.UseVisualStyleBackColor = true;
-            // 
-            // ckbThursday
-            // 
-            this.ckbThursday.AutoSize = true;
-            this.ckbThursday.Location = new System.Drawing.Point(24, 34);
-            this.ckbThursday.Name = "ckbThursday";
-            this.ckbThursday.Size = new System.Drawing.Size(41, 17);
-            this.ckbThursday.TabIndex = 3;
-            this.ckbThursday.Text = "TH";
-            this.ckbThursday.UseVisualStyleBackColor = true;
-            // 
-            // ckbFriday
-            // 
-            this.ckbFriday.AutoSize = true;
-            this.ckbFriday.Location = new System.Drawing.Point(71, 34);
-            this.ckbFriday.Name = "ckbFriday";
-            this.ckbFriday.Size = new System.Drawing.Size(40, 17);
-            this.ckbFriday.TabIndex = 4;
-            this.ckbFriday.Text = "FR";
-            this.ckbFriday.UseVisualStyleBackColor = true;
-            // 
-            // ckbSaturday
-            // 
-            this.ckbSaturday.AutoSize = true;
-            this.ckbSaturday.Location = new System.Drawing.Point(146, 24);
-            this.ckbSaturday.Name = "ckbSaturday";
-            this.ckbSaturday.Size = new System.Drawing.Size(40, 17);
-            this.ckbSaturday.TabIndex = 5;
-            this.ckbSaturday.Text = "SA";
-            this.ckbSaturday.UseVisualStyleBackColor = true;
+            this.ckbAll.AutoSize = true;
+            this.ckbAll.Location = new System.Drawing.Point(233, 24);
+            this.ckbAll.Name = "ckbAll";
+            this.ckbAll.Size = new System.Drawing.Size(37, 17);
+            this.ckbAll.TabIndex = 7;
+            this.ckbAll.Text = "All";
+            this.ckbAll.UseVisualStyleBackColor = true;
             // 
             // ckbSunday
             // 
@@ -769,106 +848,869 @@
             this.ckbSunday.Text = "SU";
             this.ckbSunday.UseVisualStyleBackColor = true;
             // 
-            // ckbAll
+            // ckbSaturday
             // 
-            this.ckbAll.AutoSize = true;
-            this.ckbAll.Location = new System.Drawing.Point(233, 24);
-            this.ckbAll.Name = "ckbAll";
-            this.ckbAll.Size = new System.Drawing.Size(37, 17);
-            this.ckbAll.TabIndex = 7;
-            this.ckbAll.Text = "All";
-            this.ckbAll.UseVisualStyleBackColor = true;
+            this.ckbSaturday.AutoSize = true;
+            this.ckbSaturday.Location = new System.Drawing.Point(146, 24);
+            this.ckbSaturday.Name = "ckbSaturday";
+            this.ckbSaturday.Size = new System.Drawing.Size(40, 17);
+            this.ckbSaturday.TabIndex = 5;
+            this.ckbSaturday.Text = "SA";
+            this.ckbSaturday.UseVisualStyleBackColor = true;
             // 
-            // txbStartTime
+            // ckbFriday
             // 
-            this.txbStartTime.Location = new System.Drawing.Point(536, 17);
-            this.txbStartTime.Name = "txbStartTime";
-            this.txbStartTime.Size = new System.Drawing.Size(100, 20);
-            this.txbStartTime.TabIndex = 6;
+            this.ckbFriday.AutoSize = true;
+            this.ckbFriday.Location = new System.Drawing.Point(71, 34);
+            this.ckbFriday.Name = "ckbFriday";
+            this.ckbFriday.Size = new System.Drawing.Size(40, 17);
+            this.ckbFriday.TabIndex = 4;
+            this.ckbFriday.Text = "FR";
+            this.ckbFriday.UseVisualStyleBackColor = true;
             // 
-            // label9
+            // ckbThursday
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(473, 20);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(57, 13);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "Start time :";
+            this.ckbThursday.AutoSize = true;
+            this.ckbThursday.Location = new System.Drawing.Point(24, 34);
+            this.ckbThursday.Name = "ckbThursday";
+            this.ckbThursday.Size = new System.Drawing.Size(41, 17);
+            this.ckbThursday.TabIndex = 3;
+            this.ckbThursday.Text = "TH";
+            this.ckbThursday.UseVisualStyleBackColor = true;
             // 
-            // txbDuration
+            // ckbWednesday
             // 
-            this.txbDuration.Location = new System.Drawing.Point(536, 43);
-            this.txbDuration.Name = "txbDuration";
-            this.txbDuration.Size = new System.Drawing.Size(100, 20);
-            this.txbDuration.TabIndex = 8;
+            this.ckbWednesday.AutoSize = true;
+            this.ckbWednesday.Location = new System.Drawing.Point(103, 20);
+            this.ckbWednesday.Name = "ckbWednesday";
+            this.ckbWednesday.Size = new System.Drawing.Size(44, 17);
+            this.ckbWednesday.TabIndex = 2;
+            this.ckbWednesday.Text = "WE";
+            this.ckbWednesday.UseVisualStyleBackColor = true;
             // 
-            // label10
+            // ckbTuesday
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(473, 46);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(53, 13);
-            this.label10.TabIndex = 7;
-            this.label10.Text = "Duration :";
+            this.ckbTuesday.AutoSize = true;
+            this.ckbTuesday.Location = new System.Drawing.Point(56, 20);
+            this.ckbTuesday.Name = "ckbTuesday";
+            this.ckbTuesday.Size = new System.Drawing.Size(41, 17);
+            this.ckbTuesday.TabIndex = 1;
+            this.ckbTuesday.Text = "TU";
+            this.ckbTuesday.UseVisualStyleBackColor = true;
             // 
-            // ckbShuffle
+            // ckbMonday
             // 
-            this.ckbShuffle.AutoSize = true;
-            this.ckbShuffle.Location = new System.Drawing.Point(642, 20);
-            this.ckbShuffle.Name = "ckbShuffle";
-            this.ckbShuffle.Size = new System.Drawing.Size(59, 17);
-            this.ckbShuffle.TabIndex = 9;
-            this.ckbShuffle.Text = "Shuffle";
-            this.ckbShuffle.UseVisualStyleBackColor = true;
+            this.ckbMonday.AutoSize = true;
+            this.ckbMonday.Location = new System.Drawing.Point(7, 20);
+            this.ckbMonday.Name = "ckbMonday";
+            this.ckbMonday.Size = new System.Drawing.Size(43, 17);
+            this.ckbMonday.TabIndex = 0;
+            this.ckbMonday.Text = "MO";
+            this.ckbMonday.UseVisualStyleBackColor = true;
             // 
-            // label11
+            // cmbPlaylistEvent
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(642, 47);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(44, 13);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "Priority :";
+            this.cmbPlaylistEvent.FormattingEnabled = true;
+            this.cmbPlaylistEvent.Location = new System.Drawing.Point(54, 45);
+            this.cmbPlaylistEvent.Name = "cmbPlaylistEvent";
+            this.cmbPlaylistEvent.Size = new System.Drawing.Size(118, 21);
+            this.cmbPlaylistEvent.TabIndex = 3;
             // 
-            // nudPriority
+            // label8
             // 
-            this.nudPriority.Location = new System.Drawing.Point(692, 44);
-            this.nudPriority.Name = "nudPriority";
-            this.nudPriority.Size = new System.Drawing.Size(47, 20);
-            this.nudPriority.TabIndex = 11;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(7, 48);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(45, 13);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Playlist :";
             // 
-            // btnCreateEvent
+            // txbEventName
             // 
-            this.btnCreateEvent.Location = new System.Drawing.Point(760, 28);
-            this.btnCreateEvent.Name = "btnCreateEvent";
-            this.btnCreateEvent.Size = new System.Drawing.Size(54, 23);
-            this.btnCreateEvent.TabIndex = 12;
-            this.btnCreateEvent.Text = "Create";
-            this.btnCreateEvent.UseVisualStyleBackColor = true;
+            this.txbEventName.Location = new System.Drawing.Point(54, 17);
+            this.txbEventName.Name = "txbEventName";
+            this.txbEventName.Size = new System.Drawing.Size(100, 20);
+            this.txbEventName.TabIndex = 1;
             // 
-            // dayView1
+            // label7
             // 
-            drawTool2.DayView = this.dayView1;
-            this.dayView1.ActiveTool = drawTool2;
-            this.dayView1.AmPmDisplay = false;
-            this.dayView1.AppHeightMode = Calendar.DayView.AppHeightDrawMode.TrueHeightAll;
-            this.dayView1.DaysToShow = 7;
-            this.dayView1.DrawAllAppBorder = false;
-            this.dayView1.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.dayView1.Location = new System.Drawing.Point(7, 20);
-            this.dayView1.MinHalfHourApp = false;
-            this.dayView1.Name = "dayView1";
-            this.dayView1.SelectionEnd = new System.DateTime(((long)(0)));
-            this.dayView1.SelectionStart = new System.DateTime(((long)(0)));
-            this.dayView1.Size = new System.Drawing.Size(807, 332);
-            this.dayView1.SlotsPerHour = 2;
-            this.dayView1.StartDate = new System.DateTime(((long)(0)));
-            this.dayView1.TabIndex = 0;
-            this.dayView1.Text = "dayView1";
-            this.dayView1.WorkingHourEnd = 23;
-            this.dayView1.WorkingHourStart = 0;
-            this.dayView1.WorkingMinuteEnd = 59;
-            this.dayView1.WorkingMinuteStart = 0;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(7, 20);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(41, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Name :";
+            // 
+            // tbpTranscoders
+            // 
+            this.tbpTranscoders.Controls.Add(this.groupBox12);
+            this.tbpTranscoders.Controls.Add(this.groupBox11);
+            this.tbpTranscoders.Location = new System.Drawing.Point(4, 22);
+            this.tbpTranscoders.Name = "tbpTranscoders";
+            this.tbpTranscoders.Size = new System.Drawing.Size(832, 445);
+            this.tbpTranscoders.TabIndex = 4;
+            this.tbpTranscoders.Text = "Transcoders";
+            this.tbpTranscoders.UseVisualStyleBackColor = true;
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.groupBox16);
+            this.groupBox12.Controls.Add(this.groupBox15);
+            this.groupBox12.Controls.Add(this.groupBox14);
+            this.groupBox12.Controls.Add(this.txbTranscoderNameEdit);
+            this.groupBox12.Controls.Add(this.label21);
+            this.groupBox12.Controls.Add(this.btnDeleteTranscoder);
+            this.groupBox12.Controls.Add(this.lsbTranscoders);
+            this.groupBox12.Controls.Add(this.label28);
+            this.groupBox12.Controls.Add(this.cmbEncoderEdit);
+            this.groupBox12.Controls.Add(this.txbServerIpEdit);
+            this.groupBox12.Controls.Add(this.label27);
+            this.groupBox12.Controls.Add(this.label23);
+            this.groupBox12.Controls.Add(this.cmbBitrateEdit);
+            this.groupBox12.Controls.Add(this.txbStreamUrlEdit);
+            this.groupBox12.Controls.Add(this.label26);
+            this.groupBox12.Controls.Add(this.label24);
+            this.groupBox12.Controls.Add(this.cmbSampleRateEdit);
+            this.groupBox12.Controls.Add(this.txbStreamNameEdit);
+            this.groupBox12.Controls.Add(this.label25);
+            this.groupBox12.Controls.Add(this.groupBox13);
+            this.groupBox12.Location = new System.Drawing.Point(204, 4);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(620, 432);
+            this.groupBox12.TabIndex = 1;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Transcoders";
+            // 
+            // btnDeleteTranscoder
+            // 
+            this.btnDeleteTranscoder.Location = new System.Drawing.Point(33, 147);
+            this.btnDeleteTranscoder.Name = "btnDeleteTranscoder";
+            this.btnDeleteTranscoder.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteTranscoder.TabIndex = 1;
+            this.btnDeleteTranscoder.Text = "Delete";
+            this.btnDeleteTranscoder.UseVisualStyleBackColor = true;
+            // 
+            // lsbTranscoders
+            // 
+            this.lsbTranscoders.FormattingEnabled = true;
+            this.lsbTranscoders.Location = new System.Drawing.Point(7, 20);
+            this.lsbTranscoders.Name = "lsbTranscoders";
+            this.lsbTranscoders.Size = new System.Drawing.Size(132, 121);
+            this.lsbTranscoders.TabIndex = 0;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.txbTranscoderName);
+            this.groupBox11.Controls.Add(this.label20);
+            this.groupBox11.Controls.Add(this.btnCreateTranscoder);
+            this.groupBox11.Controls.Add(this.txbServerPassword);
+            this.groupBox11.Controls.Add(this.label19);
+            this.groupBox11.Controls.Add(this.nupPort);
+            this.groupBox11.Controls.Add(this.label18);
+            this.groupBox11.Controls.Add(this.txbServerIp);
+            this.groupBox11.Controls.Add(this.label17);
+            this.groupBox11.Controls.Add(this.txbStreamUrl);
+            this.groupBox11.Controls.Add(this.label16);
+            this.groupBox11.Controls.Add(this.txbStreamName);
+            this.groupBox11.Controls.Add(this.label15);
+            this.groupBox11.Controls.Add(this.cmbSampleRate);
+            this.groupBox11.Controls.Add(this.label14);
+            this.groupBox11.Controls.Add(this.cmbBitrate);
+            this.groupBox11.Controls.Add(this.label13);
+            this.groupBox11.Controls.Add(this.cmbEncoder);
+            this.groupBox11.Controls.Add(this.label12);
+            this.groupBox11.Location = new System.Drawing.Point(9, 4);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(189, 432);
+            this.groupBox11.TabIndex = 0;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Create";
+            // 
+            // txbTranscoderName
+            // 
+            this.txbTranscoderName.Location = new System.Drawing.Point(7, 32);
+            this.txbTranscoderName.Name = "txbTranscoderName";
+            this.txbTranscoderName.Size = new System.Drawing.Size(176, 20);
+            this.txbTranscoderName.TabIndex = 19;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(6, 16);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(96, 13);
+            this.label20.TabIndex = 18;
+            this.label20.Text = "Transcoder name :";
+            // 
+            // btnCreateTranscoder
+            // 
+            this.btnCreateTranscoder.Location = new System.Drawing.Point(52, 373);
+            this.btnCreateTranscoder.Name = "btnCreateTranscoder";
+            this.btnCreateTranscoder.Size = new System.Drawing.Size(75, 23);
+            this.btnCreateTranscoder.TabIndex = 17;
+            this.btnCreateTranscoder.Text = "Create";
+            this.btnCreateTranscoder.UseVisualStyleBackColor = true;
+            // 
+            // txbServerPassword
+            // 
+            this.txbServerPassword.Location = new System.Drawing.Point(6, 347);
+            this.txbServerPassword.Name = "txbServerPassword";
+            this.txbServerPassword.PasswordChar = '*';
+            this.txbServerPassword.Size = new System.Drawing.Size(176, 20);
+            this.txbServerPassword.TabIndex = 16;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(6, 331);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(92, 13);
+            this.label19.TabIndex = 15;
+            this.label19.Text = "Server password :";
+            // 
+            // nupPort
+            // 
+            this.nupPort.Location = new System.Drawing.Point(6, 308);
+            this.nupPort.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.nupPort.Name = "nupPort";
+            this.nupPort.Size = new System.Drawing.Size(74, 20);
+            this.nupPort.TabIndex = 14;
+            this.nupPort.Value = new decimal(new int[] {
+            8000,
+            0,
+            0,
+            0});
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 292);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(65, 13);
+            this.label18.TabIndex = 12;
+            this.label18.Text = "Server port :";
+            // 
+            // txbServerIp
+            // 
+            this.txbServerIp.Location = new System.Drawing.Point(6, 269);
+            this.txbServerIp.Name = "txbServerIp";
+            this.txbServerIp.Size = new System.Drawing.Size(176, 20);
+            this.txbServerIp.TabIndex = 11;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 253);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(57, 13);
+            this.label17.TabIndex = 10;
+            this.label17.Text = "Server IP :";
+            // 
+            // txbStreamUrl
+            // 
+            this.txbStreamUrl.Location = new System.Drawing.Point(6, 215);
+            this.txbStreamUrl.Name = "txbStreamUrl";
+            this.txbStreamUrl.Size = new System.Drawing.Size(176, 20);
+            this.txbStreamUrl.TabIndex = 9;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(3, 199);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(71, 13);
+            this.label16.TabIndex = 8;
+            this.label16.Text = "Stream URL :";
+            // 
+            // txbStreamName
+            // 
+            this.txbStreamName.Location = new System.Drawing.Point(6, 176);
+            this.txbStreamName.Name = "txbStreamName";
+            this.txbStreamName.Size = new System.Drawing.Size(176, 20);
+            this.txbStreamName.TabIndex = 7;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(5, 160);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(75, 13);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "Stream name :";
+            // 
+            // cmbSampleRate
+            // 
+            this.cmbSampleRate.FormattingEnabled = true;
+            this.cmbSampleRate.Items.AddRange(new object[] {
+            "44,1 kHz"});
+            this.cmbSampleRate.Location = new System.Drawing.Point(87, 113);
+            this.cmbSampleRate.Name = "cmbSampleRate";
+            this.cmbSampleRate.Size = new System.Drawing.Size(71, 21);
+            this.cmbSampleRate.TabIndex = 5;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(87, 96);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(69, 13);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Sample rate :";
+            // 
+            // cmbBitrate
+            // 
+            this.cmbBitrate.FormattingEnabled = true;
+            this.cmbBitrate.Location = new System.Drawing.Point(6, 113);
+            this.cmbBitrate.Name = "cmbBitrate";
+            this.cmbBitrate.Size = new System.Drawing.Size(71, 21);
+            this.cmbBitrate.TabIndex = 3;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 96);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(43, 13);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Bitrate :";
+            // 
+            // cmbEncoder
+            // 
+            this.cmbEncoder.FormattingEnabled = true;
+            this.cmbEncoder.Location = new System.Drawing.Point(6, 72);
+            this.cmbEncoder.Name = "cmbEncoder";
+            this.cmbEncoder.Size = new System.Drawing.Size(71, 21);
+            this.cmbEncoder.TabIndex = 1;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 55);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 13);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Encoder :";
+            // 
+            // tbpServer
+            // 
+            this.tbpServer.Controls.Add(this.groupBox19);
+            this.tbpServer.Controls.Add(this.groupBox18);
+            this.tbpServer.Controls.Add(this.groupBox17);
+            this.tbpServer.Location = new System.Drawing.Point(4, 22);
+            this.tbpServer.Name = "tbpServer";
+            this.tbpServer.Size = new System.Drawing.Size(832, 445);
+            this.tbpServer.TabIndex = 5;
+            this.tbpServer.Text = "Server";
+            this.tbpServer.UseVisualStyleBackColor = true;
+            // 
+            // txbTranscoderNameEdit
+            // 
+            this.txbTranscoderNameEdit.Location = new System.Drawing.Point(166, 72);
+            this.txbTranscoderNameEdit.Name = "txbTranscoderNameEdit";
+            this.txbTranscoderNameEdit.Size = new System.Drawing.Size(176, 20);
+            this.txbTranscoderNameEdit.TabIndex = 36;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(163, 56);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(96, 13);
+            this.label21.TabIndex = 35;
+            this.label21.Text = "Transcoder name :";
+            // 
+            // txbServerPasswordEdit
+            // 
+            this.txbServerPasswordEdit.Location = new System.Drawing.Point(8, 134);
+            this.txbServerPasswordEdit.Name = "txbServerPasswordEdit";
+            this.txbServerPasswordEdit.PasswordChar = '*';
+            this.txbServerPasswordEdit.Size = new System.Drawing.Size(176, 20);
+            this.txbServerPasswordEdit.TabIndex = 34;
+            // 
+            // nudPortEdit
+            // 
+            this.nudPortEdit.Location = new System.Drawing.Point(302, 95);
+            this.nudPortEdit.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.nudPortEdit.Name = "nudPortEdit";
+            this.nudPortEdit.Size = new System.Drawing.Size(74, 20);
+            this.nudPortEdit.TabIndex = 33;
+            this.nudPortEdit.Value = new decimal(new int[] {
+            8000,
+            0,
+            0,
+            0});
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(299, 79);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(65, 13);
+            this.label22.TabIndex = 32;
+            this.label22.Text = "Server port :";
+            // 
+            // txbServerIpEdit
+            // 
+            this.txbServerIpEdit.Location = new System.Drawing.Point(345, 111);
+            this.txbServerIpEdit.Name = "txbServerIpEdit";
+            this.txbServerIpEdit.Size = new System.Drawing.Size(112, 20);
+            this.txbServerIpEdit.TabIndex = 31;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(345, 95);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(57, 13);
+            this.label23.TabIndex = 30;
+            this.label23.Text = "Server IP :";
+            // 
+            // txbStreamUrlEdit
+            // 
+            this.txbStreamUrlEdit.Location = new System.Drawing.Point(166, 111);
+            this.txbStreamUrlEdit.Name = "txbStreamUrlEdit";
+            this.txbStreamUrlEdit.Size = new System.Drawing.Size(176, 20);
+            this.txbStreamUrlEdit.TabIndex = 29;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(163, 95);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(71, 13);
+            this.label24.TabIndex = 28;
+            this.label24.Text = "Stream URL :";
+            // 
+            // txbStreamNameEdit
+            // 
+            this.txbStreamNameEdit.Location = new System.Drawing.Point(346, 72);
+            this.txbStreamNameEdit.Name = "txbStreamNameEdit";
+            this.txbStreamNameEdit.Size = new System.Drawing.Size(176, 20);
+            this.txbStreamNameEdit.TabIndex = 27;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(345, 56);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(75, 13);
+            this.label25.TabIndex = 26;
+            this.label25.Text = "Stream name :";
+            // 
+            // cmbSampleRateEdit
+            // 
+            this.cmbSampleRateEdit.FormattingEnabled = true;
+            this.cmbSampleRateEdit.Items.AddRange(new object[] {
+            "44,1 kHz"});
+            this.cmbSampleRateEdit.Location = new System.Drawing.Point(500, 32);
+            this.cmbSampleRateEdit.Name = "cmbSampleRateEdit";
+            this.cmbSampleRateEdit.Size = new System.Drawing.Size(71, 21);
+            this.cmbSampleRateEdit.TabIndex = 25;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(425, 35);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(69, 13);
+            this.label26.TabIndex = 24;
+            this.label26.Text = "Sample rate :";
+            // 
+            // cmbBitrateEdit
+            // 
+            this.cmbBitrateEdit.FormattingEnabled = true;
+            this.cmbBitrateEdit.Location = new System.Drawing.Point(348, 32);
+            this.cmbBitrateEdit.Name = "cmbBitrateEdit";
+            this.cmbBitrateEdit.Size = new System.Drawing.Size(71, 21);
+            this.cmbBitrateEdit.TabIndex = 23;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(299, 35);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(43, 13);
+            this.label27.TabIndex = 22;
+            this.label27.Text = "Bitrate :";
+            // 
+            // cmbEncoderEdit
+            // 
+            this.cmbEncoderEdit.FormattingEnabled = true;
+            this.cmbEncoderEdit.Location = new System.Drawing.Point(222, 32);
+            this.cmbEncoderEdit.Name = "cmbEncoderEdit";
+            this.cmbEncoderEdit.Size = new System.Drawing.Size(71, 21);
+            this.cmbEncoderEdit.TabIndex = 21;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(163, 35);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(53, 13);
+            this.label28.TabIndex = 20;
+            this.label28.Text = "Encoder :";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(5, 118);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(92, 13);
+            this.label29.TabIndex = 20;
+            this.label29.Text = "Server password :";
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.btnUpdate);
+            this.groupBox13.Controls.Add(this.label22);
+            this.groupBox13.Controls.Add(this.label29);
+            this.groupBox13.Controls.Add(this.nudPortEdit);
+            this.groupBox13.Controls.Add(this.txbServerPasswordEdit);
+            this.groupBox13.Location = new System.Drawing.Point(158, 16);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(456, 157);
+            this.groupBox13.TabIndex = 37;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Edit";
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(301, 128);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.TabIndex = 38;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.btnClearHistory);
+            this.groupBox14.Controls.Add(this.btnShowHistory);
+            this.groupBox14.Location = new System.Drawing.Point(7, 176);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(145, 47);
+            this.groupBox14.TabIndex = 38;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "History";
+            // 
+            // btnShowHistory
+            // 
+            this.btnShowHistory.Location = new System.Drawing.Point(6, 18);
+            this.btnShowHistory.Name = "btnShowHistory";
+            this.btnShowHistory.Size = new System.Drawing.Size(51, 23);
+            this.btnShowHistory.TabIndex = 0;
+            this.btnShowHistory.Text = "Show";
+            this.btnShowHistory.UseVisualStyleBackColor = true;
+            // 
+            // btnClearHistory
+            // 
+            this.btnClearHistory.Location = new System.Drawing.Point(81, 18);
+            this.btnClearHistory.Name = "btnClearHistory";
+            this.btnClearHistory.Size = new System.Drawing.Size(51, 23);
+            this.btnClearHistory.TabIndex = 1;
+            this.btnClearHistory.Text = "Clear";
+            this.btnClearHistory.UseVisualStyleBackColor = true;
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Controls.Add(this.btnClearLogTranscoder);
+            this.groupBox15.Controls.Add(this.lsbTranscoderLog);
+            this.groupBox15.Location = new System.Drawing.Point(7, 224);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(607, 202);
+            this.groupBox15.TabIndex = 39;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Log";
+            // 
+            // lsbTranscoderLog
+            // 
+            this.lsbTranscoderLog.FormattingEnabled = true;
+            this.lsbTranscoderLog.Location = new System.Drawing.Point(7, 46);
+            this.lsbTranscoderLog.Name = "lsbTranscoderLog";
+            this.lsbTranscoderLog.ScrollAlwaysVisible = true;
+            this.lsbTranscoderLog.Size = new System.Drawing.Size(594, 147);
+            this.lsbTranscoderLog.TabIndex = 0;
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Controls.Add(this.btnStopTranscoder);
+            this.groupBox16.Controls.Add(this.btnStartTranscoder);
+            this.groupBox16.Controls.Add(this.lblStatusTranscoder);
+            this.groupBox16.Controls.Add(this.label30);
+            this.groupBox16.Location = new System.Drawing.Point(158, 176);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(456, 47);
+            this.groupBox16.TabIndex = 39;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "Status";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(7, 18);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(43, 13);
+            this.label30.TabIndex = 0;
+            this.label30.Text = "Status :";
+            // 
+            // lblStatusTranscoder
+            // 
+            this.lblStatusTranscoder.AutoSize = true;
+            this.lblStatusTranscoder.Location = new System.Drawing.Point(57, 18);
+            this.lblStatusTranscoder.Name = "lblStatusTranscoder";
+            this.lblStatusTranscoder.Size = new System.Drawing.Size(21, 13);
+            this.lblStatusTranscoder.TabIndex = 1;
+            this.lblStatusTranscoder.Text = "Off";
+            // 
+            // btnStartTranscoder
+            // 
+            this.btnStartTranscoder.Location = new System.Drawing.Point(169, 13);
+            this.btnStartTranscoder.Name = "btnStartTranscoder";
+            this.btnStartTranscoder.Size = new System.Drawing.Size(75, 23);
+            this.btnStartTranscoder.TabIndex = 2;
+            this.btnStartTranscoder.Text = "Start";
+            this.btnStartTranscoder.UseVisualStyleBackColor = true;
+            // 
+            // btnStopTranscoder
+            // 
+            this.btnStopTranscoder.Enabled = false;
+            this.btnStopTranscoder.Location = new System.Drawing.Point(250, 13);
+            this.btnStopTranscoder.Name = "btnStopTranscoder";
+            this.btnStopTranscoder.Size = new System.Drawing.Size(75, 23);
+            this.btnStopTranscoder.TabIndex = 3;
+            this.btnStopTranscoder.Text = "Stop";
+            this.btnStopTranscoder.UseVisualStyleBackColor = true;
+            // 
+            // groupBox17
+            // 
+            this.groupBox17.Controls.Add(this.btnShowWebAdministration);
+            this.groupBox17.Controls.Add(this.btnShowWebInterface);
+            this.groupBox17.Controls.Add(this.btnStopServer);
+            this.groupBox17.Controls.Add(this.btnStartServer);
+            this.groupBox17.Controls.Add(this.lblStatusServer);
+            this.groupBox17.Controls.Add(this.label31);
+            this.groupBox17.Location = new System.Drawing.Point(9, 4);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(815, 48);
+            this.groupBox17.TabIndex = 0;
+            this.groupBox17.TabStop = false;
+            this.groupBox17.Text = "Controls";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(7, 20);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(43, 13);
+            this.label31.TabIndex = 0;
+            this.label31.Text = "Status :";
+            // 
+            // lblStatusServer
+            // 
+            this.lblStatusServer.AutoSize = true;
+            this.lblStatusServer.Location = new System.Drawing.Point(57, 20);
+            this.lblStatusServer.Name = "lblStatusServer";
+            this.lblStatusServer.Size = new System.Drawing.Size(21, 13);
+            this.lblStatusServer.TabIndex = 1;
+            this.lblStatusServer.Text = "Off";
+            // 
+            // btnStartServer
+            // 
+            this.btnStartServer.Location = new System.Drawing.Point(84, 15);
+            this.btnStartServer.Name = "btnStartServer";
+            this.btnStartServer.Size = new System.Drawing.Size(75, 23);
+            this.btnStartServer.TabIndex = 2;
+            this.btnStartServer.Text = "Start";
+            this.btnStartServer.UseVisualStyleBackColor = true;
+            // 
+            // btnStopServer
+            // 
+            this.btnStopServer.Location = new System.Drawing.Point(165, 15);
+            this.btnStopServer.Name = "btnStopServer";
+            this.btnStopServer.Size = new System.Drawing.Size(75, 23);
+            this.btnStopServer.TabIndex = 3;
+            this.btnStopServer.Text = "Stop";
+            this.btnStopServer.UseVisualStyleBackColor = true;
+            // 
+            // btnShowWebInterface
+            // 
+            this.btnShowWebInterface.Location = new System.Drawing.Point(344, 15);
+            this.btnShowWebInterface.Name = "btnShowWebInterface";
+            this.btnShowWebInterface.Size = new System.Drawing.Size(150, 23);
+            this.btnShowWebInterface.TabIndex = 4;
+            this.btnShowWebInterface.Text = "Show web interface";
+            this.btnShowWebInterface.UseVisualStyleBackColor = true;
+            // 
+            // btnShowWebAdministration
+            // 
+            this.btnShowWebAdministration.Location = new System.Drawing.Point(500, 15);
+            this.btnShowWebAdministration.Name = "btnShowWebAdministration";
+            this.btnShowWebAdministration.Size = new System.Drawing.Size(150, 23);
+            this.btnShowWebAdministration.TabIndex = 5;
+            this.btnShowWebAdministration.Text = "Show web administration";
+            this.btnShowWebAdministration.UseVisualStyleBackColor = true;
+            // 
+            // groupBox18
+            // 
+            this.groupBox18.Controls.Add(this.btnSaveServer);
+            this.groupBox18.Controls.Add(this.numericUpDown1);
+            this.groupBox18.Controls.Add(this.label35);
+            this.groupBox18.Controls.Add(this.textBox2);
+            this.groupBox18.Controls.Add(this.label34);
+            this.groupBox18.Controls.Add(this.textBox1);
+            this.groupBox18.Controls.Add(this.label33);
+            this.groupBox18.Controls.Add(this.nudPortServer);
+            this.groupBox18.Controls.Add(this.label32);
+            this.groupBox18.Location = new System.Drawing.Point(9, 59);
+            this.groupBox18.Name = "groupBox18";
+            this.groupBox18.Size = new System.Drawing.Size(200, 155);
+            this.groupBox18.TabIndex = 1;
+            this.groupBox18.TabStop = false;
+            this.groupBox18.Text = "Configuration";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(46, 20);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(32, 13);
+            this.label32.TabIndex = 0;
+            this.label32.Text = "Port :";
+            // 
+            // nudPortServer
+            // 
+            this.nudPortServer.Location = new System.Drawing.Point(84, 18);
+            this.nudPortServer.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.nudPortServer.Name = "nudPortServer";
+            this.nudPortServer.Size = new System.Drawing.Size(55, 20);
+            this.nudPortServer.TabIndex = 1;
+            this.nudPortServer.Value = new decimal(new int[] {
+            8000,
+            0,
+            0,
+            0});
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(19, 47);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(59, 13);
+            this.label33.TabIndex = 2;
+            this.label33.Text = "Password :";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(84, 44);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.PasswordChar = '*';
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 3;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(84, 70);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 5;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(13, 73);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(65, 13);
+            this.label34.TabIndex = 4;
+            this.label34.Text = "Admin pwd :";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(84, 96);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDown1.TabIndex = 7;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            32,
+            0,
+            0,
+            0});
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(9, 98);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(69, 13);
+            this.label35.TabIndex = 6;
+            this.label35.Text = "Max listener :";
+            // 
+            // btnSaveServer
+            // 
+            this.btnSaveServer.Location = new System.Drawing.Point(49, 122);
+            this.btnSaveServer.Name = "btnSaveServer";
+            this.btnSaveServer.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveServer.TabIndex = 8;
+            this.btnSaveServer.Text = "Save";
+            this.btnSaveServer.UseVisualStyleBackColor = true;
+            // 
+            // groupBox19
+            // 
+            this.groupBox19.Controls.Add(this.btnClearLogServer);
+            this.groupBox19.Controls.Add(this.lsbLogServer);
+            this.groupBox19.Location = new System.Drawing.Point(9, 221);
+            this.groupBox19.Name = "groupBox19";
+            this.groupBox19.Size = new System.Drawing.Size(820, 221);
+            this.groupBox19.TabIndex = 2;
+            this.groupBox19.TabStop = false;
+            this.groupBox19.Text = "Log";
+            // 
+            // lsbLogServer
+            // 
+            this.lsbLogServer.FormattingEnabled = true;
+            this.lsbLogServer.Location = new System.Drawing.Point(6, 49);
+            this.lsbLogServer.Name = "lsbLogServer";
+            this.lsbLogServer.Size = new System.Drawing.Size(808, 160);
+            this.lsbLogServer.TabIndex = 0;
+            // 
+            // btnClearLogServer
+            // 
+            this.btnClearLogServer.Location = new System.Drawing.Point(7, 20);
+            this.btnClearLogServer.Name = "btnClearLogServer";
+            this.btnClearLogServer.Size = new System.Drawing.Size(75, 23);
+            this.btnClearLogServer.TabIndex = 1;
+            this.btnClearLogServer.Text = "Clear";
+            this.btnClearLogServer.UseVisualStyleBackColor = true;
+            // 
+            // btnClearLogTranscoder
+            // 
+            this.btnClearLogTranscoder.Location = new System.Drawing.Point(7, 20);
+            this.btnClearLogTranscoder.Name = "btnClearLogTranscoder";
+            this.btnClearLogTranscoder.Size = new System.Drawing.Size(75, 23);
+            this.btnClearLogTranscoder.TabIndex = 1;
+            this.btnClearLogTranscoder.Text = "Clear";
+            this.btnClearLogTranscoder.UseVisualStyleBackColor = true;
             // 
             // AdminView
             // 
@@ -896,21 +1738,42 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMusics)).EndInit();
             this.tbpPlaylists.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylistContent)).EndInit();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDurationGenerate)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.tbpTimetable.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nudDurationGenerate)).EndInit();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylistContent)).EndInit();
+            this.groupBox9.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nudPriority)).EndInit();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPriority)).EndInit();
+            this.tbpTranscoders.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupPort)).EndInit();
+            this.tbpServer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nudPortEdit)).EndInit();
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox16.PerformLayout();
+            this.groupBox17.ResumeLayout(false);
+            this.groupBox17.PerformLayout();
+            this.groupBox18.ResumeLayout(false);
+            this.groupBox18.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPortServer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.groupBox19.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -991,7 +1854,81 @@
         private System.Windows.Forms.TextBox txbEventName;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnCreateEvent;
-        private Calendar.DayView dayView1;
+        private Calendar.DayView dvwTimetable;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txbStreamUrl;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txbStreamName;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox cmbSampleRate;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox cmbBitrate;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox cmbEncoder;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.Button btnDeleteTranscoder;
+        private System.Windows.Forms.ListBox lsbTranscoders;
+        private System.Windows.Forms.TextBox txbTranscoderName;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button btnCreateTranscoder;
+        private System.Windows.Forms.TextBox txbServerPassword;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.NumericUpDown nupPort;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txbServerIp;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox txbTranscoderNameEdit;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txbServerPasswordEdit;
+        private System.Windows.Forms.NumericUpDown nudPortEdit;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.ComboBox cmbEncoderEdit;
+        private System.Windows.Forms.TextBox txbServerIpEdit;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ComboBox cmbBitrateEdit;
+        private System.Windows.Forms.TextBox txbStreamUrlEdit;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.ComboBox cmbSampleRateEdit;
+        private System.Windows.Forms.TextBox txbStreamNameEdit;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.GroupBox groupBox14;
+        private System.Windows.Forms.Button btnClearHistory;
+        private System.Windows.Forms.Button btnShowHistory;
+        private System.Windows.Forms.GroupBox groupBox15;
+        private System.Windows.Forms.ListBox lsbTranscoderLog;
+        private System.Windows.Forms.GroupBox groupBox16;
+        private System.Windows.Forms.Button btnStopTranscoder;
+        private System.Windows.Forms.Button btnStartTranscoder;
+        private System.Windows.Forms.Label lblStatusTranscoder;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.GroupBox groupBox19;
+        private System.Windows.Forms.Button btnClearLogServer;
+        private System.Windows.Forms.ListBox lsbLogServer;
+        private System.Windows.Forms.GroupBox groupBox18;
+        private System.Windows.Forms.Button btnSaveServer;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.NumericUpDown nudPortServer;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.GroupBox groupBox17;
+        private System.Windows.Forms.Button btnShowWebAdministration;
+        private System.Windows.Forms.Button btnShowWebInterface;
+        private System.Windows.Forms.Button btnStopServer;
+        private System.Windows.Forms.Button btnStartServer;
+        private System.Windows.Forms.Label lblStatusServer;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Button btnClearLogTranscoder;
 
 
     }
