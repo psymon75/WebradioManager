@@ -10,11 +10,14 @@ namespace WebradioManager
         private List<Playlist> _playlists;
         private WebradioCalendar _calendar;
         private string _name;
+        private WebradioServer _server;
+        private int _id;
 
-        public Webradio(string name)
+        public WebradioServer Server
         {
-            throw new System.NotImplementedException();
-        }
+            get { return _server; }
+            set { _server = value; }
+        } 
 
         public string Name
         {
@@ -32,6 +35,26 @@ namespace WebradioManager
         {
             get { return _playlists; }
             set { _playlists = value; }
+        }
+
+
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
+        public Webradio(string name, int id)
+        {
+            this.Name = name;
+            this.Id = id;
+            this.Playlists = new List<Playlist>();
+        }
+
+        public Webradio(string name)
+        {
+            this.Playlists = new List<Playlist>();
+            this.Name = name;
         }
     }
 }

@@ -23,6 +23,30 @@ namespace WebradioManager
         public SelectionView()
         {
             InitializeComponent();
+            this.Cursor = Cursors.WaitCursor;
+            this.Controller = new SelectionController(this);
+            this.Controller.LoadWebradios();
+            this.Controller.LoadLibrary();
+            this.UpdateView();
+            this.Cursor = Cursors.Default;
+        }
+
+        public void UpdateView()
+        {
+            lsbSelection.Items.Clear();
+            List<Webradio> webradios = this.Controller.GetWebradios();
+            foreach(Webradio wr in webradios)
+            {
+                lsbSelection.Items.Add(wr.Name + " | ID = " + wr.Id);
+            }
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            if(txbName.Text != "")
+            {
+                this.Controller.CreateWebradio(txbName.Text);
+            }
         }
     }
 }

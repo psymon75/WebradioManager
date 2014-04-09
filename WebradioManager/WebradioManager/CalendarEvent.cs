@@ -7,42 +7,59 @@ namespace WebradioManager
 {
     public class CalendarEvent
     {
+        #region Fields
         private string _name;
+        private TimeSpan _startTime;
+        private TimeSpan _duration;
+        private int _repeat;
+        private bool _shuffle;
+        private bool _loopatend;
+        private int _priority;
+        private int _playlistId;
+
+        #endregion
+
+        #region Properties
+        public int PlaylistId
+        {
+            get { return _playlistId; }
+            set { _playlistId = value; }
+        }
 
         public string Name
         {
             get { return _name; }
             set { _name = value; }
         }
-        private DateTime _startTime;
+        
 
-        public DateTime StartTime
+        public TimeSpan StartTime
         {
             get { return _startTime; }
             set { _startTime = value; }
         }
-        private DateTime _duration;
+        
 
-        public DateTime Duration
+        public TimeSpan Duration
         {
             get { return _duration; }
             set { _duration = value; }
         }
-        private bool _repeat;
+        
 
-        public bool Repeat
+        public int Repeat
         {
             get { return _repeat; }
             set { _repeat = value; }
         }
-        private bool _shuffle;
+        
 
         public bool Shuffle
         {
             get { return _shuffle; }
             set { _shuffle = value; }
         }
-        private bool _loopatend;
+        
 
         public bool Loopatend
         {
@@ -50,25 +67,27 @@ namespace WebradioManager
             set { _loopatend = value; }
         }
 
-        private Playlist _playlist;
-
-        public Playlist Playlist
-        {
-            get { return _playlist; }
-            set { _playlist = value; }
-        }
-
-        public CalendarEvent(string name, DateTime starttime, DateTime duration, int repeat, int priority, bool shuffle, bool loopatend)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private int _priority;
-
         public int Priority
         {
             get { return _priority; }
             set { _priority = value; }
         }
+        #endregion
+
+        public CalendarEvent(string name, TimeSpan starttime, TimeSpan duration, int repeat, int priority, bool shuffle, bool loopatend, int playlistId)
+        {
+            this.Name = name;
+            this.StartTime = starttime;
+            this.Duration = duration;
+            this.Repeat = repeat;
+            this.Priority = priority;
+            this.Shuffle = shuffle;
+            this.Loopatend = loopatend;
+            this.PlaylistId = playlistId;
+        }
+
+        
+
+        
     }
 }

@@ -10,11 +10,6 @@ namespace WebradioManager
         private SelectionView _view;
         private WMModel _model;
 
-        public SelectionController(SelectionView view)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public WMModel Model
         {
             get { return _model; }
@@ -27,9 +22,37 @@ namespace WebradioManager
             set { _view = value; }
         }
 
+        public SelectionController(SelectionView view)
+        {
+            this.View = view;
+            this.Model = new WMModel();
+            this.Model.AddObserver(this);
+        }
+
+        public void LoadLibrary()
+        {
+            this.Model.LoadLibrary();
+        }
+
+        public void LoadWebradios()
+        {
+            this.Model.LoadWebradios();
+        }
+
         public void UpdateView()
         {
-            throw new NotImplementedException();
+            this.View.UpdateView();
         }
+
+        public List<Webradio> GetWebradios()
+        {
+            return this.Model.GetWebradios();
+        }
+
+        public bool CreateWebradio(string name)
+        {
+            return this.Model.CreateWebradio(name);
+        }
+       
     }
 }

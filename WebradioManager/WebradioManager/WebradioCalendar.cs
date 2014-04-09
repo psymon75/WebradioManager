@@ -9,6 +9,13 @@ namespace WebradioManager
     {
         private List<CalendarEvent> _events;
         private string _filename;
+        private int _id;
+
+        public int Id
+        {
+          get { return _id; }
+          set { _id = value; }
+        }
 
         public string Filename
         {
@@ -20,6 +27,13 @@ namespace WebradioManager
         {
             get { return _events; }
             set { _events = value; }
+        }
+
+        public WebradioCalendar(int id, string filename)
+        {
+            this.Id = id;
+            this.Filename = filename;
+            this.Events = new List<CalendarEvent>();
         }
     }
 }

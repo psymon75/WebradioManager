@@ -5,16 +5,27 @@ using System.Text;
 
 namespace WebradioManager
 {
-    public class Playlist
+    public abstract class Playlist
     {
-        private List<Music> _musics;
         private string _name;
+        private int _id;
         private string _filename;
+        private AudioType _type;
 
-        public Playlist(string name, string filename)
+        #region Properties
+
+        public AudioType Type
         {
-            throw new System.NotImplementedException();
+            get { return _type; }
+            set { _type = value; }
         }
+
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
 
         public string Filename
         {
@@ -27,11 +38,16 @@ namespace WebradioManager
             get { return _name; }
             set { _name = value; }
         }
+        #endregion
 
-        public List<Music> Musics
+        public Playlist(int id, string name, string filename, AudioType type)
         {
-            get { return _musics; }
-            set { _musics = value; }
+            this.Id = id;
+            this.Name = name;
+            this.Filename = filename;
+            this.Type = type;
         }
+
+
     }
 }
