@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -11,9 +12,15 @@ namespace WebradioManager
         private int _id;
         private string _filename;
         private AudioType _type;
+        private List<string> _audioFileList;
+
 
         #region Properties
-
+        public List<string> AudioFileList
+        {
+            get { return _audioFileList; }
+            set { _audioFileList = value; }
+        }
         public AudioType Type
         {
             get { return _type; }
@@ -46,8 +53,18 @@ namespace WebradioManager
             this.Name = name;
             this.Filename = filename;
             this.Type = type;
+            this.AudioFileList = new List<string>();
         }
 
+        public void GenerateConfigFile()
+        {
+            string output = "";
+            foreach(string filename in this.AudioFileList)
+            {
+                output += (filename + "\n"); 
+            }
+            File.WriteAllText(this.Filename, output);
+        }
 
     }
 }

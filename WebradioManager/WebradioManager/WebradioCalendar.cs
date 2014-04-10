@@ -35,5 +35,16 @@ namespace WebradioManager
             this.Filename = filename;
             this.Events = new List<CalendarEvent>();
         }
+
+        public WebradioCalendar(string filename)
+        {
+            this.Filename = filename;
+            this.Events = new List<CalendarEvent>();
+        }
+        
+        public void GenerateConfigFile()
+        {
+
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -17,9 +18,16 @@ namespace WebradioManager
         private string _password;
         private string _adminPassword;
         private Process _process;
+
         #endregion
 
         #region Properties
+
+        public Process Process
+        {
+            get { return _process; }
+            set { _process = value; }
+        }
         public string LogFilename
         {
             get { return _logFilename; }
@@ -59,6 +67,21 @@ namespace WebradioManager
             this.ConfigFilename = configfilename;
             this.Password = password;
             this.AdminPassword = adminPassword;
+        }
+
+        public void GenerateConfigFile()
+        {
+            //Vérifier si le processus est deja lancé... larreter si c'est le cas pour le relancer après
+            //if(this.Process.)
+            if(File.Exists(this.ConfigFilename))
+                File.Delete(this.ConfigFilename);
+            string output = "";
+            output += "logfile=" + this.LogFilename.Replace('/', '\\');
+            output += "portbase=" + this.Port.ToString();
+            output += "password=" + this.Password;
+            output += "adminpassword" + this.AdminPassword;
+            output += "publicserver=always";
+            File.WriteAllText(this.ConfigFilename, output);
         }
 
         public void Start()

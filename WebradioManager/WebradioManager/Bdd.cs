@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace WebradioManager
 {
     public class Bdd
     {
+        const int ERROR = -1;
+
         private BddControls _controls;
 
         public BddControls Controls
@@ -82,7 +85,46 @@ namespace WebradioManager
                     wr.Playlists.Add(p);
                 }
                 reader.Close();
-
+                foreach(Playlist playlist in wr.Playlists)
+                {
+                    reader = this.Controls.ExecuteDataReader("SELECT m.filename FROM tmusic m, tplaylist_has_music pm WHERE pm.playlistid = " + playlist.Id + " AND m.id = pm.musicid");
+                    while(reader.Read())
+                    {
+                        playlist.AudioFileList.Add(reader["filename"].ToString());
+                    }
+                }
+                reader.Close();
+                //Transcoders
+                reader = this.Controls.ExecuteDataReader("SELECT tr.id, tr.name AS TransName, tr.bitrate, tr.samplerate, tr.url, tr.ip, tr.port, tr.password, tr.configfilename, tr.logfilename, st.name AS StreamName FROM ttranscoder tr, tstreamtype st WHERE webradioid = " + id.ToString() + " AND tr.streamtypeid = st.id");
+                while(reader.Read())
+                {
+                    WebradioTranscoder trans = null;
+                    if(reader["StreamName"].ToString() == StreamType.MP3.ToString())
+                        trans = new TranscoderMp3(int.Parse(reader["id"].ToString()), 
+                            reader["TransName"].ToString(), 
+                            int.Parse(reader["bitrate"].ToString()),
+                            int.Parse(reader["samplerate"].ToString()),
+                            reader["ip"].ToString(),
+                            int.Parse(reader["port"].ToString()),
+                            reader["url"].ToString(),
+                            reader["password"].ToString(),
+                            reader["configfilename"].ToString(),
+                            reader["logfilename"].ToString());
+                    else if(reader["StreamName"].ToString() == StreamType.AACPlus.ToString())
+                        trans = new TranscoderAacPlus(int.Parse(reader["id"].ToString()),
+                            reader["TransName"].ToString(),
+                            int.Parse(reader["bitrate"].ToString()),
+                            int.Parse(reader["samplerate"].ToString()),
+                            reader["ip"].ToString(),
+                            int.Parse(reader["port"].ToString()),
+                            reader["url"].ToString(),
+                            reader["password"].ToString(),
+                            reader["configfilename"].ToString(),
+                            reader["logfilename"].ToString());
+                    wr.Transcoders.Add(trans);
+                }
+                reader.Close();
+                //---
                 
             }
 
@@ -93,7 +135,7 @@ namespace WebradioManager
         {
             List<AudioFile> audios = new List<AudioFile>();
             //Music
-            SQLiteDataReader reader = this.Controls.ExecuteDataReader("SELECT m.filename, m.title, m.artist, m.album, m.year, m.label, m.duration, t.name AS AudioType, g.name AS GenderName FROM tmusic m, taudiotype t, tgender g WHERE m.typeid = t.id AND m.genderid = g.id");
+            SQLiteDataReader reader = this.Controls.ExecuteDataReader("SELECT m.id, m.filename, m.title, m.artist, m.album, m.year, m.label, m.duration, t.name AS AudioType, g.name AS GenderName FROM tmusic m, taudiotype t, tgender g WHERE m.typeid = t.id AND m.genderid = g.id");
             while (reader.Read())
             {
                 string[] time = reader["duration"].ToString().Split(':');
@@ -124,49 +166,49 @@ namespace WebradioManager
             }
             reader.Close();
             //---
-            //Playlist for music
-            foreach(AudioFile af in audios)
-            {
-                List<int> idsPlaylist = new List<int>();
-                reader = this.Controls.ExecuteDataReader("SELECT playlistid FROM tplaylist_has_music WHERE musicid = " + af.Id.ToString());
-                while(reader.Read())
-                {
-                    idsPlaylist.Add(int.Parse(reader["playlistid"].ToString()));
-                }
-                reader.Close();
-                foreach(int playlistId in idsPlaylist)
-                {
-                    reader = this.Controls.ExecuteDataReader("SELECT p.id, p.name, p.filename, t.name AS AudioType FROM tplaylist p, taudiotype t WHERE p.id = " + playlistId.ToString() + " AND p.typeid = t.id");
-                    while(reader.Read())
-                    {
-                        if(reader["AudioType"].ToString() == AudioType.Ad.ToString())
-                        af.Playlists.Add(new PlaylistAd(int.Parse(reader["id"].ToString()),
-                            reader["name"].ToString(),
-                            reader["filename"].ToString()));
-                        else if(reader["AudioType"].ToString() == AudioType.Music.ToString())
-                            af.Playlists.Add(new PlaylistMusic(int.Parse(reader["id"].ToString()),
-                            reader["name"].ToString(),
-                            reader["filename"].ToString()));
-                    }
-                    reader.Close();
-                }
-            }
+            ////Playlist for music
+            //foreach(AudioFile af in audios)
+            //{
+            //    List<int> idsPlaylist = new List<int>();
+            //    reader = this.Controls.ExecuteDataReader("SELECT playlistid FROM tplaylist_has_music WHERE musicid = " + af.Id.ToString());
+            //    while(reader.Read())
+            //    {
+            //        idsPlaylist.Add(int.Parse(reader["playlistid"].ToString()));
+            //    }
+            //    reader.Close();
+            //    foreach(int playlistId in idsPlaylist)
+            //    {
+            //        reader = this.Controls.ExecuteDataReader("SELECT p.id, p.name, p.filename, t.name AS AudioType FROM tplaylist p, taudiotype t WHERE p.id = " + playlistId.ToString() + " AND p.typeid = t.id");
+            //        while(reader.Read())
+            //        {
+            //            if(reader["AudioType"].ToString() == AudioType.Ad.ToString())
+            //            af.Playlists.Add(new PlaylistAd(int.Parse(reader["id"].ToString()),
+            //                reader["name"].ToString(),
+            //                reader["filename"].ToString()));
+            //            else if(reader["AudioType"].ToString() == AudioType.Music.ToString())
+            //                af.Playlists.Add(new PlaylistMusic(int.Parse(reader["id"].ToString()),
+            //                reader["name"].ToString(),
+            //                reader["filename"].ToString()));
+            //        }
+            //        reader.Close();
+            //    }
+            //}
             //---
             return audios;
         }
 
-        public bool AddWebradio(Webradio webradio)
+        public int AddWebradio(Webradio webradio)
         {
             //Webradio name must be unique !
             if (this.WebradioExist(webradio.Name))
-                return false;
+                return ERROR;
             Dictionary<string, string> data = new Dictionary<string, string>();
             data.Add("name", webradio.Name);
             try
             {
                 //Webradio
                 this.Controls.Insert("twebradio", data);
-                SQLiteDataReader reader = this.Controls.ExecuteDataReader("SELECT id FROM webradio WHERE name = '" + webradio.Name + "'");
+                SQLiteDataReader reader = this.Controls.ExecuteDataReader("SELECT id FROM twebradio WHERE name = '" + webradio.Name + "'");
                 reader.Read();
                 int id = int.Parse(reader["id"].ToString());
                 reader.Close();
@@ -181,12 +223,17 @@ namespace WebradioManager
                 this.Controls.Insert("tserver", data);
                 data.Clear();
                 //----
-
-                return true;
+                //Calendar creation
+                data.Add("filename", webradio.Calendar.Filename);
+                data.Add("webradioid", id.ToString());
+                this.Controls.Insert("tcalendar", data);
+                data.Clear();
+                //----
+                return id;
             }
             catch
             {
-                return false;
+                return ERROR;
             }
         }
 

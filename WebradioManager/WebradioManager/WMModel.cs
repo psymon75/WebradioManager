@@ -1,17 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace WebradioManager
 {
     public class WMModel
     {
+        //Defaults constants
         public const string DEFAULT_WEBRADIOS_FOLDER = "webradios/";
-
+        const string DEFAULT_LOGFILENAME = "log.txt";
+        const string DEFAULT_CONFIGFILENAME = "config.config";
+        const string DEFAULT_PASSWORD = "1234";
+        
         //SERVER CONSTANTS
         const string DEFAULT_SERVER_FOLDER = "server/";
         const int DEFAULT_SERVER_PORT = 8000;
+        //CALENDAR CONSTANTS
+        const string DEFAULT_CALENDAR_FILENAME = "calendar.xml";
+        //PLAYLISTS CONSTANTS
+        const string DEFAULT_PLAYLISTS_FOLDER = "playlists/";
+        //TRANSCODERS CONSTANTS
+        
 
         private List<Webradio> _webradios;
         private List<IController> _observers;
@@ -85,8 +97,30 @@ namespace WebradioManager
 
         public bool CreateWebradio(string name)
         {
+            string webradioFilename = DEFAULT_WEBRADIOS_FOLDER + name + "/";
             Webradio wr = new Webradio(name);
-
+            WebradioServer server = new WebradioServer(DEFAULT_SERVER_PORT,
+                webradioFilename + DEFAULT_SERVER_FOLDER + DEFAULT_LOGFILENAME,
+                webradioFilename + DEFAULT_SERVER_FOLDER + DEFAULT_CONFIGFILENAME, DEFAULT_PASSWORD, DEFAULT_PASSWORD);
+            wr.Server = server;
+            wr.Playlists = new List<Playlist>();
+            wr.Calendar = new WebradioCalendar(webradioFilename + DEFAULT_CALENDAR_FILENAME);
+            wr.Transcoders = new List<WebradioTranscoder>();
+            wr.Id = this.Bdd.AddWebradio(wr);
+            this.Webradios.Add(wr);
+            //Directory and file creation
+            Directory.CreateDirectory(webradioFilename);
+            Directory.CreateDirectory(webradioFilename + DEFAULT_SERVER_FOLDER);
+            Directory.CreateDirectory(webradioFilename + DEFAULT_PLAYLISTS_FOLDER);
+            Thread.Sleep(100);
+            wr.GenerateConfigFiles();
+            return true;
         }
+
+        public bool DeleteWebradio(int id)
+        {
+            return true;
+        }
+
     }
 }

@@ -45,7 +45,9 @@ namespace WebradioManager
         {
             if(txbName.Text != "")
             {
-                this.Controller.CreateWebradio(txbName.Text);
+                if (this.Controller.CreateWebradio(txbName.Text))
+                    MessageBox.Show("Webradio created !");
+                this.UpdateView();
             }
         }
     }

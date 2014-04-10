@@ -67,6 +67,9 @@
     <Compile Include="BddControls.cs" />
     <Compile Include="PlaylistAd.cs" />
     <Compile Include="PlaylistMusic.cs" />
+    <Compile Include="StreamType.cs" />
+    <Compile Include="TranscoderAacPlus.cs" />
+    <Compile Include="TranscoderMp3.cs" />
     <Compile Include="WebradioCalendar.cs" />
     <Compile Include="CalendarEvent.cs" />
     <Compile Include="IController.cs" />
@@ -84,6 +87,7 @@
     </Compile>
     <Compile Include="Webradio.cs" />
     <Compile Include="WebradioServer.cs" />
+    <Compile Include="WebradioTranscoder.cs" />
     <Compile Include="WMModel.cs" />
     <EmbeddedResource Include="AdminView.resx">
       <DependentUpon>AdminView.cs</DependentUpon>

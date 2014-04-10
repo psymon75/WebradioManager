@@ -12,6 +12,14 @@ namespace WebradioManager
         private string _name;
         private WebradioServer _server;
         private int _id;
+        private List<WebradioTranscoder> _transcoders;
+
+        #region Properties
+        public List<WebradioTranscoder> Transcoders
+        {
+            get { return _transcoders; }
+            set { _transcoders = value; }
+        }
 
         public WebradioServer Server
         {
@@ -43,6 +51,7 @@ namespace WebradioManager
             get { return _id; }
             set { _id = value; }
         }
+        #endregion
 
         public Webradio(string name, int id)
         {
@@ -54,7 +63,22 @@ namespace WebradioManager
         public Webradio(string name)
         {
             this.Playlists = new List<Playlist>();
+            this.Transcoders = new List<WebradioTranscoder>();
             this.Name = name;
+        }
+
+        public void GenerateConfigFiles()
+        {
+            foreach (Playlist playlist in this.Playlists)
+            {
+                playlist.GenerateConfigFile();
+            }
+            this.Calendar.GenerateConfigFile();
+            this.Server.GenerateConfigFile();
+            foreach (WebradioTranscoder transcoder in this.Transcoders)
+            {
+                transcoder.GenerateConfigFile();
+            }
         }
     }
 }
