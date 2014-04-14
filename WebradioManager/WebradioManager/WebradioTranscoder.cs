@@ -112,6 +112,21 @@ namespace WebradioManager
         {
             if (File.Exists(this.ConfigFilename))
                 File.Delete(this.ConfigFilename);
+            string output = "";
+            output += "logfile=" + this.LogFilename.Replace('/', '\\') + "\n";
+            output += "encoder_1=" + ((this.StreamType == WebradioManager.StreamType.AACPlus) ? "aacp" : "mp3") + "\n";
+            output += "butrate_1=" + this.Birate + "\n";
+
+            output += "outprotocol_1=3\n";
+            output += "serverip_1=" + this.Ip + "\n";
+            output += "serverport_1="+ this.Port +"\n";
+            output += "password_1=" + this.Password +"\n";
+            output += "streamid_1=1\n";
+
+            output += "streamtitle=" + this.Name + "\n";
+            output += "streamurl=" + this.Url + "\n";
+            output += "genre=Misc\n";
+            File.WriteAllText(this.ConfigFilename,output);
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml;
 
 namespace WebradioManager
 {
@@ -44,7 +46,31 @@ namespace WebradioManager
         
         public void GenerateConfigFile()
         {
+            if (File.Exists(this.Filename))
+                File.Delete(this.Filename);
+            XmlDocument document = new XmlDocument();
+            XmlElement root = document.CreateElement("eventlist");
+            foreach(CalendarEvent ev in this.Events)
+            {
+                XmlElement eventelement = document.CreateElement("event");
+                eventelement.SetAttribute("type", "playlist");
+                XmlElement playlist = document.CreateElement("playlist");
+                playlist.SetAttribute("loopatend", (ev.Loopatend)?"1":"0");
+                playlist.SetAttribute("shuffle", (ev.Shuffle) ? "1" : "0");
+                playlist.SetAttribute("priority", ev.Priority.ToString());
+                playlist.InnerText = ev.Playlist;
+                eventelement.AppendChild(playlist);
 
+                XmlElement calendar = document.CreateElement("calendar");
+                calendar.SetAttribute("starttime", ev.StartTime.ToString("hh:mm:ss"));
+                calendar.SetAttribute("duration", ev.Duration.ToString("hh:mm:ss"));
+                calendar.SetAttribute("repeat", ev.Repeat.ToString());
+                eventelement.AppendChild(calendar);
+                root.AppendChild(eventelement);
+            }
+            
+            document.AppendChild(root);
+            document.Save(this.Filename);
         }
     }
 }

@@ -104,11 +104,40 @@
             this.label7 = new System.Windows.Forms.Label();
             this.tbpTranscoders = new System.Windows.Forms.TabPage();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.btnStopTranscoder = new System.Windows.Forms.Button();
+            this.btnStartTranscoder = new System.Windows.Forms.Button();
+            this.lblStatusTranscoder = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.btnClearLogTranscoder = new System.Windows.Forms.Button();
+            this.lsbTranscoderLog = new System.Windows.Forms.ListBox();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.btnClearHistory = new System.Windows.Forms.Button();
+            this.btnShowHistory = new System.Windows.Forms.Button();
+            this.txbTranscoderNameEdit = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.btnDeleteTranscoder = new System.Windows.Forms.Button();
             this.lsbTranscoders = new System.Windows.Forms.ListBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.cmbEncoderEdit = new System.Windows.Forms.ComboBox();
+            this.txbServerIpEdit = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.cmbBitrateEdit = new System.Windows.Forms.ComboBox();
+            this.txbStreamUrlEdit = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.cmbSampleRateEdit = new System.Windows.Forms.ComboBox();
+            this.txbStreamNameEdit = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.nudPortEdit = new System.Windows.Forms.NumericUpDown();
+            this.txbServerPasswordEdit = new System.Windows.Forms.TextBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.txbTranscoderName = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
             this.btnCreateTranscoder = new System.Windows.Forms.Button();
             this.txbServerPassword = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -127,57 +156,26 @@
             this.cmbEncoder = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.tbpServer = new System.Windows.Forms.TabPage();
-            this.txbTranscoderNameEdit = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txbServerPasswordEdit = new System.Windows.Forms.TextBox();
-            this.nudPortEdit = new System.Windows.Forms.NumericUpDown();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txbServerIpEdit = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txbStreamUrlEdit = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.txbStreamNameEdit = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.cmbSampleRateEdit = new System.Windows.Forms.ComboBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.cmbBitrateEdit = new System.Windows.Forms.ComboBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.cmbEncoderEdit = new System.Windows.Forms.ComboBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.btnShowHistory = new System.Windows.Forms.Button();
-            this.btnClearHistory = new System.Windows.Forms.Button();
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.lsbTranscoderLog = new System.Windows.Forms.ListBox();
-            this.groupBox16 = new System.Windows.Forms.GroupBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.lblStatusTranscoder = new System.Windows.Forms.Label();
-            this.btnStartTranscoder = new System.Windows.Forms.Button();
-            this.btnStopTranscoder = new System.Windows.Forms.Button();
-            this.groupBox17 = new System.Windows.Forms.GroupBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.lblStatusServer = new System.Windows.Forms.Label();
-            this.btnStartServer = new System.Windows.Forms.Button();
-            this.btnStopServer = new System.Windows.Forms.Button();
-            this.btnShowWebInterface = new System.Windows.Forms.Button();
-            this.btnShowWebAdministration = new System.Windows.Forms.Button();
+            this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.btnClearLogServer = new System.Windows.Forms.Button();
+            this.lsbLogServer = new System.Windows.Forms.ListBox();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.nudPortServer = new System.Windows.Forms.NumericUpDown();
-            this.label33 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label34 = new System.Windows.Forms.Label();
+            this.btnSaveServer = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label35 = new System.Windows.Forms.Label();
-            this.btnSaveServer = new System.Windows.Forms.Button();
-            this.groupBox19 = new System.Windows.Forms.GroupBox();
-            this.lsbLogServer = new System.Windows.Forms.ListBox();
-            this.btnClearLogServer = new System.Windows.Forms.Button();
-            this.btnClearLogTranscoder = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.nudPortServer = new System.Windows.Forms.NumericUpDown();
+            this.label32 = new System.Windows.Forms.Label();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.btnShowWebAdministration = new System.Windows.Forms.Button();
+            this.btnShowWebInterface = new System.Windows.Forms.Button();
+            this.btnStopServer = new System.Windows.Forms.Button();
+            this.btnStartServer = new System.Windows.Forms.Button();
+            this.lblStatusServer = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
             this.mnsMain.SuspendLayout();
             this.tbcTabs.SuspendLayout();
             this.tbpLibrary.SuspendLayout();
@@ -199,19 +197,19 @@
             this.groupBox10.SuspendLayout();
             this.tbpTranscoders.SuspendLayout();
             this.groupBox12.SuspendLayout();
+            this.groupBox16.SuspendLayout();
+            this.groupBox15.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            this.groupBox13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPortEdit)).BeginInit();
             this.groupBox11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupPort)).BeginInit();
             this.tbpServer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPortEdit)).BeginInit();
-            this.groupBox13.SuspendLayout();
-            this.groupBox14.SuspendLayout();
-            this.groupBox15.SuspendLayout();
-            this.groupBox16.SuspendLayout();
-            this.groupBox17.SuspendLayout();
-            this.groupBox18.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPortServer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox19.SuspendLayout();
+            this.groupBox18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPortServer)).BeginInit();
+            this.groupBox17.SuspendLayout();
             this.SuspendLayout();
             // 
             // dvwTimetable
@@ -981,231 +979,113 @@
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Transcoders";
             // 
-            // btnDeleteTranscoder
+            // groupBox16
             // 
-            this.btnDeleteTranscoder.Location = new System.Drawing.Point(33, 147);
-            this.btnDeleteTranscoder.Name = "btnDeleteTranscoder";
-            this.btnDeleteTranscoder.Size = new System.Drawing.Size(75, 23);
-            this.btnDeleteTranscoder.TabIndex = 1;
-            this.btnDeleteTranscoder.Text = "Delete";
-            this.btnDeleteTranscoder.UseVisualStyleBackColor = true;
+            this.groupBox16.Controls.Add(this.btnStopTranscoder);
+            this.groupBox16.Controls.Add(this.btnStartTranscoder);
+            this.groupBox16.Controls.Add(this.lblStatusTranscoder);
+            this.groupBox16.Controls.Add(this.label30);
+            this.groupBox16.Location = new System.Drawing.Point(158, 176);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(456, 47);
+            this.groupBox16.TabIndex = 39;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "Status";
             // 
-            // lsbTranscoders
+            // btnStopTranscoder
             // 
-            this.lsbTranscoders.FormattingEnabled = true;
-            this.lsbTranscoders.Location = new System.Drawing.Point(7, 20);
-            this.lsbTranscoders.Name = "lsbTranscoders";
-            this.lsbTranscoders.Size = new System.Drawing.Size(132, 121);
-            this.lsbTranscoders.TabIndex = 0;
+            this.btnStopTranscoder.Enabled = false;
+            this.btnStopTranscoder.Location = new System.Drawing.Point(250, 13);
+            this.btnStopTranscoder.Name = "btnStopTranscoder";
+            this.btnStopTranscoder.Size = new System.Drawing.Size(75, 23);
+            this.btnStopTranscoder.TabIndex = 3;
+            this.btnStopTranscoder.Text = "Stop";
+            this.btnStopTranscoder.UseVisualStyleBackColor = true;
             // 
-            // groupBox11
+            // btnStartTranscoder
             // 
-            this.groupBox11.Controls.Add(this.txbTranscoderName);
-            this.groupBox11.Controls.Add(this.label20);
-            this.groupBox11.Controls.Add(this.btnCreateTranscoder);
-            this.groupBox11.Controls.Add(this.txbServerPassword);
-            this.groupBox11.Controls.Add(this.label19);
-            this.groupBox11.Controls.Add(this.nupPort);
-            this.groupBox11.Controls.Add(this.label18);
-            this.groupBox11.Controls.Add(this.txbServerIp);
-            this.groupBox11.Controls.Add(this.label17);
-            this.groupBox11.Controls.Add(this.txbStreamUrl);
-            this.groupBox11.Controls.Add(this.label16);
-            this.groupBox11.Controls.Add(this.txbStreamName);
-            this.groupBox11.Controls.Add(this.label15);
-            this.groupBox11.Controls.Add(this.cmbSampleRate);
-            this.groupBox11.Controls.Add(this.label14);
-            this.groupBox11.Controls.Add(this.cmbBitrate);
-            this.groupBox11.Controls.Add(this.label13);
-            this.groupBox11.Controls.Add(this.cmbEncoder);
-            this.groupBox11.Controls.Add(this.label12);
-            this.groupBox11.Location = new System.Drawing.Point(9, 4);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(189, 432);
-            this.groupBox11.TabIndex = 0;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Create";
+            this.btnStartTranscoder.Location = new System.Drawing.Point(169, 13);
+            this.btnStartTranscoder.Name = "btnStartTranscoder";
+            this.btnStartTranscoder.Size = new System.Drawing.Size(75, 23);
+            this.btnStartTranscoder.TabIndex = 2;
+            this.btnStartTranscoder.Text = "Start";
+            this.btnStartTranscoder.UseVisualStyleBackColor = true;
             // 
-            // txbTranscoderName
+            // lblStatusTranscoder
             // 
-            this.txbTranscoderName.Location = new System.Drawing.Point(7, 32);
-            this.txbTranscoderName.Name = "txbTranscoderName";
-            this.txbTranscoderName.Size = new System.Drawing.Size(176, 20);
-            this.txbTranscoderName.TabIndex = 19;
+            this.lblStatusTranscoder.AutoSize = true;
+            this.lblStatusTranscoder.Location = new System.Drawing.Point(57, 18);
+            this.lblStatusTranscoder.Name = "lblStatusTranscoder";
+            this.lblStatusTranscoder.Size = new System.Drawing.Size(21, 13);
+            this.lblStatusTranscoder.TabIndex = 1;
+            this.lblStatusTranscoder.Text = "Off";
             // 
-            // label20
+            // label30
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(6, 16);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(96, 13);
-            this.label20.TabIndex = 18;
-            this.label20.Text = "Transcoder name :";
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(7, 18);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(43, 13);
+            this.label30.TabIndex = 0;
+            this.label30.Text = "Status :";
             // 
-            // btnCreateTranscoder
+            // groupBox15
             // 
-            this.btnCreateTranscoder.Location = new System.Drawing.Point(52, 373);
-            this.btnCreateTranscoder.Name = "btnCreateTranscoder";
-            this.btnCreateTranscoder.Size = new System.Drawing.Size(75, 23);
-            this.btnCreateTranscoder.TabIndex = 17;
-            this.btnCreateTranscoder.Text = "Create";
-            this.btnCreateTranscoder.UseVisualStyleBackColor = true;
+            this.groupBox15.Controls.Add(this.btnClearLogTranscoder);
+            this.groupBox15.Controls.Add(this.lsbTranscoderLog);
+            this.groupBox15.Location = new System.Drawing.Point(7, 224);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(607, 202);
+            this.groupBox15.TabIndex = 39;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Log";
             // 
-            // txbServerPassword
+            // btnClearLogTranscoder
             // 
-            this.txbServerPassword.Location = new System.Drawing.Point(6, 347);
-            this.txbServerPassword.Name = "txbServerPassword";
-            this.txbServerPassword.PasswordChar = '*';
-            this.txbServerPassword.Size = new System.Drawing.Size(176, 20);
-            this.txbServerPassword.TabIndex = 16;
+            this.btnClearLogTranscoder.Location = new System.Drawing.Point(7, 20);
+            this.btnClearLogTranscoder.Name = "btnClearLogTranscoder";
+            this.btnClearLogTranscoder.Size = new System.Drawing.Size(75, 23);
+            this.btnClearLogTranscoder.TabIndex = 1;
+            this.btnClearLogTranscoder.Text = "Clear";
+            this.btnClearLogTranscoder.UseVisualStyleBackColor = true;
             // 
-            // label19
+            // lsbTranscoderLog
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(6, 331);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(92, 13);
-            this.label19.TabIndex = 15;
-            this.label19.Text = "Server password :";
+            this.lsbTranscoderLog.FormattingEnabled = true;
+            this.lsbTranscoderLog.Location = new System.Drawing.Point(7, 46);
+            this.lsbTranscoderLog.Name = "lsbTranscoderLog";
+            this.lsbTranscoderLog.ScrollAlwaysVisible = true;
+            this.lsbTranscoderLog.Size = new System.Drawing.Size(594, 147);
+            this.lsbTranscoderLog.TabIndex = 0;
             // 
-            // nupPort
+            // groupBox14
             // 
-            this.nupPort.Location = new System.Drawing.Point(6, 308);
-            this.nupPort.Maximum = new decimal(new int[] {
-            65535,
-            0,
-            0,
-            0});
-            this.nupPort.Name = "nupPort";
-            this.nupPort.Size = new System.Drawing.Size(74, 20);
-            this.nupPort.TabIndex = 14;
-            this.nupPort.Value = new decimal(new int[] {
-            8000,
-            0,
-            0,
-            0});
+            this.groupBox14.Controls.Add(this.btnClearHistory);
+            this.groupBox14.Controls.Add(this.btnShowHistory);
+            this.groupBox14.Location = new System.Drawing.Point(7, 176);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(145, 47);
+            this.groupBox14.TabIndex = 38;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "History";
             // 
-            // label18
+            // btnClearHistory
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(6, 292);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(65, 13);
-            this.label18.TabIndex = 12;
-            this.label18.Text = "Server port :";
+            this.btnClearHistory.Location = new System.Drawing.Point(81, 18);
+            this.btnClearHistory.Name = "btnClearHistory";
+            this.btnClearHistory.Size = new System.Drawing.Size(51, 23);
+            this.btnClearHistory.TabIndex = 1;
+            this.btnClearHistory.Text = "Clear";
+            this.btnClearHistory.UseVisualStyleBackColor = true;
             // 
-            // txbServerIp
+            // btnShowHistory
             // 
-            this.txbServerIp.Location = new System.Drawing.Point(6, 269);
-            this.txbServerIp.Name = "txbServerIp";
-            this.txbServerIp.Size = new System.Drawing.Size(176, 20);
-            this.txbServerIp.TabIndex = 11;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 253);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(57, 13);
-            this.label17.TabIndex = 10;
-            this.label17.Text = "Server IP :";
-            // 
-            // txbStreamUrl
-            // 
-            this.txbStreamUrl.Location = new System.Drawing.Point(6, 215);
-            this.txbStreamUrl.Name = "txbStreamUrl";
-            this.txbStreamUrl.Size = new System.Drawing.Size(176, 20);
-            this.txbStreamUrl.TabIndex = 9;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(3, 199);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(71, 13);
-            this.label16.TabIndex = 8;
-            this.label16.Text = "Stream URL :";
-            // 
-            // txbStreamName
-            // 
-            this.txbStreamName.Location = new System.Drawing.Point(6, 176);
-            this.txbStreamName.Name = "txbStreamName";
-            this.txbStreamName.Size = new System.Drawing.Size(176, 20);
-            this.txbStreamName.TabIndex = 7;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(5, 160);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(75, 13);
-            this.label15.TabIndex = 6;
-            this.label15.Text = "Stream name :";
-            // 
-            // cmbSampleRate
-            // 
-            this.cmbSampleRate.FormattingEnabled = true;
-            this.cmbSampleRate.Items.AddRange(new object[] {
-            "44,1 kHz"});
-            this.cmbSampleRate.Location = new System.Drawing.Point(87, 113);
-            this.cmbSampleRate.Name = "cmbSampleRate";
-            this.cmbSampleRate.Size = new System.Drawing.Size(71, 21);
-            this.cmbSampleRate.TabIndex = 5;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(87, 96);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(69, 13);
-            this.label14.TabIndex = 4;
-            this.label14.Text = "Sample rate :";
-            // 
-            // cmbBitrate
-            // 
-            this.cmbBitrate.FormattingEnabled = true;
-            this.cmbBitrate.Location = new System.Drawing.Point(6, 113);
-            this.cmbBitrate.Name = "cmbBitrate";
-            this.cmbBitrate.Size = new System.Drawing.Size(71, 21);
-            this.cmbBitrate.TabIndex = 3;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 96);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(43, 13);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "Bitrate :";
-            // 
-            // cmbEncoder
-            // 
-            this.cmbEncoder.FormattingEnabled = true;
-            this.cmbEncoder.Location = new System.Drawing.Point(6, 72);
-            this.cmbEncoder.Name = "cmbEncoder";
-            this.cmbEncoder.Size = new System.Drawing.Size(71, 21);
-            this.cmbEncoder.TabIndex = 1;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 55);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(53, 13);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Encoder :";
-            // 
-            // tbpServer
-            // 
-            this.tbpServer.Controls.Add(this.groupBox19);
-            this.tbpServer.Controls.Add(this.groupBox18);
-            this.tbpServer.Controls.Add(this.groupBox17);
-            this.tbpServer.Location = new System.Drawing.Point(4, 22);
-            this.tbpServer.Name = "tbpServer";
-            this.tbpServer.Size = new System.Drawing.Size(832, 445);
-            this.tbpServer.TabIndex = 5;
-            this.tbpServer.Text = "Server";
-            this.tbpServer.UseVisualStyleBackColor = true;
+            this.btnShowHistory.Location = new System.Drawing.Point(6, 18);
+            this.btnShowHistory.Name = "btnShowHistory";
+            this.btnShowHistory.Size = new System.Drawing.Size(51, 23);
+            this.btnShowHistory.TabIndex = 0;
+            this.btnShowHistory.Text = "Show";
+            this.btnShowHistory.UseVisualStyleBackColor = true;
             // 
             // txbTranscoderNameEdit
             // 
@@ -1223,39 +1103,39 @@
             this.label21.TabIndex = 35;
             this.label21.Text = "Transcoder name :";
             // 
-            // txbServerPasswordEdit
+            // btnDeleteTranscoder
             // 
-            this.txbServerPasswordEdit.Location = new System.Drawing.Point(8, 134);
-            this.txbServerPasswordEdit.Name = "txbServerPasswordEdit";
-            this.txbServerPasswordEdit.PasswordChar = '*';
-            this.txbServerPasswordEdit.Size = new System.Drawing.Size(176, 20);
-            this.txbServerPasswordEdit.TabIndex = 34;
+            this.btnDeleteTranscoder.Location = new System.Drawing.Point(33, 147);
+            this.btnDeleteTranscoder.Name = "btnDeleteTranscoder";
+            this.btnDeleteTranscoder.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteTranscoder.TabIndex = 1;
+            this.btnDeleteTranscoder.Text = "Delete";
+            this.btnDeleteTranscoder.UseVisualStyleBackColor = true;
             // 
-            // nudPortEdit
+            // lsbTranscoders
             // 
-            this.nudPortEdit.Location = new System.Drawing.Point(302, 95);
-            this.nudPortEdit.Maximum = new decimal(new int[] {
-            65535,
-            0,
-            0,
-            0});
-            this.nudPortEdit.Name = "nudPortEdit";
-            this.nudPortEdit.Size = new System.Drawing.Size(74, 20);
-            this.nudPortEdit.TabIndex = 33;
-            this.nudPortEdit.Value = new decimal(new int[] {
-            8000,
-            0,
-            0,
-            0});
+            this.lsbTranscoders.FormattingEnabled = true;
+            this.lsbTranscoders.Location = new System.Drawing.Point(7, 20);
+            this.lsbTranscoders.Name = "lsbTranscoders";
+            this.lsbTranscoders.Size = new System.Drawing.Size(132, 121);
+            this.lsbTranscoders.TabIndex = 0;
             // 
-            // label22
+            // label28
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(299, 79);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(65, 13);
-            this.label22.TabIndex = 32;
-            this.label22.Text = "Server port :";
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(163, 35);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(53, 13);
+            this.label28.TabIndex = 20;
+            this.label28.Text = "Encoder :";
+            // 
+            // cmbEncoderEdit
+            // 
+            this.cmbEncoderEdit.FormattingEnabled = true;
+            this.cmbEncoderEdit.Location = new System.Drawing.Point(222, 32);
+            this.cmbEncoderEdit.Name = "cmbEncoderEdit";
+            this.cmbEncoderEdit.Size = new System.Drawing.Size(71, 21);
+            this.cmbEncoderEdit.TabIndex = 21;
             // 
             // txbServerIpEdit
             // 
@@ -1263,6 +1143,15 @@
             this.txbServerIpEdit.Name = "txbServerIpEdit";
             this.txbServerIpEdit.Size = new System.Drawing.Size(112, 20);
             this.txbServerIpEdit.TabIndex = 31;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(299, 35);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(43, 13);
+            this.label27.TabIndex = 22;
+            this.label27.Text = "Bitrate :";
             // 
             // label23
             // 
@@ -1273,12 +1162,29 @@
             this.label23.TabIndex = 30;
             this.label23.Text = "Server IP :";
             // 
+            // cmbBitrateEdit
+            // 
+            this.cmbBitrateEdit.FormattingEnabled = true;
+            this.cmbBitrateEdit.Location = new System.Drawing.Point(348, 32);
+            this.cmbBitrateEdit.Name = "cmbBitrateEdit";
+            this.cmbBitrateEdit.Size = new System.Drawing.Size(71, 21);
+            this.cmbBitrateEdit.TabIndex = 23;
+            // 
             // txbStreamUrlEdit
             // 
             this.txbStreamUrlEdit.Location = new System.Drawing.Point(166, 111);
             this.txbStreamUrlEdit.Name = "txbStreamUrlEdit";
             this.txbStreamUrlEdit.Size = new System.Drawing.Size(176, 20);
             this.txbStreamUrlEdit.TabIndex = 29;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(425, 35);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(69, 13);
+            this.label26.TabIndex = 24;
+            this.label26.Text = "Sample rate :";
             // 
             // label24
             // 
@@ -1288,6 +1194,16 @@
             this.label24.Size = new System.Drawing.Size(71, 13);
             this.label24.TabIndex = 28;
             this.label24.Text = "Stream URL :";
+            // 
+            // cmbSampleRateEdit
+            // 
+            this.cmbSampleRateEdit.FormattingEnabled = true;
+            this.cmbSampleRateEdit.Items.AddRange(new object[] {
+            "44,1 kHz"});
+            this.cmbSampleRateEdit.Location = new System.Drawing.Point(500, 32);
+            this.cmbSampleRateEdit.Name = "cmbSampleRateEdit";
+            this.cmbSampleRateEdit.Size = new System.Drawing.Size(71, 21);
+            this.cmbSampleRateEdit.TabIndex = 25;
             // 
             // txbStreamNameEdit
             // 
@@ -1304,68 +1220,6 @@
             this.label25.Size = new System.Drawing.Size(75, 13);
             this.label25.TabIndex = 26;
             this.label25.Text = "Stream name :";
-            // 
-            // cmbSampleRateEdit
-            // 
-            this.cmbSampleRateEdit.FormattingEnabled = true;
-            this.cmbSampleRateEdit.Items.AddRange(new object[] {
-            "44,1 kHz"});
-            this.cmbSampleRateEdit.Location = new System.Drawing.Point(500, 32);
-            this.cmbSampleRateEdit.Name = "cmbSampleRateEdit";
-            this.cmbSampleRateEdit.Size = new System.Drawing.Size(71, 21);
-            this.cmbSampleRateEdit.TabIndex = 25;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(425, 35);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(69, 13);
-            this.label26.TabIndex = 24;
-            this.label26.Text = "Sample rate :";
-            // 
-            // cmbBitrateEdit
-            // 
-            this.cmbBitrateEdit.FormattingEnabled = true;
-            this.cmbBitrateEdit.Location = new System.Drawing.Point(348, 32);
-            this.cmbBitrateEdit.Name = "cmbBitrateEdit";
-            this.cmbBitrateEdit.Size = new System.Drawing.Size(71, 21);
-            this.cmbBitrateEdit.TabIndex = 23;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(299, 35);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(43, 13);
-            this.label27.TabIndex = 22;
-            this.label27.Text = "Bitrate :";
-            // 
-            // cmbEncoderEdit
-            // 
-            this.cmbEncoderEdit.FormattingEnabled = true;
-            this.cmbEncoderEdit.Location = new System.Drawing.Point(222, 32);
-            this.cmbEncoderEdit.Name = "cmbEncoderEdit";
-            this.cmbEncoderEdit.Size = new System.Drawing.Size(71, 21);
-            this.cmbEncoderEdit.TabIndex = 21;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(163, 35);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(53, 13);
-            this.label28.TabIndex = 20;
-            this.label28.Text = "Encoder :";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(5, 118);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(92, 13);
-            this.label29.TabIndex = 20;
-            this.label29.Text = "Server password :";
             // 
             // groupBox13
             // 
@@ -1390,173 +1244,267 @@
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             // 
-            // groupBox14
+            // label22
             // 
-            this.groupBox14.Controls.Add(this.btnClearHistory);
-            this.groupBox14.Controls.Add(this.btnShowHistory);
-            this.groupBox14.Location = new System.Drawing.Point(7, 176);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(145, 47);
-            this.groupBox14.TabIndex = 38;
-            this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "History";
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(299, 79);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(65, 13);
+            this.label22.TabIndex = 32;
+            this.label22.Text = "Server port :";
             // 
-            // btnShowHistory
+            // label29
             // 
-            this.btnShowHistory.Location = new System.Drawing.Point(6, 18);
-            this.btnShowHistory.Name = "btnShowHistory";
-            this.btnShowHistory.Size = new System.Drawing.Size(51, 23);
-            this.btnShowHistory.TabIndex = 0;
-            this.btnShowHistory.Text = "Show";
-            this.btnShowHistory.UseVisualStyleBackColor = true;
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(5, 118);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(92, 13);
+            this.label29.TabIndex = 20;
+            this.label29.Text = "Server password :";
             // 
-            // btnClearHistory
+            // nudPortEdit
             // 
-            this.btnClearHistory.Location = new System.Drawing.Point(81, 18);
-            this.btnClearHistory.Name = "btnClearHistory";
-            this.btnClearHistory.Size = new System.Drawing.Size(51, 23);
-            this.btnClearHistory.TabIndex = 1;
-            this.btnClearHistory.Text = "Clear";
-            this.btnClearHistory.UseVisualStyleBackColor = true;
+            this.nudPortEdit.Location = new System.Drawing.Point(302, 95);
+            this.nudPortEdit.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.nudPortEdit.Name = "nudPortEdit";
+            this.nudPortEdit.Size = new System.Drawing.Size(74, 20);
+            this.nudPortEdit.TabIndex = 33;
+            this.nudPortEdit.Value = new decimal(new int[] {
+            8000,
+            0,
+            0,
+            0});
             // 
-            // groupBox15
+            // txbServerPasswordEdit
             // 
-            this.groupBox15.Controls.Add(this.btnClearLogTranscoder);
-            this.groupBox15.Controls.Add(this.lsbTranscoderLog);
-            this.groupBox15.Location = new System.Drawing.Point(7, 224);
-            this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(607, 202);
-            this.groupBox15.TabIndex = 39;
-            this.groupBox15.TabStop = false;
-            this.groupBox15.Text = "Log";
+            this.txbServerPasswordEdit.Location = new System.Drawing.Point(8, 134);
+            this.txbServerPasswordEdit.Name = "txbServerPasswordEdit";
+            this.txbServerPasswordEdit.PasswordChar = '*';
+            this.txbServerPasswordEdit.Size = new System.Drawing.Size(176, 20);
+            this.txbServerPasswordEdit.TabIndex = 34;
             // 
-            // lsbTranscoderLog
+            // groupBox11
             // 
-            this.lsbTranscoderLog.FormattingEnabled = true;
-            this.lsbTranscoderLog.Location = new System.Drawing.Point(7, 46);
-            this.lsbTranscoderLog.Name = "lsbTranscoderLog";
-            this.lsbTranscoderLog.ScrollAlwaysVisible = true;
-            this.lsbTranscoderLog.Size = new System.Drawing.Size(594, 147);
-            this.lsbTranscoderLog.TabIndex = 0;
+            this.groupBox11.Controls.Add(this.btnCreateTranscoder);
+            this.groupBox11.Controls.Add(this.txbServerPassword);
+            this.groupBox11.Controls.Add(this.label19);
+            this.groupBox11.Controls.Add(this.nupPort);
+            this.groupBox11.Controls.Add(this.label18);
+            this.groupBox11.Controls.Add(this.txbServerIp);
+            this.groupBox11.Controls.Add(this.label17);
+            this.groupBox11.Controls.Add(this.txbStreamUrl);
+            this.groupBox11.Controls.Add(this.label16);
+            this.groupBox11.Controls.Add(this.txbStreamName);
+            this.groupBox11.Controls.Add(this.label15);
+            this.groupBox11.Controls.Add(this.cmbSampleRate);
+            this.groupBox11.Controls.Add(this.label14);
+            this.groupBox11.Controls.Add(this.cmbBitrate);
+            this.groupBox11.Controls.Add(this.label13);
+            this.groupBox11.Controls.Add(this.cmbEncoder);
+            this.groupBox11.Controls.Add(this.label12);
+            this.groupBox11.Location = new System.Drawing.Point(9, 4);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(189, 432);
+            this.groupBox11.TabIndex = 0;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Create";
             // 
-            // groupBox16
+            // btnCreateTranscoder
             // 
-            this.groupBox16.Controls.Add(this.btnStopTranscoder);
-            this.groupBox16.Controls.Add(this.btnStartTranscoder);
-            this.groupBox16.Controls.Add(this.lblStatusTranscoder);
-            this.groupBox16.Controls.Add(this.label30);
-            this.groupBox16.Location = new System.Drawing.Point(158, 176);
-            this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(456, 47);
-            this.groupBox16.TabIndex = 39;
-            this.groupBox16.TabStop = false;
-            this.groupBox16.Text = "Status";
+            this.btnCreateTranscoder.Location = new System.Drawing.Point(52, 343);
+            this.btnCreateTranscoder.Name = "btnCreateTranscoder";
+            this.btnCreateTranscoder.Size = new System.Drawing.Size(75, 23);
+            this.btnCreateTranscoder.TabIndex = 17;
+            this.btnCreateTranscoder.Text = "Create";
+            this.btnCreateTranscoder.UseVisualStyleBackColor = true;
             // 
-            // label30
+            // txbServerPassword
             // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(7, 18);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(43, 13);
-            this.label30.TabIndex = 0;
-            this.label30.Text = "Status :";
+            this.txbServerPassword.Location = new System.Drawing.Point(6, 317);
+            this.txbServerPassword.Name = "txbServerPassword";
+            this.txbServerPassword.PasswordChar = '*';
+            this.txbServerPassword.Size = new System.Drawing.Size(176, 20);
+            this.txbServerPassword.TabIndex = 16;
             // 
-            // lblStatusTranscoder
+            // label19
             // 
-            this.lblStatusTranscoder.AutoSize = true;
-            this.lblStatusTranscoder.Location = new System.Drawing.Point(57, 18);
-            this.lblStatusTranscoder.Name = "lblStatusTranscoder";
-            this.lblStatusTranscoder.Size = new System.Drawing.Size(21, 13);
-            this.lblStatusTranscoder.TabIndex = 1;
-            this.lblStatusTranscoder.Text = "Off";
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(6, 301);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(92, 13);
+            this.label19.TabIndex = 15;
+            this.label19.Text = "Server password :";
             // 
-            // btnStartTranscoder
+            // nupPort
             // 
-            this.btnStartTranscoder.Location = new System.Drawing.Point(169, 13);
-            this.btnStartTranscoder.Name = "btnStartTranscoder";
-            this.btnStartTranscoder.Size = new System.Drawing.Size(75, 23);
-            this.btnStartTranscoder.TabIndex = 2;
-            this.btnStartTranscoder.Text = "Start";
-            this.btnStartTranscoder.UseVisualStyleBackColor = true;
+            this.nupPort.Location = new System.Drawing.Point(6, 278);
+            this.nupPort.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.nupPort.Name = "nupPort";
+            this.nupPort.Size = new System.Drawing.Size(74, 20);
+            this.nupPort.TabIndex = 14;
+            this.nupPort.Value = new decimal(new int[] {
+            8000,
+            0,
+            0,
+            0});
             // 
-            // btnStopTranscoder
+            // label18
             // 
-            this.btnStopTranscoder.Enabled = false;
-            this.btnStopTranscoder.Location = new System.Drawing.Point(250, 13);
-            this.btnStopTranscoder.Name = "btnStopTranscoder";
-            this.btnStopTranscoder.Size = new System.Drawing.Size(75, 23);
-            this.btnStopTranscoder.TabIndex = 3;
-            this.btnStopTranscoder.Text = "Stop";
-            this.btnStopTranscoder.UseVisualStyleBackColor = true;
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 262);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(65, 13);
+            this.label18.TabIndex = 12;
+            this.label18.Text = "Server port :";
             // 
-            // groupBox17
+            // txbServerIp
             // 
-            this.groupBox17.Controls.Add(this.btnShowWebAdministration);
-            this.groupBox17.Controls.Add(this.btnShowWebInterface);
-            this.groupBox17.Controls.Add(this.btnStopServer);
-            this.groupBox17.Controls.Add(this.btnStartServer);
-            this.groupBox17.Controls.Add(this.lblStatusServer);
-            this.groupBox17.Controls.Add(this.label31);
-            this.groupBox17.Location = new System.Drawing.Point(9, 4);
-            this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(815, 48);
-            this.groupBox17.TabIndex = 0;
-            this.groupBox17.TabStop = false;
-            this.groupBox17.Text = "Controls";
+            this.txbServerIp.Location = new System.Drawing.Point(6, 239);
+            this.txbServerIp.Name = "txbServerIp";
+            this.txbServerIp.Size = new System.Drawing.Size(176, 20);
+            this.txbServerIp.TabIndex = 11;
             // 
-            // label31
+            // label17
             // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(7, 20);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(43, 13);
-            this.label31.TabIndex = 0;
-            this.label31.Text = "Status :";
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 223);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(57, 13);
+            this.label17.TabIndex = 10;
+            this.label17.Text = "Server IP :";
             // 
-            // lblStatusServer
+            // txbStreamUrl
             // 
-            this.lblStatusServer.AutoSize = true;
-            this.lblStatusServer.Location = new System.Drawing.Point(57, 20);
-            this.lblStatusServer.Name = "lblStatusServer";
-            this.lblStatusServer.Size = new System.Drawing.Size(21, 13);
-            this.lblStatusServer.TabIndex = 1;
-            this.lblStatusServer.Text = "Off";
+            this.txbStreamUrl.Location = new System.Drawing.Point(6, 185);
+            this.txbStreamUrl.Name = "txbStreamUrl";
+            this.txbStreamUrl.Size = new System.Drawing.Size(176, 20);
+            this.txbStreamUrl.TabIndex = 9;
             // 
-            // btnStartServer
+            // label16
             // 
-            this.btnStartServer.Location = new System.Drawing.Point(84, 15);
-            this.btnStartServer.Name = "btnStartServer";
-            this.btnStartServer.Size = new System.Drawing.Size(75, 23);
-            this.btnStartServer.TabIndex = 2;
-            this.btnStartServer.Text = "Start";
-            this.btnStartServer.UseVisualStyleBackColor = true;
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(3, 169);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(71, 13);
+            this.label16.TabIndex = 8;
+            this.label16.Text = "Stream URL :";
             // 
-            // btnStopServer
+            // txbStreamName
             // 
-            this.btnStopServer.Location = new System.Drawing.Point(165, 15);
-            this.btnStopServer.Name = "btnStopServer";
-            this.btnStopServer.Size = new System.Drawing.Size(75, 23);
-            this.btnStopServer.TabIndex = 3;
-            this.btnStopServer.Text = "Stop";
-            this.btnStopServer.UseVisualStyleBackColor = true;
+            this.txbStreamName.Location = new System.Drawing.Point(6, 146);
+            this.txbStreamName.Name = "txbStreamName";
+            this.txbStreamName.Size = new System.Drawing.Size(176, 20);
+            this.txbStreamName.TabIndex = 7;
             // 
-            // btnShowWebInterface
+            // label15
             // 
-            this.btnShowWebInterface.Location = new System.Drawing.Point(344, 15);
-            this.btnShowWebInterface.Name = "btnShowWebInterface";
-            this.btnShowWebInterface.Size = new System.Drawing.Size(150, 23);
-            this.btnShowWebInterface.TabIndex = 4;
-            this.btnShowWebInterface.Text = "Show web interface";
-            this.btnShowWebInterface.UseVisualStyleBackColor = true;
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(5, 130);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(75, 13);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "Stream name :";
             // 
-            // btnShowWebAdministration
+            // cmbSampleRate
             // 
-            this.btnShowWebAdministration.Location = new System.Drawing.Point(500, 15);
-            this.btnShowWebAdministration.Name = "btnShowWebAdministration";
-            this.btnShowWebAdministration.Size = new System.Drawing.Size(150, 23);
-            this.btnShowWebAdministration.TabIndex = 5;
-            this.btnShowWebAdministration.Text = "Show web administration";
-            this.btnShowWebAdministration.UseVisualStyleBackColor = true;
+            this.cmbSampleRate.FormattingEnabled = true;
+            this.cmbSampleRate.Items.AddRange(new object[] {
+            "44,1 kHz"});
+            this.cmbSampleRate.Location = new System.Drawing.Point(87, 83);
+            this.cmbSampleRate.Name = "cmbSampleRate";
+            this.cmbSampleRate.Size = new System.Drawing.Size(71, 21);
+            this.cmbSampleRate.TabIndex = 5;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(87, 66);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(69, 13);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Sample rate :";
+            // 
+            // cmbBitrate
+            // 
+            this.cmbBitrate.FormattingEnabled = true;
+            this.cmbBitrate.Location = new System.Drawing.Point(6, 83);
+            this.cmbBitrate.Name = "cmbBitrate";
+            this.cmbBitrate.Size = new System.Drawing.Size(71, 21);
+            this.cmbBitrate.TabIndex = 3;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 66);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(43, 13);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Bitrate :";
+            // 
+            // cmbEncoder
+            // 
+            this.cmbEncoder.FormattingEnabled = true;
+            this.cmbEncoder.Location = new System.Drawing.Point(6, 42);
+            this.cmbEncoder.Name = "cmbEncoder";
+            this.cmbEncoder.Size = new System.Drawing.Size(71, 21);
+            this.cmbEncoder.TabIndex = 1;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 25);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 13);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Encoder :";
+            // 
+            // tbpServer
+            // 
+            this.tbpServer.Controls.Add(this.groupBox19);
+            this.tbpServer.Controls.Add(this.groupBox18);
+            this.tbpServer.Controls.Add(this.groupBox17);
+            this.tbpServer.Location = new System.Drawing.Point(4, 22);
+            this.tbpServer.Name = "tbpServer";
+            this.tbpServer.Size = new System.Drawing.Size(832, 445);
+            this.tbpServer.TabIndex = 5;
+            this.tbpServer.Text = "Server";
+            this.tbpServer.UseVisualStyleBackColor = true;
+            // 
+            // groupBox19
+            // 
+            this.groupBox19.Controls.Add(this.btnClearLogServer);
+            this.groupBox19.Controls.Add(this.lsbLogServer);
+            this.groupBox19.Location = new System.Drawing.Point(9, 221);
+            this.groupBox19.Name = "groupBox19";
+            this.groupBox19.Size = new System.Drawing.Size(820, 221);
+            this.groupBox19.TabIndex = 2;
+            this.groupBox19.TabStop = false;
+            this.groupBox19.Text = "Log";
+            // 
+            // btnClearLogServer
+            // 
+            this.btnClearLogServer.Location = new System.Drawing.Point(7, 20);
+            this.btnClearLogServer.Name = "btnClearLogServer";
+            this.btnClearLogServer.Size = new System.Drawing.Size(75, 23);
+            this.btnClearLogServer.TabIndex = 1;
+            this.btnClearLogServer.Text = "Clear";
+            this.btnClearLogServer.UseVisualStyleBackColor = true;
+            // 
+            // lsbLogServer
+            // 
+            this.lsbLogServer.FormattingEnabled = true;
+            this.lsbLogServer.Location = new System.Drawing.Point(6, 49);
+            this.lsbLogServer.Name = "lsbLogServer";
+            this.lsbLogServer.Size = new System.Drawing.Size(808, 160);
+            this.lsbLogServer.TabIndex = 0;
             // 
             // groupBox18
             // 
@@ -1576,64 +1524,14 @@
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "Configuration";
             // 
-            // label32
+            // btnSaveServer
             // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(46, 20);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(32, 13);
-            this.label32.TabIndex = 0;
-            this.label32.Text = "Port :";
-            // 
-            // nudPortServer
-            // 
-            this.nudPortServer.Location = new System.Drawing.Point(84, 18);
-            this.nudPortServer.Maximum = new decimal(new int[] {
-            65535,
-            0,
-            0,
-            0});
-            this.nudPortServer.Name = "nudPortServer";
-            this.nudPortServer.Size = new System.Drawing.Size(55, 20);
-            this.nudPortServer.TabIndex = 1;
-            this.nudPortServer.Value = new decimal(new int[] {
-            8000,
-            0,
-            0,
-            0});
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(19, 47);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(59, 13);
-            this.label33.TabIndex = 2;
-            this.label33.Text = "Password :";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(84, 44);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 3;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(84, 70);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 5;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(13, 73);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(65, 13);
-            this.label34.TabIndex = 4;
-            this.label34.Text = "Admin pwd :";
+            this.btnSaveServer.Location = new System.Drawing.Point(49, 122);
+            this.btnSaveServer.Name = "btnSaveServer";
+            this.btnSaveServer.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveServer.TabIndex = 8;
+            this.btnSaveServer.Text = "Save";
+            this.btnSaveServer.UseVisualStyleBackColor = true;
             // 
             // numericUpDown1
             // 
@@ -1666,51 +1564,133 @@
             this.label35.TabIndex = 6;
             this.label35.Text = "Max listener :";
             // 
-            // btnSaveServer
+            // textBox2
             // 
-            this.btnSaveServer.Location = new System.Drawing.Point(49, 122);
-            this.btnSaveServer.Name = "btnSaveServer";
-            this.btnSaveServer.Size = new System.Drawing.Size(75, 23);
-            this.btnSaveServer.TabIndex = 8;
-            this.btnSaveServer.Text = "Save";
-            this.btnSaveServer.UseVisualStyleBackColor = true;
+            this.textBox2.Location = new System.Drawing.Point(84, 70);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 5;
             // 
-            // groupBox19
+            // label34
             // 
-            this.groupBox19.Controls.Add(this.btnClearLogServer);
-            this.groupBox19.Controls.Add(this.lsbLogServer);
-            this.groupBox19.Location = new System.Drawing.Point(9, 221);
-            this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Size = new System.Drawing.Size(820, 221);
-            this.groupBox19.TabIndex = 2;
-            this.groupBox19.TabStop = false;
-            this.groupBox19.Text = "Log";
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(13, 73);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(65, 13);
+            this.label34.TabIndex = 4;
+            this.label34.Text = "Admin pwd :";
             // 
-            // lsbLogServer
+            // textBox1
             // 
-            this.lsbLogServer.FormattingEnabled = true;
-            this.lsbLogServer.Location = new System.Drawing.Point(6, 49);
-            this.lsbLogServer.Name = "lsbLogServer";
-            this.lsbLogServer.Size = new System.Drawing.Size(808, 160);
-            this.lsbLogServer.TabIndex = 0;
+            this.textBox1.Location = new System.Drawing.Point(84, 44);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.PasswordChar = '*';
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 3;
             // 
-            // btnClearLogServer
+            // label33
             // 
-            this.btnClearLogServer.Location = new System.Drawing.Point(7, 20);
-            this.btnClearLogServer.Name = "btnClearLogServer";
-            this.btnClearLogServer.Size = new System.Drawing.Size(75, 23);
-            this.btnClearLogServer.TabIndex = 1;
-            this.btnClearLogServer.Text = "Clear";
-            this.btnClearLogServer.UseVisualStyleBackColor = true;
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(19, 47);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(59, 13);
+            this.label33.TabIndex = 2;
+            this.label33.Text = "Password :";
             // 
-            // btnClearLogTranscoder
+            // nudPortServer
             // 
-            this.btnClearLogTranscoder.Location = new System.Drawing.Point(7, 20);
-            this.btnClearLogTranscoder.Name = "btnClearLogTranscoder";
-            this.btnClearLogTranscoder.Size = new System.Drawing.Size(75, 23);
-            this.btnClearLogTranscoder.TabIndex = 1;
-            this.btnClearLogTranscoder.Text = "Clear";
-            this.btnClearLogTranscoder.UseVisualStyleBackColor = true;
+            this.nudPortServer.Location = new System.Drawing.Point(84, 18);
+            this.nudPortServer.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.nudPortServer.Name = "nudPortServer";
+            this.nudPortServer.Size = new System.Drawing.Size(55, 20);
+            this.nudPortServer.TabIndex = 1;
+            this.nudPortServer.Value = new decimal(new int[] {
+            8000,
+            0,
+            0,
+            0});
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(46, 20);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(32, 13);
+            this.label32.TabIndex = 0;
+            this.label32.Text = "Port :";
+            // 
+            // groupBox17
+            // 
+            this.groupBox17.Controls.Add(this.btnShowWebAdministration);
+            this.groupBox17.Controls.Add(this.btnShowWebInterface);
+            this.groupBox17.Controls.Add(this.btnStopServer);
+            this.groupBox17.Controls.Add(this.btnStartServer);
+            this.groupBox17.Controls.Add(this.lblStatusServer);
+            this.groupBox17.Controls.Add(this.label31);
+            this.groupBox17.Location = new System.Drawing.Point(9, 4);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(815, 48);
+            this.groupBox17.TabIndex = 0;
+            this.groupBox17.TabStop = false;
+            this.groupBox17.Text = "Controls";
+            // 
+            // btnShowWebAdministration
+            // 
+            this.btnShowWebAdministration.Location = new System.Drawing.Point(500, 15);
+            this.btnShowWebAdministration.Name = "btnShowWebAdministration";
+            this.btnShowWebAdministration.Size = new System.Drawing.Size(150, 23);
+            this.btnShowWebAdministration.TabIndex = 5;
+            this.btnShowWebAdministration.Text = "Show web administration";
+            this.btnShowWebAdministration.UseVisualStyleBackColor = true;
+            // 
+            // btnShowWebInterface
+            // 
+            this.btnShowWebInterface.Location = new System.Drawing.Point(344, 15);
+            this.btnShowWebInterface.Name = "btnShowWebInterface";
+            this.btnShowWebInterface.Size = new System.Drawing.Size(150, 23);
+            this.btnShowWebInterface.TabIndex = 4;
+            this.btnShowWebInterface.Text = "Show web interface";
+            this.btnShowWebInterface.UseVisualStyleBackColor = true;
+            // 
+            // btnStopServer
+            // 
+            this.btnStopServer.Location = new System.Drawing.Point(165, 15);
+            this.btnStopServer.Name = "btnStopServer";
+            this.btnStopServer.Size = new System.Drawing.Size(75, 23);
+            this.btnStopServer.TabIndex = 3;
+            this.btnStopServer.Text = "Stop";
+            this.btnStopServer.UseVisualStyleBackColor = true;
+            // 
+            // btnStartServer
+            // 
+            this.btnStartServer.Location = new System.Drawing.Point(84, 15);
+            this.btnStartServer.Name = "btnStartServer";
+            this.btnStartServer.Size = new System.Drawing.Size(75, 23);
+            this.btnStartServer.TabIndex = 2;
+            this.btnStartServer.Text = "Start";
+            this.btnStartServer.UseVisualStyleBackColor = true;
+            // 
+            // lblStatusServer
+            // 
+            this.lblStatusServer.AutoSize = true;
+            this.lblStatusServer.Location = new System.Drawing.Point(57, 20);
+            this.lblStatusServer.Name = "lblStatusServer";
+            this.lblStatusServer.Size = new System.Drawing.Size(21, 13);
+            this.lblStatusServer.TabIndex = 1;
+            this.lblStatusServer.Text = "Off";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(7, 20);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(43, 13);
+            this.label31.TabIndex = 0;
+            this.label31.Text = "Status :";
             // 
             // AdminView
             // 
@@ -1726,7 +1706,7 @@
             this.Name = "AdminView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WebradioManager - ";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AdminView_FormClosing);
             this.mnsMain.ResumeLayout(false);
             this.mnsMain.PerformLayout();
             this.tbcTabs.ResumeLayout(false);
@@ -1756,24 +1736,24 @@
             this.tbpTranscoders.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox16.PerformLayout();
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPortEdit)).EndInit();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupPort)).EndInit();
             this.tbpServer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nudPortEdit)).EndInit();
-            this.groupBox13.ResumeLayout(false);
-            this.groupBox13.PerformLayout();
-            this.groupBox14.ResumeLayout(false);
-            this.groupBox15.ResumeLayout(false);
-            this.groupBox16.ResumeLayout(false);
-            this.groupBox16.PerformLayout();
-            this.groupBox17.ResumeLayout(false);
-            this.groupBox17.PerformLayout();
+            this.groupBox19.ResumeLayout(false);
             this.groupBox18.ResumeLayout(false);
             this.groupBox18.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPortServer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            this.groupBox19.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nudPortServer)).EndInit();
+            this.groupBox17.ResumeLayout(false);
+            this.groupBox17.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1870,8 +1850,6 @@
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.Button btnDeleteTranscoder;
         private System.Windows.Forms.ListBox lsbTranscoders;
-        private System.Windows.Forms.TextBox txbTranscoderName;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button btnCreateTranscoder;
         private System.Windows.Forms.TextBox txbServerPassword;
         private System.Windows.Forms.Label label19;

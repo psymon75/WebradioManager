@@ -14,6 +14,13 @@ namespace WebradioManager
     public partial class AdminView : Form
     {
         private AdminController _controller;
+        private int _idWebradio;
+
+        public int IdWebradio
+        {
+            get { return _idWebradio; }
+            set { _idWebradio = value; }
+        }
 
         public AdminController Controller
         {
@@ -21,11 +28,18 @@ namespace WebradioManager
             set { _controller = value; }
         }
 
-        public AdminView()
+        public AdminView(int idWebradio, AdminController controller)
         {
             InitializeComponent();
+            this.Controller = controller;
+            this.IdWebradio = idWebradio;
 
-            
+        }
+
+        public void UpdateView()
+        {
+            Webradio webradio = this.Controller.GetWebradio(this.IdWebradio);
+            this.Text = "WebradioManager - " + webradio.Name;
         }
 
         void dayView1_SelectionChanged(object sender, EventArgs e)
@@ -33,11 +47,6 @@ namespace WebradioManager
             MessageBox.Show("");
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-
-        }
 
         private void dayView1_ResolveAppointments(object sender, ResolveAppointmentsEventArgs args)
         {
@@ -48,6 +57,11 @@ namespace WebradioManager
         void dayView1_NewAppointment(object sender, NewAppointmentEventArgs args)
         {
 
+        }
+
+        private void AdminView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Controller.FormClose();
         }
 
     }

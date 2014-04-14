@@ -14,6 +14,7 @@ namespace WebradioManager
         const string DEFAULT_LOGFILENAME = "log.txt";
         const string DEFAULT_CONFIGFILENAME = "config.config";
         const string DEFAULT_PASSWORD = "1234";
+        const int MAX_NAME_LENGTH = 255;
         
         //SERVER CONSTANTS
         const string DEFAULT_SERVER_FOLDER = "server/";
@@ -25,7 +26,7 @@ namespace WebradioManager
         //TRANSCODERS CONSTANTS
         
 
-        private List<Webradio> _webradios;
+        private Dictionary<int, Webradio> _webradios;
         private List<IController> _observers;
         private Bdd _bdd;
         private List<AudioFile> _library;
@@ -43,7 +44,7 @@ namespace WebradioManager
             set { _observers = value; }
         }
 
-        public List<Webradio> Webradios
+        public Dictionary<int,Webradio> Webradios
         {
             get { return _webradios; }
             set { _webradios = value; }
@@ -58,7 +59,7 @@ namespace WebradioManager
 
         public WMModel()
         {
-            this.Webradios = new List<Webradio>();
+            this.Webradios = new Dictionary<int, Webradio>();
             this.Observers = new List<IController>();
             this.Bdd = new Bdd();
             this.Library = new List<AudioFile>();
@@ -84,13 +85,18 @@ namespace WebradioManager
             this.Webradios = this.Bdd.LoadWebradios();
         }
 
+        public Webradio GetWebradio(int id)
+        {
+            return this.Webradios[id];
+        }
+
         public List<Webradio> GetWebradios()
         {
             //Get only webradios with its name and id and without useless stuffs for SelectionView
             List<Webradio> list = new List<Webradio>();
-            foreach(Webradio wr in this.Webradios)
+            foreach(KeyValuePair<int,Webradio> wr in this.Webradios)
             {
-                list.Add(new Webradio(wr.Name, wr.Id));
+                list.Add(new Webradio(wr.Value.Name, wr.Value.Id));
             }
             return list;
         }
@@ -106,20 +112,55 @@ namespace WebradioManager
             wr.Playlists = new List<Playlist>();
             wr.Calendar = new WebradioCalendar(webradioFilename + DEFAULT_CALENDAR_FILENAME);
             wr.Transcoders = new List<WebradioTranscoder>();
-            wr.Id = this.Bdd.AddWebradio(wr);
-            this.Webradios.Add(wr);
-            //Directory and file creation
-            Directory.CreateDirectory(webradioFilename);
-            Directory.CreateDirectory(webradioFilename + DEFAULT_SERVER_FOLDER);
-            Directory.CreateDirectory(webradioFilename + DEFAULT_PLAYLISTS_FOLDER);
-            Thread.Sleep(100);
-            wr.GenerateConfigFiles();
+            try
+            {
+                wr.Id = this.Bdd.AddWebradio(wr);
+                this.Webradios.Add(wr.Id,wr);
+                //Directory and file creation
+                Directory.CreateDirectory(webradioFilename);
+                Directory.CreateDirectory(webradioFilename + DEFAULT_SERVER_FOLDER);
+                Directory.CreateDirectory(webradioFilename + DEFAULT_PLAYLISTS_FOLDER);
+                Thread.Sleep(100);
+                wr.GenerateConfigFiles();
+            }
+            catch
+            {
+                return false;
+            }
             return true;
         }
 
         public bool DeleteWebradio(int id)
         {
+            bool output = false;
+            output = this.Bdd.DeleteWebradio(id);
+            //Delete webradio from model
+            try
+            {
+                this.Webradios.Remove(id);
+                output = true;
+            }
+            catch
+            {
+                output = false;
+            }
+            
+            return output;
+        }
+
+        public bool DuplicateWebradio(int id)
+        {
+            //Webradio selected = null;
+            //foreach (Webradio webradio in this.Webradios)
+            //{
+            //    if (webradio.Id == id)
+            //    {
+            //        selected = webradio;
+            //        break;
+            //    }
+            //}
             return true;
+
         }
 
     }

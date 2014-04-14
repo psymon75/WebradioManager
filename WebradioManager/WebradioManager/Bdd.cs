@@ -24,18 +24,19 @@ namespace WebradioManager
             this.Controls = new BddControls();
         }
 
-        public List<Webradio> LoadWebradios()
+        public Dictionary<int,Webradio> LoadWebradios()
         {
-            List<Webradio> webradios = new List<Webradio>();
+            Dictionary<int, Webradio> webradios = new Dictionary<int, Webradio>();
             SQLiteDataReader reader = this.Controls.ExecuteDataReader("SELECT * FROM twebradio");
             while(reader.Read())
             {
-                webradios.Add(new Webradio(reader["name"].ToString(), int.Parse(reader["id"].ToString())));
+                webradios.Add( int.Parse(reader["id"].ToString()), new Webradio(reader["name"].ToString(), int.Parse(reader["id"].ToString())));
             }
             reader.Close();
             
-            foreach(Webradio wr in webradios)
+            foreach(KeyValuePair<int,Webradio> pair in webradios)
             {
+                Webradio wr = pair.Value;
                 //Server
                 int id = wr.Id;
                 reader = this.Controls.ExecuteDataReader("SELECT * FROM tserver WHERE webradioid = " + id.ToString());
@@ -53,7 +54,7 @@ namespace WebradioManager
                 reader.Read();
                 wr.Calendar = new WebradioCalendar(int.Parse(reader["id"].ToString()), reader["filename"].ToString());
                 reader.Close();
-                reader = this.Controls.ExecuteDataReader("SELECT * FROM tcalendarevent WHERE calendarid = " + wr.Calendar.Id);
+                reader = this.Controls.ExecuteDataReader("SELECT ce.starttime, ce.duration, ce.name AS EventName, ce.repeat, ce.priority, ce.shuffle, ce.loopatend, p.name AS PlaylistName FROM tcalendarevent ce, tplaylist p WHERE ce.calendarid = " + wr.Calendar.Id + " AND ce.playlistid = p.id");
                 while(reader.Read())
                 {
                     string[] time = reader["starttime"].ToString().Split(':');
@@ -61,14 +62,14 @@ namespace WebradioManager
                     time = reader["duration"].ToString().Split(':');
                     TimeSpan duration = new TimeSpan(int.Parse(time[0]),int.Parse(time[1]),int.Parse(time[2]));
                                        
-                    wr.Calendar.Events.Add(new CalendarEvent(reader["name"].ToString(),
+                    wr.Calendar.Events.Add(new CalendarEvent(reader["EventName"].ToString(),
                         start,
                         duration,
                         int.Parse(reader["repeat"].ToString()),
                         int.Parse(reader["priority"].ToString()),
                         Convert.ToBoolean(reader["shuffle"].ToString()),
                         Convert.ToBoolean(reader["loopatend"].ToString()),
-                        int.Parse(reader["playlistid"].ToString())));
+                        reader["PlaylistName"].ToString()));
                 }
                 reader.Close();
                 //---
@@ -257,7 +258,15 @@ namespace WebradioManager
 
         public bool DeleteWebradio(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                this.Controls.Delete("twebradio", "id = " + id.ToString());
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public bool DuplicateWebradio(int id)

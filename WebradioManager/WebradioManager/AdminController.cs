@@ -21,10 +21,27 @@ namespace WebradioManager
             get { return _model; }
             set { _model = value; }
         }
-    
+
+        public AdminController(int id, WMModel model)
+        {
+            this.View = new AdminView(id,this);
+            this.Model = model;
+            this.UpdateView();
+            this.View.Show();
+        }
         public void UpdateView()
         {
-            throw new NotImplementedException();
+            this.View.UpdateView();
+        }
+
+        public Webradio GetWebradio(int id)
+        {
+            return this.Model.GetWebradio(id);
+        }
+
+        public void FormClose()
+        {
+            this.Model.RemoveObserver(this);
         }
     }
 }

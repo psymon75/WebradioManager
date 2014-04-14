@@ -63,6 +63,7 @@
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnDuplicate
             // 
@@ -72,6 +73,7 @@
             this.btnDuplicate.TabIndex = 2;
             this.btnDuplicate.Text = "Duplicate";
             this.btnDuplicate.UseVisualStyleBackColor = true;
+            this.btnDuplicate.Click += new System.EventHandler(this.btnDuplicate_Click);
             // 
             // btnOpen
             // 
@@ -81,6 +83,7 @@
             this.btnOpen.TabIndex = 1;
             this.btnOpen.Text = "Open";
             this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
             // lsbSelection
             // 
@@ -115,6 +118,7 @@
             // txbName
             // 
             this.txbName.Location = new System.Drawing.Point(10, 37);
+            this.txbName.MaxLength = 255;
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(291, 20);
             this.txbName.TabIndex = 1;

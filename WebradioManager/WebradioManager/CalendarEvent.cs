@@ -15,15 +15,15 @@ namespace WebradioManager
         private bool _shuffle;
         private bool _loopatend;
         private int _priority;
-        private int _playlistId;
+        private string _playlist;
 
         #endregion
 
         #region Properties
-        public int PlaylistId
+        public string Playlist
         {
-            get { return _playlistId; }
-            set { _playlistId = value; }
+            get { return _playlist; }
+            set { _playlist = value; }
         }
 
         public string Name
@@ -74,7 +74,7 @@ namespace WebradioManager
         }
         #endregion
 
-        public CalendarEvent(string name, TimeSpan starttime, TimeSpan duration, int repeat, int priority, bool shuffle, bool loopatend, int playlistId)
+        public CalendarEvent(string name, TimeSpan starttime, TimeSpan duration, int repeat, int priority, bool shuffle, bool loopatend, string playlist)
         {
             this.Name = name;
             this.StartTime = starttime;
@@ -83,7 +83,7 @@ namespace WebradioManager
             this.Priority = priority;
             this.Shuffle = shuffle;
             this.Loopatend = loopatend;
-            this.PlaylistId = playlistId;
+            this.Playlist = playlist;
         }
 
         

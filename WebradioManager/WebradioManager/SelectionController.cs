@@ -53,6 +53,22 @@ namespace WebradioManager
         {
             return this.Model.CreateWebradio(name);
         }
-       
+
+        public bool DeleteWebradio(int id)
+        {
+            return this.Model.DeleteWebradio(id);
+        }
+
+        public bool DuplicateWebradio(int id)
+        {
+            return this.Model.DuplicateWebradio(id);
+        }
+
+        public void OpenWebradio(int id)
+        {
+
+            AdminController admincontroller = new AdminController(id, this.Model);
+            this.Model.AddObserver(admincontroller);
+        }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WebradioManager
 {
-    public class Webradio
+    public class Webradio : ICloneable
     {
         private List<Playlist> _playlists;
         private WebradioCalendar _calendar;
@@ -79,6 +79,17 @@ namespace WebradioManager
             {
                 transcoder.GenerateConfigFile();
             }
+        }
+
+        public object Clone()
+        {
+            //TODO
+            return new Webradio("lol");
+        }
+
+        public override string ToString()
+        {
+            return this.Name + " | ID = " + this.Id.ToString();
         }
     }
 }
