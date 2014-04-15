@@ -66,5 +66,10 @@ namespace WebradioManager
             File.WriteAllText(this.Filename, output);
         }
 
+        public override string ToString()
+        {
+            return this.Name;
+        }
+
     }
 }

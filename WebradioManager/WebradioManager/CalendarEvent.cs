@@ -7,6 +7,14 @@ namespace WebradioManager
 {
     public class CalendarEvent
     {
+        const int MONDAY_MASK = 2;
+        const int TUESDAY_MASK = 4;
+        const int WEDNESDAY_MASK = 8;
+        const int THURSDAY_MASK = 16;
+        const int FRIDAY_MASK = 32;
+        const int SATURDAY_MASK = 64;
+        const int SUNDAY_MASK = 1;
+
         #region Fields
         private string _name;
         private TimeSpan _startTime;
@@ -84,6 +92,19 @@ namespace WebradioManager
             this.Shuffle = shuffle;
             this.Loopatend = loopatend;
             this.Playlist = playlist;
+        }
+
+        public DayWeek GetSelectedDays()
+        {
+            DayWeek dow = new DayWeek();
+            dow.Monday = Convert.ToBoolean(this.Repeat & MONDAY_MASK);
+            dow.Tuesday = Convert.ToBoolean(this.Repeat & TUESDAY_MASK);
+            dow.Wednesday = Convert.ToBoolean(this.Repeat & WEDNESDAY_MASK);
+            dow.Thursday = Convert.ToBoolean(this.Repeat & THURSDAY_MASK);
+            dow.Friday = Convert.ToBoolean(this.Repeat & FRIDAY_MASK);
+            dow.Saturday = Convert.ToBoolean(this.Repeat & SATURDAY_MASK);
+            dow.Sunday = Convert.ToBoolean(this.Repeat & SUNDAY_MASK);
+            return dow;
         }
 
         

@@ -19,6 +19,7 @@ namespace WebradioManager
         //SERVER CONSTANTS
         const string DEFAULT_SERVER_FOLDER = "server/";
         const int DEFAULT_SERVER_PORT = 8000;
+        const int DEFAULT_MAX_LISTENER = 32;
         //CALENDAR CONSTANTS
         const string DEFAULT_CALENDAR_FILENAME = "calendar.xml";
         //PLAYLISTS CONSTANTS
@@ -107,7 +108,7 @@ namespace WebradioManager
             Webradio wr = new Webradio(name);
             WebradioServer server = new WebradioServer(DEFAULT_SERVER_PORT,
                 webradioFilename + DEFAULT_SERVER_FOLDER + DEFAULT_LOGFILENAME,
-                webradioFilename + DEFAULT_SERVER_FOLDER + DEFAULT_CONFIGFILENAME, DEFAULT_PASSWORD, DEFAULT_PASSWORD);
+                webradioFilename + DEFAULT_SERVER_FOLDER + DEFAULT_CONFIGFILENAME, DEFAULT_PASSWORD, DEFAULT_PASSWORD,DEFAULT_MAX_LISTENER);
             wr.Server = server;
             wr.Playlists = new List<Playlist>();
             wr.Calendar = new WebradioCalendar(webradioFilename + DEFAULT_CALENDAR_FILENAME);
@@ -116,7 +117,7 @@ namespace WebradioManager
             {
                 wr.Id = this.Bdd.AddWebradio(wr);
                 this.Webradios.Add(wr.Id,wr);
-                //Directory and file creation
+                //Directory creation
                 Directory.CreateDirectory(webradioFilename);
                 Directory.CreateDirectory(webradioFilename + DEFAULT_SERVER_FOLDER);
                 Directory.CreateDirectory(webradioFilename + DEFAULT_PLAYLISTS_FOLDER);
@@ -161,6 +162,16 @@ namespace WebradioManager
             //}
             return true;
 
+        }
+
+        public List<AudioFile> GetLibrary()
+        {
+            return this.Library;
+        }
+
+        public List<string> GetGenders()
+        {
+            return this.Bdd.GetGenders();
         }
 
     }

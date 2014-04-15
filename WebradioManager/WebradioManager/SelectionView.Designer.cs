@@ -92,6 +92,7 @@
             this.lsbSelection.Name = "lsbSelection";
             this.lsbSelection.Size = new System.Drawing.Size(294, 147);
             this.lsbSelection.TabIndex = 0;
+            this.lsbSelection.DoubleClick += new System.EventHandler(this.btnOpen_Click);
             // 
             // groupBox2
             // 

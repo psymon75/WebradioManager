@@ -19,8 +19,21 @@ namespace WebradioManager
         private string _configFilename;
         private string _logFilename;
         private StreamType _streamType;
+        private static int[] _avaliableBitrates = { 96000, 128000, 256000 };
+        private static int[] _avaliableSampleRates = { 44100 };
+
 
         #region Properties
+        public static int[] AvaliableSampleRates
+        {
+            get { return WebradioTranscoder._avaliableSampleRates; }
+            set { WebradioTranscoder._avaliableSampleRates = value; }
+        }
+        public static int[] AvaliableBitrates
+        {
+            get { return WebradioTranscoder._avaliableBitrates; }
+            set { WebradioTranscoder._avaliableBitrates = value; }
+        }
         public int Id
         {
             get { return _id; }
@@ -128,5 +141,10 @@ namespace WebradioManager
             output += "genre=Misc\n";
             File.WriteAllText(this.ConfigFilename,output);
         }
+
+        public override string ToString()
+        {
+            return this.Name;
+        } 
     }
 }

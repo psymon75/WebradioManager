@@ -39,6 +39,16 @@ namespace WebradioManager
             return this.Model.GetWebradio(id);
         }
 
+        public List<AudioFile> GetLibrary()
+        {
+            return this.Model.GetLibrary();
+        }
+
+        public List<string> GetGenders()
+        {
+            return this.Model.GetGenders();
+        }
+
         public void FormClose()
         {
             this.Model.RemoveObserver(this);

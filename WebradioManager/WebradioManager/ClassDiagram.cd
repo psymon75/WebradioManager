@@ -3,7 +3,7 @@
   <Class Name="WebradioManager.Webradio" Collapsed="true">
     <Position X="6.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAASIAAAAAAAAAAAQABAAAQAAAIAAIAEAAAAEgAAAJA=</HashCode>
+      <HashCode>AAASIAAAAAAAAAAEQABAAAQAAAIAAIAEAAAAEgAAAJA=</HashCode>
       <FileName>Webradio.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -29,14 +29,14 @@
   <Class Name="WebradioManager.CalendarEvent" Collapsed="true">
     <Position X="6.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ARAQIAABIAACAAAEABAAAAQAKgAAAAAAAAIAAAAIEAA=</HashCode>
+      <HashCode>ARDQICABIEACgACEABAEAAQAKgAAAAAAAAIAAAAIEAA=</HashCode>
       <FileName>CalendarEvent.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WebradioManager.Playlist" Collapsed="true">
     <Position X="9.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACIAAAAAAAQAQAAABAAAQAAAAEAEAEAQAAAAAAAAA=</HashCode>
+      <HashCode>AAACIAAAAAAAQAQEAABAAAQAAAAEAEAEAQAAAAAAAAA=</HashCode>
       <FileName>Playlist.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -50,7 +50,7 @@
   <Class Name="WebradioManager.WMModel" Collapsed="true">
     <Position X="0.5" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CBAAAkAAAkhAAAAACAQIAgAUgAAQBhAIAAAAQAYACAg=</HashCode>
+      <HashCode>CBAAAkAAAkhAAAAACEQIAgAUgAAQBhAIAAAAQAYgCAg=</HashCode>
       <FileName>WMModel.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -64,7 +64,7 @@
   <Class Name="WebradioManager.AdminController" Collapsed="true">
     <Position X="4.25" Y="15.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAAAgAAAAAAAAABAAAIACgAAAAAAAA=</HashCode>
+      <HashCode>AAAAAQAAACAAAAAAAkAAAAAAAAABAAAIACgAAAAgAAA=</HashCode>
       <FileName>AdminController.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.881" />
@@ -72,7 +72,7 @@
   <Class Name="WebradioManager.SelectionController" Collapsed="true">
     <Position X="9.25" Y="12.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>CAAAAQAAAEAAAAAAAgAIAAAAAAABBAAIACgAQAAAAAA=</HashCode>
+      <HashCode>CAAAAQAAAEAAAAAAAgAIAAAAAAABBACIACgAQAAAAAA=</HashCode>
       <FileName>SelectionController.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.957" />
@@ -83,7 +83,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>/ydQARSkpzoYaBRQAATiAUpnYWjCkbG48jY5EWCKSjg=</HashCode>
+      <HashCode>/2dQAzSltzoYaBzwAATqAUpnY2jCkLG88jIZcWCKSjg=</HashCode>
       <FileName>AdminView.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -93,7 +93,7 @@
   <Class Name="WebradioManager.SelectionView" Collapsed="true">
     <Position X="9.25" Y="10.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAYASAACBCAAACAAAACIgAIAAgAACAAAEAAAQQ=</HashCode>
+      <HashCode>AAAAAQAYASAACBAAAACAAAACIgAIAAgAACAAAEAAAQQ=</HashCode>
       <FileName>SelectionView.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -110,7 +110,7 @@
   <Class Name="WebradioManager.Bdd" Collapsed="true">
     <Position X="0.5" Y="10.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAAAQCBAEQAAAAAAAAAAAAAAAAABAAAAAAgQAAAAAA=</HashCode>
+      <HashCode>CAAAAQCBAEQAAAAAAEAAAAAAAAAABAAAAAAgQAAAAAA=</HashCode>
       <FileName>Bdd.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -148,7 +148,7 @@
   <Class Name="WebradioManager.AudioFile" Collapsed="true">
     <Position X="4.5" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAASEAAAFIACQESAABBAAAIAAIAAIAAAIQAACAAAABA=</HashCode>
+      <HashCode>AAASFAAAFIACQESAABBAAAMAAIAAIAAAIQAACAAAABA=</HashCode>
       <FileName>AudioFile.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -180,6 +180,13 @@
       <FileName>TranscoderAacPlus.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Struct Name="WebradioManager.DayWeek" Collapsed="true">
+    <Position X="1" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAIIAACAAAAAAAIAAACACMACAIAAAACAQCABAAAA=</HashCode>
+      <FileName>DayWeek.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
   <Interface Name="WebradioManager.IController">
     <Position X="0.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>

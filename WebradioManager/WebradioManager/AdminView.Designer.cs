@@ -40,6 +40,14 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnDeleteAd = new System.Windows.Forms.Button();
             this.dgvAds = new System.Windows.Forms.DataGridView();
+            this.colIdAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTitleAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colArtistAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAlbumAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colYearAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLabelAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDurationAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGenderAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbPlaylistsAd = new System.Windows.Forms.ComboBox();
             this.txbSearchAd = new System.Windows.Forms.TextBox();
             this.btnAddToAd = new System.Windows.Forms.Button();
@@ -50,6 +58,14 @@
             this.cmbPlaylistsMusic = new System.Windows.Forms.ComboBox();
             this.btnAddToMusic = new System.Windows.Forms.Button();
             this.dgvMusics = new System.Windows.Forms.DataGridView();
+            this.colIdMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTitleMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colArtistMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAlbumMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colYearMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLabelMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDurationMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGenderMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnImportFilesMusic = new System.Windows.Forms.Button();
             this.btnImportFolderMusic = new System.Windows.Forms.Button();
             this.txbSearchMusic = new System.Windows.Forms.TextBox();
@@ -161,11 +177,11 @@
             this.lsbLogServer = new System.Windows.Forms.ListBox();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
             this.btnSaveServer = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nudMaxListener = new System.Windows.Forms.NumericUpDown();
             this.label35 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txbLocalServerAdminPassword = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txbLocalServerPassword = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
             this.nudPortServer = new System.Windows.Forms.NumericUpDown();
             this.label32 = new System.Windows.Forms.Label();
@@ -207,7 +223,7 @@
             this.tbpServer.SuspendLayout();
             this.groupBox19.SuspendLayout();
             this.groupBox18.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMaxListener)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPortServer)).BeginInit();
             this.groupBox17.SuspendLayout();
             this.SuspendLayout();
@@ -235,6 +251,9 @@
             this.dvwTimetable.WorkingHourStart = 0;
             this.dvwTimetable.WorkingMinuteEnd = 59;
             this.dvwTimetable.WorkingMinuteStart = 0;
+            this.dvwTimetable.SelectionChanged += new System.EventHandler(this.dvwTimetable_SelectionChanged);
+            this.dvwTimetable.ResolveAppointments += new Calendar.ResolveAppointmentsEventHandler(this.dvwTimetable_ResolveAppointments);
+            this.dvwTimetable.NewAppointment += new Calendar.NewAppointmentEventHandler(this.dvwTimetable_NewAppointment);
             // 
             // mnsMain
             // 
@@ -324,10 +343,60 @@
             // dgvAds
             // 
             this.dgvAds.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAds.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colIdAd,
+            this.colTitleAd,
+            this.colArtistAd,
+            this.colAlbumAd,
+            this.colYearAd,
+            this.colLabelAd,
+            this.colDurationAd,
+            this.colGenderAd});
             this.dgvAds.Location = new System.Drawing.Point(7, 47);
             this.dgvAds.Name = "dgvAds";
+            this.dgvAds.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAds.Size = new System.Drawing.Size(802, 162);
             this.dgvAds.TabIndex = 10;
+            // 
+            // colIdAd
+            // 
+            this.colIdAd.HeaderText = "Id";
+            this.colIdAd.Name = "colIdAd";
+            // 
+            // colTitleAd
+            // 
+            this.colTitleAd.HeaderText = "Title";
+            this.colTitleAd.Name = "colTitleAd";
+            // 
+            // colArtistAd
+            // 
+            this.colArtistAd.HeaderText = "Artist";
+            this.colArtistAd.Name = "colArtistAd";
+            // 
+            // colAlbumAd
+            // 
+            this.colAlbumAd.HeaderText = "Album";
+            this.colAlbumAd.Name = "colAlbumAd";
+            // 
+            // colYearAd
+            // 
+            this.colYearAd.HeaderText = "Year";
+            this.colYearAd.Name = "colYearAd";
+            // 
+            // colLabelAd
+            // 
+            this.colLabelAd.HeaderText = "Label";
+            this.colLabelAd.Name = "colLabelAd";
+            // 
+            // colDurationAd
+            // 
+            this.colDurationAd.HeaderText = "Duration";
+            this.colDurationAd.Name = "colDurationAd";
+            // 
+            // colGenderAd
+            // 
+            this.colGenderAd.HeaderText = "Gender";
+            this.colGenderAd.Name = "colGenderAd";
             // 
             // cmbPlaylistsAd
             // 
@@ -417,10 +486,60 @@
             // dgvMusics
             // 
             this.dgvMusics.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMusics.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colIdMusic,
+            this.colTitleMusic,
+            this.colArtistMusic,
+            this.colAlbumMusic,
+            this.colYearMusic,
+            this.colLabelMusic,
+            this.colDurationMusic,
+            this.colGenderMusic});
             this.dgvMusics.Location = new System.Drawing.Point(7, 47);
             this.dgvMusics.Name = "dgvMusics";
+            this.dgvMusics.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMusics.Size = new System.Drawing.Size(802, 162);
             this.dgvMusics.TabIndex = 3;
+            // 
+            // colIdMusic
+            // 
+            this.colIdMusic.HeaderText = "Id";
+            this.colIdMusic.Name = "colIdMusic";
+            // 
+            // colTitleMusic
+            // 
+            this.colTitleMusic.HeaderText = "Title";
+            this.colTitleMusic.Name = "colTitleMusic";
+            // 
+            // colArtistMusic
+            // 
+            this.colArtistMusic.HeaderText = "Artist";
+            this.colArtistMusic.Name = "colArtistMusic";
+            // 
+            // colAlbumMusic
+            // 
+            this.colAlbumMusic.HeaderText = "Album";
+            this.colAlbumMusic.Name = "colAlbumMusic";
+            // 
+            // colYearMusic
+            // 
+            this.colYearMusic.HeaderText = "Year";
+            this.colYearMusic.Name = "colYearMusic";
+            // 
+            // colLabelMusic
+            // 
+            this.colLabelMusic.HeaderText = "Label";
+            this.colLabelMusic.Name = "colLabelMusic";
+            // 
+            // colDurationMusic
+            // 
+            this.colDurationMusic.HeaderText = "Duration";
+            this.colDurationMusic.Name = "colDurationMusic";
+            // 
+            // colGenderMusic
+            // 
+            this.colGenderMusic.HeaderText = "Gender";
+            this.colGenderMusic.Name = "colGenderMusic";
             // 
             // btnImportFilesMusic
             // 
@@ -1132,6 +1251,9 @@
             // cmbEncoderEdit
             // 
             this.cmbEncoderEdit.FormattingEnabled = true;
+            this.cmbEncoderEdit.Items.AddRange(new object[] {
+            "MP3",
+            "AAC+"});
             this.cmbEncoderEdit.Location = new System.Drawing.Point(222, 32);
             this.cmbEncoderEdit.Name = "cmbEncoderEdit";
             this.cmbEncoderEdit.Size = new System.Drawing.Size(71, 21);
@@ -1452,6 +1574,9 @@
             // cmbEncoder
             // 
             this.cmbEncoder.FormattingEnabled = true;
+            this.cmbEncoder.Items.AddRange(new object[] {
+            "MP3",
+            "AAC+"});
             this.cmbEncoder.Location = new System.Drawing.Point(6, 42);
             this.cmbEncoder.Name = "cmbEncoder";
             this.cmbEncoder.Size = new System.Drawing.Size(71, 21);
@@ -1509,11 +1634,11 @@
             // groupBox18
             // 
             this.groupBox18.Controls.Add(this.btnSaveServer);
-            this.groupBox18.Controls.Add(this.numericUpDown1);
+            this.groupBox18.Controls.Add(this.nudMaxListener);
             this.groupBox18.Controls.Add(this.label35);
-            this.groupBox18.Controls.Add(this.textBox2);
+            this.groupBox18.Controls.Add(this.txbLocalServerAdminPassword);
             this.groupBox18.Controls.Add(this.label34);
-            this.groupBox18.Controls.Add(this.textBox1);
+            this.groupBox18.Controls.Add(this.txbLocalServerPassword);
             this.groupBox18.Controls.Add(this.label33);
             this.groupBox18.Controls.Add(this.nudPortServer);
             this.groupBox18.Controls.Add(this.label32);
@@ -1533,23 +1658,23 @@
             this.btnSaveServer.Text = "Save";
             this.btnSaveServer.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown1
+            // nudMaxListener
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(84, 96);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.nudMaxListener.Location = new System.Drawing.Point(84, 96);
+            this.nudMaxListener.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.nudMaxListener.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(55, 20);
-            this.numericUpDown1.TabIndex = 7;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.nudMaxListener.Name = "nudMaxListener";
+            this.nudMaxListener.Size = new System.Drawing.Size(55, 20);
+            this.nudMaxListener.TabIndex = 7;
+            this.nudMaxListener.Value = new decimal(new int[] {
             32,
             0,
             0,
@@ -1564,12 +1689,13 @@
             this.label35.TabIndex = 6;
             this.label35.Text = "Max listener :";
             // 
-            // textBox2
+            // txbLocalServerAdminPassword
             // 
-            this.textBox2.Location = new System.Drawing.Point(84, 70);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 5;
+            this.txbLocalServerAdminPassword.Location = new System.Drawing.Point(84, 70);
+            this.txbLocalServerAdminPassword.Name = "txbLocalServerAdminPassword";
+            this.txbLocalServerAdminPassword.PasswordChar = '*';
+            this.txbLocalServerAdminPassword.Size = new System.Drawing.Size(100, 20);
+            this.txbLocalServerAdminPassword.TabIndex = 5;
             // 
             // label34
             // 
@@ -1580,13 +1706,13 @@
             this.label34.TabIndex = 4;
             this.label34.Text = "Admin pwd :";
             // 
-            // textBox1
+            // txbLocalServerPassword
             // 
-            this.textBox1.Location = new System.Drawing.Point(84, 44);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 3;
+            this.txbLocalServerPassword.Location = new System.Drawing.Point(84, 44);
+            this.txbLocalServerPassword.Name = "txbLocalServerPassword";
+            this.txbLocalServerPassword.PasswordChar = '*';
+            this.txbLocalServerPassword.Size = new System.Drawing.Size(100, 20);
+            this.txbLocalServerPassword.TabIndex = 3;
             // 
             // label33
             // 
@@ -1750,7 +1876,7 @@
             this.groupBox19.ResumeLayout(false);
             this.groupBox18.ResumeLayout(false);
             this.groupBox18.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMaxListener)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPortServer)).EndInit();
             this.groupBox17.ResumeLayout(false);
             this.groupBox17.PerformLayout();
@@ -1891,11 +2017,11 @@
         private System.Windows.Forms.ListBox lsbLogServer;
         private System.Windows.Forms.GroupBox groupBox18;
         private System.Windows.Forms.Button btnSaveServer;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nudMaxListener;
         private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txbLocalServerAdminPassword;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txbLocalServerPassword;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.NumericUpDown nudPortServer;
         private System.Windows.Forms.Label label32;
@@ -1907,6 +2033,22 @@
         private System.Windows.Forms.Label lblStatusServer;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Button btnClearLogTranscoder;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colIdAd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTitleAd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colArtistAd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAlbumAd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colYearAd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLabelAd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDurationAd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colGenderAd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colIdMusic;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTitleMusic;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colArtistMusic;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAlbumMusic;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colYearMusic;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLabelMusic;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDurationMusic;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colGenderMusic;
 
 
     }

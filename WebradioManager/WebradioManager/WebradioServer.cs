@@ -18,11 +18,18 @@ namespace WebradioManager
         private string _password;
         private string _adminPassword;
         private Process _process;
+        private int _maxListener;
+
 
         #endregion
 
         #region Properties
 
+        public int MaxListener
+        {
+            get { return _maxListener; }
+            set { _maxListener = value; }
+        }
         public Process Process
         {
             get { return _process; }
@@ -60,13 +67,14 @@ namespace WebradioManager
 
         #endregion
 
-        public WebradioServer(int port, string logfilename, string configfilename, string password, string adminPassword)
+        public WebradioServer(int port, string logfilename, string configfilename, string password, string adminPassword, int maxlistener)
         {
             this.Port = port;
             this.LogFilename = logfilename;
             this.ConfigFilename = configfilename;
             this.Password = password;
             this.AdminPassword = adminPassword;
+            this.MaxListener = maxlistener;
         }
 
         public void GenerateConfigFile()
@@ -81,6 +89,7 @@ namespace WebradioManager
             output += "password=" + this.Password;
             output += "adminpassword" + this.AdminPassword;
             output += "publicserver=always";
+            output += "maxuser=" + this.MaxListener.ToString();
             File.WriteAllText(this.ConfigFilename, output);
         }
 

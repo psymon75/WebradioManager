@@ -45,7 +45,8 @@ namespace WebradioManager
                     reader["logfilename"].ToString(),
                     reader["configfilename"].ToString(),
                     reader["password"].ToString(),
-                    reader["adminpassword"].ToString());
+                    reader["adminpassword"].ToString(),
+                    int.Parse(reader["maxlistener"].ToString()));
                 reader.Close();
                 //----
 
@@ -221,6 +222,7 @@ namespace WebradioManager
                 data.Add("configfilename", webradio.Server.ConfigFilename);
                 data.Add("password", webradio.Server.Password);
                 data.Add("adminpassword", webradio.Server.AdminPassword);
+                data.Add("maxlistener", webradio.Server.MaxListener.ToString());
                 this.Controls.Insert("tserver", data);
                 data.Clear();
                 //----
@@ -272,6 +274,18 @@ namespace WebradioManager
         public bool DuplicateWebradio(int id)
         {
             throw new System.NotImplementedException();
+        }
+
+        public List<string> GetGenders()
+        {
+            List<string> genders = new List<string>();
+            SQLiteDataReader reader = this.Controls.ExecuteDataReader("SELECT * FROM tgender");
+            while(reader.Read())
+            {
+                genders.Add(reader["name"].ToString());
+            }
+            reader.Close();
+            return genders;
         }
 
 

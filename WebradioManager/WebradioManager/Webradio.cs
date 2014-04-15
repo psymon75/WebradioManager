@@ -58,6 +58,7 @@ namespace WebradioManager
             this.Name = name;
             this.Id = id;
             this.Playlists = new List<Playlist>();
+            this.Transcoders = new List<WebradioTranscoder>();
         }
 
         public Webradio(string name)
