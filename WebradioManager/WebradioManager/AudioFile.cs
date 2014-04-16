@@ -8,6 +8,7 @@ namespace WebradioManager
     public abstract class AudioFile
     {
         const int NUMBER_OF_ELEMENTS = 8;
+        const int DEFAULT_ID = 0;
 
         private List<Playlist> _playlists;
         private int _id;
@@ -114,7 +115,12 @@ namespace WebradioManager
             this.Gender = gender;
             this.Type = audiotype;
         }
-
+        
+        public AudioFile(string filename, string title, string artist, string album, int year, string label, TimeSpan duration, string gender, AudioType audiotype)
+            :this(DEFAULT_ID,filename, title, artist, album, year, label, duration, gender, audiotype)
+        {
+            //NO CODE
+        }
         public string[] GetInfosArray()
         {
             string[] infos = new string[NUMBER_OF_ELEMENTS];

@@ -36,6 +36,11 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tbcTabs = new System.Windows.Forms.TabControl();
             this.tbpStatus = new System.Windows.Forms.TabPage();
+            this.groupBox21 = new System.Windows.Forms.GroupBox();
+            this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.btnModifyName = new System.Windows.Forms.Button();
+            this.txbWebradioName = new System.Windows.Forms.TextBox();
+            this.lblWebradioTitle = new System.Windows.Forms.Label();
             this.tbpLibrary = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnDeleteAd = new System.Windows.Forms.Button();
@@ -192,8 +197,12 @@
             this.btnStartServer = new System.Windows.Forms.Button();
             this.lblStatusServer = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
+            this.FBD = new System.Windows.Forms.FolderBrowserDialog();
+            this.OFD = new System.Windows.Forms.OpenFileDialog();
             this.mnsMain.SuspendLayout();
             this.tbcTabs.SuspendLayout();
+            this.tbpStatus.SuspendLayout();
+            this.groupBox20.SuspendLayout();
             this.tbpLibrary.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAds)).BeginInit();
@@ -295,6 +304,9 @@
             // 
             // tbpStatus
             // 
+            this.tbpStatus.Controls.Add(this.groupBox21);
+            this.tbpStatus.Controls.Add(this.groupBox20);
+            this.tbpStatus.Controls.Add(this.lblWebradioTitle);
             this.tbpStatus.Location = new System.Drawing.Point(4, 22);
             this.tbpStatus.Name = "tbpStatus";
             this.tbpStatus.Padding = new System.Windows.Forms.Padding(3);
@@ -302,6 +314,52 @@
             this.tbpStatus.TabIndex = 0;
             this.tbpStatus.Text = "Status";
             this.tbpStatus.UseVisualStyleBackColor = true;
+            // 
+            // groupBox21
+            // 
+            this.groupBox21.Location = new System.Drawing.Point(7, 246);
+            this.groupBox21.Name = "groupBox21";
+            this.groupBox21.Size = new System.Drawing.Size(200, 190);
+            this.groupBox21.TabIndex = 2;
+            this.groupBox21.TabStop = false;
+            this.groupBox21.Text = "Status";
+            // 
+            // groupBox20
+            // 
+            this.groupBox20.Controls.Add(this.btnModifyName);
+            this.groupBox20.Controls.Add(this.txbWebradioName);
+            this.groupBox20.Location = new System.Drawing.Point(7, 162);
+            this.groupBox20.Name = "groupBox20";
+            this.groupBox20.Size = new System.Drawing.Size(200, 78);
+            this.groupBox20.TabIndex = 1;
+            this.groupBox20.TabStop = false;
+            this.groupBox20.Text = "Name";
+            // 
+            // btnModifyName
+            // 
+            this.btnModifyName.Location = new System.Drawing.Point(64, 46);
+            this.btnModifyName.Name = "btnModifyName";
+            this.btnModifyName.Size = new System.Drawing.Size(75, 23);
+            this.btnModifyName.TabIndex = 1;
+            this.btnModifyName.Text = "Modify";
+            this.btnModifyName.UseVisualStyleBackColor = true;
+            // 
+            // txbWebradioName
+            // 
+            this.txbWebradioName.Location = new System.Drawing.Point(7, 20);
+            this.txbWebradioName.Name = "txbWebradioName";
+            this.txbWebradioName.Size = new System.Drawing.Size(187, 20);
+            this.txbWebradioName.TabIndex = 0;
+            // 
+            // lblWebradioTitle
+            // 
+            this.lblWebradioTitle.AutoSize = true;
+            this.lblWebradioTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWebradioTitle.Location = new System.Drawing.Point(9, 7);
+            this.lblWebradioTitle.Name = "lblWebradioTitle";
+            this.lblWebradioTitle.Size = new System.Drawing.Size(109, 33);
+            this.lblWebradioTitle.TabIndex = 0;
+            this.lblWebradioTitle.Text = "label20";
             // 
             // tbpLibrary
             // 
@@ -337,8 +395,10 @@
             this.btnDeleteAd.Name = "btnDeleteAd";
             this.btnDeleteAd.Size = new System.Drawing.Size(100, 23);
             this.btnDeleteAd.TabIndex = 13;
+            this.btnDeleteAd.Tag = "Ad";
             this.btnDeleteAd.Text = "Delete selected";
             this.btnDeleteAd.UseVisualStyleBackColor = true;
+            this.btnDeleteAd.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // dgvAds
             // 
@@ -354,6 +414,7 @@
             this.colGenderAd});
             this.dgvAds.Location = new System.Drawing.Point(7, 47);
             this.dgvAds.Name = "dgvAds";
+            this.dgvAds.ReadOnly = true;
             this.dgvAds.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAds.Size = new System.Drawing.Size(802, 162);
             this.dgvAds.TabIndex = 10;
@@ -362,41 +423,49 @@
             // 
             this.colIdAd.HeaderText = "Id";
             this.colIdAd.Name = "colIdAd";
+            this.colIdAd.ReadOnly = true;
             // 
             // colTitleAd
             // 
             this.colTitleAd.HeaderText = "Title";
             this.colTitleAd.Name = "colTitleAd";
+            this.colTitleAd.ReadOnly = true;
             // 
             // colArtistAd
             // 
             this.colArtistAd.HeaderText = "Artist";
             this.colArtistAd.Name = "colArtistAd";
+            this.colArtistAd.ReadOnly = true;
             // 
             // colAlbumAd
             // 
             this.colAlbumAd.HeaderText = "Album";
             this.colAlbumAd.Name = "colAlbumAd";
+            this.colAlbumAd.ReadOnly = true;
             // 
             // colYearAd
             // 
             this.colYearAd.HeaderText = "Year";
             this.colYearAd.Name = "colYearAd";
+            this.colYearAd.ReadOnly = true;
             // 
             // colLabelAd
             // 
             this.colLabelAd.HeaderText = "Label";
             this.colLabelAd.Name = "colLabelAd";
+            this.colLabelAd.ReadOnly = true;
             // 
             // colDurationAd
             // 
             this.colDurationAd.HeaderText = "Duration";
             this.colDurationAd.Name = "colDurationAd";
+            this.colDurationAd.ReadOnly = true;
             // 
             // colGenderAd
             // 
             this.colGenderAd.HeaderText = "Gender";
             this.colGenderAd.Name = "colGenderAd";
+            this.colGenderAd.ReadOnly = true;
             // 
             // cmbPlaylistsAd
             // 
@@ -413,6 +482,8 @@
             this.txbSearchAd.Size = new System.Drawing.Size(100, 20);
             this.txbSearchAd.TabIndex = 7;
             this.txbSearchAd.Text = "Search...";
+            this.txbSearchAd.Enter += new System.EventHandler(this.txbSearchEnter);
+            this.txbSearchAd.Leave += new System.EventHandler(this.txbSearchLeave);
             // 
             // btnAddToAd
             // 
@@ -429,8 +500,10 @@
             this.btnImportFolderAd.Name = "btnImportFolderAd";
             this.btnImportFolderAd.Size = new System.Drawing.Size(112, 23);
             this.btnImportFolderAd.TabIndex = 8;
+            this.btnImportFolderAd.Tag = "Ad";
             this.btnImportFolderAd.Text = "Import from folder...";
             this.btnImportFolderAd.UseVisualStyleBackColor = true;
+            this.btnImportFolderAd.Click += new System.EventHandler(this.ImportFolder_Click);
             // 
             // btnImportFilesAd
             // 
@@ -438,8 +511,10 @@
             this.btnImportFilesAd.Name = "btnImportFilesAd";
             this.btnImportFilesAd.Size = new System.Drawing.Size(112, 23);
             this.btnImportFilesAd.TabIndex = 9;
+            this.btnImportFilesAd.Tag = "Ad";
             this.btnImportFilesAd.Text = "Import from files...";
             this.btnImportFilesAd.UseVisualStyleBackColor = true;
+            this.btnImportFilesAd.Click += new System.EventHandler(this.ImportFiles_Click);
             // 
             // groupBox1
             // 
@@ -463,8 +538,10 @@
             this.btnDeleteMusic.Name = "btnDeleteMusic";
             this.btnDeleteMusic.Size = new System.Drawing.Size(100, 23);
             this.btnDeleteMusic.TabIndex = 6;
+            this.btnDeleteMusic.Tag = "Music";
             this.btnDeleteMusic.Text = "Delete selected";
             this.btnDeleteMusic.UseVisualStyleBackColor = true;
+            this.btnDeleteMusic.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // cmbPlaylistsMusic
             // 
@@ -497,6 +574,7 @@
             this.colGenderMusic});
             this.dgvMusics.Location = new System.Drawing.Point(7, 47);
             this.dgvMusics.Name = "dgvMusics";
+            this.dgvMusics.ReadOnly = true;
             this.dgvMusics.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMusics.Size = new System.Drawing.Size(802, 162);
             this.dgvMusics.TabIndex = 3;
@@ -505,41 +583,49 @@
             // 
             this.colIdMusic.HeaderText = "Id";
             this.colIdMusic.Name = "colIdMusic";
+            this.colIdMusic.ReadOnly = true;
             // 
             // colTitleMusic
             // 
             this.colTitleMusic.HeaderText = "Title";
             this.colTitleMusic.Name = "colTitleMusic";
+            this.colTitleMusic.ReadOnly = true;
             // 
             // colArtistMusic
             // 
             this.colArtistMusic.HeaderText = "Artist";
             this.colArtistMusic.Name = "colArtistMusic";
+            this.colArtistMusic.ReadOnly = true;
             // 
             // colAlbumMusic
             // 
             this.colAlbumMusic.HeaderText = "Album";
             this.colAlbumMusic.Name = "colAlbumMusic";
+            this.colAlbumMusic.ReadOnly = true;
             // 
             // colYearMusic
             // 
             this.colYearMusic.HeaderText = "Year";
             this.colYearMusic.Name = "colYearMusic";
+            this.colYearMusic.ReadOnly = true;
             // 
             // colLabelMusic
             // 
             this.colLabelMusic.HeaderText = "Label";
             this.colLabelMusic.Name = "colLabelMusic";
+            this.colLabelMusic.ReadOnly = true;
             // 
             // colDurationMusic
             // 
             this.colDurationMusic.HeaderText = "Duration";
             this.colDurationMusic.Name = "colDurationMusic";
+            this.colDurationMusic.ReadOnly = true;
             // 
             // colGenderMusic
             // 
             this.colGenderMusic.HeaderText = "Gender";
             this.colGenderMusic.Name = "colGenderMusic";
+            this.colGenderMusic.ReadOnly = true;
             // 
             // btnImportFilesMusic
             // 
@@ -547,8 +633,10 @@
             this.btnImportFilesMusic.Name = "btnImportFilesMusic";
             this.btnImportFilesMusic.Size = new System.Drawing.Size(112, 23);
             this.btnImportFilesMusic.TabIndex = 2;
+            this.btnImportFilesMusic.Tag = "Music";
             this.btnImportFilesMusic.Text = "Import from files...";
             this.btnImportFilesMusic.UseVisualStyleBackColor = true;
+            this.btnImportFilesMusic.Click += new System.EventHandler(this.ImportFiles_Click);
             // 
             // btnImportFolderMusic
             // 
@@ -556,8 +644,10 @@
             this.btnImportFolderMusic.Name = "btnImportFolderMusic";
             this.btnImportFolderMusic.Size = new System.Drawing.Size(112, 23);
             this.btnImportFolderMusic.TabIndex = 1;
+            this.btnImportFolderMusic.Tag = "Music";
             this.btnImportFolderMusic.Text = "Import from folder...";
             this.btnImportFolderMusic.UseVisualStyleBackColor = true;
+            this.btnImportFolderMusic.Click += new System.EventHandler(this.ImportFolder_Click);
             // 
             // txbSearchMusic
             // 
@@ -566,6 +656,8 @@
             this.txbSearchMusic.Size = new System.Drawing.Size(100, 20);
             this.txbSearchMusic.TabIndex = 0;
             this.txbSearchMusic.Text = "Search...";
+            this.txbSearchMusic.Enter += new System.EventHandler(this.txbSearchEnter);
+            this.txbSearchMusic.Leave += new System.EventHandler(this.txbSearchLeave);
             // 
             // tbpPlaylists
             // 
@@ -1818,6 +1910,12 @@
             this.label31.TabIndex = 0;
             this.label31.Text = "Status :";
             // 
+            // OFD
+            // 
+            this.OFD.FileName = "*.mp3";
+            this.OFD.Filter = "MP3 Files|*.mp3";
+            this.OFD.Multiselect = true;
+            // 
             // AdminView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1836,6 +1934,10 @@
             this.mnsMain.ResumeLayout(false);
             this.mnsMain.PerformLayout();
             this.tbcTabs.ResumeLayout(false);
+            this.tbpStatus.ResumeLayout(false);
+            this.tbpStatus.PerformLayout();
+            this.groupBox20.ResumeLayout(false);
+            this.groupBox20.PerformLayout();
             this.tbpLibrary.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -2049,6 +2151,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colLabelMusic;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDurationMusic;
         private System.Windows.Forms.DataGridViewTextBoxColumn colGenderMusic;
+        private System.Windows.Forms.GroupBox groupBox21;
+        private System.Windows.Forms.GroupBox groupBox20;
+        private System.Windows.Forms.Button btnModifyName;
+        private System.Windows.Forms.TextBox txbWebradioName;
+        private System.Windows.Forms.Label lblWebradioTitle;
+        private System.Windows.Forms.FolderBrowserDialog FBD;
+        private System.Windows.Forms.OpenFileDialog OFD;
 
 
     }

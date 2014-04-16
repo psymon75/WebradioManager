@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,6 +50,8 @@ namespace WebradioManager
         {
             Webradio webradio = this.Controller.GetWebradio(this.IdWebradio);
             this.Text = "WebradioManager - " + webradio.Name;
+            txbWebradioName.Text = webradio.Name;
+            lblWebradioTitle.Text = webradio.Name;
             cmbTypePlaylist.SelectedIndex = 0;
             cmbTypePlaylistGenerate.SelectedIndex = 0;
 
@@ -173,6 +176,80 @@ namespace WebradioManager
         private void AdminView_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Controller.FormClose();
+        }
+
+        private void ImportFolder_Click(object sender, EventArgs e)
+        {
+            AudioType type;
+            string[] filenames;
+            if ((sender as Button).Tag.ToString() == AudioType.Music.ToString())
+                type = AudioType.Music;
+            else
+                type = AudioType.Ad;
+            if(FBD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                //Recusively
+                if (MessageBox.Show("Do you want to search recursively ?", "Recursively", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                    filenames = Directory.GetFiles(FBD.SelectedPath, "*.mp3", SearchOption.AllDirectories);
+                else
+                    filenames = Directory.GetFiles(FBD.SelectedPath, "*.mp3", SearchOption.TopDirectoryOnly);
+
+                if (this.Controller.ImportFilesToLibrary(filenames, type))
+                    MessageBox.Show("Importation completed", "Success");
+                else
+                    MessageBox.Show("An error occured", "Error");
+            }
+        }
+
+        private void ImportFiles_Click(object sender, EventArgs e)
+        {
+            AudioType type;
+            if ((sender as Button).Tag.ToString() == AudioType.Music.ToString())
+                type = AudioType.Music;
+            else
+                type = AudioType.Ad;
+            if(OFD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if(this.Controller.ImportFilesToLibrary(OFD.FileNames,type))
+                    MessageBox.Show("Importation completed", "Success");
+                else
+                    MessageBox.Show("An error occured", "Error");
+            }
+        }
+
+        private void txbSearchEnter(object sender, EventArgs e)
+        {
+            (sender as TextBox).Text = "";
+        }
+
+        private void txbSearchLeave(object sender, EventArgs e)
+        {
+            (sender as TextBox).Text = "Search...";
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            AudioType type;
+            bool state = true;
+
+            if ((sender as Button).Tag.ToString() == AudioType.Music.ToString())
+                type = AudioType.Music;
+            else
+                type = AudioType.Ad;
+
+            foreach(DataGridViewRow row in ((type == AudioType.Music)?dgvMusics.SelectedRows:dgvAds.SelectedRows))
+            {
+                if (!this.Controller.DeleteAudioFile(int.Parse(row.Cells[0].Value.ToString())))
+                    state = false;
+            }
+
+            if (state)
+            {
+                MessageBox.Show("Delete OK", "Delete");
+                this.UpdateView();
+            }
+            else
+                MessageBox.Show("An error occured");
         }
 
     }

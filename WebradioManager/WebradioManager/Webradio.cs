@@ -7,6 +7,8 @@ namespace WebradioManager
 {
     public class Webradio : ICloneable
     {
+        const int DEFAULT_ID = 0;
+
         private List<Playlist> _playlists;
         private WebradioCalendar _calendar;
         private string _name;
@@ -61,11 +63,9 @@ namespace WebradioManager
             this.Transcoders = new List<WebradioTranscoder>();
         }
 
-        public Webradio(string name)
+        public Webradio(string name):this(name,DEFAULT_ID)
         {
-            this.Playlists = new List<Playlist>();
-            this.Transcoders = new List<WebradioTranscoder>();
-            this.Name = name;
+            //NO CODE
         }
 
         public void GenerateConfigFiles()

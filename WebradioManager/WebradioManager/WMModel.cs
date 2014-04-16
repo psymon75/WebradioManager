@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Windows.Forms;
+using TagLib;
 
 namespace WebradioManager
 {
@@ -74,6 +76,14 @@ namespace WebradioManager
         public void RemoveObserver(IController observer)
         {
             this.Observers.Remove(observer);
+        }
+
+        private void UpdateObservers()
+        {
+            foreach(IController controller in this.Observers)
+            {
+                controller.UpdateView();
+            }
         }
 
         public void LoadLibrary()
@@ -172,6 +182,57 @@ namespace WebradioManager
         public List<string> GetGenders()
         {
             return this.Bdd.GetGenders();
+        }
+
+        public bool ImportFilesToLibrary(string[] filenames, AudioType type)
+        {
+            AudioFile file;
+            bool state = true;
+            foreach(string filename in filenames)
+            {
+                TagLib.File tagFile = TagLib.File.Create(filename);
+                if (type == AudioType.Music)
+                    file = new Music(filename,
+                        tagFile.Tag.Title,
+                        tagFile.Tag.FirstPerformer,
+                        tagFile.Tag.Album,
+                        (int)tagFile.Tag.Year,
+                        tagFile.Tag.Copyright,
+                        tagFile.Properties.Duration,
+                        tagFile.Tag.FirstGenre);
+                else
+                    file = new Ad(filename,
+                        tagFile.Tag.Title,
+                        tagFile.Tag.FirstPerformer,
+                        tagFile.Tag.Album,
+                        (int)tagFile.Tag.Year,
+                        tagFile.Tag.Copyright,
+                        tagFile.Properties.Duration,
+                        tagFile.Tag.FirstGenre);
+
+                int id = this.Bdd.AddAudioFile(file);
+                if (id != Bdd.ERROR)
+                {
+                    file.Id = id;
+                    this.Library.Add(file);
+                    this.UpdateObservers();
+                }
+                state = true;
+            }
+            return state;
+        }
+
+        public bool DeleteAudioFile(int id)
+        {
+            foreach (AudioFile file in this.Library)
+            {
+                if (file.Id == id)
+                {
+                    this.Library.Remove(file);
+                    break;
+                }
+            }
+            return this.Bdd.DeleteAudioFile(id);
         }
 
     }

@@ -5,9 +5,10 @@ using System.Text;
 
 namespace WebradioManager
 {
+    //Define from db
     public enum AudioType
     {
-        Music,
-        Ad,
+        Music = 2,
+        Ad = 1,
     }
 }

@@ -53,5 +53,15 @@ namespace WebradioManager
         {
             this.Model.RemoveObserver(this);
         }
+
+        public bool ImportFilesToLibrary(string[] filenames, AudioType type)
+        {
+            return this.Model.ImportFilesToLibrary(filenames, type);
+        }
+
+        public bool DeleteAudioFile(int id)
+        {
+            return this.Model.DeleteAudioFile(id);
+        }
     }
 }

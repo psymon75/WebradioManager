@@ -9,7 +9,7 @@ namespace WebradioManager
 {
     public class Bdd
     {
-        const int ERROR = -1;
+        public const int ERROR = -1;
 
         private BddControls _controls;
 
@@ -288,7 +288,91 @@ namespace WebradioManager
             return genders;
         }
 
+        public int GetGenderId(string gender)
+        {
+            SQLiteDataReader reader = this.Controls.ExecuteDataReader("SELECT id FROM tgender WHERE name = '"+gender+"'");
+            reader.Read();
+            int id;
+            if (reader.HasRows)
+                id = int.Parse(reader["id"].ToString());
+            else
+                id = ERROR;
+            reader.Close();
+            return id;
+        }
 
-        
+        public int AddGender(string gender)
+        {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data.Add("name", gender);
+            this.Controls.Insert("tgender", data);
+
+            SQLiteDataReader reader = this.Controls.ExecuteDataReader("SELECT id FROM tgender WHERE name = '"+ gender +"'");
+            reader.Read();
+            int id = int.Parse(reader["id"].ToString());
+            reader.Close();
+            return id;
+        }
+
+        public int AddAudioFile(AudioFile file)
+        {
+            if(this.AudioFileExist(file.Filename))
+                return ERROR;
+
+            int genderId = this.GetGenderId(file.Gender);
+            //If return error, gender doesn't exist in DB, so add it
+            if (genderId == ERROR)
+                //Get the new id
+                genderId = AddGender(file.Gender);
+
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data.Add("filename", file.Filename.Replace('\'', ' '));
+            data.Add("title", file.Title);
+            data.Add("artist", file.Artist);
+            data.Add("album", file.Album);
+            data.Add("year", file.Year.ToString());
+            data.Add("label", file.Label);
+            data.Add("duration", file.Duration.ToString(@"hh\:mm\:ss"));
+            data.Add("genderid", genderId.ToString());
+            data.Add("typeid", ((int)file.Type).ToString());
+            this.Controls.Insert("tmusic", data);
+
+            //Get the new id
+            SQLiteDataReader reader = this.Controls.ExecuteDataReader("SELECT id FROM tmusic WHERE filename = '" + file.Filename.Replace('\'', ' ') + "'");
+            reader.Read();
+            int id = int.Parse(reader["id"].ToString());
+            reader.Close();
+            return id;
+        }
+
+        public bool AudioFileExist(string filename)
+        {
+            SQLiteDataReader reader = this.Controls.ExecuteDataReader("SELECT COUNT(*) AS Count FROM tmusic WHERE filename = '" + filename.Replace('\'', ' ') + "'");
+            reader.Read();
+            if (reader["Count"].ToString() == "0")
+            {
+                reader.Close();
+                return false;
+            }
+            else
+            {
+                reader.Close();
+                return true;
+            }
+
+        }
+
+        public bool DeleteAudioFile(int id)
+        {
+            try
+            {
+                this.Controls.Delete("tmusic", "id = " + id.ToString());
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
