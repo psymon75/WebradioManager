@@ -53,6 +53,7 @@
             this.colLabelAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDurationAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGenderAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPathAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbPlaylistsAd = new System.Windows.Forms.ComboBox();
             this.txbSearchAd = new System.Windows.Forms.TextBox();
             this.btnAddToAd = new System.Windows.Forms.Button();
@@ -71,6 +72,7 @@
             this.colLabelMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDurationMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGenderMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPathMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnImportFilesMusic = new System.Windows.Forms.Button();
             this.btnImportFolderMusic = new System.Windows.Forms.Button();
             this.txbSearchMusic = new System.Windows.Forms.TextBox();
@@ -411,7 +413,8 @@
             this.colYearAd,
             this.colLabelAd,
             this.colDurationAd,
-            this.colGenderAd});
+            this.colGenderAd,
+            this.colPathAd});
             this.dgvAds.Location = new System.Drawing.Point(7, 47);
             this.dgvAds.Name = "dgvAds";
             this.dgvAds.ReadOnly = true;
@@ -467,6 +470,12 @@
             this.colGenderAd.Name = "colGenderAd";
             this.colGenderAd.ReadOnly = true;
             // 
+            // colPathAd
+            // 
+            this.colPathAd.HeaderText = "Path";
+            this.colPathAd.Name = "colPathAd";
+            this.colPathAd.ReadOnly = true;
+            // 
             // cmbPlaylistsAd
             // 
             this.cmbPlaylistsAd.FormattingEnabled = true;
@@ -481,7 +490,9 @@
             this.txbSearchAd.Name = "txbSearchAd";
             this.txbSearchAd.Size = new System.Drawing.Size(100, 20);
             this.txbSearchAd.TabIndex = 7;
+            this.txbSearchAd.Tag = "Ad";
             this.txbSearchAd.Text = "Search...";
+            this.txbSearchAd.TextChanged += new System.EventHandler(this.txbSearchTextChanged);
             this.txbSearchAd.Enter += new System.EventHandler(this.txbSearchEnter);
             this.txbSearchAd.Leave += new System.EventHandler(this.txbSearchLeave);
             // 
@@ -571,7 +582,8 @@
             this.colYearMusic,
             this.colLabelMusic,
             this.colDurationMusic,
-            this.colGenderMusic});
+            this.colGenderMusic,
+            this.colPathMusic});
             this.dgvMusics.Location = new System.Drawing.Point(7, 47);
             this.dgvMusics.Name = "dgvMusics";
             this.dgvMusics.ReadOnly = true;
@@ -627,6 +639,12 @@
             this.colGenderMusic.Name = "colGenderMusic";
             this.colGenderMusic.ReadOnly = true;
             // 
+            // colPathMusic
+            // 
+            this.colPathMusic.HeaderText = "Path";
+            this.colPathMusic.Name = "colPathMusic";
+            this.colPathMusic.ReadOnly = true;
+            // 
             // btnImportFilesMusic
             // 
             this.btnImportFilesMusic.Location = new System.Drawing.Point(231, 18);
@@ -655,7 +673,9 @@
             this.txbSearchMusic.Name = "txbSearchMusic";
             this.txbSearchMusic.Size = new System.Drawing.Size(100, 20);
             this.txbSearchMusic.TabIndex = 0;
+            this.txbSearchMusic.Tag = "Music";
             this.txbSearchMusic.Text = "Search...";
+            this.txbSearchMusic.TextChanged += new System.EventHandler(this.txbSearchTextChanged);
             this.txbSearchMusic.Enter += new System.EventHandler(this.txbSearchEnter);
             this.txbSearchMusic.Leave += new System.EventHandler(this.txbSearchLeave);
             // 
@@ -873,6 +893,7 @@
             this.btnCreatePlaylist.TabIndex = 4;
             this.btnCreatePlaylist.Text = "Create";
             this.btnCreatePlaylist.UseVisualStyleBackColor = true;
+            this.btnCreatePlaylist.Click += new System.EventHandler(this.btnCreatePlaylist_Click);
             // 
             // cmbTypePlaylist
             // 
@@ -2135,6 +2156,13 @@
         private System.Windows.Forms.Label lblStatusServer;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Button btnClearLogTranscoder;
+        private System.Windows.Forms.GroupBox groupBox21;
+        private System.Windows.Forms.GroupBox groupBox20;
+        private System.Windows.Forms.Button btnModifyName;
+        private System.Windows.Forms.TextBox txbWebradioName;
+        private System.Windows.Forms.Label lblWebradioTitle;
+        private System.Windows.Forms.FolderBrowserDialog FBD;
+        private System.Windows.Forms.OpenFileDialog OFD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdAd;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTitleAd;
         private System.Windows.Forms.DataGridViewTextBoxColumn colArtistAd;
@@ -2143,6 +2171,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colLabelAd;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDurationAd;
         private System.Windows.Forms.DataGridViewTextBoxColumn colGenderAd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPathAd;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdMusic;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTitleMusic;
         private System.Windows.Forms.DataGridViewTextBoxColumn colArtistMusic;
@@ -2151,13 +2180,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colLabelMusic;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDurationMusic;
         private System.Windows.Forms.DataGridViewTextBoxColumn colGenderMusic;
-        private System.Windows.Forms.GroupBox groupBox21;
-        private System.Windows.Forms.GroupBox groupBox20;
-        private System.Windows.Forms.Button btnModifyName;
-        private System.Windows.Forms.TextBox txbWebradioName;
-        private System.Windows.Forms.Label lblWebradioTitle;
-        private System.Windows.Forms.FolderBrowserDialog FBD;
-        private System.Windows.Forms.OpenFileDialog OFD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPathMusic;
 
 
     }

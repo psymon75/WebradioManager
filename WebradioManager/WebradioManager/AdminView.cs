@@ -14,6 +14,7 @@ namespace WebradioManager
 {
     public partial class AdminView : Form
     {
+        const string DEFAULT_SEARCH_STRING = "Search...";
         private AdminController _controller;
         private int _idWebradio;
         List<Appointment> _events;
@@ -58,6 +59,8 @@ namespace WebradioManager
             //LIBRARY
             dgvMusics.Rows.Clear();
             dgvAds.Rows.Clear();
+            txbSearchAd.Text = DEFAULT_SEARCH_STRING;
+            txbSearchMusic.Text = DEFAULT_SEARCH_STRING;
             List<AudioFile> audiofiles = this.Controller.GetLibrary();
             foreach (AudioFile file in audiofiles)
             {
@@ -219,12 +222,14 @@ namespace WebradioManager
 
         private void txbSearchEnter(object sender, EventArgs e)
         {
-            (sender as TextBox).Text = "";
+            if((sender as TextBox).Text == DEFAULT_SEARCH_STRING)
+                (sender as TextBox).Text = "";
         }
 
         private void txbSearchLeave(object sender, EventArgs e)
         {
-            (sender as TextBox).Text = "Search...";
+            if((sender as TextBox).Text == "")
+                (sender as TextBox).Text = "Search...";
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -239,17 +244,57 @@ namespace WebradioManager
 
             foreach(DataGridViewRow row in ((type == AudioType.Music)?dgvMusics.SelectedRows:dgvAds.SelectedRows))
             {
-                if (!this.Controller.DeleteAudioFile(int.Parse(row.Cells[0].Value.ToString())))
-                    state = false;
+                //Simple check if selected row is not the last empty row
+                if(row.Cells[0].Value != null)
+                    if (!this.Controller.DeleteAudioFile(int.Parse(row.Cells[0].Value.ToString()), row.Cells[row.Cells.Count - 1].Value.ToString()))
+                        state = false;
             }
 
             if (state)
-            {
-                MessageBox.Show("Delete OK", "Delete");
                 this.UpdateView();
-            }
             else
                 MessageBox.Show("An error occured");
+        }
+
+        private void txbSearchTextChanged(object sender, EventArgs e)
+        {
+            AudioType type;
+            bool valid = false;
+            string searchString = "";
+            if ((sender as TextBox).Tag.ToString() == "Music")
+                type = AudioType.Music;
+            else
+                type = AudioType.Ad;
+
+
+            if ((sender as TextBox).Text != "" && (sender as TextBox).Text != DEFAULT_SEARCH_STRING)
+            {
+                searchString = (sender as TextBox).Text.ToLower();
+                foreach(DataGridViewRow row in ((type == AudioType.Music)?dgvMusics.Rows:dgvAds.Rows))
+                {
+                    foreach(DataGridViewCell cell in row.Cells)
+                    {
+                        if (cell.Value.ToString().ToLower().Contains(searchString))
+                        {
+                            valid = true;
+                            break;
+                        }
+                    }
+                    row.Visible = (valid) ? true : false;
+                    valid = false;
+                }
+            }
+        }
+
+        private void btnCreatePlaylist_Click(object sender, EventArgs e)
+        {
+            if (txbPlaylistName.Text.Trim() != "")
+            {
+                if (!this.Controller.CreatePlaylist(txbPlaylistName.Text, this.IdWebradio, (cmbTypePlaylist.SelectedItem.ToString() == "Music")?AudioType.Music:AudioType.Ad))
+                    MessageBox.Show("Playlist already exist", "Playlist exist");
+            }
+            else
+                MessageBox.Show("Please enter a playlist's name", "Empty name");
         }
 
     }

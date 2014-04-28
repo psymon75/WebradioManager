@@ -190,40 +190,60 @@ namespace WebradioManager
             bool state = true;
             foreach(string filename in filenames)
             {
-                TagLib.File tagFile = TagLib.File.Create(filename);
-                if (type == AudioType.Music)
-                    file = new Music(filename,
-                        tagFile.Tag.Title,
-                        tagFile.Tag.FirstPerformer,
-                        tagFile.Tag.Album,
-                        (int)tagFile.Tag.Year,
-                        tagFile.Tag.Copyright,
-                        tagFile.Properties.Duration,
-                        tagFile.Tag.FirstGenre);
-                else
-                    file = new Ad(filename,
-                        tagFile.Tag.Title,
-                        tagFile.Tag.FirstPerformer,
-                        tagFile.Tag.Album,
-                        (int)tagFile.Tag.Year,
-                        tagFile.Tag.Copyright,
-                        tagFile.Properties.Duration,
-                        tagFile.Tag.FirstGenre);
-
-                int id = this.Bdd.AddAudioFile(file);
-                if (id != Bdd.ERROR)
+                try
                 {
-                    file.Id = id;
-                    this.Library.Add(file);
-                    this.UpdateObservers();
+                    TagLib.File tagFile = TagLib.File.Create(filename);
+                    if (type == AudioType.Music)
+                        file = new Music(filename,
+                            tagFile.Tag.Title,
+                            tagFile.Tag.FirstPerformer,
+                            tagFile.Tag.Album,
+                            (int)tagFile.Tag.Year,
+                            tagFile.Tag.Copyright,
+                            tagFile.Properties.Duration,
+                            tagFile.Tag.FirstGenre);
+                    else
+                        file = new Ad(filename,
+                            tagFile.Tag.Title,
+                            tagFile.Tag.FirstPerformer,
+                            tagFile.Tag.Album,
+                            (int)tagFile.Tag.Year,
+                            tagFile.Tag.Copyright,
+                            tagFile.Properties.Duration,
+                            tagFile.Tag.FirstGenre);
+
+                    int id = this.Bdd.AddAudioFile(file);
+                    if (id != Bdd.ERROR)
+                    {
+                        file.Id = id;
+                        this.Library.Add(file);
+                        this.UpdateObservers();
+                    }
+                    state = true;
                 }
-                state = true;
+                catch
+                {
+
+                }
             }
             return state;
         }
 
-        public bool DeleteAudioFile(int id)
+        public bool DeleteAudioFile(int id, string audioFilename)
         {
+            foreach(KeyValuePair<int,Webradio> webradio in this.Webradios)
+            {
+                foreach(Playlist playlist in webradio.Value.Playlists)
+                {
+                    foreach(string filename in playlist.AudioFileList)
+                    {
+                        if(filename == audioFilename)
+                        {
+                            playlist.AudioFileList.Remove(filename);                        
+                        }
+                    }
+                }
+            }
             foreach (AudioFile file in this.Library)
             {
                 if (file.Id == id)
@@ -233,6 +253,12 @@ namespace WebradioManager
                 }
             }
             return this.Bdd.DeleteAudioFile(id);
+        }
+
+        public bool CreatePlaylist(string name, int webradioid, AudioType type)
+        {
+            Webradio selectedWebradio = this.Webradios[webradioid];
+            int id = this.Bdd.CreatePlaylist(name, webradioid, type);
         }
 
     }

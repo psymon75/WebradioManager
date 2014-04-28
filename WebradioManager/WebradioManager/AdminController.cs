@@ -59,9 +59,14 @@ namespace WebradioManager
             return this.Model.ImportFilesToLibrary(filenames, type);
         }
 
-        public bool DeleteAudioFile(int id)
+        public bool DeleteAudioFile(int id,string filename)
         {
-            return this.Model.DeleteAudioFile(id);
+            return this.Model.DeleteAudioFile(id,filename);
+        }
+
+        public bool CreatePlaylist(string name, int webradioid, AudioType type)
+        {
+            return this.Model.CreatePlaylist(name, webradioid,type);
         }
     }
 }

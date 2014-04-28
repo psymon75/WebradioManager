@@ -367,12 +367,29 @@ namespace WebradioManager
             try
             {
                 this.Controls.Delete("tmusic", "id = " + id.ToString());
+                //this.Controls.Delete("tplaylist_has_music", "idmusic = " + id.ToString());
                 return true;
             }
             catch
             {
                 return false;
             }
+        }
+
+        public int CreatePlaylist(string name, int webradioid, AudioType type)
+        {
+            Dictionary<string,string> data = new Dictionary<string,string>();
+            data.Add("name", name);
+            data.Add("webradioid", webradioid.ToString());
+            data.Add("typeid", type.ToString());
+            this.Controls.Insert("tplaylist", data);
+
+            SQLiteDataReader reader = this.Controls.ExecuteDataReader("SELECT id FROM tplaylist WHERE name = '"+name +"' AND webradioid = " + web)
+        }
+
+        private bool PlaylistExist(string name, int webradioid, AudioType type)
+        {
+
         }
     }
 }

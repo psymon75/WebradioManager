@@ -7,7 +7,7 @@ namespace WebradioManager
 {
     public abstract class AudioFile
     {
-        const int NUMBER_OF_ELEMENTS = 8;
+        const int NUMBER_OF_ELEMENTS = 9;
         const int DEFAULT_ID = 0;
 
         private List<Playlist> _playlists;
@@ -133,6 +133,7 @@ namespace WebradioManager
             infos[5] = this.Label;
             infos[6] = this.Duration.ToString(@"hh\:mm\:ss");
             infos[7] = this.Gender;
+            infos[8] = this.Filename;
 
             return infos;
         }
