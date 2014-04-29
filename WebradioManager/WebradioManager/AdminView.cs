@@ -17,9 +17,15 @@ namespace WebradioManager
         const string DEFAULT_SEARCH_STRING = "Search...";
         private AdminController _controller;
         private int _idWebradio;
+        private string _nameWebradio;
         List<Appointment> _events;
 
         #region Properties
+        public string NameWebradio
+        {
+            get { return _nameWebradio; }
+            set { _nameWebradio = value; }
+        }
         public List<Appointment> EventsCalendar
         {
             get { return _events; }
@@ -50,9 +56,10 @@ namespace WebradioManager
         public void UpdateView()
         {
             Webradio webradio = this.Controller.GetWebradio(this.IdWebradio);
-            this.Text = "WebradioManager - " + webradio.Name;
-            txbWebradioName.Text = webradio.Name;
-            lblWebradioTitle.Text = webradio.Name;
+            this.NameWebradio = webradio.Name;
+            this.Text = "WebradioManager - " + this.NameWebradio;
+            txbWebradioName.Text = this.NameWebradio;
+            lblWebradioTitle.Text = this.NameWebradio;
             cmbTypePlaylist.SelectedIndex = 0;
             cmbTypePlaylistGenerate.SelectedIndex = 0;
 
@@ -71,11 +78,13 @@ namespace WebradioManager
             }
             //----
             //PLAYLIST
+            lblPlaylistDuration.Text = "";
             cmbPlaylistsMusic.Items.Clear();
             cmbPlaylistsAd.Items.Clear();
             cmbPlaylistEvent.Items.Clear();
             lsbPlaylistsAd.Items.Clear();
             lsbPlaylistsMusic.Items.Clear();
+            dgvPlaylistContent.Rows.Clear();
 
             cmbPlaylistEvent.Items.AddRange(webradio.Playlists.ToArray());
             foreach(Playlist playlist in webradio.Playlists)
@@ -91,12 +100,19 @@ namespace WebradioManager
                     lsbPlaylistsAd.Items.Add(playlist);
                 }
             }
+            if(cmbPlaylistsAd.Items.Count > 0)
+                cmbPlaylistsAd.SelectedIndex = 0;
+            if (cmbPlaylistsMusic.Items.Count > 0)
+                cmbPlaylistsMusic.SelectedIndex = 0;
+            lsbPlaylistsAd.SelectedIndex = -1;
+            lsbPlaylistsMusic.SelectedIndex = -1;
             //----
             //GENDER
             List<string> gender = this.Controller.GetGenders();
             cmbGenderGenerate.Items.Clear();
             cmbGenderGenerate.Items.AddRange(gender.ToArray());
-            cmbGenderGenerate.SelectedIndex = 0;
+            if(cmbGenderGenerate.Items.Count > 0)
+                cmbGenderGenerate.SelectedIndex = 0;
             //----
             //EVENTS
             this.EventsCalendar.Clear();
@@ -246,7 +262,7 @@ namespace WebradioManager
             {
                 //Simple check if selected row is not the last empty row
                 if(row.Cells[0].Value != null)
-                    if (!this.Controller.DeleteAudioFile(int.Parse(row.Cells[0].Value.ToString()), row.Cells[row.Cells.Count - 1].Value.ToString()))
+                    if (!this.Controller.DeleteAudioFile(int.Parse(row.Cells["colId"+type.ToString()].Value.ToString()), row.Cells["colPath"+type.ToString()].Value.ToString()))
                         state = false;
             }
 
@@ -261,7 +277,7 @@ namespace WebradioManager
             AudioType type;
             bool valid = false;
             string searchString = "";
-            if ((sender as TextBox).Tag.ToString() == "Music")
+            if ((sender as TextBox).Tag.ToString() == AudioType.Music.ToString())
                 type = AudioType.Music;
             else
                 type = AudioType.Ad;
@@ -290,11 +306,142 @@ namespace WebradioManager
         {
             if (txbPlaylistName.Text.Trim() != "")
             {
-                if (!this.Controller.CreatePlaylist(txbPlaylistName.Text, this.IdWebradio, (cmbTypePlaylist.SelectedItem.ToString() == "Music")?AudioType.Music:AudioType.Ad))
+                if (!this.Controller.CreatePlaylist(txbPlaylistName.Text, this.NameWebradio, this.IdWebradio, (cmbTypePlaylist.SelectedItem.ToString() == "Music") ? AudioType.Music : AudioType.Ad))
                     MessageBox.Show("Playlist already exist", "Playlist exist");
             }
             else
                 MessageBox.Show("Please enter a playlist's name", "Empty name");
+        }
+
+        private void btnDeletePlaylistClick(object sender, EventArgs e)
+        {
+            AudioType type;
+            type = ((sender as Button).Tag.ToString() == AudioType.Music.ToString()) ? AudioType.Music : AudioType.Ad;
+
+            if (((type == AudioType.Music) ? lsbPlaylistsMusic.SelectedIndex : lsbPlaylistsAd.SelectedIndex) >= 0)
+                this.Controller.DeletePlaylist((Playlist)((type == AudioType.Music) ? lsbPlaylistsMusic.SelectedItem : lsbPlaylistsAd.SelectedItem), this.IdWebradio);
+            else
+                MessageBox.Show("Please select a playlist to delete.", "No playlist selected");
+        }
+
+        private void btnAddToClick(object sender, EventArgs e)
+        {
+            AudioType type = ((sender as Button).Tag.ToString() == AudioType.Music.ToString())?AudioType.Music:AudioType.Ad;
+            Dictionary<int, string> audioFiles = new Dictionary<int, string>();
+            DataGridViewSelectedRowCollection rows = ((type == AudioType.Music) ? dgvMusics.SelectedRows : dgvAds.SelectedRows);
+            this.Cursor = Cursors.WaitCursor;
+            foreach (DataGridViewRow row in rows)
+            {
+                //Simple check if selected row is not the last empty row
+                if (row.Cells[0].Value != null)
+                    audioFiles.Add(int.Parse(row.Cells["colId" + type.ToString()].Value.ToString()), row.Cells["colPath"+type.ToString()].Value.ToString());
+
+            }
+            this.Cursor = Cursors.Default;
+            if (!this.Controller.AddToPlaylist((Playlist)((type == AudioType.Music) ? cmbPlaylistsMusic.SelectedItem : cmbPlaylistsAd.SelectedItem),
+                audioFiles))
+                MessageBox.Show("An error occured", "Error");
+            else
+                this.UpdateView();
+
+        }
+
+        private void lsbPlaylistsSelectedIndexChanged(object sender, EventArgs e)
+        {
+            AudioType type = ((sender as ListBox).Tag.ToString() == AudioType.Music.ToString())?AudioType.Music:AudioType.Ad;
+            btnRemoveFromPlaylist.Tag = type;
+            if((sender as ListBox).SelectedIndex >= 0)
+            {
+                this.GetPlaylistContent((Playlist)(sender as ListBox).SelectedItem);
+            }
+        }
+
+        private void GetPlaylistContent(Playlist playlist)
+        {
+            dgvPlaylistContent.Rows.Clear();
+            TimeSpan totalDuration = new TimeSpan(0,0,0);
+            List<AudioFile> audioFiles = this.Controller.GetPlaylistContent(playlist);
+            foreach (AudioFile af in audioFiles)
+            {
+                totalDuration += af.Duration;
+                dgvPlaylistContent.Rows.Add(af.GetInfosArray());
+            }
+            lblPlaylistDuration.Text = "Duration : " + totalDuration.ToString();
+        }
+
+        private void btnRemoveFromPlaylist_Click(object sender, EventArgs e)
+        {
+            if(btnRemoveFromPlaylist.Tag == null)
+            {
+                MessageBox.Show("No playlist selected", "No playlist");
+                return;
+            }
+            AudioType type = (AudioType)btnRemoveFromPlaylist.Tag;
+            Dictionary<int, string> audioFiles = new Dictionary<int, string>();
+            this.Cursor = Cursors.WaitCursor;
+            foreach (DataGridViewRow row in dgvPlaylistContent.SelectedRows)
+            {
+                //Simple check if selected row is not the last empty row
+                if (row.Cells[0].Value != null)
+                    audioFiles.Add(int.Parse(row.Cells["colIdPlaylist"].Value.ToString()), row.Cells["colPathPlaylist"].Value.ToString());
+
+            }
+            this.Cursor = Cursors.Default;
+            Playlist selectedPlaylist = (Playlist)((type == AudioType.Music) ? lsbPlaylistsMusic.SelectedItem:lsbPlaylistsAd.SelectedItem);
+            if (!this.Controller.RemoveFromPlaylist(selectedPlaylist,audioFiles))
+                MessageBox.Show("An error occured", "Error");
+            else
+            {
+                this.GetPlaylistContent(selectedPlaylist);
+            }
+                
+        }
+
+        private void txbSearchPlaylistContent_TextChanged(object sender, EventArgs e)
+        {
+            string searchString = "";
+            bool valid = false;
+            if (txbSearchPlaylistContent.Text != "" && txbSearchPlaylistContent.Text != DEFAULT_SEARCH_STRING)
+            {
+                searchString = txbSearchPlaylistContent.Text.ToLower();
+                foreach (DataGridViewRow row in dgvPlaylistContent.Rows)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        if (cell.Value.ToString().ToLower().Contains(searchString))
+                        {
+                            valid = true;
+                            break;
+                        }
+                    }
+                    row.Visible = (valid) ? true : false;
+                    valid = false;
+                }
+            }
+        }
+
+        private void cmbTypePlaylistGenerate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbTypePlaylistGenerate.SelectedItem.ToString() == AudioType.Ad.ToString())
+                cmbGenderGenerate.Enabled = false;
+            else
+                cmbGenderGenerate.Enabled = true;
+        }
+
+        private void btnGeneratePlaylist_Click(object sender, EventArgs e)
+        {
+            if (txbPlaylistNameGenerate.Text.Trim() != "")
+            {
+                TimeSpan duration = new TimeSpan(0,(int)nudDurationGenerate.Value,0);
+                if(!this.Controller.GeneratePlaylist(txbPlaylistNameGenerate.Text, duration,
+                    (cmbTypePlaylistGenerate.SelectedItem.ToString() == AudioType.Music.ToString()) ? AudioType.Music : AudioType.Ad,
+                    cmbGenderGenerate.SelectedItem.ToString(), this.IdWebradio, this.NameWebradio))
+                {
+                    MessageBox.Show("Impossible to generate a playlist with these parameters", "Error");
+                }
+            }
+            else
+                MessageBox.Show("Please enter a playlist's name", "Error");
         }
 
     }

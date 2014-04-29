@@ -12,5 +12,11 @@ namespace WebradioManager
         {
 
         }
+
+        public PlaylistMusic(string name, string filename)
+            : base(name, filename, AudioType.Music)
+        {
+
+        } 
     }
 }

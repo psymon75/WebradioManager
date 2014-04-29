@@ -376,19 +376,84 @@ namespace WebradioManager
             }
         }
 
-        public int CreatePlaylist(string name, int webradioid, AudioType type)
+        public int CreatePlaylist(Playlist playlist, int webradioid)
         {
+            if(this.PlaylistExist(playlist,webradioid))
+                return ERROR;
+
             Dictionary<string,string> data = new Dictionary<string,string>();
-            data.Add("name", name);
+            data.Add("name", playlist.Name);
+            data.Add("filename", playlist.Filename);
             data.Add("webradioid", webradioid.ToString());
-            data.Add("typeid", type.ToString());
+            data.Add("typeid", ((int)playlist.Type).ToString());
             this.Controls.Insert("tplaylist", data);
 
-            SQLiteDataReader reader = this.Controls.ExecuteDataReader("SELECT id FROM tplaylist WHERE name = '"+name +"' AND webradioid = " + web)
+            SQLiteDataReader reader = this.Controls.ExecuteDataReader("SELECT id FROM tplaylist WHERE name = '" + playlist.Name + "' AND webradioid = " + webradioid.ToString() + " AND typeid = " + ((int)playlist.Type).ToString());
+            reader.Read();
+            int id = int.Parse(reader["id"].ToString());
+            reader.Close();
+            return id;
         }
 
-        private bool PlaylistExist(string name, int webradioid, AudioType type)
+        public bool DeletePlaylist(int id)
         {
+            try
+            {
+                this.Controls.Delete("tplaylist", "id = " + id.ToString());
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool AddToPlaylist(int idAudioFile, int idPlaylist)
+        {
+            try
+            {
+                Dictionary<string,string> data = new Dictionary<string,string>();
+                data.Add("playlistid", idPlaylist.ToString());
+                data.Add("musicid", idAudioFile.ToString());
+                this.Controls.Insert("tplaylist_has_music", data);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool RemoveFromPlaylist(int idAudioFile, int idPlaylist)
+        {
+            try
+            {
+                this.Controls.Delete("tplaylist_has_music", "musicid = " + idAudioFile.ToString() + " AND playlistid = " + idPlaylist.ToString());
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private bool PlaylistExist(Playlist playlist, int webradioid)
+        {
+            SQLiteDataReader reader = this.Controls.ExecuteDataReader("SELECT COUNT(*) AS Count FROM tplaylist WHERE name = '"+playlist.Name+"' AND webradioid = "+webradioid.ToString()+" AND typeid = " + ((int)playlist.Type).ToString());
+            reader.Read();
+            bool result = Convert.ToBoolean(int.Parse(reader["Count"].ToString()));
+            reader.Close();
+            return result;
+        }
+
+        public int AddGeneratedPlaylist(Playlist playlist, List<int> audioFilesId, int webradioId)
+        {
+            int idPlaylist = this.CreatePlaylist(playlist, webradioId);
+            if (idPlaylist == ERROR)
+                return idPlaylist;
+            foreach(int audioFileId in audioFilesId)
+                this.AddToPlaylist(audioFileId, idPlaylist);
+            return idPlaylist;
 
         }
     }

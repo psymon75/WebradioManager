@@ -8,6 +8,7 @@ namespace WebradioManager
 {
     public abstract class Playlist
     {
+        const int DEFAULT_ID = 0;
         private string _name;
         private int _id;
         private string _filename;
@@ -47,6 +48,11 @@ namespace WebradioManager
         }
         #endregion
 
+        public Playlist(string name, string filename, AudioType type):this(DEFAULT_ID,name,filename,type)
+        {
+            //NO CODE
+        }
+
         public Playlist(int id, string name, string filename, AudioType type)
         {
             this.Id = id;
@@ -59,6 +65,8 @@ namespace WebradioManager
         public void GenerateConfigFile()
         {
             string output = "";
+            if (File.Exists(this.Filename))
+                File.Delete(this.Filename);
             foreach(string filename in this.AudioFileList)
             {
                 output += (filename + "\n"); 

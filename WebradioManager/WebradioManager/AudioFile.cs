@@ -10,7 +10,6 @@ namespace WebradioManager
         const int NUMBER_OF_ELEMENTS = 9;
         const int DEFAULT_ID = 0;
 
-        private List<Playlist> _playlists;
         private int _id;
         private string _filename;
         private string _title;
@@ -94,16 +93,10 @@ namespace WebradioManager
             set { _type = value; }
         }
 
-        public List<Playlist> Playlists
-        {
-            get { return _playlists; }
-            set { _playlists = value; }
-        }
         #endregion
 
         public AudioFile(int id, string filename, string title, string artist, string album, int year, string label, TimeSpan duration, string gender, AudioType audiotype)
         {
-            this.Playlists = new List<Playlist>();
             this.Id = id;
             this.Filename = filename;
             this.Title = title;

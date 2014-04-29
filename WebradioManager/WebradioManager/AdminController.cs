@@ -64,9 +64,34 @@ namespace WebradioManager
             return this.Model.DeleteAudioFile(id,filename);
         }
 
-        public bool CreatePlaylist(string name, int webradioid, AudioType type)
+        public bool CreatePlaylist(string name, string webradioName, int webradioId, AudioType type)
         {
-            return this.Model.CreatePlaylist(name, webradioid,type);
+            return this.Model.CreatePlaylist(name,webradioName,webradioId,type);
+        }
+
+        public bool DeletePlaylist(Playlist playlist, int webradioId)
+        {
+            return this.Model.DeletePlaylist(playlist, webradioId);
+        }
+
+        public bool AddToPlaylist(Playlist playlist, Dictionary<int, string> audioFiles)
+        {
+            return this.Model.AddToPlaylist(playlist, audioFiles);
+        }
+
+        public bool RemoveFromPlaylist(Playlist playlist, Dictionary<int,string> audioFiles)
+        {
+            return this.Model.RemoveFromPlaylist(audioFiles, playlist);
+        }
+
+        public List<AudioFile> GetPlaylistContent(Playlist playlist)
+        {
+            return this.Model.GetPlaylistContent(playlist);
+        }
+
+        public bool GeneratePlaylist(string name, TimeSpan duration, AudioType type, string gender, int webradioId, string webradioName)
+        {
+            return this.Model.GeneratePlaylist(name, duration, type, gender, webradioId, webradioName);
         }
     }
 }

@@ -26,6 +26,7 @@ namespace WebradioManager
         const string DEFAULT_CALENDAR_FILENAME = "calendar.xml";
         //PLAYLISTS CONSTANTS
         const string DEFAULT_PLAYLISTS_FOLDER = "playlists/";
+        const int MAX_TRY_GENERATE = 10;
         //TRANSCODERS CONSTANTS
         
 
@@ -255,10 +256,164 @@ namespace WebradioManager
             return this.Bdd.DeleteAudioFile(id);
         }
 
-        public bool CreatePlaylist(string name, int webradioid, AudioType type)
+        public bool CreatePlaylist(string name, string webradioName, int webradioId, AudioType type)
         {
-            Webradio selectedWebradio = this.Webradios[webradioid];
-            int id = this.Bdd.CreatePlaylist(name, webradioid, type);
+            Webradio selectedWebradio = this.Webradios[webradioId];
+            Playlist newPlaylist;
+            string filename = DEFAULT_WEBRADIOS_FOLDER + webradioName + "/" + DEFAULT_PLAYLISTS_FOLDER + name + ".lst";
+            if (type == AudioType.Music)
+                newPlaylist = new PlaylistMusic(name, filename);
+            else
+                newPlaylist = new PlaylistAd(name, filename);
+            int id = this.Bdd.CreatePlaylist(newPlaylist,webradioId);
+            if (id == Bdd.ERROR)
+                return false;
+            else
+            {
+                try
+                {
+                    newPlaylist.GenerateConfigFile();
+                    selectedWebradio.Playlists.Add(newPlaylist);
+                    this.UpdateObservers();
+                    return true;
+                }
+                catch
+                { 
+                    return false;
+                }
+                
+            }
+            
+        }
+
+        public bool DeletePlaylist(Playlist playlist, int idWebradio)
+        {
+            if (this.Bdd.DeletePlaylist(playlist.Id))
+            {
+                this.Webradios[idWebradio].Playlists.Remove(playlist);
+                System.IO.File.Delete(playlist.Filename);
+                this.UpdateObservers();
+                return true;
+            }
+            else
+                return false;
+                
+        }
+
+        public bool AddToPlaylist(Playlist playlist, Dictionary<int,string> audioFiles)
+        {
+            bool state = true;
+            foreach (KeyValuePair<int, string> audioFile in audioFiles)
+            {
+                if (this.Bdd.AddToPlaylist(audioFile.Key, playlist.Id))
+                {
+                    playlist.GenerateConfigFile();
+                    playlist.AudioFileList.Add(audioFile.Value);
+                    state = true;
+                }
+                else
+                {
+                    return false;
+                }
+                    
+            }
+            playlist.GenerateConfigFile();
+            return state;
+            
+        }
+
+        public bool RemoveFromPlaylist(Dictionary<int,string> audioFiles, Playlist playlist)
+        {
+            bool state = true;
+            foreach (KeyValuePair<int, string> audioFile in audioFiles)
+            {
+                if (this.Bdd.RemoveFromPlaylist(audioFile.Key, playlist.Id))
+                {
+                    playlist.GenerateConfigFile();
+                    playlist.AudioFileList.Remove(audioFile.Value);
+                    state = true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            playlist.GenerateConfigFile();
+            return state;
+        }
+        public List<AudioFile> GetPlaylistContent(Playlist playlist)
+        {
+            List<AudioFile> audioFiles = new List<AudioFile>();
+            foreach(string filename in playlist.AudioFileList)
+            {
+                foreach(AudioFile af in this.Library)
+                {
+                    if (af.Filename == filename)
+                        audioFiles.Add(af);
+                }
+            }
+            return audioFiles;
+        }
+
+        public bool GeneratePlaylist(string name, TimeSpan duration, AudioType type, string gender, int webradioId, string webradioName)
+        {
+            Playlist newPlaylist;
+            string filename = DEFAULT_WEBRADIOS_FOLDER + webradioName + "/" + DEFAULT_PLAYLISTS_FOLDER + name + ".lst";
+            if (type == AudioType.Music)
+                newPlaylist = new PlaylistMusic(name, filename);
+            else
+                newPlaylist = new PlaylistAd(name, filename);
+            TimeSpan tmpDuration = new TimeSpan();
+            Random random = new Random();
+            AudioFile audioFile;
+            int retries = 0;
+            List<int> audioFilesId = new List<int>();
+            while(tmpDuration <= duration)
+            {
+                audioFile = this.Library[random.Next(0, this.Library.Count - 1)];
+                if(audioFile.Type == type)
+                {
+                    if (retries > MAX_TRY_GENERATE)
+                        break;
+                    if ((tmpDuration + audioFile.Duration) > duration)
+                    {
+                        retries++;
+                        continue;
+                    }
+                    else
+                        retries = 0;
+                    
+                    if(audioFile.Type == AudioType.Ad)
+                    {
+                        tmpDuration += audioFile.Duration;
+                        newPlaylist.AudioFileList.Add(audioFile.Filename);
+                        audioFilesId.Add(audioFile.Id);
+                    }
+                    else
+                    {
+                        if(audioFile.Gender == gender)
+                        {
+                            tmpDuration += audioFile.Duration;
+                            newPlaylist.AudioFileList.Add(audioFile.Filename);
+                            audioFilesId.Add(audioFile.Id);
+                        }
+                    }
+                }
+            }
+            if (newPlaylist.AudioFileList.Count == 0)
+                return false;
+
+            //Add to database
+            int idPlaylist = this.Bdd.AddGeneratedPlaylist(newPlaylist, audioFilesId, webradioId);
+            if(idPlaylist == Bdd.ERROR)
+                return false;
+            newPlaylist.Id = idPlaylist;
+            //Add to model
+            this.Webradios[webradioId].Playlists.Add(newPlaylist);
+            newPlaylist.GenerateConfigFile();
+            this.UpdateObservers();
+            return true;
         }
 
     }

@@ -77,7 +77,17 @@
             this.btnImportFolderMusic = new System.Windows.Forms.Button();
             this.txbSearchMusic = new System.Windows.Forms.TextBox();
             this.tbpPlaylists = new System.Windows.Forms.TabPage();
+            this.btnRemoveFromPlaylist = new System.Windows.Forms.Button();
             this.dgvPlaylistContent = new System.Windows.Forms.DataGridView();
+            this.colIdPlaylist = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTitlePlaylist = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colArtistPlaylist = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAlbumPlaylist = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colYearPlaylist = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLabelPlaylist = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDurationPlaylist = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGenderPlaylist = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPathPlaylist = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnDeletePlaylistAd = new System.Windows.Forms.Button();
@@ -201,6 +211,8 @@
             this.label31 = new System.Windows.Forms.Label();
             this.FBD = new System.Windows.Forms.FolderBrowserDialog();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
+            this.txbSearchPlaylistContent = new System.Windows.Forms.TextBox();
+            this.lblPlaylistDuration = new System.Windows.Forms.Label();
             this.mnsMain.SuspendLayout();
             this.tbcTabs.SuspendLayout();
             this.tbpStatus.SuspendLayout();
@@ -212,6 +224,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvMusics)).BeginInit();
             this.tbpPlaylists.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylistContent)).BeginInit();
+            this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -478,6 +491,7 @@
             // 
             // cmbPlaylistsAd
             // 
+            this.cmbPlaylistsAd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPlaylistsAd.FormattingEnabled = true;
             this.cmbPlaylistsAd.Location = new System.Drawing.Point(522, 19);
             this.cmbPlaylistsAd.Name = "cmbPlaylistsAd";
@@ -502,8 +516,10 @@
             this.btnAddToAd.Name = "btnAddToAd";
             this.btnAddToAd.Size = new System.Drawing.Size(100, 23);
             this.btnAddToAd.TabIndex = 11;
+            this.btnAddToAd.Tag = "Ad";
             this.btnAddToAd.Text = "Add selected to :";
             this.btnAddToAd.UseVisualStyleBackColor = true;
+            this.btnAddToAd.Click += new System.EventHandler(this.btnAddToClick);
             // 
             // btnImportFolderAd
             // 
@@ -556,6 +572,7 @@
             // 
             // cmbPlaylistsMusic
             // 
+            this.cmbPlaylistsMusic.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPlaylistsMusic.FormattingEnabled = true;
             this.cmbPlaylistsMusic.Location = new System.Drawing.Point(522, 19);
             this.cmbPlaylistsMusic.Name = "cmbPlaylistsMusic";
@@ -568,8 +585,10 @@
             this.btnAddToMusic.Name = "btnAddToMusic";
             this.btnAddToMusic.Size = new System.Drawing.Size(100, 23);
             this.btnAddToMusic.TabIndex = 4;
+            this.btnAddToMusic.Tag = "Music";
             this.btnAddToMusic.Text = "Add selected to :";
             this.btnAddToMusic.UseVisualStyleBackColor = true;
+            this.btnAddToMusic.Click += new System.EventHandler(this.btnAddToClick);
             // 
             // dgvMusics
             // 
@@ -681,6 +700,8 @@
             // 
             // tbpPlaylists
             // 
+            this.tbpPlaylists.Controls.Add(this.txbSearchPlaylistContent);
+            this.tbpPlaylists.Controls.Add(this.btnRemoveFromPlaylist);
             this.tbpPlaylists.Controls.Add(this.dgvPlaylistContent);
             this.tbpPlaylists.Controls.Add(this.groupBox7);
             this.tbpPlaylists.Controls.Add(this.groupBox6);
@@ -694,19 +715,96 @@
             this.tbpPlaylists.Text = "Playlists";
             this.tbpPlaylists.UseVisualStyleBackColor = true;
             // 
+            // btnRemoveFromPlaylist
+            // 
+            this.btnRemoveFromPlaylist.Location = new System.Drawing.Point(716, 126);
+            this.btnRemoveFromPlaylist.Name = "btnRemoveFromPlaylist";
+            this.btnRemoveFromPlaylist.Size = new System.Drawing.Size(102, 23);
+            this.btnRemoveFromPlaylist.TabIndex = 6;
+            this.btnRemoveFromPlaylist.Text = "Remove selected";
+            this.btnRemoveFromPlaylist.UseVisualStyleBackColor = true;
+            this.btnRemoveFromPlaylist.Click += new System.EventHandler(this.btnRemoveFromPlaylist_Click);
+            // 
             // dgvPlaylistContent
             // 
             this.dgvPlaylistContent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPlaylistContent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colIdPlaylist,
+            this.colTitlePlaylist,
+            this.colArtistPlaylist,
+            this.colAlbumPlaylist,
+            this.colYearPlaylist,
+            this.colLabelPlaylist,
+            this.colDurationPlaylist,
+            this.colGenderPlaylist,
+            this.colPathPlaylist});
             this.dgvPlaylistContent.Location = new System.Drawing.Point(188, 155);
             this.dgvPlaylistContent.Name = "dgvPlaylistContent";
+            this.dgvPlaylistContent.ReadOnly = true;
+            this.dgvPlaylistContent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPlaylistContent.Size = new System.Drawing.Size(636, 287);
             this.dgvPlaylistContent.TabIndex = 5;
             // 
+            // colIdPlaylist
+            // 
+            this.colIdPlaylist.HeaderText = "Id";
+            this.colIdPlaylist.Name = "colIdPlaylist";
+            this.colIdPlaylist.ReadOnly = true;
+            // 
+            // colTitlePlaylist
+            // 
+            this.colTitlePlaylist.HeaderText = "Title";
+            this.colTitlePlaylist.Name = "colTitlePlaylist";
+            this.colTitlePlaylist.ReadOnly = true;
+            // 
+            // colArtistPlaylist
+            // 
+            this.colArtistPlaylist.HeaderText = "Artist";
+            this.colArtistPlaylist.Name = "colArtistPlaylist";
+            this.colArtistPlaylist.ReadOnly = true;
+            // 
+            // colAlbumPlaylist
+            // 
+            this.colAlbumPlaylist.HeaderText = "Album";
+            this.colAlbumPlaylist.Name = "colAlbumPlaylist";
+            this.colAlbumPlaylist.ReadOnly = true;
+            // 
+            // colYearPlaylist
+            // 
+            this.colYearPlaylist.HeaderText = "Year";
+            this.colYearPlaylist.Name = "colYearPlaylist";
+            this.colYearPlaylist.ReadOnly = true;
+            // 
+            // colLabelPlaylist
+            // 
+            this.colLabelPlaylist.HeaderText = "Label";
+            this.colLabelPlaylist.Name = "colLabelPlaylist";
+            this.colLabelPlaylist.ReadOnly = true;
+            // 
+            // colDurationPlaylist
+            // 
+            this.colDurationPlaylist.HeaderText = "Duration";
+            this.colDurationPlaylist.Name = "colDurationPlaylist";
+            this.colDurationPlaylist.ReadOnly = true;
+            // 
+            // colGenderPlaylist
+            // 
+            this.colGenderPlaylist.HeaderText = "Gender";
+            this.colGenderPlaylist.Name = "colGenderPlaylist";
+            this.colGenderPlaylist.ReadOnly = true;
+            // 
+            // colPathPlaylist
+            // 
+            this.colPathPlaylist.HeaderText = "Path";
+            this.colPathPlaylist.Name = "colPathPlaylist";
+            this.colPathPlaylist.ReadOnly = true;
+            // 
             // groupBox7
             // 
-            this.groupBox7.Location = new System.Drawing.Point(188, 79);
+            this.groupBox7.Controls.Add(this.lblPlaylistDuration);
+            this.groupBox7.Location = new System.Drawing.Point(312, 79);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(636, 69);
+            this.groupBox7.Size = new System.Drawing.Size(398, 69);
             this.groupBox7.TabIndex = 4;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Informations";
@@ -728,8 +826,10 @@
             this.btnDeletePlaylistAd.Name = "btnDeletePlaylistAd";
             this.btnDeletePlaylistAd.Size = new System.Drawing.Size(75, 23);
             this.btnDeletePlaylistAd.TabIndex = 2;
+            this.btnDeletePlaylistAd.Tag = "Ad";
             this.btnDeletePlaylistAd.Text = "Delete";
             this.btnDeletePlaylistAd.UseVisualStyleBackColor = true;
+            this.btnDeletePlaylistAd.Click += new System.EventHandler(this.btnDeletePlaylistClick);
             // 
             // lsbPlaylistsAd
             // 
@@ -738,6 +838,8 @@
             this.lsbPlaylistsAd.Name = "lsbPlaylistsAd";
             this.lsbPlaylistsAd.Size = new System.Drawing.Size(159, 121);
             this.lsbPlaylistsAd.TabIndex = 1;
+            this.lsbPlaylistsAd.Tag = "Ad";
+            this.lsbPlaylistsAd.SelectedIndexChanged += new System.EventHandler(this.lsbPlaylistsSelectedIndexChanged);
             // 
             // groupBox5
             // 
@@ -756,8 +858,10 @@
             this.btnDeletePlaylistMusic.Name = "btnDeletePlaylistMusic";
             this.btnDeletePlaylistMusic.Size = new System.Drawing.Size(75, 23);
             this.btnDeletePlaylistMusic.TabIndex = 1;
+            this.btnDeletePlaylistMusic.Tag = "Music";
             this.btnDeletePlaylistMusic.Text = "Delete";
             this.btnDeletePlaylistMusic.UseVisualStyleBackColor = true;
+            this.btnDeletePlaylistMusic.Click += new System.EventHandler(this.btnDeletePlaylistClick);
             // 
             // lsbPlaylistsMusic
             // 
@@ -766,6 +870,8 @@
             this.lsbPlaylistsMusic.Name = "lsbPlaylistsMusic";
             this.lsbPlaylistsMusic.Size = new System.Drawing.Size(159, 121);
             this.lsbPlaylistsMusic.TabIndex = 0;
+            this.lsbPlaylistsMusic.Tag = "Music";
+            this.lsbPlaylistsMusic.SelectedIndexChanged += new System.EventHandler(this.lsbPlaylistsSelectedIndexChanged);
             // 
             // groupBox4
             // 
@@ -793,9 +899,19 @@
             0,
             0,
             0});
+            this.nudDurationGenerate.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudDurationGenerate.Name = "nudDurationGenerate";
             this.nudDurationGenerate.Size = new System.Drawing.Size(77, 20);
             this.nudDurationGenerate.TabIndex = 12;
+            this.nudDurationGenerate.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // btnGeneratePlaylist
             // 
@@ -805,9 +921,11 @@
             this.btnGeneratePlaylist.TabIndex = 11;
             this.btnGeneratePlaylist.Text = "Generate";
             this.btnGeneratePlaylist.UseVisualStyleBackColor = true;
+            this.btnGeneratePlaylist.Click += new System.EventHandler(this.btnGeneratePlaylist_Click);
             // 
             // cmbGenderGenerate
             // 
+            this.cmbGenderGenerate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGenderGenerate.FormattingEnabled = true;
             this.cmbGenderGenerate.Items.AddRange(new object[] {
             "Music",
@@ -828,6 +946,7 @@
             // 
             // cmbTypePlaylistGenerate
             // 
+            this.cmbTypePlaylistGenerate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTypePlaylistGenerate.FormattingEnabled = true;
             this.cmbTypePlaylistGenerate.Items.AddRange(new object[] {
             "Music",
@@ -836,6 +955,7 @@
             this.cmbTypePlaylistGenerate.Name = "cmbTypePlaylistGenerate";
             this.cmbTypePlaylistGenerate.Size = new System.Drawing.Size(58, 21);
             this.cmbTypePlaylistGenerate.TabIndex = 6;
+            this.cmbTypePlaylistGenerate.SelectedIndexChanged += new System.EventHandler(this.cmbTypePlaylistGenerate_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -897,6 +1017,7 @@
             // 
             // cmbTypePlaylist
             // 
+            this.cmbTypePlaylist.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTypePlaylist.FormattingEnabled = true;
             this.cmbTypePlaylist.Items.AddRange(new object[] {
             "Music",
@@ -1937,6 +2058,26 @@
             this.OFD.Filter = "MP3 Files|*.mp3";
             this.OFD.Multiselect = true;
             // 
+            // txbSearchPlaylistContent
+            // 
+            this.txbSearchPlaylistContent.Location = new System.Drawing.Point(188, 127);
+            this.txbSearchPlaylistContent.Name = "txbSearchPlaylistContent";
+            this.txbSearchPlaylistContent.Size = new System.Drawing.Size(100, 20);
+            this.txbSearchPlaylistContent.TabIndex = 7;
+            this.txbSearchPlaylistContent.Text = "Search...";
+            this.txbSearchPlaylistContent.TextChanged += new System.EventHandler(this.txbSearchPlaylistContent_TextChanged);
+            this.txbSearchPlaylistContent.Enter += new System.EventHandler(this.txbSearchEnter);
+            this.txbSearchPlaylistContent.Leave += new System.EventHandler(this.txbSearchLeave);
+            // 
+            // lblPlaylistDuration
+            // 
+            this.lblPlaylistDuration.AutoSize = true;
+            this.lblPlaylistDuration.Location = new System.Drawing.Point(7, 20);
+            this.lblPlaylistDuration.Name = "lblPlaylistDuration";
+            this.lblPlaylistDuration.Size = new System.Drawing.Size(53, 13);
+            this.lblPlaylistDuration.TabIndex = 0;
+            this.lblPlaylistDuration.Text = "Duration :";
+            // 
             // AdminView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1947,6 +2088,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnsMain;
+            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AdminView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1967,7 +2109,10 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMusics)).EndInit();
             this.tbpPlaylists.ResumeLayout(false);
+            this.tbpPlaylists.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylistContent)).EndInit();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
@@ -2181,6 +2326,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colDurationMusic;
         private System.Windows.Forms.DataGridViewTextBoxColumn colGenderMusic;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPathMusic;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colIdPlaylist;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTitlePlaylist;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colArtistPlaylist;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAlbumPlaylist;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colYearPlaylist;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLabelPlaylist;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDurationPlaylist;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colGenderPlaylist;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPathPlaylist;
+        private System.Windows.Forms.Button btnRemoveFromPlaylist;
+        private System.Windows.Forms.TextBox txbSearchPlaylistContent;
+        private System.Windows.Forms.Label lblPlaylistDuration;
 
 
     }

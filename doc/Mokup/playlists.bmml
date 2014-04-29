@@ -87,12 +87,12 @@
         <text>Type%20%3A</text>
       </controlProperties>
     </control>
-    <control controlID="22" controlTypeID="com.balsamiq.mockups::FieldSet" x="566" y="226" w="608" h="70" measuredW="200" measuredH="170" zOrder="18" locked="false" isInGroup="-1">
+    <control controlID="22" controlTypeID="com.balsamiq.mockups::FieldSet" x="698" y="226" w="361" h="70" measuredW="200" measuredH="170" zOrder="18" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Informations</text>
       </controlProperties>
     </control>
-    <control controlID="23" controlTypeID="com.balsamiq.mockups::Label" x="581" y="251" w="-1" h="-1" measuredW="434" measuredH="21" zOrder="19" locked="false" isInGroup="-1">
+    <control controlID="23" controlTypeID="com.balsamiq.mockups::Label" x="817" y="251" w="219" h="-1" measuredW="434" measuredH="21" zOrder="19" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Some%20informations%20about%20the%20playlist%20%28total%20duration%2C%20number%20of%20track%20etc...%29</text>
       </controlProperties>
@@ -147,6 +147,16 @@
           </controlProperties>
         </control>
       </groupChildrenDescriptors>
+    </control>
+    <control controlID="29" controlTypeID="com.balsamiq.mockups::Button" x="1058" y="269" w="-1" h="-1" measuredW="125" measuredH="27" zOrder="23" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Remove%20selected</text>
+      </controlProperties>
+    </control>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::SearchBox" x="564" y="269" w="-1" h="-1" measuredW="120" measuredH="25" zOrder="24" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>search</text>
+      </controlProperties>
     </control>
   </controls>
 </mockup>

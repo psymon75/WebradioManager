@@ -83,7 +83,8 @@ namespace WebradioManager
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            this.Controller.OpenWebradio(((Webradio)this.lsbSelection.SelectedItem).Id);
+            if(this.lsbSelection.SelectedIndex >= 0)
+                this.Controller.OpenWebradio(((Webradio)this.lsbSelection.SelectedItem).Id);
             
         }
     }
