@@ -77,6 +77,7 @@
             this.btnImportFolderMusic = new System.Windows.Forms.Button();
             this.txbSearchMusic = new System.Windows.Forms.TextBox();
             this.tbpPlaylists = new System.Windows.Forms.TabPage();
+            this.txbSearchPlaylistContent = new System.Windows.Forms.TextBox();
             this.btnRemoveFromPlaylist = new System.Windows.Forms.Button();
             this.dgvPlaylistContent = new System.Windows.Forms.DataGridView();
             this.colIdPlaylist = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -89,6 +90,7 @@
             this.colGenderPlaylist = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPathPlaylist = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.lblPlaylistDuration = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnDeletePlaylistAd = new System.Windows.Forms.Button();
             this.lsbPlaylistsAd = new System.Windows.Forms.ListBox();
@@ -211,8 +213,6 @@
             this.label31 = new System.Windows.Forms.Label();
             this.FBD = new System.Windows.Forms.FolderBrowserDialog();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
-            this.txbSearchPlaylistContent = new System.Windows.Forms.TextBox();
-            this.lblPlaylistDuration = new System.Windows.Forms.Label();
             this.mnsMain.SuspendLayout();
             this.tbcTabs.SuspendLayout();
             this.tbpStatus.SuspendLayout();
@@ -715,6 +715,17 @@
             this.tbpPlaylists.Text = "Playlists";
             this.tbpPlaylists.UseVisualStyleBackColor = true;
             // 
+            // txbSearchPlaylistContent
+            // 
+            this.txbSearchPlaylistContent.Location = new System.Drawing.Point(188, 127);
+            this.txbSearchPlaylistContent.Name = "txbSearchPlaylistContent";
+            this.txbSearchPlaylistContent.Size = new System.Drawing.Size(100, 20);
+            this.txbSearchPlaylistContent.TabIndex = 7;
+            this.txbSearchPlaylistContent.Text = "Search...";
+            this.txbSearchPlaylistContent.TextChanged += new System.EventHandler(this.txbSearchPlaylistContent_TextChanged);
+            this.txbSearchPlaylistContent.Enter += new System.EventHandler(this.txbSearchEnter);
+            this.txbSearchPlaylistContent.Leave += new System.EventHandler(this.txbSearchLeave);
+            // 
             // btnRemoveFromPlaylist
             // 
             this.btnRemoveFromPlaylist.Location = new System.Drawing.Point(716, 126);
@@ -808,6 +819,15 @@
             this.groupBox7.TabIndex = 4;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Informations";
+            // 
+            // lblPlaylistDuration
+            // 
+            this.lblPlaylistDuration.AutoSize = true;
+            this.lblPlaylistDuration.Location = new System.Drawing.Point(7, 20);
+            this.lblPlaylistDuration.Name = "lblPlaylistDuration";
+            this.lblPlaylistDuration.Size = new System.Drawing.Size(53, 13);
+            this.lblPlaylistDuration.TabIndex = 0;
+            this.lblPlaylistDuration.Text = "Duration :";
             // 
             // groupBox6
             // 
@@ -1261,6 +1281,7 @@
             // 
             // cmbPlaylistEvent
             // 
+            this.cmbPlaylistEvent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPlaylistEvent.FormattingEnabled = true;
             this.cmbPlaylistEvent.Location = new System.Drawing.Point(54, 45);
             this.cmbPlaylistEvent.Name = "cmbPlaylistEvent";
@@ -2057,26 +2078,6 @@
             this.OFD.FileName = "*.mp3";
             this.OFD.Filter = "MP3 Files|*.mp3";
             this.OFD.Multiselect = true;
-            // 
-            // txbSearchPlaylistContent
-            // 
-            this.txbSearchPlaylistContent.Location = new System.Drawing.Point(188, 127);
-            this.txbSearchPlaylistContent.Name = "txbSearchPlaylistContent";
-            this.txbSearchPlaylistContent.Size = new System.Drawing.Size(100, 20);
-            this.txbSearchPlaylistContent.TabIndex = 7;
-            this.txbSearchPlaylistContent.Text = "Search...";
-            this.txbSearchPlaylistContent.TextChanged += new System.EventHandler(this.txbSearchPlaylistContent_TextChanged);
-            this.txbSearchPlaylistContent.Enter += new System.EventHandler(this.txbSearchEnter);
-            this.txbSearchPlaylistContent.Leave += new System.EventHandler(this.txbSearchLeave);
-            // 
-            // lblPlaylistDuration
-            // 
-            this.lblPlaylistDuration.AutoSize = true;
-            this.lblPlaylistDuration.Location = new System.Drawing.Point(7, 20);
-            this.lblPlaylistDuration.Name = "lblPlaylistDuration";
-            this.lblPlaylistDuration.Size = new System.Drawing.Size(53, 13);
-            this.lblPlaylistDuration.TabIndex = 0;
-            this.lblPlaylistDuration.Text = "Duration :";
             // 
             // AdminView
             // 

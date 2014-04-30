@@ -173,7 +173,18 @@ namespace WebradioManager
 
         void dvwTimetable_SelectionChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("");
+            ckbMonday.Checked = (dvwTimetable.SelectionStart.DayOfWeek == DayOfWeek.Monday) ? true : false;
+            ckbTuesday.Checked = (dvwTimetable.SelectionStart.DayOfWeek == DayOfWeek.Tuesday) ? true : false;
+            ckbWednesday.Checked = (dvwTimetable.SelectionStart.DayOfWeek == DayOfWeek.Wednesday) ? true : false;
+            ckbThursday.Checked = (dvwTimetable.SelectionStart.DayOfWeek == DayOfWeek.Thursday) ? true : false;
+            ckbFriday.Checked = (dvwTimetable.SelectionStart.DayOfWeek == DayOfWeek.Friday) ? true : false;
+            ckbSaturday.Checked = (dvwTimetable.SelectionStart.DayOfWeek == DayOfWeek.Saturday) ? true : false;
+            ckbSunday.Checked = (dvwTimetable.SelectionStart.DayOfWeek == DayOfWeek.Sunday) ? true : false;
+
+            TimeSpan start = new TimeSpan(dvwTimetable.SelectionStart.Hour,dvwTimetable.SelectionStart.Minute,dvwTimetable.SelectionStart.Second);
+            TimeSpan end = new TimeSpan(dvwTimetable.SelectionEnd.Hour,dvwTimetable.SelectionEnd.Minute,dvwTimetable.SelectionEnd.Second);
+            txbStartTime.Text = start.ToString();
+            txbDuration.Text = (end-start).ToString();
         }
 
 
@@ -437,7 +448,7 @@ namespace WebradioManager
                     (cmbTypePlaylistGenerate.SelectedItem.ToString() == AudioType.Music.ToString()) ? AudioType.Music : AudioType.Ad,
                     cmbGenderGenerate.SelectedItem.ToString(), this.IdWebradio, this.NameWebradio))
                 {
-                    MessageBox.Show("Impossible to generate a playlist with these parameters", "Error");
+                    MessageBox.Show("Impossible to generate a playlist with these parameters. Some issues possible :\n - A playlist with this name and this type already exists\n - The given duration is too short for this gender", "Error");
                 }
             }
             else

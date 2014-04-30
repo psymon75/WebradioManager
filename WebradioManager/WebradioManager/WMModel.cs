@@ -272,6 +272,7 @@ namespace WebradioManager
             {
                 try
                 {
+                    newPlaylist.Id = id;
                     newPlaylist.GenerateConfigFile();
                     selectedWebradio.Playlists.Add(newPlaylist);
                     this.UpdateObservers();
@@ -307,13 +308,13 @@ namespace WebradioManager
             {
                 if (this.Bdd.AddToPlaylist(audioFile.Key, playlist.Id))
                 {
-                    playlist.GenerateConfigFile();
                     playlist.AudioFileList.Add(audioFile.Value);
                     state = true;
                 }
                 else
                 {
-                    return false;
+                    state = false;
+                    break;
                 }
                     
             }
@@ -329,13 +330,13 @@ namespace WebradioManager
             {
                 if (this.Bdd.RemoveFromPlaylist(audioFile.Key, playlist.Id))
                 {
-                    playlist.GenerateConfigFile();
                     playlist.AudioFileList.Remove(audioFile.Value);
                     state = true;
                 }
                 else
                 {
-                    return false;
+                    state = false;
+                    break;
                 }
 
             }
@@ -384,23 +385,16 @@ namespace WebradioManager
                     else
                         retries = 0;
                     
-                    if(audioFile.Type == AudioType.Ad)
+                    if((audioFile.Type == AudioType.Ad) || (audioFile.Type == AudioType.Music && audioFile.Gender == gender))
                     {
                         tmpDuration += audioFile.Duration;
                         newPlaylist.AudioFileList.Add(audioFile.Filename);
                         audioFilesId.Add(audioFile.Id);
                     }
-                    else
-                    {
-                        if(audioFile.Gender == gender)
-                        {
-                            tmpDuration += audioFile.Duration;
-                            newPlaylist.AudioFileList.Add(audioFile.Filename);
-                            audioFilesId.Add(audioFile.Id);
-                        }
-                    }
                 }
             }
+
+            //Impossible to create a playlist
             if (newPlaylist.AudioFileList.Count == 0)
                 return false;
 
