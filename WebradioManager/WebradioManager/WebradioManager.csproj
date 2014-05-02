@@ -69,6 +69,7 @@
     <Compile Include="Bdd.cs" />
     <Compile Include="BddControls.cs" />
     <Compile Include="DayWeek.cs" />
+    <Compile Include="EventAppointment.cs" />
     <Compile Include="PlaylistAd.cs" />
     <Compile Include="PlaylistMusic.cs" />
     <Compile Include="StreamType.cs" />

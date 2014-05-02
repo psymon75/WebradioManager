@@ -93,5 +93,20 @@ namespace WebradioManager
         {
             return this.Model.GeneratePlaylist(name, duration, type, gender, webradioId, webradioName);
         }
+
+        public bool CreateEvent(CalendarEvent newEvent, int webradioId)
+        {
+            return this.Model.CreateEvent(newEvent, webradioId);
+        }
+
+        public bool UpdateEvent(CalendarEvent aEvent, int webradioId)
+        {
+            return this.Model.UpdateEvent(aEvent,webradioId);
+        }
+
+        public bool DeleteEvent(CalendarEvent aEvent, int webradioId)
+        {
+            return this.Model.DeleteEvent(aEvent, webradioId);
+        }
     }
 }

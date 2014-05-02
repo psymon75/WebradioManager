@@ -124,7 +124,7 @@ namespace WebradioManager
             infos[3] = this.Album;
             infos[4] = this.Year.ToString();
             infos[5] = this.Label;
-            infos[6] = this.Duration.ToString(@"hh\:mm\:ss");
+            infos[6] = this.Duration.ToString(@"\:mm\:ss");
             infos[7] = this.Gender;
             infos[8] = this.Filename;
 

@@ -410,5 +410,53 @@ namespace WebradioManager
             return true;
         }
 
+        public bool CreateEvent(CalendarEvent newEvent, int webradioId)
+        {
+            if (this.Bdd.EventExist(newEvent, this.Webradios[webradioId].Calendar.Id))
+                return false;
+
+            int id = this.Bdd.AddEvent(newEvent, this.Webradios[webradioId].Calendar.Id, newEvent.Playlist.Id);
+            newEvent.Id = id;
+            this.Webradios[webradioId].Calendar.Events.Add(newEvent);
+            this.Webradios[webradioId].Calendar.GenerateConfigFile();
+            this.UpdateObservers();
+            return true;
+        }
+
+        public bool UpdateEvent(CalendarEvent aEvent, int webradioId)
+        {
+            if (this.Bdd.UpdateEvent(aEvent))
+            {
+                foreach (CalendarEvent ce in this.Webradios[webradioId].Calendar.Events)
+                {
+                    CalendarEvent tmp = ce;
+                    if (ce.Id == aEvent.Id)
+                    {
+                        tmp.StartTime = aEvent.StartTime;
+                        tmp.Duration = aEvent.Duration;
+                        break;
+                    }
+                }
+                this.Webradios[webradioId].Calendar.GenerateConfigFile();
+                this.UpdateObservers();
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public bool DeleteEvent(CalendarEvent aEvent, int webradioId)
+        {
+            if (this.Bdd.DeleteEvent(aEvent))
+            {
+                this.Webradios[webradioId].Calendar.Events.Remove(aEvent);
+                this.Webradios[webradioId].Calendar.GenerateConfigFile();
+                this.UpdateObservers();
+                return true;
+            }
+            else
+                return false;
+        }
+
     }
 }

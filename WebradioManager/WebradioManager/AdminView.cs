@@ -15,18 +15,34 @@ namespace WebradioManager
     public partial class AdminView : Form
     {
         const string DEFAULT_SEARCH_STRING = "Search...";
+
         private AdminController _controller;
         private int _idWebradio;
         private string _nameWebradio;
-        List<Appointment> _events;
+        List<EventAppointment> _events;
+        private EventAppointment _tmpSelectedAppointment;
+        private bool _isDragging;
+
+
 
         #region Properties
+
+        public bool IsDragging
+        {
+            get { return _isDragging; }
+            set { _isDragging = value; }
+        }
+        public EventAppointment TmpSelectedAppointment
+        {
+            get { return _tmpSelectedAppointment; }
+            set { _tmpSelectedAppointment = value; }
+        }
         public string NameWebradio
         {
             get { return _nameWebradio; }
             set { _nameWebradio = value; }
         }
-        public List<Appointment> EventsCalendar
+        public List<EventAppointment> EventsCalendar
         {
             get { return _events; }
             set { _events = value; }
@@ -50,7 +66,7 @@ namespace WebradioManager
             InitializeComponent();
             this.Controller = controller;
             this.IdWebradio = idWebradio;
-            this.EventsCalendar = new List<Appointment>();
+            this.EventsCalendar = new List<EventAppointment>();
         }
 
         public void UpdateView()
@@ -104,6 +120,8 @@ namespace WebradioManager
                 cmbPlaylistsAd.SelectedIndex = 0;
             if (cmbPlaylistsMusic.Items.Count > 0)
                 cmbPlaylistsMusic.SelectedIndex = 0;
+            if (cmbPlaylistEvent.Items.Count > 0)
+                cmbPlaylistEvent.SelectedIndex = 0;
             lsbPlaylistsAd.SelectedIndex = -1;
             lsbPlaylistsMusic.SelectedIndex = -1;
             //----
@@ -116,6 +134,8 @@ namespace WebradioManager
             //----
             //EVENTS
             this.EventsCalendar.Clear();
+            dvwTimetable.Refresh();
+            dvwTimetable.Invalidate();
             foreach(CalendarEvent ev in webradio.Calendar.Events)
             {
                 DayWeek dw = ev.GetSelectedDays();
@@ -124,12 +144,23 @@ namespace WebradioManager
                 {
                     if(days[i])
                     {
-                        Appointment m_Appointment = new Appointment();
+                        EventAppointment m_Appointment = new EventAppointment();
 
                         m_Appointment.StartDate = new DateTime(dvwTimetable.StartDate.Year, dvwTimetable.StartDate.Month, (i + 1), ev.StartTime.Hours, ev.StartTime.Minutes, ev.StartTime.Seconds);
                         m_Appointment.EndDate = m_Appointment.StartDate.Add(ev.Duration);
-                        m_Appointment.Title = ev.Name + "\r\n Playlist : " + ev.Playlist;
-
+                        m_Appointment.Title = ev.Name + "(" + ev.Priority.ToString() + ")\r\n "+ev.Playlist.Name + "\r\n Shuffle : " + ((ev.Shuffle)?"True":"False");
+                        if (ev.Playlist.Type == AudioType.Music)
+                        {
+                            m_Appointment.BorderColor = Color.Blue;
+                            m_Appointment.Color = Color.Blue;
+                        }
+                        else
+                        {
+                            m_Appointment.BorderColor = Color.Red;
+                            m_Appointment.Color = Color.Red;
+                        }
+                        m_Appointment.Playlist = ev.Playlist;
+                        m_Appointment.EventObject = ev;
                         this.EventsCalendar.Add(m_Appointment);
                     }
                 }        
@@ -181,10 +212,22 @@ namespace WebradioManager
             ckbSaturday.Checked = (dvwTimetable.SelectionStart.DayOfWeek == DayOfWeek.Saturday) ? true : false;
             ckbSunday.Checked = (dvwTimetable.SelectionStart.DayOfWeek == DayOfWeek.Sunday) ? true : false;
 
-            TimeSpan start = new TimeSpan(dvwTimetable.SelectionStart.Hour,dvwTimetable.SelectionStart.Minute,dvwTimetable.SelectionStart.Second);
-            TimeSpan end = new TimeSpan(dvwTimetable.SelectionEnd.Hour,dvwTimetable.SelectionEnd.Minute,dvwTimetable.SelectionEnd.Second);
-            txbStartTime.Text = start.ToString();
-            txbDuration.Text = (end-start).ToString();
+            TimeSpan start = new TimeSpan();
+            TimeSpan end = new TimeSpan();
+            if(dvwTimetable.Selection == SelectionType.Appointment)
+            {
+                start = new TimeSpan(dvwTimetable.SelectedAppointment.StartDate.Hour,dvwTimetable.SelectedAppointment.StartDate.Minute, dvwTimetable.SelectedAppointment.StartDate.Second);
+                end = new TimeSpan(dvwTimetable.SelectedAppointment.EndDate.Hour, dvwTimetable.SelectedAppointment.EndDate.Minute, dvwTimetable.SelectedAppointment.EndDate.Second);
+            }
+            else if(dvwTimetable.Selection == SelectionType.DateRange)
+            {
+                start = new TimeSpan(dvwTimetable.SelectionStart.Hour,dvwTimetable.SelectionStart.Minute,dvwTimetable.SelectionStart.Second);
+                end = new TimeSpan(dvwTimetable.SelectionEnd.Hour,dvwTimetable.SelectionEnd.Minute,dvwTimetable.SelectionEnd.Second);
+            }
+            
+            
+            mtbStartTime.Text = start.ToString();
+            mtbDuration.Text = (end-start).ToString();
         }
 
 
@@ -454,6 +497,172 @@ namespace WebradioManager
             else
                 MessageBox.Show("Please enter a playlist's name", "Error");
         }
+
+        private void ckbCheckedChanged(object sender, EventArgs e)
+        {
+            if((sender as CheckBox).Name == "ckbAll")
+            {
+                ckbMonday.Checked = ckbAll.Checked;
+                ckbTuesday.Checked = ckbAll.Checked;
+                ckbWednesday.Checked = ckbAll.Checked;
+                ckbThursday.Checked = ckbAll.Checked;
+                ckbFriday.Checked = ckbAll.Checked;
+                ckbSaturday.Checked = ckbAll.Checked;
+                ckbSunday.Checked = ckbAll.Checked;
+            }
+           
+        }
+
+        private void btnCreateEvent_Click(object sender, EventArgs e)
+        {
+            if (txbEventName.Text.Trim() != "")
+            {
+                string[] startTimes = mtbStartTime.Text.Split(':');
+                string[] durationTimes = mtbDuration.Text.Split(':');
+                TimeSpan start = new TimeSpan();
+                if (!TimeSpan.TryParse(mtbStartTime.Text, out start))
+                {
+                    MessageBox.Show("Start time format is not correct.", "Error");
+                    return;
+                }
+                TimeSpan duration = new TimeSpan();
+                if(!TimeSpan.TryParse(mtbDuration.Text, out duration))
+                {
+                    MessageBox.Show("Duration time format is not correct.", "Error");
+                    return;
+                }
+                TimeSpan minimumDuration = new TimeSpan(0,1,0);
+                if (duration >= minimumDuration)
+                {
+                    int repeat = this.GetRepeatValue();
+                    if(repeat > 0)
+                    {
+                        CalendarEvent newEvent = new CalendarEvent(txbEventName.Text, start, duration, repeat, (int)nudPriority.Value, ckbShuffle.Checked, true, (Playlist)cmbPlaylistEvent.SelectedItem);
+                        if (!this.Controller.CreateEvent(newEvent, this.IdWebradio))
+                            MessageBox.Show("Event already exists (with this name)", "Error");
+                    }
+                    else
+                        MessageBox.Show("Please select a day","Error");
+                    
+                }
+                else
+                    MessageBox.Show("Duration must be longer or equal to " + minimumDuration.ToString());
+            }
+            else
+                MessageBox.Show("Please enter an event's name.", "Error");
+        }
+
+        private void dvwTimetable_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (dvwTimetable.Selection == SelectionType.Appointment)
+            {
+                this.IsDragging = false;
+                EventAppointment app = (EventAppointment)dvwTimetable.SelectedAppointment;
+                if (this.CheckMovePossible(app))
+                {
+                    CalendarEvent aEvent = app.EventObject;
+                    TimeSpan start = new TimeSpan(app.StartDate.Hour, app.StartDate.Minute, app.StartDate.Second);
+                    TimeSpan end = new TimeSpan(app.EndDate.Hour, app.EndDate.Minute, app.EndDate.Second);
+                    aEvent.StartTime = start;
+                    aEvent.Duration = end - start;
+                
+                    aEvent.Repeat = this.GetRepeatValueFromAppointement(this.GetAllRelatedAppointment(app));
+                    if (!this.Controller.UpdateEvent(aEvent, this.IdWebradio))
+                        MessageBox.Show("An error occured", "Error");
+                }
+                else
+                {
+                    MessageBox.Show("The same event can't be in the same day more than once.", "Error");
+                    this.UpdateView();
+                }
+            }
+        }
+
+        private int GetRepeatValue()
+        {
+            int repeat = 0;
+            repeat += (ckbMonday.Checked) ? (int)DayValue.Monday : 0;
+            repeat += (ckbTuesday.Checked) ? (int)DayValue.Tuesday : 0;
+            repeat += (ckbWednesday.Checked) ? (int)DayValue.Wednesday : 0;
+            repeat += (ckbThursday.Checked) ? (int)DayValue.Thursday : 0;
+            repeat += (ckbFriday.Checked) ? (int)DayValue.Friday : 0;
+            repeat += (ckbSaturday.Checked) ? (int)DayValue.Saturday : 0;
+            repeat += (ckbSunday.Checked) ? (int)DayValue.Sunday : 0;
+            return repeat;
+        }
+
+        private List<EventAppointment> GetAllRelatedAppointment(EventAppointment app)
+        {
+            List<EventAppointment> eventList = new List<EventAppointment>();
+            foreach(EventAppointment tmp in this.EventsCalendar)
+            {
+                if (tmp.EventObject.Id == app.EventObject.Id)
+                    eventList.Add(tmp);
+            }
+
+            return eventList;
+        }
+
+        private int GetRepeatValueFromAppointement(List<EventAppointment> eventList)
+        {
+            int repeat = 0;
+            foreach(EventAppointment ev in eventList)
+            {
+                repeat += (ev.StartDate.DayOfWeek == DayOfWeek.Monday) ? (int)DayValue.Monday : 0;
+                repeat += (ev.StartDate.DayOfWeek == DayOfWeek.Tuesday) ? (int)DayValue.Tuesday : 0;
+                repeat += (ev.StartDate.DayOfWeek == DayOfWeek.Wednesday) ? (int)DayValue.Wednesday : 0;
+                repeat += (ev.StartDate.DayOfWeek == DayOfWeek.Thursday) ? (int)DayValue.Thursday : 0;
+                repeat += (ev.StartDate.DayOfWeek == DayOfWeek.Friday) ? (int)DayValue.Friday : 0;
+                repeat += (ev.StartDate.DayOfWeek == DayOfWeek.Saturday) ? (int)DayValue.Saturday : 0;
+                repeat += (ev.StartDate.DayOfWeek == DayOfWeek.Sunday) ? (int)DayValue.Sunday : 0;
+            }
+            return repeat;
+        }
+
+        private bool CheckMovePossible(EventAppointment app)
+        {
+            bool result = true;
+            foreach(EventAppointment ev in this.EventsCalendar)
+            {
+                if(ev.EventObject.Id == app.EventObject.Id && ev != app)
+                {
+                    if(ev.StartDate.DayOfWeek == app.StartDate.DayOfWeek)
+                    {
+                        result = false;
+                        break;
+                    }
+                }
+            }
+            return result;
+        }
+
+        private void dvwTimetable_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                if(dvwTimetable.Selection == SelectionType.Appointment)
+                {
+                    if(MessageBox.Show("Do you really want to delete this event ?", "Delete event",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        if (!this.Controller.DeleteEvent((dvwTimetable.SelectedAppointment as EventAppointment).EventObject, this.IdWebradio))
+                            MessageBox.Show("An error occured", "Error");
+                    }
+                }
+            }
+        }
+
+        private void dvwTimetable_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (dvwTimetable.Selection == SelectionType.Appointment && !this.IsDragging)
+            {
+                this.TmpSelectedAppointment = (EventAppointment)dvwTimetable.SelectedAppointment;
+                this.IsDragging = true;
+            }
+        }
+
+
+
+
 
     }
 }

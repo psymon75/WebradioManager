@@ -116,13 +116,13 @@
             this.tbpTimetable = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.mtbDuration = new System.Windows.Forms.MaskedTextBox();
+            this.mtbStartTime = new System.Windows.Forms.MaskedTextBox();
             this.btnCreateEvent = new System.Windows.Forms.Button();
             this.nudPriority = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.ckbShuffle = new System.Windows.Forms.CheckBox();
-            this.txbDuration = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txbStartTime = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.ckbAll = new System.Windows.Forms.CheckBox();
@@ -156,7 +156,6 @@
             this.lsbTranscoders = new System.Windows.Forms.ListBox();
             this.label28 = new System.Windows.Forms.Label();
             this.cmbEncoderEdit = new System.Windows.Forms.ComboBox();
-            this.txbServerIpEdit = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.cmbBitrateEdit = new System.Windows.Forms.ComboBox();
@@ -178,7 +177,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.nupPort = new System.Windows.Forms.NumericUpDown();
             this.label18 = new System.Windows.Forms.Label();
-            this.txbServerIp = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txbStreamUrl = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -213,6 +211,8 @@
             this.label31 = new System.Windows.Forms.Label();
             this.FBD = new System.Windows.Forms.FolderBrowserDialog();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
+            this.mtbServerIP = new System.Windows.Forms.MaskedTextBox();
+            this.mtbServerIPEdit = new System.Windows.Forms.MaskedTextBox();
             this.mnsMain.SuspendLayout();
             this.tbcTabs.SuspendLayout();
             this.tbpStatus.SuspendLayout();
@@ -256,11 +256,15 @@
             // 
             drawTool1.DayView = this.dvwTimetable;
             this.dvwTimetable.ActiveTool = drawTool1;
+            this.dvwTimetable.AllowDrop = true;
+            this.dvwTimetable.AllowInplaceEditing = false;
+            this.dvwTimetable.AllowNew = false;
             this.dvwTimetable.AmPmDisplay = false;
             this.dvwTimetable.AppHeightMode = Calendar.DayView.AppHeightDrawMode.TrueHeightAll;
             this.dvwTimetable.DaysToShow = 7;
             this.dvwTimetable.DrawAllAppBorder = false;
             this.dvwTimetable.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.dvwTimetable.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dvwTimetable.Location = new System.Drawing.Point(7, 20);
             this.dvwTimetable.MinHalfHourApp = false;
             this.dvwTimetable.Name = "dvwTimetable";
@@ -278,6 +282,9 @@
             this.dvwTimetable.SelectionChanged += new System.EventHandler(this.dvwTimetable_SelectionChanged);
             this.dvwTimetable.ResolveAppointments += new Calendar.ResolveAppointmentsEventHandler(this.dvwTimetable_ResolveAppointments);
             this.dvwTimetable.NewAppointment += new Calendar.NewAppointmentEventHandler(this.dvwTimetable_NewAppointment);
+            this.dvwTimetable.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dvwTimetable_MouseClick);
+            this.dvwTimetable.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dvwTimetable_MouseDown);
+            this.dvwTimetable.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dvwTimetable_MouseUp);
             // 
             // mnsMain
             // 
@@ -856,6 +863,7 @@
             this.lsbPlaylistsAd.FormattingEnabled = true;
             this.lsbPlaylistsAd.Location = new System.Drawing.Point(7, 19);
             this.lsbPlaylistsAd.Name = "lsbPlaylistsAd";
+            this.lsbPlaylistsAd.ScrollAlwaysVisible = true;
             this.lsbPlaylistsAd.Size = new System.Drawing.Size(159, 121);
             this.lsbPlaylistsAd.TabIndex = 1;
             this.lsbPlaylistsAd.Tag = "Ad";
@@ -888,6 +896,7 @@
             this.lsbPlaylistsMusic.FormattingEnabled = true;
             this.lsbPlaylistsMusic.Location = new System.Drawing.Point(7, 20);
             this.lsbPlaylistsMusic.Name = "lsbPlaylistsMusic";
+            this.lsbPlaylistsMusic.ScrollAlwaysVisible = true;
             this.lsbPlaylistsMusic.Size = new System.Drawing.Size(159, 121);
             this.lsbPlaylistsMusic.TabIndex = 0;
             this.lsbPlaylistsMusic.Tag = "Music";
@@ -1095,13 +1104,13 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.mtbDuration);
+            this.groupBox8.Controls.Add(this.mtbStartTime);
             this.groupBox8.Controls.Add(this.btnCreateEvent);
             this.groupBox8.Controls.Add(this.nudPriority);
             this.groupBox8.Controls.Add(this.label11);
             this.groupBox8.Controls.Add(this.ckbShuffle);
-            this.groupBox8.Controls.Add(this.txbDuration);
             this.groupBox8.Controls.Add(this.label10);
-            this.groupBox8.Controls.Add(this.txbStartTime);
             this.groupBox8.Controls.Add(this.label9);
             this.groupBox8.Controls.Add(this.groupBox10);
             this.groupBox8.Controls.Add(this.cmbPlaylistEvent);
@@ -1115,6 +1124,27 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Create event";
             // 
+            // mtbDuration
+            // 
+            this.mtbDuration.Location = new System.Drawing.Point(536, 44);
+            this.mtbDuration.Mask = "00:00:00";
+            this.mtbDuration.Name = "mtbDuration";
+            this.mtbDuration.PromptChar = '0';
+            this.mtbDuration.Size = new System.Drawing.Size(100, 20);
+            this.mtbDuration.TabIndex = 14;
+            this.mtbDuration.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            // 
+            // mtbStartTime
+            // 
+            this.mtbStartTime.Location = new System.Drawing.Point(536, 17);
+            this.mtbStartTime.Mask = "00:00:00";
+            this.mtbStartTime.Name = "mtbStartTime";
+            this.mtbStartTime.PromptChar = '0';
+            this.mtbStartTime.Size = new System.Drawing.Size(100, 20);
+            this.mtbStartTime.TabIndex = 13;
+            this.mtbStartTime.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            this.mtbStartTime.ValidatingType = typeof(System.DateTime);
+            // 
             // btnCreateEvent
             // 
             this.btnCreateEvent.Location = new System.Drawing.Point(760, 28);
@@ -1123,6 +1153,7 @@
             this.btnCreateEvent.TabIndex = 12;
             this.btnCreateEvent.Text = "Create";
             this.btnCreateEvent.UseVisualStyleBackColor = true;
+            this.btnCreateEvent.Click += new System.EventHandler(this.btnCreateEvent_Click);
             // 
             // nudPriority
             // 
@@ -1150,13 +1181,6 @@
             this.ckbShuffle.Text = "Shuffle";
             this.ckbShuffle.UseVisualStyleBackColor = true;
             // 
-            // txbDuration
-            // 
-            this.txbDuration.Location = new System.Drawing.Point(536, 43);
-            this.txbDuration.Name = "txbDuration";
-            this.txbDuration.Size = new System.Drawing.Size(100, 20);
-            this.txbDuration.TabIndex = 8;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -1165,13 +1189,6 @@
             this.label10.Size = new System.Drawing.Size(53, 13);
             this.label10.TabIndex = 7;
             this.label10.Text = "Duration :";
-            // 
-            // txbStartTime
-            // 
-            this.txbStartTime.Location = new System.Drawing.Point(536, 17);
-            this.txbStartTime.Name = "txbStartTime";
-            this.txbStartTime.Size = new System.Drawing.Size(100, 20);
-            this.txbStartTime.TabIndex = 6;
             // 
             // label9
             // 
@@ -1208,6 +1225,7 @@
             this.ckbAll.TabIndex = 7;
             this.ckbAll.Text = "All";
             this.ckbAll.UseVisualStyleBackColor = true;
+            this.ckbAll.CheckedChanged += new System.EventHandler(this.ckbCheckedChanged);
             // 
             // ckbSunday
             // 
@@ -1218,6 +1236,7 @@
             this.ckbSunday.TabIndex = 6;
             this.ckbSunday.Text = "SU";
             this.ckbSunday.UseVisualStyleBackColor = true;
+            this.ckbSunday.CheckedChanged += new System.EventHandler(this.ckbCheckedChanged);
             // 
             // ckbSaturday
             // 
@@ -1228,6 +1247,7 @@
             this.ckbSaturday.TabIndex = 5;
             this.ckbSaturday.Text = "SA";
             this.ckbSaturday.UseVisualStyleBackColor = true;
+            this.ckbSaturday.CheckedChanged += new System.EventHandler(this.ckbCheckedChanged);
             // 
             // ckbFriday
             // 
@@ -1238,6 +1258,7 @@
             this.ckbFriday.TabIndex = 4;
             this.ckbFriday.Text = "FR";
             this.ckbFriday.UseVisualStyleBackColor = true;
+            this.ckbFriday.CheckedChanged += new System.EventHandler(this.ckbCheckedChanged);
             // 
             // ckbThursday
             // 
@@ -1248,6 +1269,7 @@
             this.ckbThursday.TabIndex = 3;
             this.ckbThursday.Text = "TH";
             this.ckbThursday.UseVisualStyleBackColor = true;
+            this.ckbThursday.CheckedChanged += new System.EventHandler(this.ckbCheckedChanged);
             // 
             // ckbWednesday
             // 
@@ -1258,6 +1280,7 @@
             this.ckbWednesday.TabIndex = 2;
             this.ckbWednesday.Text = "WE";
             this.ckbWednesday.UseVisualStyleBackColor = true;
+            this.ckbWednesday.CheckedChanged += new System.EventHandler(this.ckbCheckedChanged);
             // 
             // ckbTuesday
             // 
@@ -1268,6 +1291,7 @@
             this.ckbTuesday.TabIndex = 1;
             this.ckbTuesday.Text = "TU";
             this.ckbTuesday.UseVisualStyleBackColor = true;
+            this.ckbTuesday.CheckedChanged += new System.EventHandler(this.ckbCheckedChanged);
             // 
             // ckbMonday
             // 
@@ -1278,6 +1302,7 @@
             this.ckbMonday.TabIndex = 0;
             this.ckbMonday.Text = "MO";
             this.ckbMonday.UseVisualStyleBackColor = true;
+            this.ckbMonday.CheckedChanged += new System.EventHandler(this.ckbCheckedChanged);
             // 
             // cmbPlaylistEvent
             // 
@@ -1335,7 +1360,6 @@
             this.groupBox12.Controls.Add(this.lsbTranscoders);
             this.groupBox12.Controls.Add(this.label28);
             this.groupBox12.Controls.Add(this.cmbEncoderEdit);
-            this.groupBox12.Controls.Add(this.txbServerIpEdit);
             this.groupBox12.Controls.Add(this.label27);
             this.groupBox12.Controls.Add(this.label23);
             this.groupBox12.Controls.Add(this.cmbBitrateEdit);
@@ -1491,6 +1515,7 @@
             this.lsbTranscoders.FormattingEnabled = true;
             this.lsbTranscoders.Location = new System.Drawing.Point(7, 20);
             this.lsbTranscoders.Name = "lsbTranscoders";
+            this.lsbTranscoders.ScrollAlwaysVisible = true;
             this.lsbTranscoders.Size = new System.Drawing.Size(132, 121);
             this.lsbTranscoders.TabIndex = 0;
             // 
@@ -1505,6 +1530,7 @@
             // 
             // cmbEncoderEdit
             // 
+            this.cmbEncoderEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEncoderEdit.FormattingEnabled = true;
             this.cmbEncoderEdit.Items.AddRange(new object[] {
             "MP3",
@@ -1513,13 +1539,6 @@
             this.cmbEncoderEdit.Name = "cmbEncoderEdit";
             this.cmbEncoderEdit.Size = new System.Drawing.Size(71, 21);
             this.cmbEncoderEdit.TabIndex = 21;
-            // 
-            // txbServerIpEdit
-            // 
-            this.txbServerIpEdit.Location = new System.Drawing.Point(345, 111);
-            this.txbServerIpEdit.Name = "txbServerIpEdit";
-            this.txbServerIpEdit.Size = new System.Drawing.Size(112, 20);
-            this.txbServerIpEdit.TabIndex = 31;
             // 
             // label27
             // 
@@ -1541,6 +1560,7 @@
             // 
             // cmbBitrateEdit
             // 
+            this.cmbBitrateEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBitrateEdit.FormattingEnabled = true;
             this.cmbBitrateEdit.Location = new System.Drawing.Point(348, 32);
             this.cmbBitrateEdit.Name = "cmbBitrateEdit";
@@ -1574,6 +1594,7 @@
             // 
             // cmbSampleRateEdit
             // 
+            this.cmbSampleRateEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSampleRateEdit.FormattingEnabled = true;
             this.cmbSampleRateEdit.Items.AddRange(new object[] {
             "44,1 kHz"});
@@ -1600,6 +1621,7 @@
             // 
             // groupBox13
             // 
+            this.groupBox13.Controls.Add(this.mtbServerIPEdit);
             this.groupBox13.Controls.Add(this.btnUpdate);
             this.groupBox13.Controls.Add(this.label22);
             this.groupBox13.Controls.Add(this.label29);
@@ -1666,12 +1688,12 @@
             // 
             // groupBox11
             // 
+            this.groupBox11.Controls.Add(this.mtbServerIP);
             this.groupBox11.Controls.Add(this.btnCreateTranscoder);
             this.groupBox11.Controls.Add(this.txbServerPassword);
             this.groupBox11.Controls.Add(this.label19);
             this.groupBox11.Controls.Add(this.nupPort);
             this.groupBox11.Controls.Add(this.label18);
-            this.groupBox11.Controls.Add(this.txbServerIp);
             this.groupBox11.Controls.Add(this.label17);
             this.groupBox11.Controls.Add(this.txbStreamUrl);
             this.groupBox11.Controls.Add(this.label16);
@@ -1742,13 +1764,6 @@
             this.label18.TabIndex = 12;
             this.label18.Text = "Server port :";
             // 
-            // txbServerIp
-            // 
-            this.txbServerIp.Location = new System.Drawing.Point(6, 239);
-            this.txbServerIp.Name = "txbServerIp";
-            this.txbServerIp.Size = new System.Drawing.Size(176, 20);
-            this.txbServerIp.TabIndex = 11;
-            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -1792,6 +1807,7 @@
             // 
             // cmbSampleRate
             // 
+            this.cmbSampleRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSampleRate.FormattingEnabled = true;
             this.cmbSampleRate.Items.AddRange(new object[] {
             "44,1 kHz"});
@@ -1811,6 +1827,7 @@
             // 
             // cmbBitrate
             // 
+            this.cmbBitrate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBitrate.FormattingEnabled = true;
             this.cmbBitrate.Location = new System.Drawing.Point(6, 83);
             this.cmbBitrate.Name = "cmbBitrate";
@@ -1828,6 +1845,7 @@
             // 
             // cmbEncoder
             // 
+            this.cmbEncoder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEncoder.FormattingEnabled = true;
             this.cmbEncoder.Items.AddRange(new object[] {
             "MP3",
@@ -1883,6 +1901,7 @@
             this.lsbLogServer.FormattingEnabled = true;
             this.lsbLogServer.Location = new System.Drawing.Point(6, 49);
             this.lsbLogServer.Name = "lsbLogServer";
+            this.lsbLogServer.ScrollAlwaysVisible = true;
             this.lsbLogServer.Size = new System.Drawing.Size(808, 160);
             this.lsbLogServer.TabIndex = 0;
             // 
@@ -2079,6 +2098,26 @@
             this.OFD.Filter = "MP3 Files|*.mp3";
             this.OFD.Multiselect = true;
             // 
+            // mtbServerIP
+            // 
+            this.mtbServerIP.Location = new System.Drawing.Point(9, 240);
+            this.mtbServerIP.Mask = "000.000.000.000";
+            this.mtbServerIP.Name = "mtbServerIP";
+            this.mtbServerIP.PromptChar = '0';
+            this.mtbServerIP.Size = new System.Drawing.Size(173, 20);
+            this.mtbServerIP.TabIndex = 18;
+            this.mtbServerIP.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            // 
+            // mtbServerIPEdit
+            // 
+            this.mtbServerIPEdit.Location = new System.Drawing.Point(188, 94);
+            this.mtbServerIPEdit.Mask = "000.000.000.000";
+            this.mtbServerIPEdit.Name = "mtbServerIPEdit";
+            this.mtbServerIPEdit.PromptChar = '0';
+            this.mtbServerIPEdit.Size = new System.Drawing.Size(108, 20);
+            this.mtbServerIPEdit.TabIndex = 19;
+            this.mtbServerIPEdit.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            // 
             // AdminView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2211,9 +2250,7 @@
         private System.Windows.Forms.NumericUpDown nudPriority;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.CheckBox ckbShuffle;
-        private System.Windows.Forms.TextBox txbDuration;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txbStartTime;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.CheckBox ckbAll;
@@ -2250,7 +2287,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.NumericUpDown nupPort;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox txbServerIp;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.TextBox txbTranscoderNameEdit;
         private System.Windows.Forms.Label label21;
@@ -2259,7 +2295,6 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.ComboBox cmbEncoderEdit;
-        private System.Windows.Forms.TextBox txbServerIpEdit;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox cmbBitrateEdit;
@@ -2339,6 +2374,10 @@
         private System.Windows.Forms.Button btnRemoveFromPlaylist;
         private System.Windows.Forms.TextBox txbSearchPlaylistContent;
         private System.Windows.Forms.Label lblPlaylistDuration;
+        private System.Windows.Forms.MaskedTextBox mtbDuration;
+        private System.Windows.Forms.MaskedTextBox mtbStartTime;
+        private System.Windows.Forms.MaskedTextBox mtbServerIPEdit;
+        private System.Windows.Forms.MaskedTextBox mtbServerIP;
 
 
     }

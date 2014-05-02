@@ -5,8 +5,18 @@ using System.Text;
 
 namespace WebradioManager
 {
-    public class CalendarEvent
+    public enum DayValue
     {
+        Monday = 2,
+        Tuesday = 4,
+        Wednesday = 8,
+        Thursday = 16,
+        Friday = 32,
+        Saturday = 64,
+        Sunday = 1,
+    }
+    public class CalendarEvent
+    {        
         const int MONDAY_MASK = 2;
         const int TUESDAY_MASK = 4;
         const int WEDNESDAY_MASK = 8;
@@ -23,12 +33,18 @@ namespace WebradioManager
         private bool _shuffle;
         private bool _loopatend;
         private int _priority;
-        private string _playlist;
+        private Playlist _playlist;
+        private int _id;
 
         #endregion
 
         #region Properties
-        public string Playlist
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+        public Playlist Playlist
         {
             get { return _playlist; }
             set { _playlist = value; }
@@ -82,8 +98,15 @@ namespace WebradioManager
         }
         #endregion
 
-        public CalendarEvent(string name, TimeSpan starttime, TimeSpan duration, int repeat, int priority, bool shuffle, bool loopatend, string playlist)
+        public CalendarEvent(string name, TimeSpan starttime, TimeSpan duration, int repeat, int priority, bool shuffle, bool loopatend, Playlist playlist)
+            :this(0,name,starttime,duration,repeat,priority,shuffle,loopatend,playlist)
         {
+            //NO CODE
+        }
+
+        public CalendarEvent(int id, string name, TimeSpan starttime, TimeSpan duration, int repeat, int priority, bool shuffle, bool loopatend, Playlist playlist)
+        {
+            this.Id = id;
             this.Name = name;
             this.StartTime = starttime;
             this.Duration = duration;

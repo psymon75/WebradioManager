@@ -55,22 +55,26 @@ namespace WebradioManager
                 reader.Read();
                 wr.Calendar = new WebradioCalendar(int.Parse(reader["id"].ToString()), reader["filename"].ToString());
                 reader.Close();
-                reader = this.Controls.ExecuteDataReader("SELECT ce.starttime, ce.duration, ce.name AS EventName, ce.repeat, ce.priority, ce.shuffle, ce.loopatend, p.name AS PlaylistName FROM tcalendarevent ce, tplaylist p WHERE ce.calendarid = " + wr.Calendar.Id + " AND ce.playlistid = p.id");
+                reader = this.Controls.ExecuteDataReader("SELECT ce.id AS EventId, ce.playlistid, ce.starttime, ce.duration, ce.name AS EventName, ce.repeat, ce.priority, ce.shuffle, ce.loopatend, p.name  AS PlaylistName, p.filename AS PlaylistFilename, at.name AS AudiotypeName FROM tcalendarevent ce, tplaylist p, taudiotype at WHERE ce.calendarid = " + wr.Calendar.Id + " AND ce.playlistid = p.id AND p.typeid = at.id");
                 while(reader.Read())
                 {
                     string[] time = reader["starttime"].ToString().Split(':');
                     TimeSpan start = new TimeSpan(int.Parse(time[0]),int.Parse(time[1]),int.Parse(time[2]));
                     time = reader["duration"].ToString().Split(':');
                     TimeSpan duration = new TimeSpan(int.Parse(time[0]),int.Parse(time[1]),int.Parse(time[2]));
-                                       
-                    wr.Calendar.Events.Add(new CalendarEvent(reader["EventName"].ToString(),
+                    Playlist playlist;
+                    if (reader["AudiotypeName"].ToString() == AudioType.Music.ToString())
+                        playlist = new PlaylistMusic(reader["PlaylistName"].ToString(), reader["PlaylistFilename"].ToString());
+                    else
+                        playlist = new PlaylistAd(reader["PlaylistName"].ToString(), reader["PlaylistFilename"].ToString());
+                    wr.Calendar.Events.Add(new CalendarEvent(int.Parse(reader["EventId"].ToString()), reader["EventName"].ToString(),
                         start,
                         duration,
                         int.Parse(reader["repeat"].ToString()),
                         int.Parse(reader["priority"].ToString()),
                         Convert.ToBoolean(reader["shuffle"].ToString()),
                         Convert.ToBoolean(reader["loopatend"].ToString()),
-                        reader["PlaylistName"].ToString()));
+                        playlist));
                 }
                 reader.Close();
                 //---
@@ -455,6 +459,68 @@ namespace WebradioManager
                 this.AddToPlaylist(audioFileId, idPlaylist);
             return idPlaylist;
 
+        }
+
+        public int AddEvent(CalendarEvent newEvent, int calendarId, int playlistId)
+        {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data.Add("name", newEvent.Name);
+            data.Add("starttime", newEvent.StartTime.ToString());
+            data.Add("duration", newEvent.Duration.ToString());
+            data.Add("repeat", newEvent.Repeat.ToString());
+            data.Add("priority", newEvent.Priority.ToString());
+            data.Add("shuffle", (newEvent.Shuffle) ? "TRUE" : "FALSE");
+            data.Add("loopatend", "TRUE");
+            data.Add("calendarid", calendarId.ToString());
+            data.Add("playlistid", playlistId.ToString());
+
+            this.Controls.Insert("tcalendarevent", data);
+
+            SQLiteDataReader reader = this.Controls.ExecuteDataReader("SELECT id FROM tcalendarevent WHERE name = '"+ newEvent.Name +"' AND calendarid = " + calendarId.ToString());
+            reader.Read();
+            int id = int.Parse(reader["id"].ToString());
+            reader.Close();
+            return id;
+        }
+
+        public bool EventExist(CalendarEvent aEvent, int calendarId)
+        {
+            SQLiteDataReader reader = this.Controls.ExecuteDataReader("SELECT COUNT(*) AS Count FROM tcalendarevent WHERE name = '" + aEvent.Name + "' AND calendarid = " + calendarId.ToString());
+            reader.Read();
+            bool result = (reader["Count"].ToString() == "0")?false:true;
+            reader.Close();
+            return result;
+        }
+
+        public bool UpdateEvent(CalendarEvent aEvent)
+        {
+            Dictionary<string,string> data = new Dictionary<string,string>();
+            //Only change starttime and duration for the moment
+            data.Add("starttime", aEvent.StartTime.ToString());
+            data.Add("duration", aEvent.Duration.ToString());
+            data.Add("repeat", aEvent.Repeat.ToString());
+            try
+            {
+                this.Controls.Update("tcalendarevent", data, "id = " + aEvent.Id);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool DeleteEvent(CalendarEvent aEvent)
+        {
+            try
+            {
+                this.Controls.Delete("tcalendarevent", "id = " + aEvent.Id.ToString());
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

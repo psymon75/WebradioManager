@@ -58,12 +58,12 @@ namespace WebradioManager
                 playlist.SetAttribute("loopatend", (ev.Loopatend)?"1":"0");
                 playlist.SetAttribute("shuffle", (ev.Shuffle) ? "1" : "0");
                 playlist.SetAttribute("priority", ev.Priority.ToString());
-                playlist.InnerText = ev.Playlist;
+                playlist.InnerText = ev.Playlist.Name;
                 eventelement.AppendChild(playlist);
 
                 XmlElement calendar = document.CreateElement("calendar");
-                calendar.SetAttribute("starttime", ev.StartTime.ToString("hh:mm:ss"));
-                calendar.SetAttribute("duration", ev.Duration.ToString("hh:mm:ss"));
+                calendar.SetAttribute("starttime", ev.StartTime.ToString(@"hh\:mm\:ss"));
+                calendar.SetAttribute("duration", ev.Duration.ToString(@"hh\:mm\:ss"));
                 calendar.SetAttribute("repeat", ev.Repeat.ToString());
                 eventelement.AppendChild(calendar);
                 root.AppendChild(eventelement);
