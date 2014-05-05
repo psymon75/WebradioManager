@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -28,7 +29,7 @@ namespace WebradioManager
         const string DEFAULT_PLAYLISTS_FOLDER = "playlists/";
         const int MAX_TRY_GENERATE = 10;
         //TRANSCODERS CONSTANTS
-        
+        const string DEFAULT_TRANSCODERS_FOLDER = "transcoders/";
 
         private Dictionary<int, Webradio> _webradios;
         private List<IController> _observers;
@@ -132,6 +133,7 @@ namespace WebradioManager
                 Directory.CreateDirectory(webradioFilename);
                 Directory.CreateDirectory(webradioFilename + DEFAULT_SERVER_FOLDER);
                 Directory.CreateDirectory(webradioFilename + DEFAULT_PLAYLISTS_FOLDER);
+                Directory.CreateDirectory(webradioFilename + DEFAULT_TRANSCODERS_FOLDER);
                 Thread.Sleep(100);
                 wr.GenerateConfigFiles();
             }
@@ -451,6 +453,58 @@ namespace WebradioManager
             {
                 this.Webradios[webradioId].Calendar.Events.Remove(aEvent);
                 this.Webradios[webradioId].Calendar.GenerateConfigFile();
+                this.UpdateObservers();
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public bool CreateTranscoder(string name, StreamType st, int sampleRate, int bitrate, string url, IPAddress ip, int port, string password, int webradioId)
+        {
+            string filename = DEFAULT_WEBRADIOS_FOLDER + this.Webradios[webradioId].Name + "/" + DEFAULT_TRANSCODERS_FOLDER;
+            WebradioTranscoder transcoder;
+            if(st == StreamType.AACPlus)
+                transcoder = new TranscoderAacPlus(name,
+                bitrate,
+                sampleRate,
+                ip,
+                port,
+                url,
+                password,
+                filename,
+                filename);
+            else
+               transcoder = new TranscoderMp3(name,
+                bitrate,
+                sampleRate,
+                ip,
+                port,
+                url,
+                password,
+                filename,
+                filename); 
+                
+            int id = this.Bdd.AddTranscoder(transcoder, webradioId);
+            if (id == Bdd.ERROR)
+                return false;
+            transcoder.Id = id;
+            transcoder.ConfigFilename = filename + "/" + id.ToString() + ".config";
+            transcoder.LogFilename = filename + "/" + id.ToString() + ".log";
+            this.Webradios[webradioId].Transcoders.Add(transcoder);
+            transcoder.GenerateConfigFile();
+            this.UpdateObservers();
+            return true;
+        }
+
+        public bool DeleteTranscoder(WebradioTranscoder transcoder, int webradioId)
+        {
+            if (this.Bdd.DeleteTranscoder(transcoder.Id))
+            {
+                System.IO.File.Delete(transcoder.ConfigFilename);
+                if (System.IO.File.Exists(transcoder.LogFilename))
+                    System.IO.File.Delete(transcoder.LogFilename);
+                this.Webradios[webradioId].Transcoders.Remove(transcoder);
                 this.UpdateObservers();
                 return true;
             }

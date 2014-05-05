@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 
@@ -110,7 +111,7 @@ namespace WebradioManager
                             reader["TransName"].ToString(), 
                             int.Parse(reader["bitrate"].ToString()),
                             int.Parse(reader["samplerate"].ToString()),
-                            reader["ip"].ToString(),
+                            IPAddress.Parse(reader["ip"].ToString()),
                             int.Parse(reader["port"].ToString()),
                             reader["url"].ToString(),
                             reader["password"].ToString(),
@@ -121,7 +122,7 @@ namespace WebradioManager
                             reader["TransName"].ToString(),
                             int.Parse(reader["bitrate"].ToString()),
                             int.Parse(reader["samplerate"].ToString()),
-                            reader["ip"].ToString(),
+                            IPAddress.Parse(reader["ip"].ToString()),
                             int.Parse(reader["port"].ToString()),
                             reader["url"].ToString(),
                             reader["password"].ToString(),
@@ -515,6 +516,72 @@ namespace WebradioManager
             try
             {
                 this.Controls.Delete("tcalendarevent", "id = " + aEvent.Id.ToString());
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool TranscoderExist(string name, int webradioId)
+        {
+            SQLiteDataReader reader = this.Controls.ExecuteDataReader("SELECT COUNT(*) AS Count FROM ttranscoder WHERE webradioid = " + webradioId.ToString() + " AND name = '"+ name +"'");
+            reader.Read();
+            if (reader["Count"].ToString() == "0")
+            {
+                reader.Close();
+                return false;
+            }
+            else
+            {
+                reader.Close();
+                return true;
+            }
+        }
+
+        public int AddTranscoder(WebradioTranscoder transcoder, int webradioId)
+        {
+            if (this.TranscoderExist(transcoder.Name, webradioId))
+                return ERROR;
+            try
+            {
+                Dictionary<string, string> data = new Dictionary<string, string>();
+                data.Add("webradioid", webradioId.ToString());
+                data.Add("streamtypeid", ((int)transcoder.StreamType).ToString());
+                data.Add("bitrate", transcoder.Birate.ToString());
+                data.Add("samplerate", transcoder.SampleRate.ToString());
+                data.Add("name", transcoder.Name);
+                data.Add("url", transcoder.Url);
+                data.Add("port", transcoder.Port.ToString());
+                data.Add("ip", transcoder.Ip.ToString());
+                data.Add("password", transcoder.Password);
+                data.Add("configfilename", transcoder.ConfigFilename);
+                data.Add("logfilename", transcoder.LogFilename);
+                this.Controls.Insert("ttranscoder", data);
+
+                SQLiteDataReader reader = this.Controls.ExecuteDataReader("SELECT id FROM ttranscoder WHERE webradioid = " + webradioId.ToString() + " AND name = '" + transcoder.Name + "'");
+                reader.Read();
+                int id = int.Parse(reader["id"].ToString());
+                reader.Close();
+                data.Clear();
+                data.Add("configfilename", transcoder.ConfigFilename + "/" + id.ToString() + ".config");
+                data.Add("logfilename", transcoder.LogFilename + "/" + id.ToString() + ".log");
+                this.Controls.Update("ttranscoder", data, "webradioid = " + webradioId.ToString() + " AND name = '" + transcoder.Name + "'");
+                return id;
+            }
+            catch
+            {
+                return ERROR;
+            }
+            
+        }
+
+        public bool DeleteTranscoder(int transcoderId)
+        {
+            try
+            {
+                this.Controls.Delete("ttranscoder", "id = " + transcoderId.ToString());
                 return true;
             }
             catch

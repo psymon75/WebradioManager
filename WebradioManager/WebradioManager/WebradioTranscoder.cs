@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 
 namespace WebradioManager
 {
     public abstract class WebradioTranscoder
     {
+        const int DEFAULT_ID = 0;
+
         private int _id;
         private int _birate;
         private int _sampleRate;
         private string _name;
         private string _url;
-        private string _ip;
+        private IPAddress _ip;
         private int _port;
         private string _password;
         private string _configFilename;
@@ -64,7 +67,7 @@ namespace WebradioManager
             set { _url = value; }
         }
 
-        public string Ip
+        public IPAddress Ip
         {
             get { return _ip; }
             set { _ip = value; }
@@ -106,7 +109,12 @@ namespace WebradioManager
         }
         #endregion
 
-        public WebradioTranscoder(int id, string name, int bitrate, int sampleRate, string ip, int port, string url, string password, string configFilename, string logFilename, StreamType st)
+        public WebradioTranscoder(string name, int bitrate, int sampleRate, IPAddress ip, int port, string url, string password, string configFilename, string logFilename, StreamType st)
+            :this(DEFAULT_ID,name,bitrate,sampleRate,ip,port,url,password,configFilename,logFilename,st)
+        {
+            //NO CODE
+        }
+        public WebradioTranscoder(int id, string name, int bitrate, int sampleRate, IPAddress ip, int port, string url, string password, string configFilename, string logFilename, StreamType st)
         {
             this.Id = id;
             this.Name = name;

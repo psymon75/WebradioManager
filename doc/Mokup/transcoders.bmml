@@ -16,12 +16,12 @@
         <text>Transcoders</text>
       </controlProperties>
     </control>
-    <control controlID="6" controlTypeID="com.balsamiq.mockups::Label" x="605" y="165" w="-1" h="-1" measuredW="57" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Label" x="490" y="170" w="-1" h="-1" measuredW="57" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Encoder%20%3A</text>
       </controlProperties>
     </control>
-    <control controlID="7" controlTypeID="com.balsamiq.mockups::ComboBox" x="605" y="191" w="-1" h="-1" measuredW="57" measuredH="46" zOrder="4" locked="false" isInGroup="-1">
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::ComboBox" x="490" y="196" w="-1" h="-1" measuredW="57" measuredH="46" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
         <text>MP3%0AACC+</text>
       </controlProperties>
@@ -251,27 +251,7 @@
         <text>Clear</text>
       </controlProperties>
     </control>
-    <control controlID="61" controlTypeID="com.balsamiq.mockups::Label" x="490" y="165" w="-1" h="-1" measuredW="41" measuredH="21" zOrder="44" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Name%20%3A</text>
-      </controlProperties>
-    </control>
-    <control controlID="62" controlTypeID="com.balsamiq.mockups::TextInput" x="490" y="188" w="-1" h="-1" measuredW="79" measuredH="26" zOrder="45" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text/>
-      </controlProperties>
-    </control>
-    <control controlID="63" controlTypeID="com.balsamiq.mockups::Label" x="884" y="204" w="-1" h="-1" measuredW="111" measuredH="21" zOrder="46" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Transcoder%20name%20%3A</text>
-      </controlProperties>
-    </control>
-    <control controlID="64" controlTypeID="com.balsamiq.mockups::TextInput" x="997" y="201" w="174" h="-1" measuredW="79" measuredH="26" zOrder="47" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text/>
-      </controlProperties>
-    </control>
-    <control controlID="65" controlTypeID="com.balsamiq.mockups::Button" x="718" y="439" w="-1" h="-1" measuredW="55" measuredH="27" zOrder="48" locked="false" isInGroup="-1">
+    <control controlID="65" controlTypeID="com.balsamiq.mockups::Button" x="718" y="439" w="-1" h="-1" measuredW="55" measuredH="27" zOrder="44" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Clear</text>
       </controlProperties>

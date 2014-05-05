@@ -133,10 +133,5 @@
         <text>Timetable</text>
       </controlProperties>
     </control>
-    <control controlID="34" controlTypeID="com.balsamiq.mockups::Button" x="399" y="242" w="-1" h="-1" measuredW="118" measuredH="27" zOrder="24" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Delete%20selection</text>
-      </controlProperties>
-    </control>
   </controls>
 </mockup>

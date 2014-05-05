@@ -7,7 +7,7 @@ namespace WebradioManager
 {
     public enum StreamType
     {
-        MP3,
-        AACPlus,
+        MP3 = 1,
+        AACPlus = 2,
     }
 }

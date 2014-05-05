@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 
 namespace WebradioManager
@@ -76,7 +77,10 @@ namespace WebradioManager
 
         public bool AddToPlaylist(Playlist playlist, Dictionary<int, string> audioFiles)
         {
-            return this.Model.AddToPlaylist(playlist, audioFiles);
+            if (playlist != null)
+                return this.Model.AddToPlaylist(playlist, audioFiles);
+            else
+                return false;
         }
 
         public bool RemoveFromPlaylist(Playlist playlist, Dictionary<int,string> audioFiles)
@@ -107,6 +111,16 @@ namespace WebradioManager
         public bool DeleteEvent(CalendarEvent aEvent, int webradioId)
         {
             return this.Model.DeleteEvent(aEvent, webradioId);
+        }
+
+        public bool CreateTranscoder(string name, StreamType st, int sampleRate, int bitrate, string url, IPAddress ip, int port, string password, int webradioId)
+        {
+            return this.Model.CreateTranscoder(name, st, sampleRate, bitrate, url, ip, port, password, webradioId);
+        }
+
+        public bool DeleteTranscoder(WebradioTranscoder transcoder, int webradioId)
+        {
+            return this.Model.DeleteTranscoder(transcoder, webradioId);
         }
     }
 }

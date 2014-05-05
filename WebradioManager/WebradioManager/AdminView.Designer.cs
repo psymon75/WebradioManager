@@ -166,16 +166,18 @@
             this.txbStreamNameEdit = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.mtbServerIPEdit = new System.Windows.Forms.MaskedTextBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.nudPortEdit = new System.Windows.Forms.NumericUpDown();
             this.txbServerPasswordEdit = new System.Windows.Forms.TextBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.mtbServerIP = new System.Windows.Forms.MaskedTextBox();
             this.btnCreateTranscoder = new System.Windows.Forms.Button();
             this.txbServerPassword = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.nupPort = new System.Windows.Forms.NumericUpDown();
+            this.nudPort = new System.Windows.Forms.NumericUpDown();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.txbStreamUrl = new System.Windows.Forms.TextBox();
@@ -211,8 +213,7 @@
             this.label31 = new System.Windows.Forms.Label();
             this.FBD = new System.Windows.Forms.FolderBrowserDialog();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
-            this.mtbServerIP = new System.Windows.Forms.MaskedTextBox();
-            this.mtbServerIPEdit = new System.Windows.Forms.MaskedTextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.mnsMain.SuspendLayout();
             this.tbcTabs.SuspendLayout();
             this.tbpStatus.SuspendLayout();
@@ -243,7 +244,7 @@
             this.groupBox13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPortEdit)).BeginInit();
             this.groupBox11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nupPort)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPort)).BeginInit();
             this.tbpServer.SuspendLayout();
             this.groupBox19.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -283,7 +284,6 @@
             this.dvwTimetable.ResolveAppointments += new Calendar.ResolveAppointmentsEventHandler(this.dvwTimetable_ResolveAppointments);
             this.dvwTimetable.NewAppointment += new Calendar.NewAppointmentEventHandler(this.dvwTimetable_NewAppointment);
             this.dvwTimetable.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dvwTimetable_MouseClick);
-            this.dvwTimetable.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dvwTimetable_MouseDown);
             this.dvwTimetable.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dvwTimetable_MouseUp);
             // 
             // mnsMain
@@ -420,7 +420,7 @@
             this.btnDeleteAd.Tag = "Ad";
             this.btnDeleteAd.Text = "Delete selected";
             this.btnDeleteAd.UseVisualStyleBackColor = true;
-            this.btnDeleteAd.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnDeleteAd.Click += new System.EventHandler(this.btnDeleteLibrary_Click);
             // 
             // dgvAds
             // 
@@ -575,7 +575,7 @@
             this.btnDeleteMusic.Tag = "Music";
             this.btnDeleteMusic.Text = "Delete selected";
             this.btnDeleteMusic.UseVisualStyleBackColor = true;
-            this.btnDeleteMusic.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnDeleteMusic.Click += new System.EventHandler(this.btnDeleteLibrary_Click);
             // 
             // cmbPlaylistsMusic
             // 
@@ -1509,6 +1509,7 @@
             this.btnDeleteTranscoder.TabIndex = 1;
             this.btnDeleteTranscoder.Text = "Delete";
             this.btnDeleteTranscoder.UseVisualStyleBackColor = true;
+            this.btnDeleteTranscoder.Click += new System.EventHandler(this.btnDeleteTranscoder_Click);
             // 
             // lsbTranscoders
             // 
@@ -1518,6 +1519,7 @@
             this.lsbTranscoders.ScrollAlwaysVisible = true;
             this.lsbTranscoders.Size = new System.Drawing.Size(132, 121);
             this.lsbTranscoders.TabIndex = 0;
+            this.lsbTranscoders.SelectedIndexChanged += new System.EventHandler(this.lsbTranscoders_SelectedIndexChanged);
             // 
             // label28
             // 
@@ -1634,6 +1636,16 @@
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Edit";
             // 
+            // mtbServerIPEdit
+            // 
+            this.mtbServerIPEdit.Location = new System.Drawing.Point(188, 94);
+            this.mtbServerIPEdit.Mask = "000.000.000.000";
+            this.mtbServerIPEdit.Name = "mtbServerIPEdit";
+            this.mtbServerIPEdit.PromptChar = '0';
+            this.mtbServerIPEdit.Size = new System.Drawing.Size(108, 20);
+            this.mtbServerIPEdit.TabIndex = 19;
+            this.mtbServerIPEdit.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            // 
             // btnUpdate
             // 
             this.btnUpdate.Location = new System.Drawing.Point(301, 128);
@@ -1688,11 +1700,12 @@
             // 
             // groupBox11
             // 
+            this.groupBox11.Controls.Add(this.label20);
             this.groupBox11.Controls.Add(this.mtbServerIP);
             this.groupBox11.Controls.Add(this.btnCreateTranscoder);
             this.groupBox11.Controls.Add(this.txbServerPassword);
             this.groupBox11.Controls.Add(this.label19);
-            this.groupBox11.Controls.Add(this.nupPort);
+            this.groupBox11.Controls.Add(this.nudPort);
             this.groupBox11.Controls.Add(this.label18);
             this.groupBox11.Controls.Add(this.label17);
             this.groupBox11.Controls.Add(this.txbStreamUrl);
@@ -1712,6 +1725,16 @@
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Create";
             // 
+            // mtbServerIP
+            // 
+            this.mtbServerIP.Location = new System.Drawing.Point(9, 240);
+            this.mtbServerIP.Mask = "000.000.000.000";
+            this.mtbServerIP.Name = "mtbServerIP";
+            this.mtbServerIP.PromptChar = '0';
+            this.mtbServerIP.Size = new System.Drawing.Size(173, 20);
+            this.mtbServerIP.TabIndex = 18;
+            this.mtbServerIP.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            // 
             // btnCreateTranscoder
             // 
             this.btnCreateTranscoder.Location = new System.Drawing.Point(52, 343);
@@ -1720,6 +1743,7 @@
             this.btnCreateTranscoder.TabIndex = 17;
             this.btnCreateTranscoder.Text = "Create";
             this.btnCreateTranscoder.UseVisualStyleBackColor = true;
+            this.btnCreateTranscoder.Click += new System.EventHandler(this.btnCreateTranscoder_Click);
             // 
             // txbServerPassword
             // 
@@ -1738,18 +1762,18 @@
             this.label19.TabIndex = 15;
             this.label19.Text = "Server password :";
             // 
-            // nupPort
+            // nudPort
             // 
-            this.nupPort.Location = new System.Drawing.Point(6, 278);
-            this.nupPort.Maximum = new decimal(new int[] {
+            this.nudPort.Location = new System.Drawing.Point(6, 278);
+            this.nudPort.Maximum = new decimal(new int[] {
             65535,
             0,
             0,
             0});
-            this.nupPort.Name = "nupPort";
-            this.nupPort.Size = new System.Drawing.Size(74, 20);
-            this.nupPort.TabIndex = 14;
-            this.nupPort.Value = new decimal(new int[] {
+            this.nudPort.Name = "nudPort";
+            this.nudPort.Size = new System.Drawing.Size(74, 20);
+            this.nudPort.TabIndex = 14;
+            this.nudPort.Value = new decimal(new int[] {
             8000,
             0,
             0,
@@ -1810,8 +1834,8 @@
             this.cmbSampleRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSampleRate.FormattingEnabled = true;
             this.cmbSampleRate.Items.AddRange(new object[] {
-            "44,1 kHz"});
-            this.cmbSampleRate.Location = new System.Drawing.Point(87, 83);
+            "44100"});
+            this.cmbSampleRate.Location = new System.Drawing.Point(103, 83);
             this.cmbSampleRate.Name = "cmbSampleRate";
             this.cmbSampleRate.Size = new System.Drawing.Size(71, 21);
             this.cmbSampleRate.TabIndex = 5;
@@ -1819,7 +1843,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(87, 66);
+            this.label14.Location = new System.Drawing.Point(103, 66);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(69, 13);
             this.label14.TabIndex = 4;
@@ -1831,7 +1855,7 @@
             this.cmbBitrate.FormattingEnabled = true;
             this.cmbBitrate.Location = new System.Drawing.Point(6, 83);
             this.cmbBitrate.Name = "cmbBitrate";
-            this.cmbBitrate.Size = new System.Drawing.Size(71, 21);
+            this.cmbBitrate.Size = new System.Drawing.Size(57, 21);
             this.cmbBitrate.TabIndex = 3;
             // 
             // label13
@@ -2098,25 +2122,14 @@
             this.OFD.Filter = "MP3 Files|*.mp3";
             this.OFD.Multiselect = true;
             // 
-            // mtbServerIP
+            // label20
             // 
-            this.mtbServerIP.Location = new System.Drawing.Point(9, 240);
-            this.mtbServerIP.Mask = "000.000.000.000";
-            this.mtbServerIP.Name = "mtbServerIP";
-            this.mtbServerIP.PromptChar = '0';
-            this.mtbServerIP.Size = new System.Drawing.Size(173, 20);
-            this.mtbServerIP.TabIndex = 18;
-            this.mtbServerIP.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
-            // 
-            // mtbServerIPEdit
-            // 
-            this.mtbServerIPEdit.Location = new System.Drawing.Point(188, 94);
-            this.mtbServerIPEdit.Mask = "000.000.000.000";
-            this.mtbServerIPEdit.Name = "mtbServerIPEdit";
-            this.mtbServerIPEdit.PromptChar = '0';
-            this.mtbServerIPEdit.Size = new System.Drawing.Size(108, 20);
-            this.mtbServerIPEdit.TabIndex = 19;
-            this.mtbServerIPEdit.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(67, 86);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(30, 13);
+            this.label20.TabIndex = 19;
+            this.label20.Text = "Kb/s";
             // 
             // AdminView
             // 
@@ -2179,7 +2192,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudPortEdit)).EndInit();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nupPort)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPort)).EndInit();
             this.tbpServer.ResumeLayout(false);
             this.groupBox19.ResumeLayout(false);
             this.groupBox18.ResumeLayout(false);
@@ -2285,7 +2298,7 @@
         private System.Windows.Forms.Button btnCreateTranscoder;
         private System.Windows.Forms.TextBox txbServerPassword;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.NumericUpDown nupPort;
+        private System.Windows.Forms.NumericUpDown nudPort;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.TextBox txbTranscoderNameEdit;
@@ -2378,6 +2391,7 @@
         private System.Windows.Forms.MaskedTextBox mtbStartTime;
         private System.Windows.Forms.MaskedTextBox mtbServerIPEdit;
         private System.Windows.Forms.MaskedTextBox mtbServerIP;
+        private System.Windows.Forms.Label label20;
 
 
     }
