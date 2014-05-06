@@ -70,5 +70,10 @@ namespace WebradioManager
             AdminController admincontroller = new AdminController(id, this.Model);
             this.Model.AddObserver(admincontroller);
         }
+
+        public bool StopAllTranscoders()
+        {
+            return this.Model.StopAllTranscoders();
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace WebradioManager
         const int DEFAULT_SERVER_PORT = 8000;
         const int DEFAULT_MAX_LISTENER = 32;
         //CALENDAR CONSTANTS
-        const string DEFAULT_CALENDAR_FILENAME = "calendar.xml";
+        public const string DEFAULT_CALENDAR_FILENAME = "calendar.xml";
         //PLAYLISTS CONSTANTS
         const string DEFAULT_PLAYLISTS_FOLDER = "playlists/";
         const int MAX_TRY_GENERATE = 10;
@@ -483,16 +483,17 @@ namespace WebradioManager
                 url,
                 password,
                 filename,
-                filename); 
-                
+                filename);
+
+            transcoder.CalendarFile = DEFAULT_WEBRADIOS_FOLDER + this.Webradios[webradioId].Name + "/" + DEFAULT_CALENDAR_FILENAME;
             int id = this.Bdd.AddTranscoder(transcoder, webradioId);
             if (id == Bdd.ERROR)
                 return false;
             transcoder.Id = id;
-            transcoder.ConfigFilename = filename + "/" + id.ToString() + ".config";
-            transcoder.LogFilename = filename + "/" + id.ToString() + ".log";
+            transcoder.ConfigFilename = filename  + id.ToString() + ".config";
+            transcoder.LogFilename = filename + id.ToString() + ".log";
             this.Webradios[webradioId].Transcoders.Add(transcoder);
-            transcoder.GenerateConfigFile();
+            transcoder.GenerateConfigFile(this.Webradios[webradioId].Playlists);
             this.UpdateObservers();
             return true;
         }
@@ -512,5 +513,91 @@ namespace WebradioManager
                 return false;
         }
 
+        public bool UpdateTranscoder(WebradioTranscoder transcoder, int webradioId)
+        {
+            try
+            {
+                bool wasRunning = false;
+                if (transcoder.IsRunning())
+                {
+                    wasRunning = true;
+                    transcoder.Process.Kill();
+                }
+
+                this.Bdd.UpdateTranscoder(transcoder);
+                transcoder.GenerateConfigFile(this.Webradios[webradioId].Playlists);
+                if(wasRunning)
+                    transcoder.Start();
+                this.UpdateObservers();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool StartTranscoder(WebradioTranscoder transcoder, int webradioId)
+        {
+            try
+            {
+                transcoder.Start();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            
+        }
+
+        public bool StopTranscoder(WebradioTranscoder transcoder, int webradioId)
+        {
+            try
+            {
+                transcoder.Stop();
+                this.Webradios[webradioId].Calendar.GenerateConfigFile();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool StopAllTranscoders(int webradioId)
+        {
+            try
+            {
+                foreach(WebradioTranscoder transcoder in this.Webradios[webradioId].Transcoders)
+                {
+                    transcoder.Stop();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool StopAllTranscoders()
+        {
+            try
+            {
+                foreach (KeyValuePair<int,Webradio> webradio in this.Webradios)
+                {
+                    foreach (WebradioTranscoder transcoder in webradio.Value.Transcoders)
+                    {
+                        transcoder.Stop();
+                    }
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

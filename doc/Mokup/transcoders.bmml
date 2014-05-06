@@ -256,5 +256,10 @@
         <text>Clear</text>
       </controlProperties>
     </control>
+    <control controlID="66" controlTypeID="com.balsamiq.mockups::Button" x="781" y="439" w="-1" h="-1" measuredW="93" measuredH="27" zOrder="45" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Show%20logfile</text>
+      </controlProperties>
+    </control>
   </controls>
 </mockup>

@@ -102,7 +102,7 @@ namespace WebradioManager
                 }
                 reader.Close();
                 //Transcoders
-                reader = this.Controls.ExecuteDataReader("SELECT tr.id, tr.name AS TransName, tr.bitrate, tr.samplerate, tr.url, tr.ip, tr.port, tr.password, tr.configfilename, tr.logfilename, st.name AS StreamName FROM ttranscoder tr, tstreamtype st WHERE webradioid = " + id.ToString() + " AND tr.streamtypeid = st.id");
+                reader = this.Controls.ExecuteDataReader("SELECT c.filename AS CalendarFilename, tr.id, tr.name AS TransName, tr.bitrate, tr.samplerate, tr.url, tr.ip, tr.port, tr.password, tr.configfilename, tr.logfilename, st.name AS StreamName FROM tcalendar c, ttranscoder tr, tstreamtype st WHERE tr.webradioid = " + id.ToString() + " AND tr.streamtypeid = st.id AND c.webradioid = " + id.ToString());
                 while(reader.Read())
                 {
                     WebradioTranscoder trans = null;
@@ -117,7 +117,7 @@ namespace WebradioManager
                             reader["password"].ToString(),
                             reader["configfilename"].ToString(),
                             reader["logfilename"].ToString());
-                    else if(reader["StreamName"].ToString() == StreamType.AACPlus.ToString())
+                    else
                         trans = new TranscoderAacPlus(int.Parse(reader["id"].ToString()),
                             reader["TransName"].ToString(),
                             int.Parse(reader["bitrate"].ToString()),
@@ -128,6 +128,7 @@ namespace WebradioManager
                             reader["password"].ToString(),
                             reader["configfilename"].ToString(),
                             reader["logfilename"].ToString());
+                    trans.CalendarFile = reader["CalendarFilename"].ToString();
                     wr.Transcoders.Add(trans);
                 }
                 reader.Close();
@@ -565,7 +566,7 @@ namespace WebradioManager
                 int id = int.Parse(reader["id"].ToString());
                 reader.Close();
                 data.Clear();
-                data.Add("configfilename", transcoder.ConfigFilename + "/" + id.ToString() + ".config");
+                data.Add("configfilename", transcoder.ConfigFilename + id.ToString() + ".config");
                 data.Add("logfilename", transcoder.LogFilename + "/" + id.ToString() + ".log");
                 this.Controls.Update("ttranscoder", data, "webradioid = " + webradioId.ToString() + " AND name = '" + transcoder.Name + "'");
                 return id;
@@ -582,6 +583,29 @@ namespace WebradioManager
             try
             {
                 this.Controls.Delete("ttranscoder", "id = " + transcoderId.ToString());
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool UpdateTranscoder(WebradioTranscoder transcoder)
+        {
+            try
+            {
+                Dictionary<string, string> data = new Dictionary<string, string>();
+                data.Add("streamtypeid", ((int)transcoder.StreamType).ToString());
+                data.Add("bitrate", transcoder.Birate.ToString());
+                data.Add("samplerate", transcoder.SampleRate.ToString());
+                data.Add("name", transcoder.Name);
+                data.Add("url", transcoder.Url);
+                data.Add("port", transcoder.Port.ToString());
+                data.Add("ip", transcoder.Ip.ToString());
+                data.Add("password", transcoder.Password);
+
+                this.Controls.Update("ttranscoder", data, "id = " + transcoder.Id.ToString());
                 return true;
             }
             catch

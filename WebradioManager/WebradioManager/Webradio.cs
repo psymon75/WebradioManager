@@ -78,7 +78,7 @@ namespace WebradioManager
             this.Server.GenerateConfigFile();
             foreach (WebradioTranscoder transcoder in this.Transcoders)
             {
-                transcoder.GenerateConfigFile();
+                transcoder.GenerateConfigFile(this.Playlists);
             }
         }
 

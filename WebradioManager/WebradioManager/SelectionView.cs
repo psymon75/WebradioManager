@@ -87,5 +87,19 @@ namespace WebradioManager
                 this.Controller.OpenWebradio(((Webradio)this.lsbSelection.SelectedItem).Id);
             
         }
+
+        private void SelectionView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("All transcoders and all servers will be shuting down. Are you sure ?", "Close", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            {
+                if (!this.Controller.StopAllTranscoders())
+                {
+                    MessageBox.Show("An error has occured", "Error");
+                    e.Cancel = true;
+                }
+            }
+            else
+                e.Cancel = true;
+        }
     }
 }

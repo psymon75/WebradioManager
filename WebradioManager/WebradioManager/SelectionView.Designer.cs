@@ -146,6 +146,7 @@
             this.Name = "SelectionView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WebradioManager - Selection";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SelectionView_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

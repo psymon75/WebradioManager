@@ -122,5 +122,25 @@ namespace WebradioManager
         {
             return this.Model.DeleteTranscoder(transcoder, webradioId);
         }
+
+        public bool UpdateTranscoder(WebradioTranscoder transcoder, int webradioId)
+        {
+            return this.Model.UpdateTranscoder(transcoder,webradioId);
+        }
+
+        public bool StartTranscoder(WebradioTranscoder transcoder, int webradioId)
+        {
+            return this.Model.StartTranscoder(transcoder, webradioId);
+        }
+
+        public bool StopTranscoder(WebradioTranscoder transcoder, int webradioId)
+        {
+            return this.Model.StopTranscoder(transcoder,webradioId);
+        }
+
+        public bool StopAllTranscoders(int webradioId)
+        {
+            return this.Model.StopAllTranscoders(webradioId);
+        }
     }
 }

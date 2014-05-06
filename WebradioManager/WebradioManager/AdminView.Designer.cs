@@ -150,21 +150,14 @@
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.btnClearHistory = new System.Windows.Forms.Button();
             this.btnShowHistory = new System.Windows.Forms.Button();
-            this.txbTranscoderNameEdit = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
             this.btnDeleteTranscoder = new System.Windows.Forms.Button();
             this.lsbTranscoders = new System.Windows.Forms.ListBox();
             this.label28 = new System.Windows.Forms.Label();
             this.cmbEncoderEdit = new System.Windows.Forms.ComboBox();
             this.label27 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
             this.cmbBitrateEdit = new System.Windows.Forms.ComboBox();
-            this.txbStreamUrlEdit = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
             this.cmbSampleRateEdit = new System.Windows.Forms.ComboBox();
-            this.txbStreamNameEdit = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.mtbServerIPEdit = new System.Windows.Forms.MaskedTextBox();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -172,7 +165,13 @@
             this.label29 = new System.Windows.Forms.Label();
             this.nudPortEdit = new System.Windows.Forms.NumericUpDown();
             this.txbServerPasswordEdit = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txbStreamNameEdit = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txbStreamUrlEdit = new System.Windows.Forms.TextBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.mtbServerIP = new System.Windows.Forms.MaskedTextBox();
             this.btnCreateTranscoder = new System.Windows.Forms.Button();
             this.txbServerPassword = new System.Windows.Forms.TextBox();
@@ -213,7 +212,7 @@
             this.label31 = new System.Windows.Forms.Label();
             this.FBD = new System.Windows.Forms.FolderBrowserDialog();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
-            this.label20 = new System.Windows.Forms.Label();
+            this.btnShowTranscoderLog = new System.Windows.Forms.Button();
             this.mnsMain.SuspendLayout();
             this.tbcTabs.SuspendLayout();
             this.tbpStatus.SuspendLayout();
@@ -282,7 +281,6 @@
             this.dvwTimetable.WorkingMinuteStart = 0;
             this.dvwTimetable.SelectionChanged += new System.EventHandler(this.dvwTimetable_SelectionChanged);
             this.dvwTimetable.ResolveAppointments += new Calendar.ResolveAppointmentsEventHandler(this.dvwTimetable_ResolveAppointments);
-            this.dvwTimetable.NewAppointment += new Calendar.NewAppointmentEventHandler(this.dvwTimetable_NewAppointment);
             this.dvwTimetable.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dvwTimetable_MouseClick);
             this.dvwTimetable.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dvwTimetable_MouseUp);
             // 
@@ -1354,21 +1352,14 @@
             this.groupBox12.Controls.Add(this.groupBox16);
             this.groupBox12.Controls.Add(this.groupBox15);
             this.groupBox12.Controls.Add(this.groupBox14);
-            this.groupBox12.Controls.Add(this.txbTranscoderNameEdit);
-            this.groupBox12.Controls.Add(this.label21);
             this.groupBox12.Controls.Add(this.btnDeleteTranscoder);
             this.groupBox12.Controls.Add(this.lsbTranscoders);
             this.groupBox12.Controls.Add(this.label28);
             this.groupBox12.Controls.Add(this.cmbEncoderEdit);
             this.groupBox12.Controls.Add(this.label27);
-            this.groupBox12.Controls.Add(this.label23);
             this.groupBox12.Controls.Add(this.cmbBitrateEdit);
-            this.groupBox12.Controls.Add(this.txbStreamUrlEdit);
             this.groupBox12.Controls.Add(this.label26);
-            this.groupBox12.Controls.Add(this.label24);
             this.groupBox12.Controls.Add(this.cmbSampleRateEdit);
-            this.groupBox12.Controls.Add(this.txbStreamNameEdit);
-            this.groupBox12.Controls.Add(this.label25);
             this.groupBox12.Controls.Add(this.groupBox13);
             this.groupBox12.Location = new System.Drawing.Point(204, 4);
             this.groupBox12.Name = "groupBox12";
@@ -1399,6 +1390,7 @@
             this.btnStopTranscoder.TabIndex = 3;
             this.btnStopTranscoder.Text = "Stop";
             this.btnStopTranscoder.UseVisualStyleBackColor = true;
+            this.btnStopTranscoder.Click += new System.EventHandler(this.btnStopTranscoder_Click);
             // 
             // btnStartTranscoder
             // 
@@ -1408,6 +1400,7 @@
             this.btnStartTranscoder.TabIndex = 2;
             this.btnStartTranscoder.Text = "Start";
             this.btnStartTranscoder.UseVisualStyleBackColor = true;
+            this.btnStartTranscoder.Click += new System.EventHandler(this.btnStartTranscoder_Click);
             // 
             // lblStatusTranscoder
             // 
@@ -1429,6 +1422,7 @@
             // 
             // groupBox15
             // 
+            this.groupBox15.Controls.Add(this.btnShowTranscoderLog);
             this.groupBox15.Controls.Add(this.btnClearLogTranscoder);
             this.groupBox15.Controls.Add(this.lsbTranscoderLog);
             this.groupBox15.Location = new System.Drawing.Point(7, 224);
@@ -1485,22 +1479,6 @@
             this.btnShowHistory.Text = "Show";
             this.btnShowHistory.UseVisualStyleBackColor = true;
             // 
-            // txbTranscoderNameEdit
-            // 
-            this.txbTranscoderNameEdit.Location = new System.Drawing.Point(166, 72);
-            this.txbTranscoderNameEdit.Name = "txbTranscoderNameEdit";
-            this.txbTranscoderNameEdit.Size = new System.Drawing.Size(176, 20);
-            this.txbTranscoderNameEdit.TabIndex = 36;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(163, 56);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(96, 13);
-            this.label21.TabIndex = 35;
-            this.label21.Text = "Transcoder name :";
-            // 
             // btnDeleteTranscoder
             // 
             this.btnDeleteTranscoder.Location = new System.Drawing.Point(33, 147);
@@ -1551,15 +1529,6 @@
             this.label27.TabIndex = 22;
             this.label27.Text = "Bitrate :";
             // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(345, 95);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(57, 13);
-            this.label23.TabIndex = 30;
-            this.label23.Text = "Server IP :";
-            // 
             // cmbBitrateEdit
             // 
             this.cmbBitrateEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -1569,13 +1538,6 @@
             this.cmbBitrateEdit.Size = new System.Drawing.Size(71, 21);
             this.cmbBitrateEdit.TabIndex = 23;
             // 
-            // txbStreamUrlEdit
-            // 
-            this.txbStreamUrlEdit.Location = new System.Drawing.Point(166, 111);
-            this.txbStreamUrlEdit.Name = "txbStreamUrlEdit";
-            this.txbStreamUrlEdit.Size = new System.Drawing.Size(176, 20);
-            this.txbStreamUrlEdit.TabIndex = 29;
-            // 
             // label26
             // 
             this.label26.AutoSize = true;
@@ -1584,15 +1546,6 @@
             this.label26.Size = new System.Drawing.Size(69, 13);
             this.label26.TabIndex = 24;
             this.label26.Text = "Sample rate :";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(163, 95);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(71, 13);
-            this.label24.TabIndex = 28;
-            this.label24.Text = "Stream URL :";
             // 
             // cmbSampleRateEdit
             // 
@@ -1605,22 +1558,6 @@
             this.cmbSampleRateEdit.Size = new System.Drawing.Size(71, 21);
             this.cmbSampleRateEdit.TabIndex = 25;
             // 
-            // txbStreamNameEdit
-            // 
-            this.txbStreamNameEdit.Location = new System.Drawing.Point(346, 72);
-            this.txbStreamNameEdit.Name = "txbStreamNameEdit";
-            this.txbStreamNameEdit.Size = new System.Drawing.Size(176, 20);
-            this.txbStreamNameEdit.TabIndex = 27;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(345, 56);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(75, 13);
-            this.label25.TabIndex = 26;
-            this.label25.Text = "Stream name :";
-            // 
             // groupBox13
             // 
             this.groupBox13.Controls.Add(this.mtbServerIPEdit);
@@ -1629,6 +1566,11 @@
             this.groupBox13.Controls.Add(this.label29);
             this.groupBox13.Controls.Add(this.nudPortEdit);
             this.groupBox13.Controls.Add(this.txbServerPasswordEdit);
+            this.groupBox13.Controls.Add(this.label25);
+            this.groupBox13.Controls.Add(this.txbStreamNameEdit);
+            this.groupBox13.Controls.Add(this.label23);
+            this.groupBox13.Controls.Add(this.label24);
+            this.groupBox13.Controls.Add(this.txbStreamUrlEdit);
             this.groupBox13.Location = new System.Drawing.Point(158, 16);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Size = new System.Drawing.Size(456, 157);
@@ -1638,8 +1580,8 @@
             // 
             // mtbServerIPEdit
             // 
-            this.mtbServerIPEdit.Location = new System.Drawing.Point(188, 94);
-            this.mtbServerIPEdit.Mask = "000.000.000.000";
+            this.mtbServerIPEdit.Location = new System.Drawing.Point(8, 95);
+            this.mtbServerIPEdit.Mask = "###.###.###.###";
             this.mtbServerIPEdit.Name = "mtbServerIPEdit";
             this.mtbServerIPEdit.PromptChar = '0';
             this.mtbServerIPEdit.Size = new System.Drawing.Size(108, 20);
@@ -1648,17 +1590,18 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(301, 128);
+            this.btnUpdate.Location = new System.Drawing.Point(305, 121);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 38;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(299, 79);
+            this.label22.Location = new System.Drawing.Point(119, 80);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(65, 13);
             this.label22.TabIndex = 32;
@@ -1667,7 +1610,7 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(5, 118);
+            this.label29.Location = new System.Drawing.Point(201, 80);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(92, 13);
             this.label29.TabIndex = 20;
@@ -1675,7 +1618,7 @@
             // 
             // nudPortEdit
             // 
-            this.nudPortEdit.Location = new System.Drawing.Point(302, 95);
+            this.nudPortEdit.Location = new System.Drawing.Point(122, 96);
             this.nudPortEdit.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -1692,11 +1635,52 @@
             // 
             // txbServerPasswordEdit
             // 
-            this.txbServerPasswordEdit.Location = new System.Drawing.Point(8, 134);
+            this.txbServerPasswordEdit.Location = new System.Drawing.Point(204, 95);
             this.txbServerPasswordEdit.Name = "txbServerPasswordEdit";
             this.txbServerPasswordEdit.PasswordChar = '*';
             this.txbServerPasswordEdit.Size = new System.Drawing.Size(176, 20);
             this.txbServerPasswordEdit.TabIndex = 34;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(7, 40);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(75, 13);
+            this.label25.TabIndex = 26;
+            this.label25.Text = "Stream name :";
+            // 
+            // txbStreamNameEdit
+            // 
+            this.txbStreamNameEdit.Location = new System.Drawing.Point(8, 56);
+            this.txbStreamNameEdit.Name = "txbStreamNameEdit";
+            this.txbStreamNameEdit.Size = new System.Drawing.Size(176, 20);
+            this.txbStreamNameEdit.TabIndex = 27;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(10, 80);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(57, 13);
+            this.label23.TabIndex = 30;
+            this.label23.Text = "Server IP :";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(201, 40);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(71, 13);
+            this.label24.TabIndex = 28;
+            this.label24.Text = "Stream URL :";
+            // 
+            // txbStreamUrlEdit
+            // 
+            this.txbStreamUrlEdit.Location = new System.Drawing.Point(204, 56);
+            this.txbStreamUrlEdit.Name = "txbStreamUrlEdit";
+            this.txbStreamUrlEdit.Size = new System.Drawing.Size(176, 20);
+            this.txbStreamUrlEdit.TabIndex = 29;
             // 
             // groupBox11
             // 
@@ -1725,10 +1709,19 @@
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Create";
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(67, 86);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(30, 13);
+            this.label20.TabIndex = 19;
+            this.label20.Text = "Kb/s";
+            // 
             // mtbServerIP
             // 
             this.mtbServerIP.Location = new System.Drawing.Point(9, 240);
-            this.mtbServerIP.Mask = "000.000.000.000";
+            this.mtbServerIP.Mask = "###.###.###.###";
             this.mtbServerIP.Name = "mtbServerIP";
             this.mtbServerIP.PromptChar = '0';
             this.mtbServerIP.Size = new System.Drawing.Size(173, 20);
@@ -2122,14 +2115,15 @@
             this.OFD.Filter = "MP3 Files|*.mp3";
             this.OFD.Multiselect = true;
             // 
-            // label20
+            // btnShowTranscoderLog
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(67, 86);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(30, 13);
-            this.label20.TabIndex = 19;
-            this.label20.Text = "Kb/s";
+            this.btnShowTranscoderLog.Location = new System.Drawing.Point(89, 19);
+            this.btnShowTranscoderLog.Name = "btnShowTranscoderLog";
+            this.btnShowTranscoderLog.Size = new System.Drawing.Size(75, 23);
+            this.btnShowTranscoderLog.TabIndex = 2;
+            this.btnShowTranscoderLog.Text = "Show logfile";
+            this.btnShowTranscoderLog.UseVisualStyleBackColor = true;
+            this.btnShowTranscoderLog.Click += new System.EventHandler(this.btnShowTranscoderLog_Click);
             // 
             // AdminView
             // 
@@ -2301,8 +2295,6 @@
         private System.Windows.Forms.NumericUpDown nudPort;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.TextBox txbTranscoderNameEdit;
-        private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox txbServerPasswordEdit;
         private System.Windows.Forms.NumericUpDown nudPortEdit;
         private System.Windows.Forms.Label label28;
@@ -2392,6 +2384,7 @@
         private System.Windows.Forms.MaskedTextBox mtbServerIPEdit;
         private System.Windows.Forms.MaskedTextBox mtbServerIP;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button btnShowTranscoderLog;
 
 
     }
