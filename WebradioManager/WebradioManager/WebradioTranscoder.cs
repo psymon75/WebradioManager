@@ -150,7 +150,7 @@ namespace WebradioManager
             this.Process = new Process();
             this.Process.EnableRaisingEvents = true;
             this.Process.Exited += Process_Exited;
-            
+
         }
 
         void Process_Exited(object sender, EventArgs e)
@@ -169,10 +169,10 @@ namespace WebradioManager
             string output = "";
             output += "logfile=" + Directory.GetCurrentDirectory() + "\\" + this.LogFilename.Replace('/', '\\') + "\n";
             output += "encoder_1=" + ((this.StreamType == WebradioManager.StreamType.AACPlus) ? "aacp" : "mp3") + "\n";
-            output += "bitrate_1=" + this.Birate + "\n";
+            output += "bitrate_1=" + (this.Birate * 1000) + "\n";
             output += "adminport=" + DEFAULT_ADMIN_PORT + "\n";
             output += "adminuser=" + DEFAULT_ADMIN + "\n";
-            output += "adminpassword" + DEFAULT_ADMIN_PASSWORD + "\n";
+            output += "adminpassword=" + DEFAULT_ADMIN_PASSWORD + "\n";
 
             output += "outprotocol_1=3\n";
             output += "serverip_1=" + this.Ip + "\n";
@@ -217,13 +217,13 @@ namespace WebradioManager
 
         }
 
-        public bool Start()
+        public bool Start(bool debug)
         {
 
             ProcessStartInfo StartInfo = new ProcessStartInfo(Directory.GetCurrentDirectory() + SC_TRANS_FILENAME)
               {
                   CreateNoWindow = true,
-                  WindowStyle = ProcessWindowStyle.Minimized,
+                  WindowStyle = (debug)?ProcessWindowStyle.Minimized:ProcessWindowStyle.Hidden,
                   Arguments = Directory.GetCurrentDirectory() + "\\" + this.ConfigFilename.Replace('/', '\\')
               };
             if (this.IsRunning())
@@ -242,16 +242,20 @@ namespace WebradioManager
 
         public bool Stop()
         {
-            try
+
+            if (this.IsRunning() && this.Process.Responding)
             {
-                if (this.IsRunning())
+                try
+                {
                     this.Process.Kill();
-                return true;
+                }
+                catch
+                {
+                    return false;
+                }
             }
-            catch
-            {
-                return false;
-            }
+            return true;
+
         }
 
 

@@ -49,7 +49,7 @@ namespace WebradioManager
                 if (this.Controller.CreateWebradio(txbName.Text))
                     MessageBox.Show("Webradio created !");
                 else
-                    MessageBox.Show("An error occured", "Error");
+                    MessageBox.Show("An error occured. (Invalid name or cannot create folders and files.)", "Error");
                 this.UpdateView();
             }
         }

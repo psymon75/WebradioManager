@@ -73,7 +73,13 @@ namespace WebradioManager
 
         public bool StopAllTranscoders()
         {
-            return this.Model.StopAllTranscoders();
+            return this.Model.StopAllProcess();
+        }
+
+
+        public void AddServerLog(string line)
+        {
+            throw new NotImplementedException();
         }
     }
 }

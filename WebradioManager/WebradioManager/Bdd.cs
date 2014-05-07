@@ -613,5 +613,23 @@ namespace WebradioManager
                 return false;
             }
         }
+
+        public bool UpdateServer(int port, string password, string adminPassword, int maxListener, int webradioId)
+        {
+            try
+            {
+                Dictionary<string,string> data = new Dictionary<string,string>();
+                data.Add("port", port.ToString());
+                data.Add("password", password);
+                data.Add("adminpassword", adminPassword);
+                data.Add("maxlistener", maxListener.ToString());
+                this.Controls.Update("tserver", data, "webradioid = " + webradioId.ToString());
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

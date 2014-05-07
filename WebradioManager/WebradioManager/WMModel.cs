@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 using TagLib;
 
 namespace WebradioManager
 {
+
     public class WMModel
     {
         //Defaults constants
@@ -18,7 +21,7 @@ namespace WebradioManager
         const string DEFAULT_CONFIGFILENAME = "config.config";
         const string DEFAULT_PASSWORD = "1234";
         const int MAX_NAME_LENGTH = 255;
-        
+
         //SERVER CONSTANTS
         const string DEFAULT_SERVER_FOLDER = "server/";
         const int DEFAULT_SERVER_PORT = 8000;
@@ -35,8 +38,22 @@ namespace WebradioManager
         private List<IController> _observers;
         private Bdd _bdd;
         private List<AudioFile> _library;
+        private System.Windows.Forms.Timer _processWatcher;
+        private List<Process> _activeProcess;
+
 
         #region Properties
+
+        public List<Process> ActiveProcess
+        {
+            get { return _activeProcess; }
+            set { _activeProcess = value; }
+        }
+        public System.Windows.Forms.Timer ProcessWatcher
+        {
+            get { return _processWatcher; }
+            set { _processWatcher = value; }
+        }
         public Bdd Bdd
         {
             get { return _bdd; }
@@ -49,7 +66,7 @@ namespace WebradioManager
             set { _observers = value; }
         }
 
-        public Dictionary<int,Webradio> Webradios
+        public Dictionary<int, Webradio> Webradios
         {
             get { return _webradios; }
             set { _webradios = value; }
@@ -68,6 +85,28 @@ namespace WebradioManager
             this.Observers = new List<IController>();
             this.Bdd = new Bdd();
             this.Library = new List<AudioFile>();
+            this.ActiveProcess = new List<Process>();
+            this.ProcessWatcher = new System.Windows.Forms.Timer();
+            this.ProcessWatcher.Tick += ProcessWatcher_Tick;
+            this.ProcessWatcher.Start();
+        }
+
+
+
+        void ProcessWatcher_Tick(object sender, EventArgs e)
+        {
+            bool needUpdate = false;
+            for (int i = 0; i < this.ActiveProcess.Count; i++)
+            {
+                if(!this.ActiveProcess[i].Responding || this.ActiveProcess[i].HasExited)
+                {
+                    this.ActiveProcess.RemoveAt(i);
+                    needUpdate = true;
+                    i--;
+                }
+            }
+            if (needUpdate)
+                this.UpdateObservers();
         }
 
         public void AddObserver(IController observer)
@@ -80,9 +119,21 @@ namespace WebradioManager
             this.Observers.Remove(observer);
         }
 
+        private void UpdateObservers(int webradioId)
+        {
+            foreach (IController controller in this.Observers)
+            {
+                if (controller is AdminController)
+                {
+                    if ((controller as AdminController).View.IdWebradio == webradioId)
+                        controller.UpdateView();
+                }
+            }
+        }
+
         private void UpdateObservers()
         {
-            foreach(IController controller in this.Observers)
+            foreach (IController controller in this.Observers)
             {
                 controller.UpdateView();
             }
@@ -107,7 +158,7 @@ namespace WebradioManager
         {
             //Get only webradios with its name and id and without useless stuffs for SelectionView
             List<Webradio> list = new List<Webradio>();
-            foreach(KeyValuePair<int,Webradio> wr in this.Webradios)
+            foreach (KeyValuePair<int, Webradio> wr in this.Webradios)
             {
                 list.Add(new Webradio(wr.Value.Name, wr.Value.Id));
             }
@@ -116,32 +167,37 @@ namespace WebradioManager
 
         public bool CreateWebradio(string name)
         {
-            string webradioFilename = DEFAULT_WEBRADIOS_FOLDER + name + "/";
-            Webradio wr = new Webradio(name);
-            WebradioServer server = new WebradioServer(DEFAULT_SERVER_PORT,
-                webradioFilename + DEFAULT_SERVER_FOLDER + DEFAULT_LOGFILENAME,
-                webradioFilename + DEFAULT_SERVER_FOLDER + DEFAULT_CONFIGFILENAME, DEFAULT_PASSWORD, DEFAULT_PASSWORD,DEFAULT_MAX_LISTENER);
-            wr.Server = server;
-            wr.Playlists = new List<Playlist>();
-            wr.Calendar = new WebradioCalendar(webradioFilename + DEFAULT_CALENDAR_FILENAME);
-            wr.Transcoders = new List<WebradioTranscoder>();
-            try
+            if (this.IsValidPath(name))
             {
-                wr.Id = this.Bdd.AddWebradio(wr);
-                this.Webradios.Add(wr.Id,wr);
-                //Directory creation
-                Directory.CreateDirectory(webradioFilename);
-                Directory.CreateDirectory(webradioFilename + DEFAULT_SERVER_FOLDER);
-                Directory.CreateDirectory(webradioFilename + DEFAULT_PLAYLISTS_FOLDER);
-                Directory.CreateDirectory(webradioFilename + DEFAULT_TRANSCODERS_FOLDER);
-                Thread.Sleep(100);
-                wr.GenerateConfigFiles();
+                string webradioFilename = DEFAULT_WEBRADIOS_FOLDER + name + "/";
+                Webradio wr = new Webradio(name);
+                WebradioServer server = new WebradioServer(DEFAULT_SERVER_PORT,
+                    webradioFilename + DEFAULT_SERVER_FOLDER + DEFAULT_LOGFILENAME,
+                    webradioFilename + DEFAULT_SERVER_FOLDER + DEFAULT_CONFIGFILENAME, DEFAULT_PASSWORD, DEFAULT_PASSWORD, DEFAULT_MAX_LISTENER);
+                wr.Server = server;
+                wr.Playlists = new List<Playlist>();
+                wr.Calendar = new WebradioCalendar(webradioFilename + DEFAULT_CALENDAR_FILENAME);
+                wr.Transcoders = new List<WebradioTranscoder>();
+                try
+                {
+                    wr.Id = this.Bdd.AddWebradio(wr);
+                    this.Webradios.Add(wr.Id, wr);
+                    //Directory creation
+                    Directory.CreateDirectory(webradioFilename);
+                    Directory.CreateDirectory(webradioFilename + DEFAULT_SERVER_FOLDER);
+                    Directory.CreateDirectory(webradioFilename + DEFAULT_PLAYLISTS_FOLDER);
+                    Directory.CreateDirectory(webradioFilename + DEFAULT_TRANSCODERS_FOLDER);
+                    Thread.Sleep(100);
+                    wr.GenerateConfigFiles();
+                }
+                catch
+                {
+                    return false;
+                }
+                return true;
             }
-            catch
-            {
+            else
                 return false;
-            }
-            return true;
         }
 
         public bool DeleteWebradio(int id)
@@ -158,7 +214,7 @@ namespace WebradioManager
             {
                 output = false;
             }
-            
+
             return output;
         }
 
@@ -191,7 +247,7 @@ namespace WebradioManager
         {
             AudioFile file;
             bool state = true;
-            foreach(string filename in filenames)
+            foreach (string filename in filenames)
             {
                 try
                 {
@@ -234,15 +290,15 @@ namespace WebradioManager
 
         public bool DeleteAudioFile(int id, string audioFilename)
         {
-            foreach(KeyValuePair<int,Webradio> webradio in this.Webradios)
+            foreach (KeyValuePair<int, Webradio> webradio in this.Webradios)
             {
-                foreach(Playlist playlist in webradio.Value.Playlists)
+                foreach (Playlist playlist in webradio.Value.Playlists)
                 {
-                    foreach(string filename in playlist.AudioFileList)
+                    foreach (string filename in playlist.AudioFileList)
                     {
-                        if(filename == audioFilename)
+                        if (filename == audioFilename)
                         {
-                            playlist.AudioFileList.Remove(filename);                        
+                            playlist.AudioFileList.Remove(filename);
                         }
                     }
                 }
@@ -258,52 +314,77 @@ namespace WebradioManager
             return this.Bdd.DeleteAudioFile(id);
         }
 
+        private bool IsValidFilename(string testName)
+        {
+            char[] invalidFileChars = Path.GetInvalidFileNameChars();
+            if (testName.IndexOfAny(invalidFileChars) == -1)
+                return true;
+            else
+                return false;
+        }
+
+        private bool IsValidPath(string testName)
+        {
+            char[] invalidFileChars = Path.GetInvalidPathChars();
+            if (testName.IndexOfAny(invalidFileChars) == -1)
+                return true;
+            else
+                return false;
+        }
+
         public bool CreatePlaylist(string name, string webradioName, int webradioId, AudioType type)
         {
             Webradio selectedWebradio = this.Webradios[webradioId];
             Playlist newPlaylist;
-            string filename = DEFAULT_WEBRADIOS_FOLDER + webradioName + "/" + DEFAULT_PLAYLISTS_FOLDER + name + ".lst";
-            if (type == AudioType.Music)
-                newPlaylist = new PlaylistMusic(name, filename);
-            else
-                newPlaylist = new PlaylistAd(name, filename);
-            int id = this.Bdd.CreatePlaylist(newPlaylist,webradioId);
-            if (id == Bdd.ERROR)
-                return false;
+            if (this.IsValidFilename(name))
+            {
+                string filename = DEFAULT_WEBRADIOS_FOLDER + webradioName + "/" + DEFAULT_PLAYLISTS_FOLDER + name + ".lst";
+                if (type == AudioType.Music)
+                    newPlaylist = new PlaylistMusic(name, filename);
+                else
+                    newPlaylist = new PlaylistAd(name, filename);
+                int id = this.Bdd.CreatePlaylist(newPlaylist, webradioId);
+                if (id == Bdd.ERROR)
+                    return false;
+                else
+                {
+                    try
+                    {
+                        newPlaylist.Id = id;
+                        newPlaylist.GenerateConfigFile();
+                        selectedWebradio.Playlists.Add(newPlaylist);
+                        this.UpdateObservers(webradioId);
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+
+                }
+            }
             else
             {
-                try
-                {
-                    newPlaylist.Id = id;
-                    newPlaylist.GenerateConfigFile();
-                    selectedWebradio.Playlists.Add(newPlaylist);
-                    this.UpdateObservers();
-                    return true;
-                }
-                catch
-                { 
-                    return false;
-                }
-                
+                return false;
             }
-            
+
         }
 
-        public bool DeletePlaylist(Playlist playlist, int idWebradio)
+        public bool DeletePlaylist(Playlist playlist, int webradioId)
         {
             if (this.Bdd.DeletePlaylist(playlist.Id))
             {
-                this.Webradios[idWebradio].Playlists.Remove(playlist);
+                this.Webradios[webradioId].Playlists.Remove(playlist);
                 System.IO.File.Delete(playlist.Filename);
-                this.UpdateObservers();
+                this.UpdateObservers(webradioId);
                 return true;
             }
             else
                 return false;
-                
+
         }
 
-        public bool AddToPlaylist(Playlist playlist, Dictionary<int,string> audioFiles)
+        public bool AddToPlaylist(Playlist playlist, Dictionary<int, string> audioFiles)
         {
             bool state = true;
             foreach (KeyValuePair<int, string> audioFile in audioFiles)
@@ -318,14 +399,14 @@ namespace WebradioManager
                     state = false;
                     break;
                 }
-                    
+
             }
             playlist.GenerateConfigFile();
             return state;
-            
+
         }
 
-        public bool RemoveFromPlaylist(Dictionary<int,string> audioFiles, Playlist playlist)
+        public bool RemoveFromPlaylist(Dictionary<int, string> audioFiles, Playlist playlist)
         {
             bool state = true;
             foreach (KeyValuePair<int, string> audioFile in audioFiles)
@@ -348,9 +429,9 @@ namespace WebradioManager
         public List<AudioFile> GetPlaylistContent(Playlist playlist)
         {
             List<AudioFile> audioFiles = new List<AudioFile>();
-            foreach(string filename in playlist.AudioFileList)
+            foreach (string filename in playlist.AudioFileList)
             {
-                foreach(AudioFile af in this.Library)
+                foreach (AudioFile af in this.Library)
                 {
                     if (af.Filename == filename)
                         audioFiles.Add(af);
@@ -372,10 +453,10 @@ namespace WebradioManager
             AudioFile audioFile;
             int retries = 0;
             List<int> audioFilesId = new List<int>();
-            while(tmpDuration <= duration)
+            while (tmpDuration <= duration)
             {
                 audioFile = this.Library[random.Next(0, this.Library.Count - 1)];
-                if(audioFile.Type == type)
+                if (audioFile.Type == type)
                 {
                     if (retries > MAX_TRY_GENERATE)
                         break;
@@ -386,8 +467,8 @@ namespace WebradioManager
                     }
                     else
                         retries = 0;
-                    
-                    if((audioFile.Type == AudioType.Ad) || (audioFile.Type == AudioType.Music && audioFile.Gender == gender))
+
+                    if ((audioFile.Type == AudioType.Ad) || (audioFile.Type == AudioType.Music && audioFile.Gender == gender))
                     {
                         tmpDuration += audioFile.Duration;
                         newPlaylist.AudioFileList.Add(audioFile.Filename);
@@ -402,13 +483,13 @@ namespace WebradioManager
 
             //Add to database
             int idPlaylist = this.Bdd.AddGeneratedPlaylist(newPlaylist, audioFilesId, webradioId);
-            if(idPlaylist == Bdd.ERROR)
+            if (idPlaylist == Bdd.ERROR)
                 return false;
             newPlaylist.Id = idPlaylist;
             //Add to model
             this.Webradios[webradioId].Playlists.Add(newPlaylist);
             newPlaylist.GenerateConfigFile();
-            this.UpdateObservers();
+            this.UpdateObservers(webradioId);
             return true;
         }
 
@@ -421,7 +502,7 @@ namespace WebradioManager
             newEvent.Id = id;
             this.Webradios[webradioId].Calendar.Events.Add(newEvent);
             this.Webradios[webradioId].Calendar.GenerateConfigFile();
-            this.UpdateObservers();
+            this.UpdateObservers(webradioId);
             return true;
         }
 
@@ -440,7 +521,7 @@ namespace WebradioManager
                     }
                 }
                 this.Webradios[webradioId].Calendar.GenerateConfigFile();
-                this.UpdateObservers();
+                this.UpdateObservers(webradioId);
                 return true;
             }
             else
@@ -453,7 +534,7 @@ namespace WebradioManager
             {
                 this.Webradios[webradioId].Calendar.Events.Remove(aEvent);
                 this.Webradios[webradioId].Calendar.GenerateConfigFile();
-                this.UpdateObservers();
+                this.UpdateObservers(webradioId);
                 return true;
             }
             else
@@ -464,7 +545,7 @@ namespace WebradioManager
         {
             string filename = DEFAULT_WEBRADIOS_FOLDER + this.Webradios[webradioId].Name + "/" + DEFAULT_TRANSCODERS_FOLDER;
             WebradioTranscoder transcoder;
-            if(st == StreamType.AACPlus)
+            if (st == StreamType.AACPlus)
                 transcoder = new TranscoderAacPlus(name,
                 bitrate,
                 sampleRate,
@@ -475,22 +556,22 @@ namespace WebradioManager
                 filename,
                 filename);
             else
-               transcoder = new TranscoderMp3(name,
-                bitrate,
-                sampleRate,
-                ip,
-                port,
-                url,
-                password,
-                filename,
-                filename);
+                transcoder = new TranscoderMp3(name,
+                 bitrate,
+                 sampleRate,
+                 ip,
+                 port,
+                 url,
+                 password,
+                 filename,
+                 filename);
 
             transcoder.CalendarFile = DEFAULT_WEBRADIOS_FOLDER + this.Webradios[webradioId].Name + "/" + DEFAULT_CALENDAR_FILENAME;
             int id = this.Bdd.AddTranscoder(transcoder, webradioId);
             if (id == Bdd.ERROR)
                 return false;
             transcoder.Id = id;
-            transcoder.ConfigFilename = filename  + id.ToString() + ".config";
+            transcoder.ConfigFilename = filename + id.ToString() + ".config";
             transcoder.LogFilename = filename + id.ToString() + ".log";
             this.Webradios[webradioId].Transcoders.Add(transcoder);
             transcoder.GenerateConfigFile(this.Webradios[webradioId].Playlists);
@@ -506,14 +587,14 @@ namespace WebradioManager
                 if (System.IO.File.Exists(transcoder.LogFilename))
                     System.IO.File.Delete(transcoder.LogFilename);
                 this.Webradios[webradioId].Transcoders.Remove(transcoder);
-                this.UpdateObservers();
+                this.UpdateObservers(webradioId);
                 return true;
             }
             else
                 return false;
         }
 
-        public bool UpdateTranscoder(WebradioTranscoder transcoder, int webradioId)
+        public bool UpdateTranscoder(WebradioTranscoder transcoder, bool debug, int webradioId)
         {
             try
             {
@@ -526,9 +607,9 @@ namespace WebradioManager
 
                 this.Bdd.UpdateTranscoder(transcoder);
                 transcoder.GenerateConfigFile(this.Webradios[webradioId].Playlists);
-                if(wasRunning)
-                    transcoder.Start();
-                this.UpdateObservers();
+                if (wasRunning)
+                    transcoder.Start(debug);
+                this.UpdateObservers(webradioId);
                 return true;
             }
             catch
@@ -537,11 +618,113 @@ namespace WebradioManager
             }
         }
 
-        public bool StartTranscoder(WebradioTranscoder transcoder, int webradioId)
+        public bool StartTranscoder(WebradioTranscoder transcoder, bool debug, int webradioId)
         {
             try
             {
-                transcoder.Start();
+                if (transcoder.Start(debug))
+                {
+                    this.ActiveProcess.Add(transcoder.Process);
+                    UpdateObservers(webradioId);
+                    return true;
+                }
+                else
+                    return false;
+                
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+        public bool StopTranscoder(WebradioTranscoder transcoder, int webradioId)
+        {
+            try
+            {
+                if (transcoder.Stop())
+                {
+                    this.ActiveProcess.Remove(transcoder.Process);
+                    this.Webradios[webradioId].Calendar.GenerateConfigFile();
+                    return true;
+                }
+                else
+                    return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool StopAllProcess(int webradioId)
+        {
+            try
+            {
+                foreach (WebradioTranscoder transcoder in this.Webradios[webradioId].Transcoders)
+                {
+                    transcoder.Stop();
+                }
+                this.Webradios[webradioId].Server.Stop();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool StopAllProcess()
+        {
+            try
+            {
+                foreach (KeyValuePair<int, Webradio> webradio in this.Webradios)
+                {
+                    foreach (WebradioTranscoder transcoder in webradio.Value.Transcoders)
+                    {
+                        transcoder.Stop();
+                    }
+                    webradio.Value.Server.Stop();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public void GenerateConfigFiles(int webradioId)
+        {
+            this.Webradios[webradioId].GenerateConfigFiles();
+        }
+
+        public bool UpdateServer(bool debug, int port, string password, string adminPassword, int maxListener, int webradioId)
+        {
+            try
+            {
+                WebradioServer server = this.Webradios[webradioId].Server;
+                bool wasRunning = false;
+                if (server.IsRunning())
+                {
+                    wasRunning = true;
+                    server.Process.Kill();
+                }
+
+                if (!this.Bdd.UpdateServer(port, password, adminPassword, maxListener, webradioId))
+                    return false;
+
+                server.AdminPassword = adminPassword;
+                server.Password = password;
+                server.Port = port;
+                server.MaxListener = maxListener;
+                server.GenerateConfigFile();
+                if (wasRunning)
+                    server.Start(debug);
+               
+
+                this.UpdateObservers(webradioId);
                 return true;
             }
             catch
@@ -551,53 +734,38 @@ namespace WebradioManager
             
         }
 
-        public bool StopTranscoder(WebradioTranscoder transcoder, int webradioId)
+        public bool StartServer(int webradioId, bool debug)
         {
-            try
+            if (this.Webradios[webradioId].Server.Start(debug))
             {
-                transcoder.Stop();
-                this.Webradios[webradioId].Calendar.GenerateConfigFile();
+                this.ActiveProcess.Add(this.Webradios[webradioId].Server.Process);
+                this.UpdateObservers(webradioId);
                 return true;
             }
-            catch
-            {
+            else
                 return false;
-            }
         }
 
-        public bool StopAllTranscoders(int webradioId)
+        public bool StopServer(int webradioId)
         {
-            try
+            if(this.Webradios[webradioId].Server.Stop())
             {
-                foreach(WebradioTranscoder transcoder in this.Webradios[webradioId].Transcoders)
-                {
-                    transcoder.Stop();
-                }
+                this.ActiveProcess.Remove(this.Webradios[webradioId].Server.Process);
+                this.UpdateObservers(webradioId);
                 return true;
             }
-            catch
-            {
+            else
                 return false;
-            }
         }
 
-        public bool StopAllTranscoders()
+        public void ShowServerWebInterface(int webradioId)
         {
-            try
-            {
-                foreach (KeyValuePair<int,Webradio> webradio in this.Webradios)
-                {
-                    foreach (WebradioTranscoder transcoder in webradio.Value.Transcoders)
-                    {
-                        transcoder.Stop();
-                    }
-                }
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            Process.Start(this.Webradios[webradioId].Server.WebInterfaceUrl);
+        }
+
+        public void ShowServerWebAdmin(int webradioId)
+        {
+            Process.Start(this.Webradios[webradioId].Server.WebAdminUrl);
         }
     }
 }

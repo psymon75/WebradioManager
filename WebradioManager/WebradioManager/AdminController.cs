@@ -123,14 +123,14 @@ namespace WebradioManager
             return this.Model.DeleteTranscoder(transcoder, webradioId);
         }
 
-        public bool UpdateTranscoder(WebradioTranscoder transcoder, int webradioId)
+        public bool UpdateTranscoder(WebradioTranscoder transcoder, bool debug, int webradioId)
         {
-            return this.Model.UpdateTranscoder(transcoder,webradioId);
+            return this.Model.UpdateTranscoder(transcoder, debug, webradioId);
         }
 
-        public bool StartTranscoder(WebradioTranscoder transcoder, int webradioId)
+        public bool StartTranscoder(WebradioTranscoder transcoder,bool debug, int webradioId)
         {
-            return this.Model.StartTranscoder(transcoder, webradioId);
+            return this.Model.StartTranscoder(transcoder, debug, webradioId);
         }
 
         public bool StopTranscoder(WebradioTranscoder transcoder, int webradioId)
@@ -140,7 +140,40 @@ namespace WebradioManager
 
         public bool StopAllTranscoders(int webradioId)
         {
-            return this.Model.StopAllTranscoders(webradioId);
+            return this.Model.StopAllProcess(webradioId);
         }
+
+        public void GenerateAllConfigs(int webradioId)
+        {
+            this.Model.GenerateConfigFiles(webradioId);
+        }
+
+        public bool UpdateServer(bool debug, int port, string password, string adminPassword, int maxListener, int webradioId)
+        {
+            return this.Model.UpdateServer(debug, port, password, adminPassword, maxListener, webradioId);
+        }
+
+        public bool StartServer(int webradioId, bool debug)
+        {
+            return this.Model.StartServer(webradioId, debug);
+        }
+
+        public bool StopServer(int webradioId)
+        {
+            return this.Model.StopServer(webradioId);
+        }
+
+        public void ShowServerWebInterface(int webradioId)
+        {
+            this.Model.ShowServerWebInterface(webradioId);
+        }
+
+
+        public void ShowServerWebAdmin(int webradioId)
+        {
+            this.Model.ShowServerWebAdmin(webradioId);
+        }
+
+         
     }
 }

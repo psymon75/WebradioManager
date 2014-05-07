@@ -33,10 +33,12 @@
             this.dvwTimetable = new Calendar.DayView();
             this.mnsMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generateAllConfigsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tbcTabs = new System.Windows.Forms.TabControl();
             this.tbpStatus = new System.Windows.Forms.TabPage();
             this.groupBox21 = new System.Windows.Forms.GroupBox();
+            this.lsbStatus = new System.Windows.Forms.ListBox();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
             this.btnModifyName = new System.Windows.Forms.Button();
             this.txbWebradioName = new System.Windows.Forms.TextBox();
@@ -145,6 +147,7 @@
             this.lblStatusTranscoder = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.btnShowTranscoderLog = new System.Windows.Forms.Button();
             this.btnClearLogTranscoder = new System.Windows.Forms.Button();
             this.lsbTranscoderLog = new System.Windows.Forms.ListBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
@@ -204,6 +207,7 @@
             this.nudPortServer = new System.Windows.Forms.NumericUpDown();
             this.label32 = new System.Windows.Forms.Label();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.ckbServerDebug = new System.Windows.Forms.CheckBox();
             this.btnShowWebAdministration = new System.Windows.Forms.Button();
             this.btnShowWebInterface = new System.Windows.Forms.Button();
             this.btnStopServer = new System.Windows.Forms.Button();
@@ -212,10 +216,11 @@
             this.label31 = new System.Windows.Forms.Label();
             this.FBD = new System.Windows.Forms.FolderBrowserDialog();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
-            this.btnShowTranscoderLog = new System.Windows.Forms.Button();
+            this.ckbTranscoderDebug = new System.Windows.Forms.CheckBox();
             this.mnsMain.SuspendLayout();
             this.tbcTabs.SuspendLayout();
             this.tbpStatus.SuspendLayout();
+            this.groupBox21.SuspendLayout();
             this.groupBox20.SuspendLayout();
             this.tbpLibrary.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -297,9 +302,18 @@
             // 
             // fileToolStripMenuItem
             // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.generateAllConfigsToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
+            // 
+            // generateAllConfigsToolStripMenuItem
+            // 
+            this.generateAllConfigsToolStripMenuItem.Name = "generateAllConfigsToolStripMenuItem";
+            this.generateAllConfigsToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.generateAllConfigsToolStripMenuItem.Text = "Generate all configs";
+            this.generateAllConfigsToolStripMenuItem.Click += new System.EventHandler(this.generateAllConfigsToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -337,12 +351,21 @@
             // 
             // groupBox21
             // 
+            this.groupBox21.Controls.Add(this.lsbStatus);
             this.groupBox21.Location = new System.Drawing.Point(7, 246);
             this.groupBox21.Name = "groupBox21";
             this.groupBox21.Size = new System.Drawing.Size(200, 190);
             this.groupBox21.TabIndex = 2;
             this.groupBox21.TabStop = false;
             this.groupBox21.Text = "Status";
+            // 
+            // lsbStatus
+            // 
+            this.lsbStatus.FormattingEnabled = true;
+            this.lsbStatus.Location = new System.Drawing.Point(8, 20);
+            this.lsbStatus.Name = "lsbStatus";
+            this.lsbStatus.Size = new System.Drawing.Size(186, 160);
+            this.lsbStatus.TabIndex = 0;
             // 
             // groupBox20
             // 
@@ -1370,6 +1393,7 @@
             // 
             // groupBox16
             // 
+            this.groupBox16.Controls.Add(this.ckbTranscoderDebug);
             this.groupBox16.Controls.Add(this.btnStopTranscoder);
             this.groupBox16.Controls.Add(this.btnStartTranscoder);
             this.groupBox16.Controls.Add(this.lblStatusTranscoder);
@@ -1431,6 +1455,16 @@
             this.groupBox15.TabIndex = 39;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Log";
+            // 
+            // btnShowTranscoderLog
+            // 
+            this.btnShowTranscoderLog.Location = new System.Drawing.Point(89, 19);
+            this.btnShowTranscoderLog.Name = "btnShowTranscoderLog";
+            this.btnShowTranscoderLog.Size = new System.Drawing.Size(75, 23);
+            this.btnShowTranscoderLog.TabIndex = 2;
+            this.btnShowTranscoderLog.Text = "Show logfile";
+            this.btnShowTranscoderLog.UseVisualStyleBackColor = true;
+            this.btnShowTranscoderLog.Click += new System.EventHandler(this.btnShowTranscoderLog_Click);
             // 
             // btnClearLogTranscoder
             // 
@@ -1948,6 +1982,7 @@
             this.btnSaveServer.TabIndex = 8;
             this.btnSaveServer.Text = "Save";
             this.btnSaveServer.UseVisualStyleBackColor = true;
+            this.btnSaveServer.Click += new System.EventHandler(this.btnSaveServer_Click);
             // 
             // nudMaxListener
             // 
@@ -2042,6 +2077,7 @@
             // 
             // groupBox17
             // 
+            this.groupBox17.Controls.Add(this.ckbServerDebug);
             this.groupBox17.Controls.Add(this.btnShowWebAdministration);
             this.groupBox17.Controls.Add(this.btnShowWebInterface);
             this.groupBox17.Controls.Add(this.btnStopServer);
@@ -2055,6 +2091,18 @@
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Controls";
             // 
+            // ckbServerDebug
+            // 
+            this.ckbServerDebug.AutoSize = true;
+            this.ckbServerDebug.Checked = true;
+            this.ckbServerDebug.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckbServerDebug.Location = new System.Drawing.Point(246, 19);
+            this.ckbServerDebug.Name = "ckbServerDebug";
+            this.ckbServerDebug.Size = new System.Drawing.Size(58, 17);
+            this.ckbServerDebug.TabIndex = 6;
+            this.ckbServerDebug.Text = "Debug";
+            this.ckbServerDebug.UseVisualStyleBackColor = true;
+            // 
             // btnShowWebAdministration
             // 
             this.btnShowWebAdministration.Location = new System.Drawing.Point(500, 15);
@@ -2063,6 +2111,7 @@
             this.btnShowWebAdministration.TabIndex = 5;
             this.btnShowWebAdministration.Text = "Show web administration";
             this.btnShowWebAdministration.UseVisualStyleBackColor = true;
+            this.btnShowWebAdministration.Click += new System.EventHandler(this.btnShowWebAdministration_Click);
             // 
             // btnShowWebInterface
             // 
@@ -2072,6 +2121,7 @@
             this.btnShowWebInterface.TabIndex = 4;
             this.btnShowWebInterface.Text = "Show web interface";
             this.btnShowWebInterface.UseVisualStyleBackColor = true;
+            this.btnShowWebInterface.Click += new System.EventHandler(this.btnShowWebInterface_Click);
             // 
             // btnStopServer
             // 
@@ -2081,6 +2131,7 @@
             this.btnStopServer.TabIndex = 3;
             this.btnStopServer.Text = "Stop";
             this.btnStopServer.UseVisualStyleBackColor = true;
+            this.btnStopServer.Click += new System.EventHandler(this.btnStopServer_Click);
             // 
             // btnStartServer
             // 
@@ -2090,6 +2141,7 @@
             this.btnStartServer.TabIndex = 2;
             this.btnStartServer.Text = "Start";
             this.btnStartServer.UseVisualStyleBackColor = true;
+            this.btnStartServer.Click += new System.EventHandler(this.btnStartServer_Click);
             // 
             // lblStatusServer
             // 
@@ -2115,15 +2167,17 @@
             this.OFD.Filter = "MP3 Files|*.mp3";
             this.OFD.Multiselect = true;
             // 
-            // btnShowTranscoderLog
+            // ckbTranscoderDebug
             // 
-            this.btnShowTranscoderLog.Location = new System.Drawing.Point(89, 19);
-            this.btnShowTranscoderLog.Name = "btnShowTranscoderLog";
-            this.btnShowTranscoderLog.Size = new System.Drawing.Size(75, 23);
-            this.btnShowTranscoderLog.TabIndex = 2;
-            this.btnShowTranscoderLog.Text = "Show logfile";
-            this.btnShowTranscoderLog.UseVisualStyleBackColor = true;
-            this.btnShowTranscoderLog.Click += new System.EventHandler(this.btnShowTranscoderLog_Click);
+            this.ckbTranscoderDebug.AutoSize = true;
+            this.ckbTranscoderDebug.Checked = true;
+            this.ckbTranscoderDebug.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckbTranscoderDebug.Location = new System.Drawing.Point(333, 17);
+            this.ckbTranscoderDebug.Name = "ckbTranscoderDebug";
+            this.ckbTranscoderDebug.Size = new System.Drawing.Size(58, 17);
+            this.ckbTranscoderDebug.TabIndex = 4;
+            this.ckbTranscoderDebug.Text = "Debug";
+            this.ckbTranscoderDebug.UseVisualStyleBackColor = true;
             // 
             // AdminView
             // 
@@ -2146,6 +2200,7 @@
             this.tbcTabs.ResumeLayout(false);
             this.tbpStatus.ResumeLayout(false);
             this.tbpStatus.PerformLayout();
+            this.groupBox21.ResumeLayout(false);
             this.groupBox20.ResumeLayout(false);
             this.groupBox20.PerformLayout();
             this.tbpLibrary.ResumeLayout(false);
@@ -2385,6 +2440,10 @@
         private System.Windows.Forms.MaskedTextBox mtbServerIP;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button btnShowTranscoderLog;
+        private System.Windows.Forms.ToolStripMenuItem generateAllConfigsToolStripMenuItem;
+        private System.Windows.Forms.ListBox lsbStatus;
+        private System.Windows.Forms.CheckBox ckbServerDebug;
+        private System.Windows.Forms.CheckBox ckbTranscoderDebug;
 
 
     }

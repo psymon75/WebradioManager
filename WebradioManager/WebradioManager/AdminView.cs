@@ -24,9 +24,7 @@ namespace WebradioManager
         List<EventAppointment> _events;
 
 
-
         #region Properties
-
         public string NameWebradio
         {
             get { return _nameWebradio; }
@@ -59,8 +57,10 @@ namespace WebradioManager
             this.EventsCalendar = new List<EventAppointment>();
         }
 
+
         public void UpdateView()
         {
+            int index;
             Webradio webradio = this.Controller.GetWebradio(this.IdWebradio);
             this.NameWebradio = webradio.Name;
             this.Text = "WebradioManager - " + this.NameWebradio;
@@ -157,10 +157,13 @@ namespace WebradioManager
             }
             //----
             //TRANSCODERS
+            index = lsbTranscoders.SelectedIndex;
             lsbTranscoders.Items.Clear();
             lsbTranscoderLog.Items.Clear();
             lsbTranscoders.Items.AddRange(webradio.Transcoders.ToArray());
+            lsbTranscoders.SelectedIndex = index;
             cmbBitrate.Items.Clear();
+            index = cmbBitrateEdit.SelectedIndex;
             cmbBitrateEdit.Items.Clear();
             foreach (int bitrate in WebradioTranscoder.AvaliableBitrates)
             {
@@ -168,9 +171,10 @@ namespace WebradioManager
                 cmbBitrateEdit.Items.Add((bitrate / 1000));
             }
             cmbBitrate.SelectedIndex = 0;
-            cmbBitrateEdit.SelectedIndex = 0;
+            cmbBitrateEdit.SelectedIndex = index;
 
             cmbSampleRate.Items.Clear();
+            index = cmbSampleRateEdit.SelectedIndex;
             cmbSampleRateEdit.Items.Clear();
             foreach (int samplerate in WebradioTranscoder.AvaliableSampleRates)
             {
@@ -178,10 +182,15 @@ namespace WebradioManager
                 cmbSampleRateEdit.Items.Add(samplerate.ToString());
             }
             cmbSampleRate.SelectedIndex = 0;
-            cmbSampleRateEdit.SelectedIndex = 0;
+            cmbSampleRateEdit.SelectedIndex = index;
 
             cmbEncoder.SelectedIndex = 0;
-            cmbEncoderEdit.SelectedIndex = 0;
+
+            lsbStatus.Items.Clear();
+            foreach(WebradioTranscoder transcoder in webradio.Transcoders)
+            {
+                lsbStatus.Items.Add(transcoder.Name + " : " + ((transcoder.IsRunning()) ? "On" : "Off"));
+            }
             //----
             //SERVER
             lsbLogServer.Items.Clear();
@@ -189,6 +198,11 @@ namespace WebradioManager
             txbLocalServerPassword.Text = webradio.Server.Password;
             txbLocalServerAdminPassword.Text = webradio.Server.AdminPassword;
             nudMaxListener.Value = webradio.Server.MaxListener;
+            bool running = webradio.Server.IsRunning();
+            lblStatusServer.Text = (running) ? "On" : "Off";
+            lblStatusServer.ForeColor = (running) ? Color.Green : Color.Red;
+            btnStartServer.Enabled = (running) ? false : true;
+            btnStopServer.Enabled = (running) ? true : false;
             //----
         }
 
@@ -749,7 +763,7 @@ namespace WebradioManager
                             transcoder.Birate = int.Parse(cmbBitrateEdit.SelectedItem.ToString());
                             transcoder.SampleRate = int.Parse(cmbSampleRateEdit.SelectedItem.ToString());
                             transcoder.StreamType = (cmbEncoderEdit.SelectedItem.ToString() == StreamType.MP3.ToString()) ? StreamType.MP3 : StreamType.AACPlus;
-                            if (!this.Controller.UpdateTranscoder(transcoder, this.IdWebradio))
+                            if (!this.Controller.UpdateTranscoder(transcoder, ckbTranscoderDebug.Checked, this.IdWebradio))
                                 MessageBox.Show("An error has occured", "Error");
                             else
                             {
@@ -773,13 +787,13 @@ namespace WebradioManager
             if (lsbTranscoders.SelectedIndex >= 0)
             {
                 WebradioTranscoder transcoder = (WebradioTranscoder)lsbTranscoders.SelectedItem;
-                if (this.Controller.StartTranscoder(transcoder, this.IdWebradio))
+                if (this.Controller.StartTranscoder(transcoder,ckbTranscoderDebug.Checked, this.IdWebradio))
                 {
                     this.ShowTranscoderInfos(transcoder);
 
                 }
                 else
-                    MessageBox.Show("An error has occured", "Error");
+                    MessageBox.Show("An error has occured. Please terminate sc_trans process.", "Error");
             }
             else
                 MessageBox.Show("Please select a transcoder", "Error");
@@ -797,7 +811,7 @@ namespace WebradioManager
 
                 }
                 else
-                    MessageBox.Show("An error has occured", "Error");
+                    MessageBox.Show("An error has occured. Please terminate sc_trans process.", "Error");
             }
             else
                 MessageBox.Show("Please select a transcoder", "Error");
@@ -819,8 +833,53 @@ namespace WebradioManager
             }
         }
 
+        private void generateAllConfigsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Controller.GenerateAllConfigs(this.IdWebradio);
+        }
 
+        private void btnSaveServer_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Server will restart if it's running after update. Do you really want to update ?", "Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            {
+                if (txbLocalServerPassword.Text.Trim() != "" && txbLocalServerAdminPassword.Text.Trim() != "")
+                {
+                    if (txbLocalServerPassword.Text != txbLocalServerAdminPassword.Text)
+                    {
+                        if (this.Controller.UpdateServer(ckbServerDebug.Checked,(int)nudPortServer.Value, txbLocalServerPassword.Text, txbLocalServerAdminPassword.Text, (int)nudMaxListener.Value, this.IdWebradio))
+                            MessageBox.Show("Server informations updated.", "Success");
+                        else
+                            MessageBox.Show("An error has occured", "Error");
+                    }
+                    else
+                        MessageBox.Show("Password must be different", "Error");
+                }
+                else
+                    MessageBox.Show("Please enter a password and an admin password.", "Error");
+            }
+        }
 
+        private void btnStartServer_Click(object sender, EventArgs e)
+        {
+            if (!this.Controller.StartServer(this.IdWebradio, ckbServerDebug.Checked))
+                MessageBox.Show("An error has occured. Please terminate sc_server process.", "Error");
+        }
+
+        private void btnStopServer_Click(object sender, EventArgs e)
+        {
+            if (!this.Controller.StopServer(this.IdWebradio))
+                MessageBox.Show("An error has occured. Please terminate sc_server process.", "Error");
+        }
+
+        private void btnShowWebInterface_Click(object sender, EventArgs e)
+        {
+            this.Controller.ShowServerWebInterface(this.IdWebradio);
+        }
+
+        private void btnShowWebAdministration_Click(object sender, EventArgs e)
+        {
+            this.Controller.ShowServerWebAdmin(this.IdWebradio);
+        }
 
 
 

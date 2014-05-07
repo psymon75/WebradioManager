@@ -7,6 +7,7 @@ namespace WebradioManager
 {
     public interface IController
     {
+
         void UpdateView();
     }
 }

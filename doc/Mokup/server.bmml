@@ -89,12 +89,12 @@
         <text>Save</text>
       </controlProperties>
     </control>
-    <control controlID="17" controlTypeID="com.balsamiq.mockups::Button" x="709" y="145" w="-1" h="-1" measuredW="139" measuredH="27" zOrder="17" locked="false" isInGroup="-1">
+    <control controlID="17" controlTypeID="com.balsamiq.mockups::Button" x="799" y="141" w="-1" h="-1" measuredW="139" measuredH="27" zOrder="17" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Show%20web%20interface</text>
       </controlProperties>
     </control>
-    <control controlID="19" controlTypeID="com.balsamiq.mockups::Button" x="863" y="145" w="-1" h="-1" measuredW="167" measuredH="27" zOrder="18" locked="false" isInGroup="-1">
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::Button" x="964" y="141" w="-1" h="-1" measuredW="167" measuredH="27" zOrder="18" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Show%20web%20administration</text>
       </controlProperties>
@@ -107,6 +107,12 @@
     <control controlID="21" controlTypeID="com.balsamiq.mockups::NumericStepper" x="555" y="277" w="-1" h="-1" measuredW="50" measuredH="24" zOrder="20" locked="false" isInGroup="-1">
       <controlProperties>
         <text>32</text>
+      </controlProperties>
+    </control>
+    <control controlID="22" controlTypeID="com.balsamiq.mockups::CheckBox" x="675" y="149" w="-1" h="-1" measuredW="59" measuredH="22" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>selected</state>
+        <text>Debug</text>
       </controlProperties>
     </control>
   </controls>
