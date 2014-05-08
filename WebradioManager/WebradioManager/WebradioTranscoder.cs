@@ -32,7 +32,7 @@ namespace WebradioManager
         private string _calendarFile;
         private StreamType _streamType;
         private Process _process;
-        private static int[] _avaliableBitrates = { 96000, 128000, 256000 };
+        private static int[] _avaliableBitrates = { 64000, 96000, 128000, 256000 };
         private static int[] _avaliableSampleRates = { 44100 };
 
 
@@ -208,6 +208,8 @@ namespace WebradioManager
                         result = true;
                     }
                 }
+                if(this.Process.HasExited || !this.Process.Responding)
+                    result = false;
                 return result;
             }
             catch

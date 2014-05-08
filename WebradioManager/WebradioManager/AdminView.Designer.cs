@@ -142,6 +142,7 @@
             this.tbpTranscoders = new System.Windows.Forms.TabPage();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.ckbTranscoderDebug = new System.Windows.Forms.CheckBox();
             this.btnStopTranscoder = new System.Windows.Forms.Button();
             this.btnStartTranscoder = new System.Windows.Forms.Button();
             this.lblStatusTranscoder = new System.Windows.Forms.Label();
@@ -195,7 +196,6 @@
             this.tbpServer = new System.Windows.Forms.TabPage();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
             this.btnClearLogServer = new System.Windows.Forms.Button();
-            this.lsbLogServer = new System.Windows.Forms.ListBox();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
             this.btnSaveServer = new System.Windows.Forms.Button();
             this.nudMaxListener = new System.Windows.Forms.NumericUpDown();
@@ -216,7 +216,8 @@
             this.label31 = new System.Windows.Forms.Label();
             this.FBD = new System.Windows.Forms.FolderBrowserDialog();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
-            this.ckbTranscoderDebug = new System.Windows.Forms.CheckBox();
+            this.btnShowServerLog = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mnsMain.SuspendLayout();
             this.tbcTabs.SuspendLayout();
             this.tbpStatus.SuspendLayout();
@@ -255,6 +256,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudMaxListener)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPortServer)).BeginInit();
             this.groupBox17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dvwTimetable
@@ -320,6 +322,7 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // tbcTabs
             // 
@@ -1240,7 +1243,7 @@
             // ckbAll
             // 
             this.ckbAll.AutoSize = true;
-            this.ckbAll.Location = new System.Drawing.Point(233, 24);
+            this.ckbAll.Location = new System.Drawing.Point(195, 35);
             this.ckbAll.Name = "ckbAll";
             this.ckbAll.Size = new System.Drawing.Size(37, 17);
             this.ckbAll.TabIndex = 7;
@@ -1251,7 +1254,7 @@
             // ckbSunday
             // 
             this.ckbSunday.AutoSize = true;
-            this.ckbSunday.Location = new System.Drawing.Point(192, 24);
+            this.ckbSunday.Location = new System.Drawing.Point(195, 16);
             this.ckbSunday.Name = "ckbSunday";
             this.ckbSunday.Size = new System.Drawing.Size(41, 17);
             this.ckbSunday.TabIndex = 6;
@@ -1262,7 +1265,7 @@
             // ckbSaturday
             // 
             this.ckbSaturday.AutoSize = true;
-            this.ckbSaturday.Location = new System.Drawing.Point(146, 24);
+            this.ckbSaturday.Location = new System.Drawing.Point(145, 35);
             this.ckbSaturday.Name = "ckbSaturday";
             this.ckbSaturday.Size = new System.Drawing.Size(40, 17);
             this.ckbSaturday.TabIndex = 5;
@@ -1273,7 +1276,7 @@
             // ckbFriday
             // 
             this.ckbFriday.AutoSize = true;
-            this.ckbFriday.Location = new System.Drawing.Point(71, 34);
+            this.ckbFriday.Location = new System.Drawing.Point(98, 35);
             this.ckbFriday.Name = "ckbFriday";
             this.ckbFriday.Size = new System.Drawing.Size(40, 17);
             this.ckbFriday.TabIndex = 4;
@@ -1284,7 +1287,7 @@
             // ckbThursday
             // 
             this.ckbThursday.AutoSize = true;
-            this.ckbThursday.Location = new System.Drawing.Point(24, 34);
+            this.ckbThursday.Location = new System.Drawing.Point(49, 35);
             this.ckbThursday.Name = "ckbThursday";
             this.ckbThursday.Size = new System.Drawing.Size(41, 17);
             this.ckbThursday.TabIndex = 3;
@@ -1295,7 +1298,7 @@
             // ckbWednesday
             // 
             this.ckbWednesday.AutoSize = true;
-            this.ckbWednesday.Location = new System.Drawing.Point(103, 20);
+            this.ckbWednesday.Location = new System.Drawing.Point(145, 16);
             this.ckbWednesday.Name = "ckbWednesday";
             this.ckbWednesday.Size = new System.Drawing.Size(44, 17);
             this.ckbWednesday.TabIndex = 2;
@@ -1306,7 +1309,7 @@
             // ckbTuesday
             // 
             this.ckbTuesday.AutoSize = true;
-            this.ckbTuesday.Location = new System.Drawing.Point(56, 20);
+            this.ckbTuesday.Location = new System.Drawing.Point(98, 16);
             this.ckbTuesday.Name = "ckbTuesday";
             this.ckbTuesday.Size = new System.Drawing.Size(41, 17);
             this.ckbTuesday.TabIndex = 1;
@@ -1317,7 +1320,7 @@
             // ckbMonday
             // 
             this.ckbMonday.AutoSize = true;
-            this.ckbMonday.Location = new System.Drawing.Point(7, 20);
+            this.ckbMonday.Location = new System.Drawing.Point(49, 16);
             this.ckbMonday.Name = "ckbMonday";
             this.ckbMonday.Size = new System.Drawing.Size(43, 17);
             this.ckbMonday.TabIndex = 0;
@@ -1404,6 +1407,18 @@
             this.groupBox16.TabIndex = 39;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Status";
+            // 
+            // ckbTranscoderDebug
+            // 
+            this.ckbTranscoderDebug.AutoSize = true;
+            this.ckbTranscoderDebug.Checked = true;
+            this.ckbTranscoderDebug.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckbTranscoderDebug.Location = new System.Drawing.Point(333, 17);
+            this.ckbTranscoderDebug.Name = "ckbTranscoderDebug";
+            this.ckbTranscoderDebug.Size = new System.Drawing.Size(58, 17);
+            this.ckbTranscoderDebug.TabIndex = 4;
+            this.ckbTranscoderDebug.Text = "Debug";
+            this.ckbTranscoderDebug.UseVisualStyleBackColor = true;
             // 
             // btnStopTranscoder
             // 
@@ -1585,8 +1600,6 @@
             // 
             this.cmbSampleRateEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSampleRateEdit.FormattingEnabled = true;
-            this.cmbSampleRateEdit.Items.AddRange(new object[] {
-            "44,1 kHz"});
             this.cmbSampleRateEdit.Location = new System.Drawing.Point(500, 32);
             this.cmbSampleRateEdit.Name = "cmbSampleRateEdit";
             this.cmbSampleRateEdit.Size = new System.Drawing.Size(71, 21);
@@ -1917,6 +1930,7 @@
             // 
             // tbpServer
             // 
+            this.tbpServer.Controls.Add(this.pictureBox1);
             this.tbpServer.Controls.Add(this.groupBox19);
             this.tbpServer.Controls.Add(this.groupBox18);
             this.tbpServer.Controls.Add(this.groupBox17);
@@ -1929,11 +1943,11 @@
             // 
             // groupBox19
             // 
+            this.groupBox19.Controls.Add(this.btnShowServerLog);
             this.groupBox19.Controls.Add(this.btnClearLogServer);
-            this.groupBox19.Controls.Add(this.lsbLogServer);
-            this.groupBox19.Location = new System.Drawing.Point(9, 221);
+            this.groupBox19.Location = new System.Drawing.Point(215, 59);
             this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Size = new System.Drawing.Size(820, 221);
+            this.groupBox19.Size = new System.Drawing.Size(184, 54);
             this.groupBox19.TabIndex = 2;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "Log";
@@ -1946,15 +1960,6 @@
             this.btnClearLogServer.TabIndex = 1;
             this.btnClearLogServer.Text = "Clear";
             this.btnClearLogServer.UseVisualStyleBackColor = true;
-            // 
-            // lsbLogServer
-            // 
-            this.lsbLogServer.FormattingEnabled = true;
-            this.lsbLogServer.Location = new System.Drawing.Point(6, 49);
-            this.lsbLogServer.Name = "lsbLogServer";
-            this.lsbLogServer.ScrollAlwaysVisible = true;
-            this.lsbLogServer.Size = new System.Drawing.Size(808, 160);
-            this.lsbLogServer.TabIndex = 0;
             // 
             // groupBox18
             // 
@@ -2167,17 +2172,24 @@
             this.OFD.Filter = "MP3 Files|*.mp3";
             this.OFD.Multiselect = true;
             // 
-            // ckbTranscoderDebug
+            // btnShowServerLog
             // 
-            this.ckbTranscoderDebug.AutoSize = true;
-            this.ckbTranscoderDebug.Checked = true;
-            this.ckbTranscoderDebug.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbTranscoderDebug.Location = new System.Drawing.Point(333, 17);
-            this.ckbTranscoderDebug.Name = "ckbTranscoderDebug";
-            this.ckbTranscoderDebug.Size = new System.Drawing.Size(58, 17);
-            this.ckbTranscoderDebug.TabIndex = 4;
-            this.ckbTranscoderDebug.Text = "Debug";
-            this.ckbTranscoderDebug.UseVisualStyleBackColor = true;
+            this.btnShowServerLog.Location = new System.Drawing.Point(89, 19);
+            this.btnShowServerLog.Name = "btnShowServerLog";
+            this.btnShowServerLog.Size = new System.Drawing.Size(75, 23);
+            this.btnShowServerLog.TabIndex = 2;
+            this.btnShowServerLog.Text = "Show logfile";
+            this.btnShowServerLog.UseVisualStyleBackColor = true;
+            this.btnShowServerLog.Click += new System.EventHandler(this.btnShowServerLog_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WebradioManager.Properties.Resources.shoutcast;
+            this.pictureBox1.Location = new System.Drawing.Point(127, 255);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(626, 148);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // AdminView
             // 
@@ -2250,6 +2262,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudPortServer)).EndInit();
             this.groupBox17.ResumeLayout(false);
             this.groupBox17.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2378,7 +2391,6 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.GroupBox groupBox19;
         private System.Windows.Forms.Button btnClearLogServer;
-        private System.Windows.Forms.ListBox lsbLogServer;
         private System.Windows.Forms.GroupBox groupBox18;
         private System.Windows.Forms.Button btnSaveServer;
         private System.Windows.Forms.NumericUpDown nudMaxListener;
@@ -2444,6 +2456,8 @@
         private System.Windows.Forms.ListBox lsbStatus;
         private System.Windows.Forms.CheckBox ckbServerDebug;
         private System.Windows.Forms.CheckBox ckbTranscoderDebug;
+        private System.Windows.Forms.Button btnShowServerLog;
+        private System.Windows.Forms.PictureBox pictureBox1;
 
 
     }

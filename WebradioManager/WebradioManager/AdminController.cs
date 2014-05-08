@@ -50,6 +50,11 @@ namespace WebradioManager
             return this.Model.GetGenders();
         }
 
+        public void CheckFolders(int webradioId)
+        {
+            this.Model.CheckFolders(webradioId);
+        }
+
         public void FormClose()
         {
             this.Model.RemoveObserver(this);

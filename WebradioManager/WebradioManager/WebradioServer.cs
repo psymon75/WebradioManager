@@ -151,18 +151,17 @@ namespace WebradioManager
 
         public bool Stop()
         {
-
             if (this.IsRunning() && this.Process.Responding)
             {
                 try
                 {
                     this.Process.Kill();
+                    return true;
                 }
                 catch
                 {
                     return false;
-                }
-                
+                }       
             }
             return true;
         }

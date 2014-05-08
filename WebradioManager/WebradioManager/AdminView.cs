@@ -55,6 +55,7 @@ namespace WebradioManager
             this.Controller = controller;
             this.IdWebradio = idWebradio;
             this.EventsCalendar = new List<EventAppointment>();
+            //this.Controller.CheckFolders(idWebradio);
         }
 
 
@@ -142,12 +143,12 @@ namespace WebradioManager
                         if (ev.Playlist.Type == AudioType.Music)
                         {
                             m_Appointment.BorderColor = Color.Blue;
-                            m_Appointment.Color = Color.Blue;
+                            //m_Appointment.Color = Color.Blue;
                         }
                         else
                         {
                             m_Appointment.BorderColor = Color.Red;
-                            m_Appointment.Color = Color.Red;
+                            //m_Appointment.Color = Color.Red;
                         }
                         m_Appointment.Playlist = ev.Playlist;
                         m_Appointment.EventObject = ev;
@@ -193,7 +194,6 @@ namespace WebradioManager
             }
             //----
             //SERVER
-            lsbLogServer.Items.Clear();
             nudPortServer.Value = webradio.Server.Port;
             txbLocalServerPassword.Text = webradio.Server.Password;
             txbLocalServerAdminPassword.Text = webradio.Server.AdminPassword;
@@ -698,13 +698,14 @@ namespace WebradioManager
         private void ShowTranscoderInfos(WebradioTranscoder transcoder)
         {
             if (transcoder != null)
-            {
+             {
                 lsbTranscoderLog.Items.Clear();
                 txbStreamNameEdit.Text = transcoder.Name;
                 txbStreamUrlEdit.Text = transcoder.Url;
                 mtbServerIPEdit.Text = this.PrepareIpAddress(transcoder.Ip);
                 txbServerPasswordEdit.Text = transcoder.Password;
                 nudPortEdit.Value = transcoder.Port;
+                cmbSampleRateEdit.SelectedItem = transcoder.SampleRate.ToString();
                 cmbBitrateEdit.SelectedItem = transcoder.Birate;
                 cmbEncoderEdit.SelectedItem = (transcoder.StreamType == StreamType.MP3) ? "MP3" : "AAC+";
 
@@ -811,7 +812,7 @@ namespace WebradioManager
 
                 }
                 else
-                    MessageBox.Show("An error has occured. Please terminate sc_trans process.", "Error");
+                    MessageBox.Show("An error has occured.\n- Please terminate sc_trans process.\n- Please check that sc_trans.exe is in the shoutcast folder.", "Error");
             }
             else
                 MessageBox.Show("Please select a transcoder", "Error");
@@ -862,7 +863,7 @@ namespace WebradioManager
         private void btnStartServer_Click(object sender, EventArgs e)
         {
             if (!this.Controller.StartServer(this.IdWebradio, ckbServerDebug.Checked))
-                MessageBox.Show("An error has occured. Please terminate sc_server process.", "Error");
+                MessageBox.Show("An error has occured.\n- Please terminate sc_server process.\n- Please check that sc_serv.exe is in the shoutcast folder.", "Error");
         }
 
         private void btnStopServer_Click(object sender, EventArgs e)
@@ -879,6 +880,23 @@ namespace WebradioManager
         private void btnShowWebAdministration_Click(object sender, EventArgs e)
         {
             this.Controller.ShowServerWebAdmin(this.IdWebradio);
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("WebradioManager V0.1\nSimon Menetrey\nTravail de diplôme 2014", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnShowServerLog_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start("notepad", Directory.GetCurrentDirectory() + "\\" + this.Controller.GetWebradio(this.IdWebradio).Server.LogFilename.Replace("/", "\\"));
+            }
+            catch
+            {
+                MessageBox.Show("Impossible to access logfile", "Error");
+            }
         }
 
 

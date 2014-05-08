@@ -17,6 +17,7 @@ namespace WebradioManager
     {
         //Defaults constants
         public const string DEFAULT_WEBRADIOS_FOLDER = "webradios/";
+        public const string DEFAULT_SHOUTCAST_FOLDER = "shoutcast/";
         const string DEFAULT_LOGFILENAME = "log.txt";
         const string DEFAULT_CONFIGFILENAME = "config.config";
         const string DEFAULT_PASSWORD = "1234";
@@ -98,7 +99,7 @@ namespace WebradioManager
             bool needUpdate = false;
             for (int i = 0; i < this.ActiveProcess.Count; i++)
             {
-                if(!this.ActiveProcess[i].Responding || this.ActiveProcess[i].HasExited)
+                if (!this.ActiveProcess[i].Responding || this.ActiveProcess[i].HasExited)
                 {
                     this.ActiveProcess.RemoveAt(i);
                     needUpdate = true;
@@ -144,8 +145,18 @@ namespace WebradioManager
             this.Library = this.Bdd.LoadLibrary();
         }
 
+        public void CheckFolders(int webradioId)
+        {
+            if (!Directory.Exists(DEFAULT_WEBRADIOS_FOLDER + this.Webradios[webradioId].Name))
+                Directory.CreateDirectory(DEFAULT_WEBRADIOS_FOLDER + this.Webradios[webradioId].Name);
+        }
+
         public void LoadWebradios()
         {
+            if (!Directory.Exists(DEFAULT_WEBRADIOS_FOLDER))
+                Directory.CreateDirectory(DEFAULT_WEBRADIOS_FOLDER);
+            if (!Directory.Exists(DEFAULT_SHOUTCAST_FOLDER))
+                Directory.CreateDirectory(DEFAULT_SHOUTCAST_FOLDER);
             this.Webradios = this.Bdd.LoadWebradios();
         }
 
@@ -630,7 +641,7 @@ namespace WebradioManager
                 }
                 else
                     return false;
-                
+
             }
             catch
             {
@@ -722,7 +733,7 @@ namespace WebradioManager
                 server.GenerateConfigFile();
                 if (wasRunning)
                     server.Start(debug);
-               
+
 
                 this.UpdateObservers(webradioId);
                 return true;
@@ -731,7 +742,7 @@ namespace WebradioManager
             {
                 return false;
             }
-            
+
         }
 
         public bool StartServer(int webradioId, bool debug)
@@ -748,7 +759,7 @@ namespace WebradioManager
 
         public bool StopServer(int webradioId)
         {
-            if(this.Webradios[webradioId].Server.Stop())
+            if (this.Webradios[webradioId].Server.Stop())
             {
                 this.ActiveProcess.Remove(this.Webradios[webradioId].Server.Process);
                 this.UpdateObservers(webradioId);

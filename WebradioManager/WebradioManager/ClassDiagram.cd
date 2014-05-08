@@ -80,7 +80,7 @@
   <Class Name="WebradioManager.WMModel" Collapsed="true">
     <Position X="3.5" Y="16" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>DDABAkAAAkhIAAIACEQIAgAWgEAUBhAYEIQAQAYgCgg=</HashCode>
+      <HashCode>DDEBAsIAAkhIAAMhCEQIQgAW4FQUBpAYEIQAQxahCgg=</HashCode>
       <FileName>WMModel.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -94,7 +94,7 @@
   <Class Name="WebradioManager.SelectionController" Collapsed="true">
     <Position X="7.25" Y="19.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>CAAAAQAAAEAAAAAAAgAIAAAAAAABBACIACgAQAAAAAA=</HashCode>
+      <HashCode>CAAAAQAAAEAAIAAAAgAIAAAAAAABBACIACgAQAEAAAA=</HashCode>
       <FileName>SelectionController.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.957" />
@@ -105,14 +105,14 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>/2dwNzSn9zsYeDyxQJTrE0pnYXjCsbG84nYbcWCKar4=</HashCode>
+      <HashCode>/2dwNTSn9zsYeDyxQJTrE0rncXzC87E84nYbcWKKar4=</HashCode>
       <FileName>AdminView.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WebradioManager.SelectionView" Collapsed="true">
     <Position X="7.25" Y="17" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAYASAACBAAAACAAAACIgAIAAgAACAAAEAAAQQ=</HashCode>
+      <HashCode>AAAAAQAYASAACBAAAACAAAACIgAIAAgAACAAAFAAAQQ=</HashCode>
       <FileName>SelectionView.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -129,7 +129,7 @@
   <Class Name="WebradioManager.Bdd" Collapsed="true">
     <Position X="0.5" Y="16" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>DAAJAQCBAEQIAAJAEEAAAAALAAAEBAABAAAwQAAAAgA=</HashCode>
+      <HashCode>DAEJAQCDAEQIAAJAEEAAAIAPAAAEBAABAAAwQgAAAgA=</HashCode>
       <FileName>Bdd.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -137,9 +137,19 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="WebradioManager.WebradioServer" Collapsed="true">
-    <Position X="3.5" Y="8.25" Width="1.5" />
+    <Position X="1.75" Y="5.75" Width="1.5" />
+    <Members>
+      <Field Name="_adminPassword" Hidden="true" />
+      <Field Name="_configFilename" Hidden="true" />
+      <Field Name="_logFilename" Hidden="true" />
+      <Field Name="_maxListener" Hidden="true" />
+      <Field Name="_password" Hidden="true" />
+      <Field Name="_port" Hidden="true" />
+      <Field Name="_process" Hidden="true" />
+      <Field Name="SC_SERVER_FILENAME" Hidden="true" />
+    </Members>
     <TypeIdentifier>
-      <HashCode>AAQAAAQgiDAAAAgAAgAAAAAACIAAgkACIgEAAAAAAAA=</HashCode>
+      <HashCode>AAQgAAQgiDAAAAgAAgAAQAAACIAAgkAGIgEIAAAAAAA=</HashCode>
       <FileName>WebradioServer.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -181,7 +191,7 @@
   <Class Name="WebradioManager.WebradioTranscoder" Collapsed="true">
     <Position X="3.5" Y="10" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAQCIAAgCBBACAgEIABAAAQACAQAgGBCDQAAAAAAIoI=</HashCode>
+      <HashCode>BAQCIAAgCDBACUoEIgBAQAUACKUAgGBqLQAAAAAAIoI=</HashCode>
       <FileName>WebradioTranscoder.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -202,7 +212,7 @@
   <Class Name="WebradioManager.AdminController" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="15.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAABAQAAACAIAAIAAkAAAAACAEAFAAAIAKwAAAAgAgA=</HashCode>
+      <HashCode>BAEBAQIAACAIAAIgAmAAQAAGYEAFAAAIAKwAAgGgAgA=</HashCode>
       <FileName>AdminController.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.881" Collapsed="true" />
