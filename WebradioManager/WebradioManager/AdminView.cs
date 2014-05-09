@@ -1,6 +1,7 @@
 ﻿using Calendar;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
@@ -662,7 +663,7 @@ namespace WebradioManager
             if (txbStreamName.Text.Trim() != "" && txbServerPassword.Text.Trim() != "")
             {
                 IPAddress ip;
-                if (IPAddress.TryParse(mtbServerIP.Text, out ip))
+                if (IPAddress.TryParse(txbServerIP.Text, out ip))
                 {
                     if (cmbEncoder.SelectedItem.ToString() == StreamType.MP3.ToString())
                         MessageBox.Show("You have selected MP3. MP3 need a licence to broadcast. Currently the transcoder will not work. WIP");
@@ -702,7 +703,7 @@ namespace WebradioManager
                 lsbTranscoderLog.Items.Clear();
                 txbStreamNameEdit.Text = transcoder.Name;
                 txbStreamUrlEdit.Text = transcoder.Url;
-                mtbServerIPEdit.Text = this.PrepareIpAddress(transcoder.Ip);
+                txbServerIPEdit.Text = transcoder.Ip.ToString();
                 txbServerPasswordEdit.Text = transcoder.Password;
                 nudPortEdit.Value = transcoder.Port;
                 cmbSampleRateEdit.SelectedItem = transcoder.SampleRate.ToString();
@@ -753,7 +754,7 @@ namespace WebradioManager
                     if (txbStreamNameEdit.Text.Trim() != "" && txbServerPasswordEdit.Text.Trim() != "")
                     {
                         IPAddress ip;
-                        if (IPAddress.TryParse(mtbServerIPEdit.Text, out ip))
+                        if (IPAddress.TryParse(txbServerIPEdit.Text, out ip))
                         {
                             WebradioTranscoder transcoder = (WebradioTranscoder)lsbTranscoders.SelectedItem;
                             transcoder.Name = txbStreamNameEdit.Text;
@@ -897,6 +898,20 @@ namespace WebradioManager
             {
                 MessageBox.Show("Impossible to access logfile", "Error");
             }
+        }
+
+        private void btnClearLogTranscoder_Click(object sender, EventArgs e)
+        {
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+                data["op"] = "logdata";
+                data["seq"] = "45";
+                wb.Credentials = new NetworkCredential("admin", "admin");
+                var response = wb.UploadValues("http://127.0.0.1:9000/api", "POST", data);
+                MessageBox.Show(System.Text.Encoding.UTF8.GetString(response));
+            }
+            
         }
 
 

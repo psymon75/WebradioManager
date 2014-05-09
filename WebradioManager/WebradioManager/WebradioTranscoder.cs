@@ -18,6 +18,7 @@ namespace WebradioManager
         const int DEFAULT_ADMIN_PORT = 9000;
         const string DEFAULT_ADMIN = "admin";
         const string DEFAULT_ADMIN_PASSWORD = "admin";
+        const int PROTOCOL_VALUE = 3; //http://wiki.winamp.com/wiki/SHOUTcast_DNAS_Transcoder_2#Network_Options
 
         private int _id;
         private int _birate;
@@ -148,19 +149,8 @@ namespace WebradioManager
             this.ConfigFilename = configFilename;
             this.StreamType = st;
             this.Process = new Process();
-            this.Process.EnableRaisingEvents = true;
-            this.Process.Exited += Process_Exited;
 
         }
-
-        void Process_Exited(object sender, EventArgs e)
-        {
-            MessageBox.Show("bad");
-        }
-
-
-
-
 
         public void GenerateConfigFile(List<Playlist> playlists)
         {
@@ -174,7 +164,7 @@ namespace WebradioManager
             output += "adminuser=" + DEFAULT_ADMIN + "\n";
             output += "adminpassword=" + DEFAULT_ADMIN_PASSWORD + "\n";
 
-            output += "outprotocol_1=3\n";
+            output += "outprotocol_1=" + PROTOCOL_VALUE + "\n";
             output += "serverip_1=" + this.Ip + "\n";
             output += "serverport_1=" + this.Port + "\n";
             output += "password_1=" + this.Password + "\n";
