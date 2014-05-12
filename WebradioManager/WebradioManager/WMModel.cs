@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -89,6 +90,7 @@ namespace WebradioManager
             this.ActiveProcess = new List<Process>();
             this.ProcessWatcher = new System.Windows.Forms.Timer();
             this.ProcessWatcher.Tick += ProcessWatcher_Tick;
+            this.ProcessWatcher.Interval = 1000;
             this.ProcessWatcher.Start();
         }
 
@@ -96,9 +98,18 @@ namespace WebradioManager
 
         void ProcessWatcher_Tick(object sender, EventArgs e)
         {
+            /*WebClient wb = new WebClient();
+                var data = new NameValueCollection();
+                data["op"] = "logdata";
+                data["seq"] = "45";
+                wb.Credentials = new NetworkCredential("admin", "admin");
+                var response = wb.UploadValues("http://127.0.0.1:9000/api", "POST", data);
+                MessageBox.Show(System.Text.Encoding.UTF8.GetString(response));*/
             bool needUpdate = false;
             for (int i = 0; i < this.ActiveProcess.Count; i++)
             {
+                
+                
                 if (!this.ActiveProcess[i].Responding || this.ActiveProcess[i].HasExited)
                 {
                     this.ActiveProcess.RemoveAt(i);
@@ -552,7 +563,7 @@ namespace WebradioManager
                 return false;
         }
 
-        public bool CreateTranscoder(string name, StreamType st, int sampleRate, int bitrate, string url, IPAddress ip, int port, string password, int webradioId)
+        public bool CreateTranscoder(string name, StreamType st, int sampleRate, int bitrate, string url, IPAddress ip, int port, int adminport, string password, int webradioId)
         {
             string filename = DEFAULT_WEBRADIOS_FOLDER + this.Webradios[webradioId].Name + "/" + DEFAULT_TRANSCODERS_FOLDER;
             WebradioTranscoder transcoder;
@@ -562,6 +573,7 @@ namespace WebradioManager
                 sampleRate,
                 ip,
                 port,
+                adminport,
                 url,
                 password,
                 filename,
@@ -572,6 +584,7 @@ namespace WebradioManager
                  sampleRate,
                  ip,
                  port,
+                 adminport,
                  url,
                  password,
                  filename,

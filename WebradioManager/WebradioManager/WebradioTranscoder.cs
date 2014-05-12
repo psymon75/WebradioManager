@@ -27,6 +27,7 @@ namespace WebradioManager
         private string _url;
         private IPAddress _ip;
         private int _port;
+        private int _adminPort;
         private string _password;
         private string _configFilename;
         private string _logFilename;
@@ -38,6 +39,11 @@ namespace WebradioManager
 
 
         #region Properties
+        public int AdminPort
+        {
+            get { return _adminPort; }
+            set { _adminPort = value; }
+        }
         public string CalendarFile
         {
             get { return _calendarFile; }
@@ -130,12 +136,12 @@ namespace WebradioManager
         }
         #endregion
 
-        public WebradioTranscoder(string name, int bitrate, int sampleRate, IPAddress ip, int port, string url, string password, string configFilename, string logFilename, StreamType st)
-            : this(DEFAULT_ID, name, bitrate, sampleRate, ip, port, url, password, configFilename, logFilename, st)
+        public WebradioTranscoder(string name, int bitrate, int sampleRate, IPAddress ip, int port, int adminport, string url, string password, string configFilename, string logFilename, StreamType st)
+            : this(DEFAULT_ID, name, bitrate, sampleRate, ip, port, adminport, url, password, configFilename, logFilename, st)
         {
             //NO CODE
         }
-        public WebradioTranscoder(int id, string name, int bitrate, int sampleRate, IPAddress ip, int port, string url, string password, string configFilename, string logFilename, StreamType st)
+        public WebradioTranscoder(int id, string name, int bitrate, int sampleRate, IPAddress ip, int port, int adminport, string url, string password, string configFilename, string logFilename, StreamType st)
         {
             this.Id = id;
             this.Name = name;
@@ -143,6 +149,7 @@ namespace WebradioManager
             this.SampleRate = sampleRate;
             this.Ip = ip;
             this.Port = port;
+            this.AdminPort = adminport;
             this.Url = url;
             this.Password = password;
             this.LogFilename = logFilename;
@@ -160,7 +167,7 @@ namespace WebradioManager
             output += "logfile=" + Directory.GetCurrentDirectory() + "\\" + this.LogFilename.Replace('/', '\\') + "\n";
             output += "encoder_1=" + ((this.StreamType == WebradioManager.StreamType.AACPlus) ? "aacp" : "mp3") + "\n";
             output += "bitrate_1=" + (this.Birate * 1000) + "\n";
-            output += "adminport=" + DEFAULT_ADMIN_PORT + "\n";
+            output += "adminport=" + this.AdminPort + "\n";
             output += "adminuser=" + DEFAULT_ADMIN + "\n";
             output += "adminpassword=" + DEFAULT_ADMIN_PASSWORD + "\n";
 

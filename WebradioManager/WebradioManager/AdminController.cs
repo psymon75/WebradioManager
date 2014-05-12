@@ -118,9 +118,9 @@ namespace WebradioManager
             return this.Model.DeleteEvent(aEvent, webradioId);
         }
 
-        public bool CreateTranscoder(string name, StreamType st, int sampleRate, int bitrate, string url, IPAddress ip, int port, string password, int webradioId)
+        public bool CreateTranscoder(string name, StreamType st, int sampleRate, int bitrate, string url, IPAddress ip, int port, int adminport, string password, int webradioId)
         {
-            return this.Model.CreateTranscoder(name, st, sampleRate, bitrate, url, ip, port, password, webradioId);
+            return this.Model.CreateTranscoder(name, st, sampleRate, bitrate, url, ip, port, adminport, password, webradioId);
         }
 
         public bool DeleteTranscoder(WebradioTranscoder transcoder, int webradioId)

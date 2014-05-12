@@ -9,6 +9,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -161,7 +162,6 @@ namespace WebradioManager
             //TRANSCODERS
             index = lsbTranscoders.SelectedIndex;
             lsbTranscoders.Items.Clear();
-            lsbTranscoderLog.Items.Clear();
             lsbTranscoders.Items.AddRange(webradio.Transcoders.ToArray());
             lsbTranscoders.SelectedIndex = index;
             cmbBitrate.Items.Clear();
@@ -669,7 +669,7 @@ namespace WebradioManager
                         MessageBox.Show("You have selected MP3. MP3 need a licence to broadcast. Currently the transcoder will not work. WIP");
                     bool result = this.Controller.CreateTranscoder(txbStreamName.Text,
                         (cmbEncoder.SelectedItem.ToString() == StreamType.MP3.ToString()) ? StreamType.MP3 : StreamType.AACPlus,
-                        int.Parse(cmbSampleRate.SelectedItem.ToString()), int.Parse(cmbBitrate.SelectedItem.ToString()), txbStreamUrl.Text, ip, (int)nudPort.Value, txbServerPassword.Text, this.IdWebradio);
+                        int.Parse(cmbSampleRate.SelectedItem.ToString()), int.Parse(cmbBitrate.SelectedItem.ToString()), txbStreamUrl.Text, ip, (int)nudPort.Value, (int)nudAdminPort.Value, txbServerPassword.Text, this.IdWebradio);
                     if (!result)
                         MessageBox.Show("Transcoder already exist or name is invalid", "Error");
                 }
@@ -700,12 +700,12 @@ namespace WebradioManager
         {
             if (transcoder != null)
              {
-                lsbTranscoderLog.Items.Clear();
                 txbStreamNameEdit.Text = transcoder.Name;
                 txbStreamUrlEdit.Text = transcoder.Url;
                 txbServerIPEdit.Text = transcoder.Ip.ToString();
                 txbServerPasswordEdit.Text = transcoder.Password;
                 nudPortEdit.Value = transcoder.Port;
+                nudAdminPortEdit.Value = transcoder.AdminPort;
                 cmbSampleRateEdit.SelectedItem = transcoder.SampleRate.ToString();
                 cmbBitrateEdit.SelectedItem = transcoder.Birate;
                 cmbEncoderEdit.SelectedItem = (transcoder.StreamType == StreamType.MP3) ? "MP3" : "AAC+";
@@ -720,30 +720,6 @@ namespace WebradioManager
             }
         }
 
-        private string PrepareIpAddress(IPAddress address)
-        {
-            string[] ip = address.ToString().Split('.');
-            string result = "";
-            foreach (string s in ip)
-            {
-                switch (s.Length)
-                {
-                    case 1:
-                        result += "00" + s;
-                        break;
-                    case 2:
-                        result += "0" + s;
-                        break;
-                    case 3:
-                        result += s;
-                        break;
-                    default:
-                        break;
-                }
-            }
-            return result;
-
-        }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -762,6 +738,7 @@ namespace WebradioManager
                             transcoder.Password = txbServerPasswordEdit.Text;
                             transcoder.Ip = ip;
                             transcoder.Port = (int)nudPortEdit.Value;
+                            transcoder.AdminPort = (int)nudAdminPortEdit.Value;
                             transcoder.Birate = int.Parse(cmbBitrateEdit.SelectedItem.ToString());
                             transcoder.SampleRate = int.Parse(cmbSampleRateEdit.SelectedItem.ToString());
                             transcoder.StreamType = (cmbEncoderEdit.SelectedItem.ToString() == StreamType.MP3.ToString()) ? StreamType.MP3 : StreamType.AACPlus;
@@ -900,21 +877,77 @@ namespace WebradioManager
             }
         }
 
-        private void btnClearLogTranscoder_Click(object sender, EventArgs e)
+
+        private void btnResolve_Click(object sender, EventArgs e)
         {
-            using (var wb = new WebClient())
+            bool editSection = false;
+            if ((sender as Button).Tag != null)
+                editSection = true;
+            IPAddress ip;
+            if (!GetResolvedConnecionIPAddress((editSection) ? txbServerIPEdit.Text : txbServerIP.Text, out ip))
+                MessageBox.Show("Impossible to resolve this dns name", "Error");
+            else
             {
-                var data = new NameValueCollection();
-                data["op"] = "logdata";
-                data["seq"] = "45";
-                wb.Credentials = new NetworkCredential("admin", "admin");
-                var response = wb.UploadValues("http://127.0.0.1:9000/api", "POST", data);
-                MessageBox.Show(System.Text.Encoding.UTF8.GetString(response));
+                if (editSection)
+                    txbServerIPEdit.Text = ip.ToString();
+                else
+                    txbServerIP.Text = ip.ToString();
             }
-            
+
         }
 
+        //http://www.codeproject.com/Tips/440861/Resolving-a-hostname-in-Csharp-and-retrieving-IP-v
+        private bool GetResolvedConnecionIPAddress(string serverNameOrURL,
+                   out IPAddress resolvedIPAddress)
+        {
+            bool isResolved = false;
+            IPHostEntry hostEntry = null;
+            IPAddress resolvIP = null;
+            try
+            {
+                if (!IPAddress.TryParse(serverNameOrURL, out resolvIP))
+                {
+                    hostEntry = Dns.GetHostEntry(serverNameOrURL);
 
+                    if (hostEntry != null && hostEntry.AddressList != null
+                                 && hostEntry.AddressList.Length > 0)
+                    {
+                        if (hostEntry.AddressList.Length == 1)
+                        {
+                            resolvIP = hostEntry.AddressList[0];
+                            isResolved = true;
+                        }
+                        else
+                        {
+                            foreach (IPAddress var in hostEntry.AddressList)
+                            {
+                                if (var.AddressFamily == AddressFamily.InterNetwork)
+                                {
+                                    resolvIP = var;
+                                    isResolved = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    isResolved = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                isResolved = false;
+                resolvIP = null;
+            }
+            finally
+            {
+                resolvedIPAddress = resolvIP;
+            }
+
+            return isResolved;
+        }
 
     }
 }

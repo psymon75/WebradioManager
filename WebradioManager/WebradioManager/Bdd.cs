@@ -102,7 +102,7 @@ namespace WebradioManager
                 }
                 reader.Close();
                 //Transcoders
-                reader = this.Controls.ExecuteDataReader("SELECT c.filename AS CalendarFilename, tr.id, tr.name AS TransName, tr.bitrate, tr.samplerate, tr.url, tr.ip, tr.port, tr.password, tr.configfilename, tr.logfilename, st.name AS StreamName FROM tcalendar c, ttranscoder tr, tstreamtype st WHERE tr.webradioid = " + id.ToString() + " AND tr.streamtypeid = st.id AND c.webradioid = " + id.ToString());
+                reader = this.Controls.ExecuteDataReader("SELECT c.filename AS CalendarFilename, tr.id, tr.name AS TransName, tr.bitrate, tr.samplerate, tr.url, tr.ip, tr.port, tr.adminport, tr.password, tr.configfilename, tr.logfilename, st.name AS StreamName FROM tcalendar c, ttranscoder tr, tstreamtype st WHERE tr.webradioid = " + id.ToString() + " AND tr.streamtypeid = st.id AND c.webradioid = " + id.ToString());
                 while(reader.Read())
                 {
                     WebradioTranscoder trans = null;
@@ -113,6 +113,7 @@ namespace WebradioManager
                             int.Parse(reader["samplerate"].ToString()),
                             IPAddress.Parse(reader["ip"].ToString()),
                             int.Parse(reader["port"].ToString()),
+                            int.Parse(reader["adminport"].ToString()),
                             reader["url"].ToString(),
                             reader["password"].ToString(),
                             reader["configfilename"].ToString(),
@@ -124,6 +125,7 @@ namespace WebradioManager
                             int.Parse(reader["samplerate"].ToString()),
                             IPAddress.Parse(reader["ip"].ToString()),
                             int.Parse(reader["port"].ToString()),
+                            int.Parse(reader["adminport"].ToString()),
                             reader["url"].ToString(),
                             reader["password"].ToString(),
                             reader["configfilename"].ToString(),
@@ -555,6 +557,7 @@ namespace WebradioManager
                 data.Add("name", transcoder.Name);
                 data.Add("url", transcoder.Url);
                 data.Add("port", transcoder.Port.ToString());
+                data.Add("adminport", transcoder.AdminPort.ToString());
                 data.Add("ip", transcoder.Ip.ToString());
                 data.Add("password", transcoder.Password);
                 data.Add("configfilename", transcoder.ConfigFilename);
@@ -602,6 +605,7 @@ namespace WebradioManager
                 data.Add("name", transcoder.Name);
                 data.Add("url", transcoder.Url);
                 data.Add("port", transcoder.Port.ToString());
+                data.Add("adminport", transcoder.AdminPort.ToString());
                 data.Add("ip", transcoder.Ip.ToString());
                 data.Add("password", transcoder.Password);
 
