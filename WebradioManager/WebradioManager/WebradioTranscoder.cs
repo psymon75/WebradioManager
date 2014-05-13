@@ -16,8 +16,8 @@ namespace WebradioManager
         public const string DEFAULT_CONFIG_EXTENSION = ".config";
         public const string DEFAULT_LOG_EXTENSION = ".log";
         const int DEFAULT_ADMIN_PORT = 9000;
-        const string DEFAULT_ADMIN = "admin";
-        const string DEFAULT_ADMIN_PASSWORD = "admin";
+        public const string DEFAULT_ADMIN = "admin";
+        public const string DEFAULT_ADMIN_PASSWORD = "admin";
         const int PROTOCOL_VALUE = 3; //http://wiki.winamp.com/wiki/SHOUTcast_DNAS_Transcoder_2#Network_Options
 
         private int _id;
@@ -32,6 +32,7 @@ namespace WebradioManager
         private string _configFilename;
         private string _logFilename;
         private string _calendarFile;
+        private string _currentTrack;
         private StreamType _streamType;
         private Process _process;
         private static int[] _avaliableBitrates = { 64000, 96000, 128000, 256000 };
@@ -39,6 +40,11 @@ namespace WebradioManager
 
 
         #region Properties
+        public string CurrentTrack
+        {
+            get { return _currentTrack; }
+            set { _currentTrack = value; }
+        }
         public int AdminPort
         {
             get { return _adminPort; }
@@ -156,7 +162,7 @@ namespace WebradioManager
             this.ConfigFilename = configFilename;
             this.StreamType = st;
             this.Process = new Process();
-
+            this.CurrentTrack = "";
         }
 
         public void GenerateConfigFile(List<Playlist> playlists)

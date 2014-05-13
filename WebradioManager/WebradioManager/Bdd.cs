@@ -635,5 +635,44 @@ namespace WebradioManager
                 return false;
             }
         }
+
+        public bool AddToHistory(int transcoderId, DateTime date, string filename)
+        {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data.Add("date", date.ToString());
+            data.Add("filename", filename);
+            data.Add("transcoderid", transcoderId.ToString());
+
+            if (this.Controls.Insert("thistory", data))
+                return true;
+            else
+                return false;
+
+        }
+    
+        public Dictionary<string,string> GetHistory(int transcoderId)
+        {
+            Dictionary<string,string> filenames = new Dictionary<string,string>();
+            SQLiteDataReader reader = this.Controls.ExecuteDataReader("SELECT date, filename FROM thistory WHERE transcoderid = " + transcoderId.ToString());
+            while(reader.Read())
+            {
+                filenames.Add(reader["date"].ToString(), reader["filename"].ToString());
+            }
+            reader.Close();
+            return filenames;
+        }
+
+        public bool ClearHistory(int transcoderId)
+        {
+            try
+            {
+                this.Controls.Delete("thistory", "transcoderid = " + transcoderId.ToString());
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

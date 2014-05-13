@@ -1,7 +1,10 @@
-﻿using System;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -9,6 +12,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
+using System.Xml;
 using TagLib;
 
 namespace WebradioManager
@@ -41,15 +45,16 @@ namespace WebradioManager
         private Bdd _bdd;
         private List<AudioFile> _library;
         private System.Windows.Forms.Timer _processWatcher;
-        private List<Process> _activeProcess;
+        private List<WebradioTranscoder> _activeTranscoders;
+        private List<WebradioServer> _activeServers;
 
 
         #region Properties
 
-        public List<Process> ActiveProcess
+        public List<WebradioTranscoder> ActiveTranscoders
         {
-            get { return _activeProcess; }
-            set { _activeProcess = value; }
+            get { return _activeTranscoders; }
+            set { _activeTranscoders = value; }
         }
         public System.Windows.Forms.Timer ProcessWatcher
         {
@@ -80,24 +85,49 @@ namespace WebradioManager
             set { _library = value; }
         }
         #endregion
-
+        public List<WebradioServer> ActiveServers
+        {
+            get { return _activeServers; }
+            set { _activeServers = value; }
+        }
         public WMModel()
         {
             this.Webradios = new Dictionary<int, Webradio>();
             this.Observers = new List<IController>();
             this.Bdd = new Bdd();
             this.Library = new List<AudioFile>();
-            this.ActiveProcess = new List<Process>();
+            this.ActiveTranscoders = new List<WebradioTranscoder>();
+            this.ActiveServers = new List<WebradioServer>();
             this.ProcessWatcher = new System.Windows.Forms.Timer();
             this.ProcessWatcher.Tick += ProcessWatcher_Tick;
             this.ProcessWatcher.Interval = 1000;
             this.ProcessWatcher.Start();
         }
 
-
+        private string GetCurrentTrackFromXML(string xml)
+        {
+            string currentTrack = "";
+            XmlDocument document = new XmlDocument();
+            document.LoadXml(xml);
+            XmlNodeList nodes = document.GetElementsByTagName("activesource");
+            foreach(XmlNode node in nodes[0].ChildNodes)
+            {
+                if(node.Name == "currenttrack")
+                {
+                    currentTrack = node.InnerText;
+                    break;
+                }
+            }
+            return currentTrack;
+        }
 
         void ProcessWatcher_Tick(object sender, EventArgs e)
         {
+            WebClient wb = new WebClient();
+            var data = new NameValueCollection();
+            data["op"] = "getstatus";
+            data["seq"] = "45";
+            wb.Credentials = new NetworkCredential("admin", "admin");
             /*WebClient wb = new WebClient();
                 var data = new NameValueCollection();
                 data["op"] = "logdata";
@@ -106,13 +136,30 @@ namespace WebradioManager
                 var response = wb.UploadValues("http://127.0.0.1:9000/api", "POST", data);
                 MessageBox.Show(System.Text.Encoding.UTF8.GetString(response));*/
             bool needUpdate = false;
-            for (int i = 0; i < this.ActiveProcess.Count; i++)
+            for (int i = 0; i < this.ActiveTranscoders.Count; i++)
             {
-                
-                
-                if (!this.ActiveProcess[i].Responding || this.ActiveProcess[i].HasExited)
+                if (!this.ActiveTranscoders[i].IsRunning())
                 {
-                    this.ActiveProcess.RemoveAt(i);
+                    this.ActiveTranscoders.RemoveAt(i);
+                    needUpdate = true;
+                    i--;
+                }
+                else
+                {
+                    var response = wb.UploadValues("http://127.0.0.1:" + this.ActiveTranscoders[i].AdminPort + "/api", "POST", data);
+                    string currentTrack = this.GetCurrentTrackFromXML(System.Text.Encoding.UTF8.GetString(response));
+                    if(currentTrack != this.ActiveTranscoders[i].CurrentTrack)
+                    {
+                        this.ActiveTranscoders[i].CurrentTrack = currentTrack;
+                        this.Bdd.AddToHistory(this.ActiveTranscoders[i].Id, DateTime.Now, currentTrack);                         
+                    }
+                }
+            }
+            for (int i = 0; i < this.ActiveServers.Count; i++)
+            {
+                if (!this.ActiveServers[i].IsRunning())
+                {
+                    this.ActiveServers.RemoveAt(i);
                     needUpdate = true;
                     i--;
                 }
@@ -648,7 +695,7 @@ namespace WebradioManager
             {
                 if (transcoder.Start(debug))
                 {
-                    this.ActiveProcess.Add(transcoder.Process);
+                    this.ActiveTranscoders.Add(transcoder);
                     UpdateObservers(webradioId);
                     return true;
                 }
@@ -669,7 +716,7 @@ namespace WebradioManager
             {
                 if (transcoder.Stop())
                 {
-                    this.ActiveProcess.Remove(transcoder.Process);
+                    this.ActiveTranscoders.Remove(transcoder);
                     this.Webradios[webradioId].Calendar.GenerateConfigFile();
                     return true;
                 }
@@ -762,7 +809,7 @@ namespace WebradioManager
         {
             if (this.Webradios[webradioId].Server.Start(debug))
             {
-                this.ActiveProcess.Add(this.Webradios[webradioId].Server.Process);
+                this.ActiveServers.Add(this.Webradios[webradioId].Server);
                 this.UpdateObservers(webradioId);
                 return true;
             }
@@ -774,7 +821,7 @@ namespace WebradioManager
         {
             if (this.Webradios[webradioId].Server.Stop())
             {
-                this.ActiveProcess.Remove(this.Webradios[webradioId].Server.Process);
+                this.ActiveServers.Remove(this.Webradios[webradioId].Server);
                 this.UpdateObservers(webradioId);
                 return true;
             }
@@ -790,6 +837,75 @@ namespace WebradioManager
         public void ShowServerWebAdmin(int webradioId)
         {
             Process.Start(this.Webradios[webradioId].Server.WebAdminUrl);
+        }
+
+        public bool TranscoderNextTrack(WebradioTranscoder transcoder)
+        {
+            try
+            {
+                WebClient wb = new WebClient();
+                var data = new NameValueCollection();
+                data["op"] = "nexttrack";
+                data["seq"] = "45";
+                wb.Credentials = new NetworkCredential(WebradioTranscoder.DEFAULT_ADMIN, WebradioTranscoder.DEFAULT_ADMIN_PASSWORD );
+                var response = wb.UploadValues("http://127.0.0.1:"+transcoder.AdminPort+"/api", "POST", data);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool ClearHistory(int transcoderId)
+        {
+            return this.Bdd.ClearHistory(transcoderId);
+        }
+
+        public bool GenerateHistory(int webradioId, string transcoderName, int transcoderId, string outputFilename)
+        {
+            Document document = new Document(PageSize.A4);
+            PdfWriter.GetInstance(document, new FileStream(outputFilename, FileMode.Create));
+            document.Open();
+            iTextSharp.text.Font fontTitle = FontFactory.GetFont(FontFactory.HELVETICA,20,iTextSharp.text.Font.NORMAL);
+            iTextSharp.text.Font fontText = FontFactory.GetFont(FontFactory.HELVETICA, 12, iTextSharp.text.Font.NORMAL);
+            iTextSharp.text.Font fontTextError = FontFactory.GetFont(FontFactory.HELVETICA, 12,BaseColor.RED);
+            document.Add(new Paragraph(new Chunk("Webradio's name : " + this.Webradios[webradioId].Name, fontTitle)));
+            document.Add(new Paragraph(new Chunk("Transcoder's name : " + transcoderName + "\n\n", fontTitle)));
+            foreach(KeyValuePair<string,string> filename in this.Bdd.GetHistory(transcoderId))
+            {
+                string line = "";
+                AudioFile file = this.GetAudioFileByFilename(filename.Value);
+                if(file != null)
+                {
+                    line += "Title : " + file.Title + "\n";
+                    line += "Artist : " + file.Artist + "\n";
+                    line += "Album : " + file.Album + "\n";
+                    line += "Date : " + filename.Key + "\n\n";
+                    document.Add(new Paragraph(new Chunk(line, fontText)));
+                }
+                else
+                {
+                    document.Add(new Paragraph(new Chunk("File not found", fontTextError)));
+                }
+            }
+            
+            document.Close();
+            return true;
+        }
+
+        private AudioFile GetAudioFileByFilename(string filename)
+        {
+            AudioFile result = null;
+            foreach(AudioFile file in this.Library)
+            {
+                if(file.Filename == filename)
+                {
+                    result = file;
+                    break;
+                }
+            }
+            return result;
         }
     }
 }

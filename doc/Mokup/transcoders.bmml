@@ -189,17 +189,17 @@
         <text>Delete</text>
       </controlProperties>
     </control>
-    <control controlID="58" controlTypeID="com.balsamiq.mockups::FieldSet" x="703" y="352" w="181" h="60" measuredW="200" measuredH="170" zOrder="42" locked="false" isInGroup="-1">
+    <control controlID="58" controlTypeID="com.balsamiq.mockups::FieldSet" x="703" y="352" w="140" h="60" measuredW="200" measuredH="170" zOrder="42" locked="false" isInGroup="-1">
       <controlProperties>
         <text>History</text>
       </controlProperties>
     </control>
-    <control controlID="59" controlTypeID="com.balsamiq.mockups::Button" x="719" y="372" w="-1" h="-1" measuredW="54" measuredH="27" zOrder="43" locked="false" isInGroup="-1">
+    <control controlID="59" controlTypeID="com.balsamiq.mockups::Button" x="710" y="372" w="-1" h="-1" measuredW="77" measuredH="27" zOrder="43" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Show</text>
+        <text>Generate</text>
       </controlProperties>
     </control>
-    <control controlID="60" controlTypeID="com.balsamiq.mockups::Button" x="803" y="372" w="-1" h="-1" measuredW="55" measuredH="27" zOrder="44" locked="false" isInGroup="-1">
+    <control controlID="60" controlTypeID="com.balsamiq.mockups::Button" x="783" y="372" w="-1" h="-1" measuredW="55" measuredH="27" zOrder="44" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Clear</text>
       </controlProperties>
@@ -209,33 +209,33 @@
         <text>Show%20logfile</text>
       </controlProperties>
     </control>
-    <control controlID="67" controlTypeID="com.balsamiq.mockups::FieldSet" x="893" y="368" w="326" h="53" measuredW="200" measuredH="170" zOrder="20" locked="false" isInGroup="-1">
+    <control controlID="67" controlTypeID="com.balsamiq.mockups::FieldSet" x="850" y="368" w="369" h="53" measuredW="200" measuredH="170" zOrder="20" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Status</text>
       </controlProperties>
     </control>
-    <control controlID="68" controlTypeID="com.balsamiq.mockups::Label" x="914" y="388" w="64" h="-1" measuredW="46" measuredH="21" zOrder="21" locked="false" isInGroup="-1">
+    <control controlID="68" controlTypeID="com.balsamiq.mockups::Label" x="854" y="388" w="64" h="-1" measuredW="46" measuredH="21" zOrder="21" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Status%20%3A</text>
       </controlProperties>
     </control>
-    <control controlID="69" controlTypeID="com.balsamiq.mockups::Label" x="979" y="388" w="28" h="-1" measuredW="20" measuredH="21" zOrder="22" locked="false" isInGroup="-1">
+    <control controlID="69" controlTypeID="com.balsamiq.mockups::Label" x="901" y="388" w="28" h="-1" measuredW="20" measuredH="21" zOrder="22" locked="false" isInGroup="-1">
       <controlProperties>
         <color>13369344</color>
         <text>Off</text>
       </controlProperties>
     </control>
-    <control controlID="70" controlTypeID="com.balsamiq.mockups::Button" x="1007" y="385" w="75" h="26" measuredW="53" measuredH="27" zOrder="23" locked="false" isInGroup="-1">
+    <control controlID="70" controlTypeID="com.balsamiq.mockups::Button" x="929" y="385" w="75" h="26" measuredW="53" measuredH="27" zOrder="23" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Start</text>
       </controlProperties>
     </control>
-    <control controlID="71" controlTypeID="com.balsamiq.mockups::Button" x="1082" y="385" w="70" h="27" measuredW="50" measuredH="27" zOrder="24" locked="false" isInGroup="-1">
+    <control controlID="71" controlTypeID="com.balsamiq.mockups::Button" x="1003" y="385" w="70" h="27" measuredW="50" measuredH="27" zOrder="24" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Stop</text>
       </controlProperties>
     </control>
-    <control controlID="72" controlTypeID="com.balsamiq.mockups::CheckBox" x="1152" y="387" w="-1" h="-1" measuredW="59" measuredH="22" zOrder="46" locked="false" isInGroup="-1">
+    <control controlID="72" controlTypeID="com.balsamiq.mockups::CheckBox" x="1081" y="387" w="-1" h="-1" measuredW="59" measuredH="22" zOrder="46" locked="false" isInGroup="-1">
       <controlProperties>
         <state>selected</state>
         <text>Debug</text>
@@ -279,6 +279,11 @@
     <control controlID="80" controlTypeID="com.balsamiq.mockups::NumericStepper" x="994" y="251" w="-1" h="-1" measuredW="65" measuredH="24" zOrder="54" locked="false" isInGroup="-1">
       <controlProperties>
         <text>9000</text>
+      </controlProperties>
+    </control>
+    <control controlID="81" controlTypeID="com.balsamiq.mockups::Button" x="1142" y="385" w="75" h="26" measuredW="84" measuredH="27" zOrder="55" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Next%20track</text>
       </controlProperties>
     </control>
   </controls>

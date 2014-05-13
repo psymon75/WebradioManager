@@ -179,6 +179,21 @@ namespace WebradioManager
             this.Model.ShowServerWebAdmin(webradioId);
         }
 
+        public bool TranscoderNextTrack(WebradioTranscoder transcoder)
+        {
+            return this.Model.TranscoderNextTrack(transcoder);
+        }
+
+        public bool ClearHistory(int transcoderId)
+        {
+            return this.Model.ClearHistory(transcoderId);
+        }
+
+        public bool GenerateHistory(int webradioId, string transcoderName, int transcoderId, string outputFilename)
+        {
+            return this.Model.GenerateHistory(webradioId, transcoderName, transcoderId, outputFilename);
+        }
+
          
     }
 }

@@ -715,6 +715,7 @@ namespace WebradioManager
                 lblStatusTranscoder.ForeColor = (running) ? Color.Green : Color.Red;
                 btnStartTranscoder.Enabled = (running) ? false : true;
                 btnStopTranscoder.Enabled = (running) ? true : false;
+                btnNextTrack.Enabled = (running) ? true : false;
 
 
             }
@@ -947,6 +948,52 @@ namespace WebradioManager
             }
 
             return isResolved;
+        }
+
+        private void btnNextTrack_Click(object sender, EventArgs e)
+        {
+            if (lsbTranscoders.SelectedIndex >= 0)
+            {
+                if (!this.Controller.TranscoderNextTrack((WebradioTranscoder)lsbTranscoders.SelectedItem))
+                    MessageBox.Show("An error occured.", "Error");
+            }
+            else
+                MessageBox.Show("Please select a running transcoder.", "Error");
+        }
+
+        private void btnClearHistory_Click(object sender, EventArgs e)
+        {
+            if (lsbTranscoders.SelectedIndex >= 0)
+            {
+                if (this.Controller.ClearHistory(((WebradioTranscoder)lsbTranscoders.SelectedItem).Id))
+                    MessageBox.Show("History cleared", "Success");
+                else
+                    MessageBox.Show("An error has occured", "Error");
+            }
+            else
+                MessageBox.Show("Please select a transcoder.", "Error");
+        }
+
+        private void btnGenerateHistory_Click(object sender, EventArgs e)
+        {
+            if (lsbTranscoders.SelectedIndex >= 0)
+            {
+                SaveFileDialog SFD = new SaveFileDialog();
+                SFD.Filter = ".pdf|PDF";
+                SFD.FileName = "history.pdf";
+                if (SFD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    if (this.Controller.GenerateHistory(this.IdWebradio, ((WebradioTranscoder)lsbTranscoders.SelectedItem).Name, ((WebradioTranscoder)lsbTranscoders.SelectedItem).Id, SFD.FileName))
+                    {
+                        if(MessageBox.Show("Do you want to view the pdf file ?", "Success",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                            Process.Start(SFD.FileName);
+                    }
+                    else
+                        MessageBox.Show("An error has occured", "Error");
+                }
+            }
+            else
+                MessageBox.Show("Please select a transcoder.", "Error");
         }
 
     }

@@ -142,6 +142,7 @@
             this.tbpTranscoders = new System.Windows.Forms.TabPage();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.btnNextTrack = new System.Windows.Forms.Button();
             this.ckbTranscoderDebug = new System.Windows.Forms.CheckBox();
             this.btnStopTranscoder = new System.Windows.Forms.Button();
             this.btnStartTranscoder = new System.Windows.Forms.Button();
@@ -151,7 +152,7 @@
             this.btnShowTranscoderLog = new System.Windows.Forms.Button();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.btnClearHistory = new System.Windows.Forms.Button();
-            this.btnShowHistory = new System.Windows.Forms.Button();
+            this.btnGenerateHistory = new System.Windows.Forms.Button();
             this.btnDeleteTranscoder = new System.Windows.Forms.Button();
             this.lsbTranscoders = new System.Windows.Forms.ListBox();
             this.label28 = new System.Windows.Forms.Label();
@@ -161,6 +162,9 @@
             this.label26 = new System.Windows.Forms.Label();
             this.cmbSampleRateEdit = new System.Windows.Forms.ComboBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.nudAdminPortEdit = new System.Windows.Forms.NumericUpDown();
+            this.btnResolveEdit = new System.Windows.Forms.Button();
             this.txbServerIPEdit = new System.Windows.Forms.TextBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
@@ -173,6 +177,9 @@
             this.label24 = new System.Windows.Forms.Label();
             this.txbStreamUrlEdit = new System.Windows.Forms.TextBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.nudAdminPort = new System.Windows.Forms.NumericUpDown();
+            this.label21 = new System.Windows.Forms.Label();
+            this.btnResolve = new System.Windows.Forms.Button();
             this.txbServerIP = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.btnCreateTranscoder = new System.Windows.Forms.Button();
@@ -216,12 +223,6 @@
             this.label31 = new System.Windows.Forms.Label();
             this.FBD = new System.Windows.Forms.FolderBrowserDialog();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
-            this.btnResolve = new System.Windows.Forms.Button();
-            this.btnResolveEdit = new System.Windows.Forms.Button();
-            this.nudAdminPort = new System.Windows.Forms.NumericUpDown();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.nudAdminPortEdit = new System.Windows.Forms.NumericUpDown();
             this.mnsMain.SuspendLayout();
             this.tbcTabs.SuspendLayout();
             this.tbpStatus.SuspendLayout();
@@ -251,8 +252,10 @@
             this.groupBox15.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAdminPortEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPortEdit)).BeginInit();
             this.groupBox11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAdminPort)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPort)).BeginInit();
             this.tbpServer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -261,8 +264,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudMaxListener)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPortServer)).BeginInit();
             this.groupBox17.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAdminPort)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAdminPortEdit)).BeginInit();
             this.SuspendLayout();
             // 
             // dvwTimetable
@@ -1402,6 +1403,7 @@
             // 
             // groupBox16
             // 
+            this.groupBox16.Controls.Add(this.btnNextTrack);
             this.groupBox16.Controls.Add(this.ckbTranscoderDebug);
             this.groupBox16.Controls.Add(this.btnStopTranscoder);
             this.groupBox16.Controls.Add(this.btnStartTranscoder);
@@ -1414,12 +1416,22 @@
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Status";
             // 
+            // btnNextTrack
+            // 
+            this.btnNextTrack.Location = new System.Drawing.Point(375, 13);
+            this.btnNextTrack.Name = "btnNextTrack";
+            this.btnNextTrack.Size = new System.Drawing.Size(75, 23);
+            this.btnNextTrack.TabIndex = 5;
+            this.btnNextTrack.Text = "Next track";
+            this.btnNextTrack.UseVisualStyleBackColor = true;
+            this.btnNextTrack.Click += new System.EventHandler(this.btnNextTrack_Click);
+            // 
             // ckbTranscoderDebug
             // 
             this.ckbTranscoderDebug.AutoSize = true;
             this.ckbTranscoderDebug.Checked = true;
             this.ckbTranscoderDebug.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbTranscoderDebug.Location = new System.Drawing.Point(333, 17);
+            this.ckbTranscoderDebug.Location = new System.Drawing.Point(256, 17);
             this.ckbTranscoderDebug.Name = "ckbTranscoderDebug";
             this.ckbTranscoderDebug.Size = new System.Drawing.Size(58, 17);
             this.ckbTranscoderDebug.TabIndex = 4;
@@ -1429,7 +1441,7 @@
             // btnStopTranscoder
             // 
             this.btnStopTranscoder.Enabled = false;
-            this.btnStopTranscoder.Location = new System.Drawing.Point(250, 13);
+            this.btnStopTranscoder.Location = new System.Drawing.Point(173, 13);
             this.btnStopTranscoder.Name = "btnStopTranscoder";
             this.btnStopTranscoder.Size = new System.Drawing.Size(75, 23);
             this.btnStopTranscoder.TabIndex = 3;
@@ -1439,7 +1451,7 @@
             // 
             // btnStartTranscoder
             // 
-            this.btnStartTranscoder.Location = new System.Drawing.Point(169, 13);
+            this.btnStartTranscoder.Location = new System.Drawing.Point(92, 13);
             this.btnStartTranscoder.Name = "btnStartTranscoder";
             this.btnStartTranscoder.Size = new System.Drawing.Size(75, 23);
             this.btnStartTranscoder.TabIndex = 2;
@@ -1488,7 +1500,7 @@
             // groupBox14
             // 
             this.groupBox14.Controls.Add(this.btnClearHistory);
-            this.groupBox14.Controls.Add(this.btnShowHistory);
+            this.groupBox14.Controls.Add(this.btnGenerateHistory);
             this.groupBox14.Location = new System.Drawing.Point(7, 176);
             this.groupBox14.Name = "groupBox14";
             this.groupBox14.Size = new System.Drawing.Size(145, 47);
@@ -1504,15 +1516,17 @@
             this.btnClearHistory.TabIndex = 1;
             this.btnClearHistory.Text = "Clear";
             this.btnClearHistory.UseVisualStyleBackColor = true;
+            this.btnClearHistory.Click += new System.EventHandler(this.btnClearHistory_Click);
             // 
-            // btnShowHistory
+            // btnGenerateHistory
             // 
-            this.btnShowHistory.Location = new System.Drawing.Point(6, 18);
-            this.btnShowHistory.Name = "btnShowHistory";
-            this.btnShowHistory.Size = new System.Drawing.Size(51, 23);
-            this.btnShowHistory.TabIndex = 0;
-            this.btnShowHistory.Text = "Show";
-            this.btnShowHistory.UseVisualStyleBackColor = true;
+            this.btnGenerateHistory.Location = new System.Drawing.Point(6, 18);
+            this.btnGenerateHistory.Name = "btnGenerateHistory";
+            this.btnGenerateHistory.Size = new System.Drawing.Size(75, 23);
+            this.btnGenerateHistory.TabIndex = 0;
+            this.btnGenerateHistory.Text = "Generate";
+            this.btnGenerateHistory.UseVisualStyleBackColor = true;
+            this.btnGenerateHistory.Click += new System.EventHandler(this.btnGenerateHistory_Click);
             // 
             // btnDeleteTranscoder
             // 
@@ -1613,6 +1627,43 @@
             this.groupBox13.TabIndex = 37;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Edit";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(182, 40);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(63, 13);
+            this.label36.TabIndex = 40;
+            this.label36.Text = "Admin port :";
+            // 
+            // nudAdminPortEdit
+            // 
+            this.nudAdminPortEdit.Location = new System.Drawing.Point(185, 56);
+            this.nudAdminPortEdit.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.nudAdminPortEdit.Name = "nudAdminPortEdit";
+            this.nudAdminPortEdit.Size = new System.Drawing.Size(74, 20);
+            this.nudAdminPortEdit.TabIndex = 41;
+            this.nudAdminPortEdit.Value = new decimal(new int[] {
+            9000,
+            0,
+            0,
+            0});
+            // 
+            // btnResolveEdit
+            // 
+            this.btnResolveEdit.Location = new System.Drawing.Point(99, 94);
+            this.btnResolveEdit.Name = "btnResolveEdit";
+            this.btnResolveEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnResolveEdit.TabIndex = 22;
+            this.btnResolveEdit.Tag = "Edit";
+            this.btnResolveEdit.Text = "Resolve";
+            this.btnResolveEdit.UseVisualStyleBackColor = true;
+            this.btnResolveEdit.Click += new System.EventHandler(this.btnResolve_Click);
             // 
             // txbServerIPEdit
             // 
@@ -1744,6 +1795,42 @@
             this.groupBox11.TabIndex = 0;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Create";
+            // 
+            // nudAdminPort
+            // 
+            this.nudAdminPort.Location = new System.Drawing.Point(6, 224);
+            this.nudAdminPort.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.nudAdminPort.Name = "nudAdminPort";
+            this.nudAdminPort.Size = new System.Drawing.Size(74, 20);
+            this.nudAdminPort.TabIndex = 23;
+            this.nudAdminPort.Value = new decimal(new int[] {
+            9000,
+            0,
+            0,
+            0});
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(6, 208);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(63, 13);
+            this.label21.TabIndex = 22;
+            this.label21.Text = "Admin port :";
+            // 
+            // btnResolve
+            // 
+            this.btnResolve.Location = new System.Drawing.Point(103, 277);
+            this.btnResolve.Name = "btnResolve";
+            this.btnResolve.Size = new System.Drawing.Size(75, 23);
+            this.btnResolve.TabIndex = 21;
+            this.btnResolve.Text = "Resolve";
+            this.btnResolve.UseVisualStyleBackColor = true;
+            this.btnResolve.Click += new System.EventHandler(this.btnResolve_Click);
             // 
             // txbServerIP
             // 
@@ -2177,79 +2264,6 @@
             this.OFD.Filter = "MP3 Files|*.mp3";
             this.OFD.Multiselect = true;
             // 
-            // btnResolve
-            // 
-            this.btnResolve.Location = new System.Drawing.Point(103, 277);
-            this.btnResolve.Name = "btnResolve";
-            this.btnResolve.Size = new System.Drawing.Size(75, 23);
-            this.btnResolve.TabIndex = 21;
-            this.btnResolve.Text = "Resolve";
-            this.btnResolve.UseVisualStyleBackColor = true;
-            this.btnResolve.Click += new System.EventHandler(this.btnResolve_Click);
-            // 
-            // btnResolveEdit
-            // 
-            this.btnResolveEdit.Location = new System.Drawing.Point(99, 94);
-            this.btnResolveEdit.Name = "btnResolveEdit";
-            this.btnResolveEdit.Size = new System.Drawing.Size(75, 23);
-            this.btnResolveEdit.TabIndex = 22;
-            this.btnResolveEdit.Tag = "Edit";
-            this.btnResolveEdit.Text = "Resolve";
-            this.btnResolveEdit.UseVisualStyleBackColor = true;
-            this.btnResolveEdit.Click += new System.EventHandler(this.btnResolve_Click);
-            // 
-            // nudAdminPort
-            // 
-            this.nudAdminPort.Location = new System.Drawing.Point(6, 224);
-            this.nudAdminPort.Maximum = new decimal(new int[] {
-            65535,
-            0,
-            0,
-            0});
-            this.nudAdminPort.Name = "nudAdminPort";
-            this.nudAdminPort.Size = new System.Drawing.Size(74, 20);
-            this.nudAdminPort.TabIndex = 23;
-            this.nudAdminPort.Value = new decimal(new int[] {
-            9000,
-            0,
-            0,
-            0});
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(6, 208);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(63, 13);
-            this.label21.TabIndex = 22;
-            this.label21.Text = "Admin port :";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(182, 40);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(63, 13);
-            this.label36.TabIndex = 40;
-            this.label36.Text = "Admin port :";
-            // 
-            // nudAdminPortEdit
-            // 
-            this.nudAdminPortEdit.Location = new System.Drawing.Point(185, 56);
-            this.nudAdminPortEdit.Maximum = new decimal(new int[] {
-            65535,
-            0,
-            0,
-            0});
-            this.nudAdminPortEdit.Name = "nudAdminPortEdit";
-            this.nudAdminPortEdit.Size = new System.Drawing.Size(74, 20);
-            this.nudAdminPortEdit.TabIndex = 41;
-            this.nudAdminPortEdit.Value = new decimal(new int[] {
-            9000,
-            0,
-            0,
-            0});
-            // 
             // AdminView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2309,9 +2323,11 @@
             this.groupBox14.ResumeLayout(false);
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAdminPortEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPortEdit)).EndInit();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAdminPort)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPort)).EndInit();
             this.tbpServer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -2322,8 +2338,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudPortServer)).EndInit();
             this.groupBox17.ResumeLayout(false);
             this.groupBox17.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAdminPort)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAdminPortEdit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2442,7 +2456,7 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.GroupBox groupBox14;
         private System.Windows.Forms.Button btnClearHistory;
-        private System.Windows.Forms.Button btnShowHistory;
+        private System.Windows.Forms.Button btnGenerateHistory;
         private System.Windows.Forms.GroupBox groupBox15;
         private System.Windows.Forms.GroupBox groupBox16;
         private System.Windows.Forms.Button btnStopTranscoder;
@@ -2523,6 +2537,7 @@
         private System.Windows.Forms.NumericUpDown nudAdminPortEdit;
         private System.Windows.Forms.NumericUpDown nudAdminPort;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button btnNextTrack;
 
 
     }
