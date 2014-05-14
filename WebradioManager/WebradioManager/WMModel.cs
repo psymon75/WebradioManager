@@ -128,13 +128,6 @@ namespace WebradioManager
             data["op"] = "getstatus";
             data["seq"] = "45";
             wb.Credentials = new NetworkCredential("admin", "admin");
-            /*WebClient wb = new WebClient();
-                var data = new NameValueCollection();
-                data["op"] = "logdata";
-                data["seq"] = "45";
-                wb.Credentials = new NetworkCredential("admin", "admin");
-                var response = wb.UploadValues("http://127.0.0.1:9000/api", "POST", data);
-                MessageBox.Show(System.Text.Encoding.UTF8.GetString(response));*/
             bool needUpdate = false;
             for (int i = 0; i < this.ActiveTranscoders.Count; i++)
             {
@@ -151,7 +144,8 @@ namespace WebradioManager
                     if(currentTrack != this.ActiveTranscoders[i].CurrentTrack)
                     {
                         this.ActiveTranscoders[i].CurrentTrack = currentTrack;
-                        this.Bdd.AddToHistory(this.ActiveTranscoders[i].Id, DateTime.Now, currentTrack);                         
+                        if(currentTrack.Trim() != "")
+                            this.Bdd.AddToHistory(this.ActiveTranscoders[i].Id, DateTime.Now, currentTrack);                         
                     }
                 }
             }
@@ -906,6 +900,18 @@ namespace WebradioManager
                 }
             }
             return result;
+        }
+
+        public bool ModifyWebradioName(string name, int webradioId)
+        {
+            if (this.Bdd.ModifyWebradioName(name, webradioId))
+            {
+                this.Webradios[webradioId].Name = name;
+                this.UpdateObservers();
+                return true;
+            }
+            else
+                return false;
         }
     }
 }

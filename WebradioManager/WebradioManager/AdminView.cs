@@ -996,5 +996,18 @@ namespace WebradioManager
                 MessageBox.Show("Please select a transcoder.", "Error");
         }
 
+        private void btnModifyName_Click(object sender, EventArgs e)
+        {
+            if (txbWebradioName.Name.Trim() != "")
+            {
+                if (this.Controller.ModifyWebradioName(txbWebradioName.Text, this.IdWebradio))
+                    MessageBox.Show("Modification completed", "Success");
+                else
+                    MessageBox.Show("This name is already used", "Error");
+            }
+            else
+                MessageBox.Show("Please enter a valid name", "Error");
+        }
+
     }
 }

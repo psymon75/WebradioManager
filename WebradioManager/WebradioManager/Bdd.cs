@@ -674,5 +674,22 @@ namespace WebradioManager
                 return false;
             }
         }
+
+        public bool ModifyWebradioName(string name,int webradioId)
+        {
+            if (this.WebradioExist(name))
+                return false;
+            try
+            {
+                Dictionary<string,string> data = new Dictionary<string,string>();
+                data.Add("name", name);
+                this.Controls.Update("twebradio", data, "id = " + webradioId);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

@@ -396,6 +396,7 @@
             this.btnModifyName.TabIndex = 1;
             this.btnModifyName.Text = "Modify";
             this.btnModifyName.UseVisualStyleBackColor = true;
+            this.btnModifyName.Click += new System.EventHandler(this.btnModifyName_Click);
             // 
             // txbWebradioName
             // 

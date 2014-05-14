@@ -194,6 +194,11 @@ namespace WebradioManager
             return this.Model.GenerateHistory(webradioId, transcoderName, transcoderId, outputFilename);
         }
 
+        public bool ModifyWebradioName(string name, int webradioId)
+        {
+            return this.Model.ModifyWebradioName(name, webradioId);
+        }
+
          
     }
 }

@@ -20,7 +20,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="WebradioManager.WebradioCalendar">
-    <Position X="2.25" Y="2.25" Width="3" />
+    <Position X="2" Y="0.75" Width="3" />
     <Members>
       <Field Name="_events" Hidden="true" />
       <Field Name="_filename" Hidden="true" />
@@ -34,8 +34,8 @@
       <Property Name="Events" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="WebradioManager.CalendarEvent" Collapsed="true">
-    <Position X="0.5" Y="0.5" Width="6.25" />
+  <Class Name="WebradioManager.CalendarEvent">
+    <Position X="0.5" Y="3.25" Width="6.25" />
     <Members>
       <Field Name="_duration" Hidden="true" />
       <Field Name="_loopatend" Hidden="true" />
@@ -83,7 +83,7 @@
   <Class Name="WebradioManager.WMModel" Collapsed="true">
     <Position X="6" Y="11" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>DDEBAsIAAkhIAAMhCEQIQgAW4lQUBpAYEIQAQxahCgg=</HashCode>
+      <HashCode>DDEBAsYAAkhICQIgCEQIYggW5lQUBpgYEIRAQxahCgg=</HashCode>
       <FileName>WMModel.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -108,7 +108,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>/2dwNTSn9zsYeDyxQpTrE0rncXzC87E84nYbcWLKar4=</HashCode>
+      <HashCode>/2dwNXSn93uYOjyxQpTrE0rncfzC87F85nYbceLKar4=</HashCode>
       <FileName>AdminView.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -132,7 +132,7 @@
   <Class Name="WebradioManager.Bdd" Collapsed="true">
     <Position X="3" Y="11" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>DAEJAQCDAEQIAAJAEEAAAIAPAAAEBAABAAAwQgAAAgA=</HashCode>
+      <HashCode>DAEJAQCDAEQIAAJAEEAAAIgPAAgEBAABAAAwwgAAAgA=</HashCode>
       <FileName>Bdd.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -183,32 +183,8 @@
   </Class>
   <Class Name="WebradioManager.WebradioTranscoder" Collapsed="true">
     <Position X="6" Y="5" Width="1.5" />
-    <Members>
-      <Field Name="_avaliableBitrates" Hidden="true" />
-      <Field Name="_avaliableSampleRates" Hidden="true" />
-      <Field Name="_birate" Hidden="true" />
-      <Field Name="_calendarFile" Hidden="true" />
-      <Field Name="_configFilename" Hidden="true" />
-      <Field Name="_id" Hidden="true" />
-      <Field Name="_ip" Hidden="true" />
-      <Field Name="_logFilename" Hidden="true" />
-      <Field Name="_name" Hidden="true" />
-      <Field Name="_password" Hidden="true" />
-      <Field Name="_port" Hidden="true" />
-      <Field Name="_process" Hidden="true" />
-      <Field Name="_sampleRate" Hidden="true" />
-      <Field Name="_streamType" Hidden="true" />
-      <Field Name="_url" Hidden="true" />
-      <Field Name="DEFAULT_ADMIN" Hidden="true" />
-      <Field Name="DEFAULT_ADMIN_PASSWORD" Hidden="true" />
-      <Field Name="DEFAULT_ADMIN_PORT" Hidden="true" />
-      <Field Name="DEFAULT_CONFIG_EXTENSION" Hidden="true" />
-      <Field Name="DEFAULT_ID" Hidden="true" />
-      <Field Name="DEFAULT_LOG_EXTENSION" Hidden="true" />
-      <Field Name="SC_TRANS_FILENAME" Hidden="true" />
-    </Members>
     <TypeIdentifier>
-      <HashCode>BAQCIAAgCDBACUoEIgBAQAUACKUAgGBqLQAAAAAAIoI=</HashCode>
+      <HashCode>BAQCIAAgCDBACEoEIgBAQAUACKUAgGBqPQAAAAAAIoI=</HashCode>
       <FileName>WebradioTranscoder.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -229,7 +205,7 @@
   <Class Name="WebradioManager.AdminController" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="18.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAEBAQIAACAIAAIgAmAAQAAGYEAFAAAIAKwAAgGgAgA=</HashCode>
+      <HashCode>BAEBAQIAACAIAAIgAmAAYAgGYEAFAAAIAKxAAgGgAgA=</HashCode>
       <FileName>AdminController.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.881" Collapsed="true" />
@@ -260,6 +236,13 @@
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>StreamType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="WebradioManager.DayValue" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAIAACAAAAAAAAAAACAAIACAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CalendarEvent.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />
