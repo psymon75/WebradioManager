@@ -123,11 +123,6 @@ namespace WebradioManager
 
         void ProcessWatcher_Tick(object sender, EventArgs e)
         {
-            WebClient wb = new WebClient();
-            var data = new NameValueCollection();
-            data["op"] = "getstatus";
-            data["seq"] = "45";
-            wb.Credentials = new NetworkCredential("admin", "admin");
             bool needUpdate = false;
             for (int i = 0; i < this.ActiveTranscoders.Count; i++)
             {
@@ -139,11 +134,11 @@ namespace WebradioManager
                 }
                 else
                 {
-                    var response = wb.UploadValues("http://127.0.0.1:" + this.ActiveTranscoders[i].AdminPort + "/api", "POST", data);
-                    string currentTrack = this.GetCurrentTrackFromXML(System.Text.Encoding.UTF8.GetString(response));
+                    string currentTrack = this.GetCurrentTrackFromXML(this.ActiveTranscoders[i].GetStatus());
                     if(currentTrack != this.ActiveTranscoders[i].CurrentTrack)
                     {
                         this.ActiveTranscoders[i].CurrentTrack = currentTrack;
+                        needUpdate = true;
                         if(currentTrack.Trim() != "")
                             this.Bdd.AddToHistory(this.ActiveTranscoders[i].Id, DateTime.Now, currentTrack);                         
                     }
@@ -357,11 +352,12 @@ namespace WebradioManager
             {
                 foreach (Playlist playlist in webradio.Value.Playlists)
                 {
-                    foreach (string filename in playlist.AudioFileList)
+                    for(int i = 0; i < playlist.AudioFileList.Count;i++)
                     {
-                        if (filename == audioFilename)
+                        if (playlist.AudioFileList[i] == audioFilename)
                         {
-                            playlist.AudioFileList.Remove(filename);
+                            playlist.AudioFileList.Remove(playlist.AudioFileList[i]);
+                            i--;
                         }
                     }
                 }
@@ -375,6 +371,46 @@ namespace WebradioManager
                 }
             }
             return this.Bdd.DeleteAudioFile(id);
+        }
+
+        public bool UpdateAudioFile(AudioFile file)
+        {
+            if (this.Bdd.UpdateAudioFile(file))
+            {
+                try
+                {
+                    TagLib.File tagFile = TagLib.File.Create(file.Filename);
+                    tagFile.Tag.Title = file.Title;
+                    tagFile.Tag.Performers = new string[] { file.Artist };
+                    tagFile.Tag.Album = file.Album;
+                    tagFile.Tag.Year = (uint)file.Year;
+                    tagFile.Tag.Copyright = file.Label;
+                    tagFile.Tag.Genres = new string[] { file.Gender };
+                    tagFile.Save();
+
+                    foreach(AudioFile af in this.Library)
+                    {
+                        if(af.Id == file.Id)
+                        {
+                            af.Title = file.Title;
+                            af.Artist = file.Artist;
+                            af.Album = file.Album;
+                            af.Year = file.Year;
+                            af.Label = file.Label;
+                            af.Gender = file.Gender;
+                            break;
+                        }
+                    }
+                    this.UpdateObservers();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            else
+                return false;
         }
 
         private bool IsValidFilename(string testName)
@@ -712,6 +748,7 @@ namespace WebradioManager
                 {
                     this.ActiveTranscoders.Remove(transcoder);
                     this.Webradios[webradioId].Calendar.GenerateConfigFile();
+                    this.UpdateObservers(webradioId);
                     return true;
                 }
                 else
@@ -837,12 +874,7 @@ namespace WebradioManager
         {
             try
             {
-                WebClient wb = new WebClient();
-                var data = new NameValueCollection();
-                data["op"] = "nexttrack";
-                data["seq"] = "45";
-                wb.Credentials = new NetworkCredential(WebradioTranscoder.DEFAULT_ADMIN, WebradioTranscoder.DEFAULT_ADMIN_PASSWORD );
-                var response = wb.UploadValues("http://127.0.0.1:"+transcoder.AdminPort+"/api", "POST", data);
+                transcoder.NextTrack();
                 return true;
             }
             catch
@@ -888,7 +920,7 @@ namespace WebradioManager
             return true;
         }
 
-        private AudioFile GetAudioFileByFilename(string filename)
+        public AudioFile GetAudioFileByFilename(string filename)
         {
             AudioFile result = null;
             foreach(AudioFile file in this.Library)
@@ -912,6 +944,20 @@ namespace WebradioManager
             }
             else
                 return false;
+        }
+
+        public bool TranscoderCapture(bool active, string device, WebradioTranscoder transcoder, int webradioId)
+        {
+            try
+            {
+                transcoder.SetCaptureMode(active, device);
+                this.UpdateObservers(webradioId);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

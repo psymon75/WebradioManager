@@ -353,6 +353,32 @@ namespace WebradioManager
             return id;
         }
 
+        public bool UpdateAudioFile(AudioFile file)
+        {
+            try
+            {
+                int genderId = this.GetGenderId(file.Gender);
+                //If return error, gender doesn't exist in DB, so add it
+                if (genderId == ERROR)
+                    //Get the new id
+                    genderId = AddGender(file.Gender);
+                Dictionary<string, string> data = new Dictionary<string, string>();
+                data.Add("title", file.Title);
+                data.Add("artist", file.Artist);
+                data.Add("album", file.Album);
+                data.Add("year", file.Year.ToString());
+                data.Add("label", file.Label);
+                data.Add("genderid", genderId.ToString());
+                data.Add("typeid", ((int)file.Type).ToString());
+                this.Controls.Update("tmusic", data, "id = " + file.Id);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public bool AudioFileExist(string filename)
         {
             SQLiteDataReader reader = this.Controls.ExecuteDataReader("SELECT COUNT(*) AS Count FROM tmusic WHERE filename = '" + filename.Replace('\'', ' ') + "'");

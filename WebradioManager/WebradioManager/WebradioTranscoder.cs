@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -33,6 +34,7 @@ namespace WebradioManager
         private string _logFilename;
         private string _calendarFile;
         private string _currentTrack;
+        private bool _capture;
         private StreamType _streamType;
         private Process _process;
         private static int[] _avaliableBitrates = { 64000, 96000, 128000, 256000 };
@@ -40,6 +42,11 @@ namespace WebradioManager
 
 
         #region Properties
+        public bool Capture
+        {
+            get { return _capture; }
+            set { _capture = value; }
+        }
         public string CurrentTrack
         {
             get { return _currentTrack; }
@@ -161,6 +168,7 @@ namespace WebradioManager
             this.LogFilename = logFilename;
             this.ConfigFilename = configFilename;
             this.StreamType = st;
+            this.Capture = false;
             this.Process = new Process();
             this.CurrentTrack = "";
         }
@@ -176,6 +184,7 @@ namespace WebradioManager
             output += "adminport=" + this.AdminPort + "\n";
             output += "adminuser=" + DEFAULT_ADMIN + "\n";
             output += "adminpassword=" + DEFAULT_ADMIN_PASSWORD + "\n";
+            output += "capturedebug=1\n";
 
             output += "outprotocol_1=" + PROTOCOL_VALUE + "\n";
             output += "serverip_1=" + this.Ip + "\n";
@@ -263,6 +272,46 @@ namespace WebradioManager
 
         }
 
+        public string GetStatus()
+        {
+            WebClient wb = new WebClient();
+            var data = new NameValueCollection();
+            data["op"] = "getstatus";
+            data["seq"] = "45";
+            wb.Credentials = new NetworkCredential(DEFAULT_ADMIN, DEFAULT_ADMIN_PASSWORD);
+            var response = wb.UploadValues("http://127.0.0.1:" + this.AdminPort + "/api", "POST", data);
+            return System.Text.Encoding.UTF8.GetString(response);
+        }
+
+        public void SetCaptureMode(bool active, string device)
+        {
+            this.Capture = active;
+
+            WebClient wb = new WebClient();
+            var data = new NameValueCollection();
+            data["op"] = "setoptions";
+            data["seq"] = "45";
+            data["capturedevice"] = device;
+            wb.Credentials = new NetworkCredential(DEFAULT_ADMIN, DEFAULT_ADMIN_PASSWORD);
+            var response = wb.UploadValues("http://127.0.0.1:" + this.AdminPort + "/api", "POST", data);
+
+            data = new NameValueCollection();
+            data["op"] = "capture";
+            data["seq"] = "45";
+            data["state"] = (active)?"on":"off";
+            wb.Credentials = new NetworkCredential(WebradioTranscoder.DEFAULT_ADMIN, WebradioTranscoder.DEFAULT_ADMIN_PASSWORD);
+            response = wb.UploadValues("http://127.0.0.1:" + this.AdminPort + "/api", "POST", data);
+        }
+
+        public void NextTrack()
+        {
+            WebClient wb = new WebClient();
+            var data = new NameValueCollection();
+            data["op"] = "nexttrack";
+            data["seq"] = "45";
+            wb.Credentials = new NetworkCredential(WebradioTranscoder.DEFAULT_ADMIN, WebradioTranscoder.DEFAULT_ADMIN_PASSWORD);
+            var response = wb.UploadValues("http://127.0.0.1:" + this.AdminPort + "/api", "POST", data);
+        }
 
         public override string ToString()
         {

@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Management;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -57,6 +58,7 @@ namespace WebradioManager
             this.Controller = controller;
             this.IdWebradio = idWebradio;
             this.EventsCalendar = new List<EventAppointment>();
+            this.UpdateAudioDevices();
             //this.Controller.CheckFolders(idWebradio);
         }
 
@@ -75,8 +77,6 @@ namespace WebradioManager
             //LIBRARY
             dgvMusics.Rows.Clear();
             dgvAds.Rows.Clear();
-            txbSearchAd.Text = DEFAULT_SEARCH_STRING;
-            txbSearchMusic.Text = DEFAULT_SEARCH_STRING;
             List<AudioFile> audiofiles = this.Controller.GetLibrary();
             foreach (AudioFile file in audiofiles)
             {
@@ -85,6 +85,10 @@ namespace WebradioManager
                 else if (file is Ad)
                     dgvAds.Rows.Add(file.GetInfosArray());
             }
+            txbSearchAd.Text = (txbSearchAd.Text != DEFAULT_SEARCH_STRING)?txbSearchAd.Text:DEFAULT_SEARCH_STRING;
+            txbSearchMusic.Text = (txbSearchMusic.Text != DEFAULT_SEARCH_STRING) ? txbSearchMusic.Text : DEFAULT_SEARCH_STRING;
+            this.txbSearchTextChanged(txbSearchAd, new EventArgs());
+            this.txbSearchTextChanged(txbSearchMusic, new EventArgs());
             //----
             //PLAYLIST
             lblPlaylistDuration.Text = "";
@@ -189,10 +193,21 @@ namespace WebradioManager
             cmbEncoder.SelectedIndex = 0;
 
             lsbStatus.Items.Clear();
+            dgvCurrentTracks.Rows.Clear();
             foreach(WebradioTranscoder transcoder in webradio.Transcoders)
             {
                 lsbStatus.Items.Add(transcoder.Name + " : " + ((transcoder.IsRunning()) ? "On" : "Off"));
+                if (transcoder.IsRunning())
+                {
+                    AudioFile file = this.Controller.GetAudioFileByFilename(transcoder.CurrentTrack);
+                    if (file != null)
+                    {
+                        string[] values = new string[] { transcoder.Name, file.Title, file.Artist, file.Album };
+                        dgvCurrentTracks.Rows.Add(values);
+                    }
+                }
             }
+
             //----
             //SERVER
             nudPortServer.Value = webradio.Server.Port;
@@ -204,7 +219,26 @@ namespace WebradioManager
             lblStatusServer.ForeColor = (running) ? Color.Green : Color.Red;
             btnStartServer.Enabled = (running) ? false : true;
             btnStopServer.Enabled = (running) ? true : false;
-            //----
+            //----            
+        }
+
+        private void UpdateAudioDevices()
+        {
+            ManagementObjectSearcher objSearcher = new ManagementObjectSearcher("SELECT * FROM Win32_SoundDevice");
+
+            ManagementObjectCollection objCollection = objSearcher.Get();
+            cmbAudioDevice.Items.Clear();
+            foreach (ManagementObject obj in objCollection)
+            {
+                foreach (PropertyData property in obj.Properties)
+                {
+                    if (property.Name == "Caption")
+                        cmbAudioDevice.Items.Add(property.Value);
+                }
+            }
+            
+            if (cmbAudioDevice.Items.Count > 0)
+                cmbAudioDevice.SelectedIndex = 0;
         }
 
         void dvwTimetable_SelectionChanged(object sender, EventArgs e)
@@ -324,7 +358,8 @@ namespace WebradioManager
             else
                 type = AudioType.Ad;
 
-            foreach (DataGridViewRow row in ((type == AudioType.Music) ? dgvMusics.SelectedRows : dgvAds.SelectedRows))
+            DataGridViewSelectedRowCollection rows = ((sender as Button).Tag.ToString() == AudioType.Music.ToString()) ? dgvMusics.SelectedRows : dgvAds.SelectedRows;
+            foreach (DataGridViewRow row in rows)
             {
                 //Simple check if selected row is not the last empty row
                 if (row.Cells[0].Value != null)
@@ -713,10 +748,12 @@ namespace WebradioManager
                 bool running = transcoder.IsRunning();
                 lblStatusTranscoder.Text = (running) ? "On" : "Off";
                 lblStatusTranscoder.ForeColor = (running) ? Color.Green : Color.Red;
-                btnStartTranscoder.Enabled = (running) ? false : true;
-                btnStopTranscoder.Enabled = (running) ? true : false;
-                btnNextTrack.Enabled = (running) ? true : false;
+                btnStartTranscoder.Enabled = !running;
+                btnStopTranscoder.Enabled = running;
+                btnNextTrack.Enabled = running;
 
+                btnStartCapture.Enabled = !transcoder.Capture;
+                btnStopCapture.Enabled = transcoder.Capture;
 
             }
         }
@@ -1008,6 +1045,66 @@ namespace WebradioManager
             else
                 MessageBox.Show("Please enter a valid name", "Error");
         }
+
+        private void dgvCellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dgv = (sender as DataGridView);
+            DataGridViewRow row = dgv.Rows[e.RowIndex];
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            AudioFile file;
+            if (dgv.Tag.ToString() == AudioType.Music.ToString())
+            {
+                file = new Music(int.Parse(row.Cells["colId" + dgv.Tag.ToString()].Value.ToString()),
+                    row.Cells["colPath" + dgv.Tag.ToString()].Value.ToString(),
+                    row.Cells["colTitle" + dgv.Tag.ToString()].Value.ToString(),
+                    row.Cells["colArtist" + dgv.Tag.ToString()].Value.ToString(),
+                    row.Cells["colAlbum" + dgv.Tag.ToString()].Value.ToString(),
+                    int.Parse(row.Cells["colYear" + dgv.Tag.ToString()].Value.ToString()),
+                    row.Cells["colLabel" + dgv.Tag.ToString()].Value.ToString(),
+                    new TimeSpan(),
+                    row.Cells["colGender" + dgv.Tag.ToString()].Value.ToString());
+            }
+            else
+            {
+                file = new Ad(int.Parse(row.Cells["colId" + dgv.Tag.ToString()].Value.ToString()),
+                    row.Cells["colPath" + dgv.Tag.ToString()].Value.ToString(),
+                row.Cells["colTitle" + dgv.Tag.ToString()].Value.ToString(),
+                row.Cells["colArtist" + dgv.Tag.ToString()].Value.ToString(),
+                row.Cells["colAlbum" + dgv.Tag.ToString()].Value.ToString(),
+                int.Parse(row.Cells["colYear" + dgv.Tag.ToString()].Value.ToString()),
+                row.Cells["colLabel" + dgv.Tag.ToString()].Value.ToString(),
+                new TimeSpan(),
+                row.Cells["colGender" + dgv.Tag.ToString()].Value.ToString());
+            }
+            if (!this.Controller.UpdateAudioFile(file))
+                MessageBox.Show("An error has occured", "Error");
+        }
+
+        private void btnUpdateAudioDevice_Click(object sender, EventArgs e)
+        {
+            this.UpdateAudioDevices();
+        }
+
+        private void btnStartCapture_Click(object sender, EventArgs e)
+        {
+            if (lsbTranscoders.SelectedIndex >= 0)
+            {
+                this.Controller.TranscoderCapture(true, cmbAudioDevice.SelectedItem.ToString(), (WebradioTranscoder)lsbTranscoders.SelectedItem, this.IdWebradio);
+            }
+            else
+                MessageBox.Show("Please select a transcoder.", "Error");
+        }
+
+        private void btnStopCapture_Click(object sender, EventArgs e)
+        {
+            if (lsbTranscoders.SelectedIndex >= 0)
+            {
+                this.Controller.TranscoderCapture(false, cmbAudioDevice.SelectedItem.ToString(), (WebradioTranscoder)lsbTranscoders.SelectedItem, this.IdWebradio);
+            }
+            else
+                MessageBox.Show("Please select a transcoder.", "Error");
+        }
+
 
     }
 }

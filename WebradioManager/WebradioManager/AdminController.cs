@@ -199,6 +199,21 @@ namespace WebradioManager
             return this.Model.ModifyWebradioName(name, webradioId);
         }
 
+        public AudioFile GetAudioFileByFilename(string filename)
+        {
+            return this.Model.GetAudioFileByFilename(filename);
+        }
+
+        public bool UpdateAudioFile(AudioFile file)
+        {
+            return this.Model.UpdateAudioFile(file);
+        }
+
+        public bool TranscoderCapture(bool active, string device, WebradioTranscoder transcoder,int webradioId)
+        {
+            return this.Model.TranscoderCapture(active, device, transcoder, webradioId);
+        }
+
          
     }
 }
