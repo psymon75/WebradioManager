@@ -279,8 +279,15 @@ namespace WebradioManager
             data["op"] = "getstatus";
             data["seq"] = "45";
             wb.Credentials = new NetworkCredential(DEFAULT_ADMIN, DEFAULT_ADMIN_PASSWORD);
-            var response = wb.UploadValues("http://127.0.0.1:" + this.AdminPort + "/api", "POST", data);
-            return System.Text.Encoding.UTF8.GetString(response);
+            try
+            {
+                var response = wb.UploadValues("http://127.0.0.1:" + this.AdminPort + "/api", "POST", data);
+                return System.Text.Encoding.UTF8.GetString(response);
+            }
+            catch
+            {
+                return string.Empty;
+            }
         }
 
         public void SetCaptureMode(bool active, string device)
@@ -291,7 +298,7 @@ namespace WebradioManager
             var data = new NameValueCollection();
             data["op"] = "setoptions";
             data["seq"] = "45";
-            data["capturedevice"] = device;
+            data["capturedevice"] = "Contrôleur audio haute définition";
             wb.Credentials = new NetworkCredential(DEFAULT_ADMIN, DEFAULT_ADMIN_PASSWORD);
             var response = wb.UploadValues("http://127.0.0.1:" + this.AdminPort + "/api", "POST", data);
 

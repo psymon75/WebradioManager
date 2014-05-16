@@ -149,6 +149,9 @@
   <ItemGroup>
     <Content Include="1396959347_15233.ico" />
     <Content Include="Calendar.DayView.dll" />
+    <None Include="Resources\cleardatabase.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\shoutcast.gif" />
   </ItemGroup>
   <ItemGroup>

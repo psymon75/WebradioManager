@@ -1035,15 +1035,18 @@ namespace WebradioManager
 
         private void btnModifyName_Click(object sender, EventArgs e)
         {
-            if (txbWebradioName.Name.Trim() != "")
+            if (MessageBox.Show("To rename this webradio, all running process (transcoder and server) will be shutting down. Are you sure ?", "Process", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
-                if (this.Controller.ModifyWebradioName(txbWebradioName.Text, this.IdWebradio))
-                    MessageBox.Show("Modification completed", "Success");
+                if (txbWebradioName.Name.Trim() != "")
+                {
+                    if (this.Controller.ModifyWebradioName(txbWebradioName.Text, this.IdWebradio))
+                        MessageBox.Show("Modification completed", "Success");
+                    else
+                        MessageBox.Show("This name is already used", "Error");
+                }
                 else
-                    MessageBox.Show("This name is already used", "Error");
+                    MessageBox.Show("Please enter a valid name", "Error");
             }
-            else
-                MessageBox.Show("Please enter a valid name", "Error");
         }
 
         private void dgvCellEndEdit(object sender, DataGridViewCellEventArgs e)

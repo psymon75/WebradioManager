@@ -32,6 +32,8 @@ namespace WebradioManager
         const string DEFAULT_SERVER_FOLDER = "server/";
         const int DEFAULT_SERVER_PORT = 8000;
         const int DEFAULT_MAX_LISTENER = 32;
+        const string DEFAULT_SERVER_PASSWORD = "1234";
+        const string DEFAULT_ADMIN_SERVER_PASSWORD = "admin";
         //CALENDAR CONSTANTS
         public const string DEFAULT_CALENDAR_FILENAME = "calendar.xml";
         //PLAYLISTS CONSTANTS
@@ -106,19 +108,24 @@ namespace WebradioManager
 
         private string GetCurrentTrackFromXML(string xml)
         {
-            string currentTrack = "";
-            XmlDocument document = new XmlDocument();
-            document.LoadXml(xml);
-            XmlNodeList nodes = document.GetElementsByTagName("activesource");
-            foreach(XmlNode node in nodes[0].ChildNodes)
+            if (xml != "")
             {
-                if(node.Name == "currenttrack")
+                string currentTrack = "";
+                XmlDocument document = new XmlDocument();
+                document.LoadXml(xml);
+                XmlNodeList nodes = document.GetElementsByTagName("activesource");
+                foreach (XmlNode node in nodes[0].ChildNodes)
                 {
-                    currentTrack = node.InnerText;
-                    break;
+                    if (node.Name == "currenttrack")
+                    {
+                        currentTrack = node.InnerText;
+                        break;
+                    }
                 }
+                return currentTrack;
             }
-            return currentTrack;
+            else
+                return xml;
         }
 
         void ProcessWatcher_Tick(object sender, EventArgs e)
@@ -231,7 +238,7 @@ namespace WebradioManager
                 Webradio wr = new Webradio(name);
                 WebradioServer server = new WebradioServer(DEFAULT_SERVER_PORT,
                     webradioFilename + DEFAULT_SERVER_FOLDER + DEFAULT_LOGFILENAME,
-                    webradioFilename + DEFAULT_SERVER_FOLDER + DEFAULT_CONFIGFILENAME, DEFAULT_PASSWORD, DEFAULT_PASSWORD, DEFAULT_MAX_LISTENER);
+                    webradioFilename + DEFAULT_SERVER_FOLDER + DEFAULT_CONFIGFILENAME, DEFAULT_SERVER_PASSWORD, DEFAULT_ADMIN_SERVER_PASSWORD, DEFAULT_MAX_LISTENER);
                 wr.Server = server;
                 wr.Playlists = new List<Playlist>();
                 wr.Calendar = new WebradioCalendar(webradioFilename + DEFAULT_CALENDAR_FILENAME);
@@ -262,6 +269,7 @@ namespace WebradioManager
         {
             bool output = false;
             output = this.Bdd.DeleteWebradio(id);
+            Directory.Delete(DEFAULT_WEBRADIOS_FOLDER + this.Webradios[id].Name,true);
             //Delete webradio from model
             try
             {
@@ -676,6 +684,7 @@ namespace WebradioManager
             transcoder.LogFilename = filename + id.ToString() + ".log";
             this.Webradios[webradioId].Transcoders.Add(transcoder);
             transcoder.GenerateConfigFile(this.Webradios[webradioId].Playlists);
+            this.Webradios[webradioId].GenerateConfigFiles();
             this.UpdateObservers();
             return true;
         }
@@ -934,12 +943,31 @@ namespace WebradioManager
             return result;
         }
 
-        public bool ModifyWebradioName(string name, int webradioId)
+        public bool ModifyWebradioName(string newName, int webradioId)
         {
-            if (this.Bdd.ModifyWebradioName(name, webradioId))
+            Webradio selectedWebradio = this.Webradios[webradioId];
+            this.StopAllProcess(webradioId);
+            string oldName = selectedWebradio.Name;
+            if (this.Bdd.ModifyWebradioName(newName, webradioId) && this.Bdd.UpdateFilenames(selectedWebradio.Name,newName,selectedWebradio))
             {
-                this.Webradios[webradioId].Name = name;
-                this.UpdateObservers();
+                foreach (WebradioTranscoder transcoder in selectedWebradio.Transcoders)
+                {
+                    transcoder.ConfigFilename = transcoder.ConfigFilename.Replace(oldName, newName);
+                    transcoder.LogFilename = transcoder.LogFilename.Replace(oldName, newName);
+
+                }
+                selectedWebradio.Server.ConfigFilename = selectedWebradio.Server.ConfigFilename.Replace(oldName, newName);
+                selectedWebradio.Server.LogFilename =  selectedWebradio.Server.LogFilename.Replace(oldName, newName);
+                foreach (Playlist playlist in selectedWebradio.Playlists)
+                {
+                     playlist.Filename = playlist.Filename.Replace(oldName, newName);
+                }
+                selectedWebradio.Calendar.Filename = selectedWebradio.Calendar.Filename.Replace(oldName, newName);
+
+                Directory.Move(DEFAULT_WEBRADIOS_FOLDER + this.Webradios[webradioId].Name, DEFAULT_WEBRADIOS_FOLDER + newName);
+                selectedWebradio.Name = newName;
+                selectedWebradio.GenerateConfigFiles();
+                this.UpdateObservers(webradioId);
                 return true;
             }
             else

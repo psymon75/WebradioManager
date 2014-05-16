@@ -239,6 +239,10 @@ namespace WebradioManager
                 data.Add("webradioid", id.ToString());
                 this.Controls.Insert("tcalendar", data);
                 data.Clear();
+                reader = this.Controls.ExecuteDataReader("SELECT id FROM tcalendar WHERE webradioid = " + id.ToString());
+                reader.Read();
+                webradio.Calendar.Id = int.Parse(reader["id"].ToString());
+                reader.Close();
                 //----
                 return id;
             }
@@ -710,6 +714,39 @@ namespace WebradioManager
                 Dictionary<string,string> data = new Dictionary<string,string>();
                 data.Add("name", name);
                 this.Controls.Update("twebradio", data, "id = " + webradioId);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool UpdateFilenames(string oldName, string newName, Webradio webradio)
+        {
+            try
+            {
+                Dictionary<string, string> data = new Dictionary<string, string>();
+                foreach (WebradioTranscoder transcoder in webradio.Transcoders)
+                {
+                    data.Clear();
+                    data.Add("configfilename", transcoder.ConfigFilename.Replace(oldName, newName));
+                    data.Add("logfilename", transcoder.LogFilename.Replace(oldName, newName));
+                    this.Controls.Update("ttranscoder", data, "webradioid = " + webradio.Id);
+                }
+                data.Clear();
+                data.Add("configfilename", webradio.Server.ConfigFilename.Replace(oldName, newName));
+                data.Add("logfilename", webradio.Server.LogFilename.Replace(oldName, newName));
+                this.Controls.Update("tserver", data, "webradioid = " + webradio.Id);
+                foreach (Playlist playlist in webradio.Playlists)
+                {
+                    data.Clear();
+                    data.Add("filename", playlist.Filename.Replace(oldName, newName));
+                    this.Controls.Update("tplaylist", data, "webradioid = " + webradio.Id);
+                }
+                data.Clear();
+                data.Add("filename", webradio.Calendar.Filename.Replace(oldName, newName));
+                this.Controls.Update("tcalendar", data, "webradioid = " + webradio.Id);
                 return true;
             }
             catch
