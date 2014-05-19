@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Windows.Forms;
+using System.Xml;
 
 namespace WebradioManager
 {
@@ -21,10 +23,16 @@ namespace WebradioManager
         private string _adminPassword;
         private Process _process;
         private int _maxListener;
+        private WebradioServerStats _stats;
 
         #endregion
 
         #region Properties
+        internal WebradioServerStats Stats
+        {
+            get { return _stats; }
+            set { _stats = value; }
+        }
         public string WebInterfaceUrl
         {
             get
@@ -180,6 +188,28 @@ namespace WebradioManager
                 }
             }
             return localIP;
+        }
+
+        public bool UpdateStats()
+        {
+            try
+            {
+                WebClient wc = new WebClient();
+                string response = wc.DownloadString("http://127.0.0.0:" + this.Port + "/stats?sid=1");
+                XmlDocument doc = new XmlDocument();
+                doc.LoadXml(response);
+                XmlNodeList nodes = doc.SelectNodes("/");
+                foreach(XmlNode xn in nodes)
+                {
+                    MessageBox.Show(xn["CURRENTLISTENERS"].InnerText);
+                }
+                this.Stats = new WebradioServerStats();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

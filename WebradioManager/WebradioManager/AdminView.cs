@@ -1108,6 +1108,18 @@ namespace WebradioManager
                 MessageBox.Show("Please select a transcoder.", "Error");
         }
 
+        private void btnUpdateListeners_Click(object sender, EventArgs e)
+        {
+            List<WebradioListener> listeners = this.Controller.UpdateServerListeners(this.IdWebradio);
+            dgvServerListeners.Rows.Clear();
+            foreach(WebradioListener listener in listeners)
+            {
+                string[] infos = new string[] { listener.Hostname, listener.Useragent, listener.ConnectionTime.ToString(), listener.Uid.ToString() };
+                dgvServerListeners.Rows.Add(infos);
+            }
+        }
+
+
 
     }
 }

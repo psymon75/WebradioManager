@@ -214,6 +214,13 @@ namespace WebradioManager
             return this.Model.TranscoderCapture(active, device, transcoder, webradioId);
         }
 
+        public List<WebradioListener> UpdateServerListeners(int webradioId)
+        {
+            return this.Model.UpdateServerListeners(webradioId);
+        }
+
+
+
          
     }
 }

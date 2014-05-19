@@ -37,6 +37,18 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tbcTabs = new System.Windows.Forms.TabControl();
             this.tbpStatus = new System.Windows.Forms.TabPage();
+            this.groupBox24 = new System.Windows.Forms.GroupBox();
+            this.groupBox25 = new System.Windows.Forms.GroupBox();
+            this.lblAverageTime = new System.Windows.Forms.Label();
+            this.lblUniqueListeners = new System.Windows.Forms.Label();
+            this.lblPeakListeners = new System.Windows.Forms.Label();
+            this.lblNumberListeners = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.btnUpdateListeners = new System.Windows.Forms.Button();
+            this.dgvServerListeners = new System.Windows.Forms.DataGridView();
             this.groupBox22 = new System.Windows.Forms.GroupBox();
             this.dgvCurrentTracks = new System.Windows.Forms.DataGridView();
             this.colTranscoderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +65,15 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnDeleteAd = new System.Windows.Forms.Button();
             this.dgvAds = new System.Windows.Forms.DataGridView();
+            this.colIdAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTitleAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colArtistAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAlbumAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colYearAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLabelAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDurationAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGenderAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPathAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbPlaylistsAd = new System.Windows.Forms.ComboBox();
             this.txbSearchAd = new System.Windows.Forms.TextBox();
             this.btnAddToAd = new System.Windows.Forms.Button();
@@ -63,6 +84,15 @@
             this.cmbPlaylistsMusic = new System.Windows.Forms.ComboBox();
             this.btnAddToMusic = new System.Windows.Forms.Button();
             this.dgvMusics = new System.Windows.Forms.DataGridView();
+            this.colIdMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTitleMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colArtistMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAlbumMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colYearMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLabelMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDurationMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGenderMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPathMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnImportFilesMusic = new System.Windows.Forms.Button();
             this.btnImportFolderMusic = new System.Windows.Forms.Button();
             this.txbSearchMusic = new System.Windows.Forms.TextBox();
@@ -129,6 +159,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.tbpTranscoders = new System.Windows.Forms.TabPage();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.groupBox23 = new System.Windows.Forms.GroupBox();
+            this.btnStopCapture = new System.Windows.Forms.Button();
+            this.btnStartCapture = new System.Windows.Forms.Button();
+            this.label38 = new System.Windows.Forms.Label();
+            this.btnUpdateAudioDevice = new System.Windows.Forms.Button();
+            this.cmbAudioDevice = new System.Windows.Forms.ComboBox();
+            this.label37 = new System.Windows.Forms.Label();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.btnNextTrack = new System.Windows.Forms.Button();
             this.ckbTranscoderDebug = new System.Windows.Forms.CheckBox();
@@ -211,33 +248,6 @@
             this.label31 = new System.Windows.Forms.Label();
             this.FBD = new System.Windows.Forms.FolderBrowserDialog();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
-            this.colIdMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTitleMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colArtistMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAlbumMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colYearMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLabelMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDurationMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colGenderMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPathMusic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIdAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTitleAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colArtistAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAlbumAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colYearAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLabelAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDurationAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colGenderAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPathAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox23 = new System.Windows.Forms.GroupBox();
-            this.label37 = new System.Windows.Forms.Label();
-            this.cmbAudioDevice = new System.Windows.Forms.ComboBox();
-            this.btnUpdateAudioDevice = new System.Windows.Forms.Button();
-            this.label38 = new System.Windows.Forms.Label();
-            this.btnStartCapture = new System.Windows.Forms.Button();
-            this.btnStopCapture = new System.Windows.Forms.Button();
-            this.groupBox24 = new System.Windows.Forms.GroupBox();
-            this.dgvServerListeners = new System.Windows.Forms.DataGridView();
             this.colHostname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUserAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colConnectTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -245,6 +255,9 @@
             this.mnsMain.SuspendLayout();
             this.tbcTabs.SuspendLayout();
             this.tbpStatus.SuspendLayout();
+            this.groupBox24.SuspendLayout();
+            this.groupBox25.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvServerListeners)).BeginInit();
             this.groupBox22.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCurrentTracks)).BeginInit();
             this.groupBox21.SuspendLayout();
@@ -269,6 +282,7 @@
             this.groupBox10.SuspendLayout();
             this.tbpTranscoders.SuspendLayout();
             this.groupBox12.SuspendLayout();
+            this.groupBox23.SuspendLayout();
             this.groupBox16.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.groupBox14.SuspendLayout();
@@ -285,9 +299,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudMaxListener)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPortServer)).BeginInit();
             this.groupBox17.SuspendLayout();
-            this.groupBox23.SuspendLayout();
-            this.groupBox24.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvServerListeners)).BeginInit();
             this.SuspendLayout();
             // 
             // dvwTimetable
@@ -385,6 +396,130 @@
             this.tbpStatus.Text = "Status";
             this.tbpStatus.UseVisualStyleBackColor = true;
             // 
+            // groupBox24
+            // 
+            this.groupBox24.Controls.Add(this.groupBox25);
+            this.groupBox24.Controls.Add(this.btnUpdateListeners);
+            this.groupBox24.Controls.Add(this.dgvServerListeners);
+            this.groupBox24.Location = new System.Drawing.Point(214, 7);
+            this.groupBox24.Name = "groupBox24";
+            this.groupBox24.Size = new System.Drawing.Size(615, 195);
+            this.groupBox24.TabIndex = 4;
+            this.groupBox24.TabStop = false;
+            this.groupBox24.Text = "Server listeners";
+            // 
+            // groupBox25
+            // 
+            this.groupBox25.Controls.Add(this.lblAverageTime);
+            this.groupBox25.Controls.Add(this.lblUniqueListeners);
+            this.groupBox25.Controls.Add(this.lblPeakListeners);
+            this.groupBox25.Controls.Add(this.lblNumberListeners);
+            this.groupBox25.Controls.Add(this.label42);
+            this.groupBox25.Controls.Add(this.label41);
+            this.groupBox25.Controls.Add(this.label40);
+            this.groupBox25.Controls.Add(this.label39);
+            this.groupBox25.Location = new System.Drawing.Point(88, 9);
+            this.groupBox25.Name = "groupBox25";
+            this.groupBox25.Size = new System.Drawing.Size(518, 41);
+            this.groupBox25.TabIndex = 2;
+            this.groupBox25.TabStop = false;
+            this.groupBox25.Text = "Infos";
+            // 
+            // lblAverageTime
+            // 
+            this.lblAverageTime.AutoSize = true;
+            this.lblAverageTime.Location = new System.Drawing.Point(405, 16);
+            this.lblAverageTime.Name = "lblAverageTime";
+            this.lblAverageTime.Size = new System.Drawing.Size(13, 13);
+            this.lblAverageTime.TabIndex = 7;
+            this.lblAverageTime.Text = "0";
+            // 
+            // lblUniqueListeners
+            // 
+            this.lblUniqueListeners.AutoSize = true;
+            this.lblUniqueListeners.Location = new System.Drawing.Point(305, 16);
+            this.lblUniqueListeners.Name = "lblUniqueListeners";
+            this.lblUniqueListeners.Size = new System.Drawing.Size(13, 13);
+            this.lblUniqueListeners.TabIndex = 6;
+            this.lblUniqueListeners.Text = "0";
+            // 
+            // lblPeakListeners
+            // 
+            this.lblPeakListeners.AutoSize = true;
+            this.lblPeakListeners.Location = new System.Drawing.Point(186, 16);
+            this.lblPeakListeners.Name = "lblPeakListeners";
+            this.lblPeakListeners.Size = new System.Drawing.Size(13, 13);
+            this.lblPeakListeners.TabIndex = 5;
+            this.lblPeakListeners.Text = "0";
+            // 
+            // lblNumberListeners
+            // 
+            this.lblNumberListeners.AutoSize = true;
+            this.lblNumberListeners.Location = new System.Drawing.Point(82, 16);
+            this.lblNumberListeners.Name = "lblNumberListeners";
+            this.lblNumberListeners.Size = new System.Drawing.Size(13, 13);
+            this.lblNumberListeners.TabIndex = 4;
+            this.lblNumberListeners.Text = "0";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(324, 16);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(75, 13);
+            this.label42.TabIndex = 3;
+            this.label42.Text = "Average time :";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(205, 16);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(94, 13);
+            this.label41.TabIndex = 2;
+            this.label41.Text = "Unique listener(s) :";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(101, 16);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(79, 13);
+            this.label40.TabIndex = 1;
+            this.label40.Text = "Peak listeners :";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(1, 16);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(79, 13);
+            this.label39.TabIndex = 0;
+            this.label39.Text = "# of listener(s) :";
+            // 
+            // btnUpdateListeners
+            // 
+            this.btnUpdateListeners.Location = new System.Drawing.Point(7, 20);
+            this.btnUpdateListeners.Name = "btnUpdateListeners";
+            this.btnUpdateListeners.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdateListeners.TabIndex = 1;
+            this.btnUpdateListeners.Text = "Update";
+            this.btnUpdateListeners.UseVisualStyleBackColor = true;
+            this.btnUpdateListeners.Click += new System.EventHandler(this.btnUpdateListeners_Click);
+            // 
+            // dgvServerListeners
+            // 
+            this.dgvServerListeners.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvServerListeners.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colHostname,
+            this.colUserAgent,
+            this.colConnectTime,
+            this.colUID});
+            this.dgvServerListeners.Location = new System.Drawing.Point(7, 56);
+            this.dgvServerListeners.Name = "dgvServerListeners";
+            this.dgvServerListeners.Size = new System.Drawing.Size(599, 133);
+            this.dgvServerListeners.TabIndex = 0;
+            // 
             // groupBox22
             // 
             this.groupBox22.Controls.Add(this.dgvCurrentTracks);
@@ -397,6 +532,7 @@
             // 
             // dgvCurrentTracks
             // 
+            this.dgvCurrentTracks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCurrentTracks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCurrentTracks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colTranscoderName,
@@ -551,6 +687,60 @@
             this.dgvAds.Tag = "Ad";
             this.dgvAds.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCellEndEdit);
             // 
+            // colIdAd
+            // 
+            this.colIdAd.HeaderText = "Id";
+            this.colIdAd.Name = "colIdAd";
+            this.colIdAd.ReadOnly = true;
+            // 
+            // colTitleAd
+            // 
+            this.colTitleAd.HeaderText = "Title";
+            this.colTitleAd.Name = "colTitleAd";
+            this.colTitleAd.ReadOnly = true;
+            // 
+            // colArtistAd
+            // 
+            this.colArtistAd.HeaderText = "Artist";
+            this.colArtistAd.Name = "colArtistAd";
+            this.colArtistAd.ReadOnly = true;
+            // 
+            // colAlbumAd
+            // 
+            this.colAlbumAd.HeaderText = "Album";
+            this.colAlbumAd.Name = "colAlbumAd";
+            this.colAlbumAd.ReadOnly = true;
+            // 
+            // colYearAd
+            // 
+            this.colYearAd.HeaderText = "Year";
+            this.colYearAd.Name = "colYearAd";
+            this.colYearAd.ReadOnly = true;
+            // 
+            // colLabelAd
+            // 
+            this.colLabelAd.HeaderText = "Label";
+            this.colLabelAd.Name = "colLabelAd";
+            this.colLabelAd.ReadOnly = true;
+            // 
+            // colDurationAd
+            // 
+            this.colDurationAd.HeaderText = "Duration";
+            this.colDurationAd.Name = "colDurationAd";
+            this.colDurationAd.ReadOnly = true;
+            // 
+            // colGenderAd
+            // 
+            this.colGenderAd.HeaderText = "Gender";
+            this.colGenderAd.Name = "colGenderAd";
+            this.colGenderAd.ReadOnly = true;
+            // 
+            // colPathAd
+            // 
+            this.colPathAd.HeaderText = "Path";
+            this.colPathAd.Name = "colPathAd";
+            this.colPathAd.ReadOnly = true;
+            // 
             // cmbPlaylistsAd
             // 
             this.cmbPlaylistsAd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -672,6 +862,54 @@
             this.dgvMusics.TabIndex = 3;
             this.dgvMusics.Tag = "Music";
             this.dgvMusics.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCellEndEdit);
+            // 
+            // colIdMusic
+            // 
+            this.colIdMusic.HeaderText = "Id";
+            this.colIdMusic.Name = "colIdMusic";
+            this.colIdMusic.ReadOnly = true;
+            // 
+            // colTitleMusic
+            // 
+            this.colTitleMusic.HeaderText = "Title";
+            this.colTitleMusic.Name = "colTitleMusic";
+            // 
+            // colArtistMusic
+            // 
+            this.colArtistMusic.HeaderText = "Artist";
+            this.colArtistMusic.Name = "colArtistMusic";
+            // 
+            // colAlbumMusic
+            // 
+            this.colAlbumMusic.HeaderText = "Album";
+            this.colAlbumMusic.Name = "colAlbumMusic";
+            // 
+            // colYearMusic
+            // 
+            this.colYearMusic.HeaderText = "Year";
+            this.colYearMusic.Name = "colYearMusic";
+            // 
+            // colLabelMusic
+            // 
+            this.colLabelMusic.HeaderText = "Label";
+            this.colLabelMusic.Name = "colLabelMusic";
+            // 
+            // colDurationMusic
+            // 
+            this.colDurationMusic.HeaderText = "Duration";
+            this.colDurationMusic.Name = "colDurationMusic";
+            this.colDurationMusic.ReadOnly = true;
+            // 
+            // colGenderMusic
+            // 
+            this.colGenderMusic.HeaderText = "Gender";
+            this.colGenderMusic.Name = "colGenderMusic";
+            // 
+            // colPathMusic
+            // 
+            this.colPathMusic.HeaderText = "Path";
+            this.colPathMusic.Name = "colPathMusic";
+            this.colPathMusic.ReadOnly = true;
             // 
             // btnImportFilesMusic
             // 
@@ -1372,6 +1610,79 @@
             this.groupBox12.TabIndex = 1;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Transcoders";
+            // 
+            // groupBox23
+            // 
+            this.groupBox23.Controls.Add(this.btnStopCapture);
+            this.groupBox23.Controls.Add(this.btnStartCapture);
+            this.groupBox23.Controls.Add(this.label38);
+            this.groupBox23.Controls.Add(this.btnUpdateAudioDevice);
+            this.groupBox23.Controls.Add(this.cmbAudioDevice);
+            this.groupBox23.Controls.Add(this.label37);
+            this.groupBox23.Location = new System.Drawing.Point(7, 277);
+            this.groupBox23.Name = "groupBox23";
+            this.groupBox23.Size = new System.Drawing.Size(607, 149);
+            this.groupBox23.TabIndex = 40;
+            this.groupBox23.TabStop = false;
+            this.groupBox23.Text = "Live capture";
+            // 
+            // btnStopCapture
+            // 
+            this.btnStopCapture.Enabled = false;
+            this.btnStopCapture.Location = new System.Drawing.Point(510, 18);
+            this.btnStopCapture.Name = "btnStopCapture";
+            this.btnStopCapture.Size = new System.Drawing.Size(75, 23);
+            this.btnStopCapture.TabIndex = 5;
+            this.btnStopCapture.Text = "Stop";
+            this.btnStopCapture.UseVisualStyleBackColor = true;
+            this.btnStopCapture.Click += new System.EventHandler(this.btnStopCapture_Click);
+            // 
+            // btnStartCapture
+            // 
+            this.btnStartCapture.Location = new System.Drawing.Point(429, 19);
+            this.btnStartCapture.Name = "btnStartCapture";
+            this.btnStartCapture.Size = new System.Drawing.Size(75, 23);
+            this.btnStartCapture.TabIndex = 4;
+            this.btnStartCapture.Text = "Start";
+            this.btnStartCapture.UseVisualStyleBackColor = true;
+            this.btnStartCapture.Click += new System.EventHandler(this.btnStartCapture_Click);
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(373, 24);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(50, 13);
+            this.label38.TabIndex = 3;
+            this.label38.Text = "Capture :";
+            // 
+            // btnUpdateAudioDevice
+            // 
+            this.btnUpdateAudioDevice.Location = new System.Drawing.Point(292, 18);
+            this.btnUpdateAudioDevice.Name = "btnUpdateAudioDevice";
+            this.btnUpdateAudioDevice.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdateAudioDevice.TabIndex = 2;
+            this.btnUpdateAudioDevice.Text = "Update list";
+            this.btnUpdateAudioDevice.UseVisualStyleBackColor = true;
+            this.btnUpdateAudioDevice.Click += new System.EventHandler(this.btnUpdateAudioDevice_Click);
+            // 
+            // cmbAudioDevice
+            // 
+            this.cmbAudioDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAudioDevice.FormattingEnabled = true;
+            this.cmbAudioDevice.Location = new System.Drawing.Point(79, 20);
+            this.cmbAudioDevice.Name = "cmbAudioDevice";
+            this.cmbAudioDevice.Size = new System.Drawing.Size(207, 21);
+            this.cmbAudioDevice.TabIndex = 1;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(6, 23);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(67, 13);
+            this.label37.TabIndex = 0;
+            this.label37.Text = "Devices list :";
             // 
             // groupBox16
             // 
@@ -2236,204 +2547,6 @@
             this.OFD.Filter = "MP3 Files|*.mp3";
             this.OFD.Multiselect = true;
             // 
-            // colIdMusic
-            // 
-            this.colIdMusic.HeaderText = "Id";
-            this.colIdMusic.Name = "colIdMusic";
-            this.colIdMusic.ReadOnly = true;
-            // 
-            // colTitleMusic
-            // 
-            this.colTitleMusic.HeaderText = "Title";
-            this.colTitleMusic.Name = "colTitleMusic";
-            // 
-            // colArtistMusic
-            // 
-            this.colArtistMusic.HeaderText = "Artist";
-            this.colArtistMusic.Name = "colArtistMusic";
-            // 
-            // colAlbumMusic
-            // 
-            this.colAlbumMusic.HeaderText = "Album";
-            this.colAlbumMusic.Name = "colAlbumMusic";
-            // 
-            // colYearMusic
-            // 
-            this.colYearMusic.HeaderText = "Year";
-            this.colYearMusic.Name = "colYearMusic";
-            // 
-            // colLabelMusic
-            // 
-            this.colLabelMusic.HeaderText = "Label";
-            this.colLabelMusic.Name = "colLabelMusic";
-            // 
-            // colDurationMusic
-            // 
-            this.colDurationMusic.HeaderText = "Duration";
-            this.colDurationMusic.Name = "colDurationMusic";
-            this.colDurationMusic.ReadOnly = true;
-            // 
-            // colGenderMusic
-            // 
-            this.colGenderMusic.HeaderText = "Gender";
-            this.colGenderMusic.Name = "colGenderMusic";
-            // 
-            // colPathMusic
-            // 
-            this.colPathMusic.HeaderText = "Path";
-            this.colPathMusic.Name = "colPathMusic";
-            this.colPathMusic.ReadOnly = true;
-            // 
-            // colIdAd
-            // 
-            this.colIdAd.HeaderText = "Id";
-            this.colIdAd.Name = "colIdAd";
-            this.colIdAd.ReadOnly = true;
-            // 
-            // colTitleAd
-            // 
-            this.colTitleAd.HeaderText = "Title";
-            this.colTitleAd.Name = "colTitleAd";
-            this.colTitleAd.ReadOnly = true;
-            // 
-            // colArtistAd
-            // 
-            this.colArtistAd.HeaderText = "Artist";
-            this.colArtistAd.Name = "colArtistAd";
-            this.colArtistAd.ReadOnly = true;
-            // 
-            // colAlbumAd
-            // 
-            this.colAlbumAd.HeaderText = "Album";
-            this.colAlbumAd.Name = "colAlbumAd";
-            this.colAlbumAd.ReadOnly = true;
-            // 
-            // colYearAd
-            // 
-            this.colYearAd.HeaderText = "Year";
-            this.colYearAd.Name = "colYearAd";
-            this.colYearAd.ReadOnly = true;
-            // 
-            // colLabelAd
-            // 
-            this.colLabelAd.HeaderText = "Label";
-            this.colLabelAd.Name = "colLabelAd";
-            this.colLabelAd.ReadOnly = true;
-            // 
-            // colDurationAd
-            // 
-            this.colDurationAd.HeaderText = "Duration";
-            this.colDurationAd.Name = "colDurationAd";
-            this.colDurationAd.ReadOnly = true;
-            // 
-            // colGenderAd
-            // 
-            this.colGenderAd.HeaderText = "Gender";
-            this.colGenderAd.Name = "colGenderAd";
-            this.colGenderAd.ReadOnly = true;
-            // 
-            // colPathAd
-            // 
-            this.colPathAd.HeaderText = "Path";
-            this.colPathAd.Name = "colPathAd";
-            this.colPathAd.ReadOnly = true;
-            // 
-            // groupBox23
-            // 
-            this.groupBox23.Controls.Add(this.btnStopCapture);
-            this.groupBox23.Controls.Add(this.btnStartCapture);
-            this.groupBox23.Controls.Add(this.label38);
-            this.groupBox23.Controls.Add(this.btnUpdateAudioDevice);
-            this.groupBox23.Controls.Add(this.cmbAudioDevice);
-            this.groupBox23.Controls.Add(this.label37);
-            this.groupBox23.Location = new System.Drawing.Point(7, 277);
-            this.groupBox23.Name = "groupBox23";
-            this.groupBox23.Size = new System.Drawing.Size(607, 149);
-            this.groupBox23.TabIndex = 40;
-            this.groupBox23.TabStop = false;
-            this.groupBox23.Text = "Live capture";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(6, 23);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(67, 13);
-            this.label37.TabIndex = 0;
-            this.label37.Text = "Devices list :";
-            // 
-            // cmbAudioDevice
-            // 
-            this.cmbAudioDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAudioDevice.FormattingEnabled = true;
-            this.cmbAudioDevice.Location = new System.Drawing.Point(79, 20);
-            this.cmbAudioDevice.Name = "cmbAudioDevice";
-            this.cmbAudioDevice.Size = new System.Drawing.Size(207, 21);
-            this.cmbAudioDevice.TabIndex = 1;
-            // 
-            // btnUpdateAudioDevice
-            // 
-            this.btnUpdateAudioDevice.Location = new System.Drawing.Point(292, 18);
-            this.btnUpdateAudioDevice.Name = "btnUpdateAudioDevice";
-            this.btnUpdateAudioDevice.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdateAudioDevice.TabIndex = 2;
-            this.btnUpdateAudioDevice.Text = "Update list";
-            this.btnUpdateAudioDevice.UseVisualStyleBackColor = true;
-            this.btnUpdateAudioDevice.Click += new System.EventHandler(this.btnUpdateAudioDevice_Click);
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(373, 24);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(50, 13);
-            this.label38.TabIndex = 3;
-            this.label38.Text = "Capture :";
-            // 
-            // btnStartCapture
-            // 
-            this.btnStartCapture.Location = new System.Drawing.Point(429, 19);
-            this.btnStartCapture.Name = "btnStartCapture";
-            this.btnStartCapture.Size = new System.Drawing.Size(75, 23);
-            this.btnStartCapture.TabIndex = 4;
-            this.btnStartCapture.Text = "Start";
-            this.btnStartCapture.UseVisualStyleBackColor = true;
-            this.btnStartCapture.Click += new System.EventHandler(this.btnStartCapture_Click);
-            // 
-            // btnStopCapture
-            // 
-            this.btnStopCapture.Enabled = false;
-            this.btnStopCapture.Location = new System.Drawing.Point(510, 18);
-            this.btnStopCapture.Name = "btnStopCapture";
-            this.btnStopCapture.Size = new System.Drawing.Size(75, 23);
-            this.btnStopCapture.TabIndex = 5;
-            this.btnStopCapture.Text = "Stop";
-            this.btnStopCapture.UseVisualStyleBackColor = true;
-            this.btnStopCapture.Click += new System.EventHandler(this.btnStopCapture_Click);
-            // 
-            // groupBox24
-            // 
-            this.groupBox24.Controls.Add(this.dgvServerListeners);
-            this.groupBox24.Location = new System.Drawing.Point(214, 7);
-            this.groupBox24.Name = "groupBox24";
-            this.groupBox24.Size = new System.Drawing.Size(615, 195);
-            this.groupBox24.TabIndex = 4;
-            this.groupBox24.TabStop = false;
-            this.groupBox24.Text = "Server listeners";
-            // 
-            // dgvServerListeners
-            // 
-            this.dgvServerListeners.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvServerListeners.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colHostname,
-            this.colUserAgent,
-            this.colConnectTime,
-            this.colUID});
-            this.dgvServerListeners.Location = new System.Drawing.Point(7, 20);
-            this.dgvServerListeners.Name = "dgvServerListeners";
-            this.dgvServerListeners.Size = new System.Drawing.Size(597, 169);
-            this.dgvServerListeners.TabIndex = 0;
-            // 
             // colHostname
             // 
             this.colHostname.HeaderText = "Hostname";
@@ -2446,7 +2559,7 @@
             // 
             // colConnectTime
             // 
-            this.colConnectTime.HeaderText = "Connection time";
+            this.colConnectTime.HeaderText = "Connection time (s)";
             this.colConnectTime.Name = "colConnectTime";
             // 
             // colUID
@@ -2475,6 +2588,10 @@
             this.tbcTabs.ResumeLayout(false);
             this.tbpStatus.ResumeLayout(false);
             this.tbpStatus.PerformLayout();
+            this.groupBox24.ResumeLayout(false);
+            this.groupBox25.ResumeLayout(false);
+            this.groupBox25.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvServerListeners)).EndInit();
             this.groupBox22.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCurrentTracks)).EndInit();
             this.groupBox21.ResumeLayout(false);
@@ -2509,6 +2626,8 @@
             this.tbpTranscoders.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
+            this.groupBox23.ResumeLayout(false);
+            this.groupBox23.PerformLayout();
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
             this.groupBox15.ResumeLayout(false);
@@ -2530,10 +2649,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudPortServer)).EndInit();
             this.groupBox17.ResumeLayout(false);
             this.groupBox17.PerformLayout();
-            this.groupBox23.ResumeLayout(false);
-            this.groupBox23.PerformLayout();
-            this.groupBox24.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvServerListeners)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2749,6 +2864,16 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.GroupBox groupBox24;
         private System.Windows.Forms.DataGridView dgvServerListeners;
+        private System.Windows.Forms.Button btnUpdateListeners;
+        private System.Windows.Forms.GroupBox groupBox25;
+        private System.Windows.Forms.Label lblAverageTime;
+        private System.Windows.Forms.Label lblUniqueListeners;
+        private System.Windows.Forms.Label lblPeakListeners;
+        private System.Windows.Forms.Label lblNumberListeners;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label39;
         private System.Windows.Forms.DataGridViewTextBoxColumn colHostname;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUserAgent;
         private System.Windows.Forms.DataGridViewTextBoxColumn colConnectTime;

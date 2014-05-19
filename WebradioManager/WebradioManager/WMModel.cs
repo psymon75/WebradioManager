@@ -13,6 +13,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Linq;
 using TagLib;
 
 namespace WebradioManager
@@ -987,5 +988,38 @@ namespace WebradioManager
                 return false;
             }
         }
+
+        public List<WebradioListener> UpdateServerListeners(int webradioId)
+        {
+            List<WebradioListener> list = new List<WebradioListener>();
+            WebClient wc = new WebClient();
+            var data = new NameValueCollection();
+            data["mode"] = "xmlview";
+            data["page"] = "3";
+            data["sid"] = "1";
+            WebradioServer server = this.Webradios[webradioId].Server;
+            wc.Credentials = new NetworkCredential(DEFAULT_ADMIN_SERVER_PASSWORD, server.AdminPassword);
+            string response = wc.DownloadString("http://127.0.0.1:" + server.Port + "/admin.cgi?mode=viewxml&page=3&sid=1");
+            
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(response);
+            XmlNodeList nodes = doc.SelectNodes("/SHOUTCASTSERVER/LISTENERS/LISTENER");
+            if(nodes.Count > 0)
+            {
+                foreach(XmlNode xn in nodes)
+                {
+                    WebradioListener listener = new WebradioListener(xn["HOSTNAME"].InnerText, xn["USERAGENT"].InnerText, uint.Parse(xn["CONNECTTIME"].InnerText), int.Parse(xn["UID"].InnerText));
+                    list.Add(listener);
+                }
+            }
+            return list;
+        }
+
+        public bool UpdateServerStats(int webradioId)
+        {
+            this.UpdateObservers(webradioId);
+            return true;
+        }
+
     }
 }

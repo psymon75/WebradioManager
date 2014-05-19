@@ -92,6 +92,7 @@
     <Compile Include="BddControls.cs" />
     <Compile Include="DayWeek.cs" />
     <Compile Include="EventAppointment.cs" />
+    <Compile Include="WebradioListener.cs" />
     <Compile Include="PlaylistAd.cs" />
     <Compile Include="PlaylistMusic.cs" />
     <Compile Include="StreamType.cs" />
@@ -114,6 +115,7 @@
     </Compile>
     <Compile Include="Webradio.cs" />
     <Compile Include="WebradioServer.cs" />
+    <Compile Include="WebradioServerStats.cs" />
     <Compile Include="WebradioTranscoder.cs" />
     <Compile Include="WMModel.cs" />
     <EmbeddedResource Include="AdminView.resx">

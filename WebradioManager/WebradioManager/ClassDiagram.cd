@@ -83,7 +83,7 @@
   <Class Name="WebradioManager.WMModel" Collapsed="true">
     <Position X="6" Y="11" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>DDEBAsYAAkhICQIgCEQIYggW5lQUBpgYEIRAQxahCgg=</HashCode>
+      <HashCode>DjEBAsYAAkhYCQIgCEQIYggW5lQcBpgYGIRAQxahCgg=</HashCode>
       <FileName>WMModel.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -108,7 +108,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>/2dwNXSn93uYOjyxQpTrE0rncfzC87F85nYbceLKar4=</HashCode>
+      <HashCode>/2d4NXSn93ucur65SpbrE8vncfzC87N85nafceLKav4=</HashCode>
       <FileName>AdminView.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -132,7 +132,7 @@
   <Class Name="WebradioManager.Bdd" Collapsed="true">
     <Position X="3" Y="11" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>DAEJAQCDAEQIAAJAEEAAAIgPAAgEBAABAAAwwgAAAgA=</HashCode>
+      <HashCode>DAEJAQCDAEQIQAJAEEAAAIgPAAgEBAABCAAwwgAAAgA=</HashCode>
       <FileName>Bdd.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -142,7 +142,7 @@
   <Class Name="WebradioManager.WebradioServer" Collapsed="true">
     <Position X="9" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQgAAQgiDAAAAgAAgAAQAAACIAAgkAGIgEIAAAAAAA=</HashCode>
+      <HashCode>ABQgAAQgmDAAAAgAAgAASAAACIAAgkAGIgEIAAAAAAA=</HashCode>
       <FileName>WebradioServer.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -184,7 +184,7 @@
   <Class Name="WebradioManager.WebradioTranscoder" Collapsed="true">
     <Position X="6" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAQCIAAgCDBACEoEIgBAQAUACKUAgGBqPQAAAAAAIoI=</HashCode>
+      <HashCode>BAQSIAAgCDBACEoEIgBCQAUECKUAgGBqPRAAAAAAIoI=</HashCode>
       <FileName>WebradioTranscoder.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -205,7 +205,7 @@
   <Class Name="WebradioManager.AdminController" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="18.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAEBAQIAACAIAAIgAmAAYAgGYEAFAAAIAKxAAgGgAgA=</HashCode>
+      <HashCode>BAEBAQIAACBYAAIgAmAAYAgGYEAFAAgICKxAAgGgAgA=</HashCode>
       <FileName>AdminController.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.881" Collapsed="true" />
