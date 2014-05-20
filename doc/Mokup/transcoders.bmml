@@ -286,5 +286,41 @@
         <text>Next%20track</text>
       </controlProperties>
     </control>
+    <control controlID="82" controlTypeID="com.balsamiq.mockups::FieldSet" x="703" y="485" w="516" h="136" measuredW="200" measuredH="170" zOrder="56" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Live%20capture</text>
+      </controlProperties>
+    </control>
+    <control controlID="83" controlTypeID="com.balsamiq.mockups::Label" x="710" y="505" w="-1" h="-1" measuredW="76" measuredH="21" zOrder="57" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Devices%20list%20%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="84" controlTypeID="com.balsamiq.mockups::ComboBox" x="787" y="503" w="153" h="-1" measuredW="149" measuredH="24" zOrder="58" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>High%20definition%20audio</text>
+      </controlProperties>
+    </control>
+    <control controlID="85" controlTypeID="com.balsamiq.mockups::Button" x="941" y="502" w="-1" h="-1" measuredW="86" measuredH="27" zOrder="59" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Update%20list</text>
+      </controlProperties>
+    </control>
+    <control controlID="86" controlTypeID="com.balsamiq.mockups::Label" x="1034" y="505" w="-1" h="-1" measuredW="55" measuredH="21" zOrder="60" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Capture%20%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="87" controlTypeID="com.balsamiq.mockups::Button" x="1089" y="502" w="-1" h="-1" measuredW="53" measuredH="27" zOrder="61" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Start</text>
+      </controlProperties>
+    </control>
+    <control controlID="88" controlTypeID="com.balsamiq.mockups::Button" x="1155" y="502" w="-1" h="-1" measuredW="50" measuredH="27" zOrder="62" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>disabled</state>
+        <text>Stop</text>
+      </controlProperties>
+    </control>
   </controls>
 </mockup>

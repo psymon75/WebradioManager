@@ -13,6 +13,8 @@ namespace WebradioManager
 {
     public partial class SelectionView : Form
     {
+        const int MAX_NAME_LENGTH = 255;
+
         private SelectionController _controller;
 
         public SelectionController Controller
@@ -44,7 +46,7 @@ namespace WebradioManager
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            if(txbName.Text.Trim() != "")
+            if (txbName.Text.Trim() != "" && txbName.Text.Length <= MAX_NAME_LENGTH)
             {
                 if (this.Controller.CreateWebradio(txbName.Text))
                     MessageBox.Show("Webradio created !");
@@ -52,6 +54,8 @@ namespace WebradioManager
                     MessageBox.Show("An error occured. (Invalid name or cannot create folders and files.)", "Error");
                 this.UpdateView();
             }
+            else
+                MessageBox.Show("Please enter a valid webradio's name. (1-255 characters)", "Error");
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -74,7 +78,6 @@ namespace WebradioManager
                 int id = ((Webradio)this.lsbSelection.SelectedItem).Id;
                 if (!this.Controller.DuplicateWebradio(id))
                     MessageBox.Show("An error occured", "Error");
-                this.UpdateView();
             }
             else
                 MessageBox.Show("Please select a webradio to duplicate.", "No webradio selected", MessageBoxButtons.OK, MessageBoxIcon.Error);

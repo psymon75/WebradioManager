@@ -238,7 +238,7 @@ namespace WebradioManager
               {
                   CreateNoWindow = true,
                   WindowStyle = (debug)?ProcessWindowStyle.Minimized:ProcessWindowStyle.Hidden,
-                  Arguments = Directory.GetCurrentDirectory() + "\\" + this.ConfigFilename.Replace('/', '\\')
+                  Arguments = "\"" + Directory.GetCurrentDirectory() + "\\" + this.ConfigFilename.Replace('/', '\\') + "\""
               };
             if (this.IsRunning())
                 this.Process.Kill();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace WebradioManager
     {
         #region Fields
         const string SC_SERVER_FILENAME = "\\shoutcast\\sc_serv.exe";
+        public const string DEFAULT_ADMIN_LOGIN = "admin";
 
         private int _port;
         private string _logFilename;
@@ -98,6 +100,7 @@ namespace WebradioManager
             this.Password = password;
             this.AdminPassword = adminPassword;
             this.MaxListener = maxlistener;
+            this.Stats = new WebradioServerStats();
         }
 
         public void GenerateConfigFile()
@@ -142,7 +145,7 @@ namespace WebradioManager
             {
                 CreateNoWindow = true,
                 WindowStyle = (debug)?ProcessWindowStyle.Minimized:ProcessWindowStyle.Hidden,
-                Arguments = Directory.GetCurrentDirectory() + "\\" + this.ConfigFilename.Replace('/', '\\')
+                Arguments = "\"" + Directory.GetCurrentDirectory() + "\\" + this.ConfigFilename.Replace('/', '\\') + "\""
             };
             if (this.IsRunning())
                 this.Process.Kill();
@@ -195,21 +198,45 @@ namespace WebradioManager
             try
             {
                 WebClient wc = new WebClient();
-                string response = wc.DownloadString("http://127.0.0.0:" + this.Port + "/stats?sid=1");
+                wc.Credentials = new NetworkCredential(DEFAULT_ADMIN_LOGIN, this.AdminPassword);
+                string response = wc.DownloadString("http://127.0.0.1:" + this.Port + "/admin.cgi?mode=viewxml&page=1&sid=1");
                 XmlDocument doc = new XmlDocument();
                 doc.LoadXml(response);
-                XmlNodeList nodes = doc.SelectNodes("/");
+                XmlNodeList nodes = doc.SelectNodes("/SHOUTCASTSERVER");
                 foreach(XmlNode xn in nodes)
                 {
-                    MessageBox.Show(xn["CURRENTLISTENERS"].InnerText);
+                    this.Stats.CurrentListeners = int.Parse(xn["CURRENTLISTENERS"].InnerText);
+                    this.Stats.PeakListeners = int.Parse(xn["PEAKLISTENERS"].InnerText);
+                    this.Stats.UniqueListeners = int.Parse(xn["UNIQUELISTENERS"].InnerText);
+                    this.Stats.AverageTime = TimeSpan.FromSeconds(double.Parse(xn["AVERAGETIME"].InnerText));
                 }
-                this.Stats = new WebradioServerStats();
                 return true;
             }
             catch
             {
                 return false;
             }
+        }
+
+        public List<WebradioListener> GetListeners()
+        {
+            List<WebradioListener> list = new List<WebradioListener>();
+            WebClient wc = new WebClient();
+            wc.Credentials = new NetworkCredential(DEFAULT_ADMIN_LOGIN, this.AdminPassword);
+            string response = wc.DownloadString("http://127.0.0.1:" + this.Port + "/admin.cgi?mode=viewxml&page=3&sid=1");
+
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(response);
+            XmlNodeList nodes = doc.SelectNodes("/SHOUTCASTSERVER/LISTENERS/LISTENER");
+            if (nodes.Count > 0)
+            {
+                foreach (XmlNode xn in nodes)
+                {
+                    WebradioListener listener = new WebradioListener(xn["HOSTNAME"].InnerText, xn["USERAGENT"].InnerText, uint.Parse(xn["CONNECTTIME"].InnerText), int.Parse(xn["UID"].InnerText));
+                    list.Add(listener);
+                }
+            }
+            return list;
         }
     }
 }

@@ -34,7 +34,6 @@ namespace WebradioManager
         const int DEFAULT_SERVER_PORT = 8000;
         const int DEFAULT_MAX_LISTENER = 32;
         const string DEFAULT_SERVER_PASSWORD = "1234";
-        const string DEFAULT_ADMIN_SERVER_PASSWORD = "admin";
         //CALENDAR CONSTANTS
         public const string DEFAULT_CALENDAR_FILENAME = "calendar.xml";
         //PLAYLISTS CONSTANTS
@@ -220,6 +219,20 @@ namespace WebradioManager
             return this.Webradios[id];
         }
 
+        public Webradio GetWebradioByName(string name)
+        {
+            Webradio ret = null;
+            foreach(KeyValuePair<int,Webradio> webradio in this.Webradios)
+            {
+                if(webradio.Value.Name == name)
+                {
+                    ret = webradio.Value;
+                    break;
+                }
+            }
+            return ret;
+        }
+
         public List<Webradio> GetWebradios()
         {
             //Get only webradios with its name and id and without useless stuffs for SelectionView
@@ -239,7 +252,7 @@ namespace WebradioManager
                 Webradio wr = new Webradio(name);
                 WebradioServer server = new WebradioServer(DEFAULT_SERVER_PORT,
                     webradioFilename + DEFAULT_SERVER_FOLDER + DEFAULT_LOGFILENAME,
-                    webradioFilename + DEFAULT_SERVER_FOLDER + DEFAULT_CONFIGFILENAME, DEFAULT_SERVER_PASSWORD, DEFAULT_ADMIN_SERVER_PASSWORD, DEFAULT_MAX_LISTENER);
+                    webradioFilename + DEFAULT_SERVER_FOLDER + DEFAULT_CONFIGFILENAME, DEFAULT_SERVER_PASSWORD, WebradioServer.DEFAULT_ADMIN_LOGIN, DEFAULT_MAX_LISTENER);
                 wr.Server = server;
                 wr.Playlists = new List<Playlist>();
                 wr.Calendar = new WebradioCalendar(webradioFilename + DEFAULT_CALENDAR_FILENAME);
@@ -287,16 +300,44 @@ namespace WebradioManager
 
         public bool DuplicateWebradio(int id)
         {
-            //Webradio selected = null;
-            //foreach (Webradio webradio in this.Webradios)
-            //{
-            //    if (webradio.Id == id)
-            //    {
-            //        selected = webradio;
-            //        break;
-            //    }
-            //}
-            return true;
+            Webradio webradio = this.Webradios[id];
+            string name = "Copy of " + webradio.Name;
+            if (this.IsValidPath(name))
+            {
+                try
+                {
+                    this.CreateWebradio(name);
+                    Webradio newWebradio = this.GetWebradioByName(name);
+                    //SERVER CONFIGURATION - Put server config to the clone
+                    this.UpdateServer(true, webradio.Server.Port, webradio.Server.Password, webradio.Server.AdminPassword, webradio.Server.MaxListener, newWebradio.Id);
+                    //PLAYLIST CONFIGURATION
+                    foreach(Playlist playlist in webradio.Playlists)
+                    {
+                        int newId;
+                        this.CreatePlaylist(playlist.Name,newWebradio.Name,newWebradio.Id,playlist.Type, out newId);
+                        if(newId != Bdd.ERROR)
+                        {
+
+                        }
+                        
+                    }
+                    //CALENDAR CONFIGURATION
+                    foreach(CalendarEvent ev in webradio.Calendar.Events)
+                    {
+                        
+                        CalendarEvent newEvent = new CalendarEvent(ev.Name,ev.StartTime,ev.Duration,ev.Repeat,ev.Priority,ev.Shuffle,ev.Loopatend,)
+                        //this.CreateEvent()
+                    }
+                    this.UpdateObservers();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            else
+                return false;
 
         }
 
@@ -440,10 +481,11 @@ namespace WebradioManager
                 return false;
         }
 
-        public bool CreatePlaylist(string name, string webradioName, int webradioId, AudioType type)
+        public bool CreatePlaylist(string name, string webradioName, int webradioId, AudioType type, out int id)
         {
             Webradio selectedWebradio = this.Webradios[webradioId];
             Playlist newPlaylist;
+            id = Bdd.ERROR;
             if (this.IsValidFilename(name))
             {
                 string filename = DEFAULT_WEBRADIOS_FOLDER + webradioName + "/" + DEFAULT_PLAYLISTS_FOLDER + name + ".lst";
@@ -451,7 +493,7 @@ namespace WebradioManager
                     newPlaylist = new PlaylistMusic(name, filename);
                 else
                     newPlaylist = new PlaylistAd(name, filename);
-                int id = this.Bdd.CreatePlaylist(newPlaylist, webradioId);
+                id = this.Bdd.CreatePlaylist(newPlaylist, webradioId);
                 if (id == Bdd.ERROR)
                     return false;
                 else
@@ -991,32 +1033,13 @@ namespace WebradioManager
 
         public List<WebradioListener> UpdateServerListeners(int webradioId)
         {
-            List<WebradioListener> list = new List<WebradioListener>();
-            WebClient wc = new WebClient();
-            var data = new NameValueCollection();
-            data["mode"] = "xmlview";
-            data["page"] = "3";
-            data["sid"] = "1";
-            WebradioServer server = this.Webradios[webradioId].Server;
-            wc.Credentials = new NetworkCredential(DEFAULT_ADMIN_SERVER_PASSWORD, server.AdminPassword);
-            string response = wc.DownloadString("http://127.0.0.1:" + server.Port + "/admin.cgi?mode=viewxml&page=3&sid=1");
-            
-            XmlDocument doc = new XmlDocument();
-            doc.LoadXml(response);
-            XmlNodeList nodes = doc.SelectNodes("/SHOUTCASTSERVER/LISTENERS/LISTENER");
-            if(nodes.Count > 0)
-            {
-                foreach(XmlNode xn in nodes)
-                {
-                    WebradioListener listener = new WebradioListener(xn["HOSTNAME"].InnerText, xn["USERAGENT"].InnerText, uint.Parse(xn["CONNECTTIME"].InnerText), int.Parse(xn["UID"].InnerText));
-                    list.Add(listener);
-                }
-            }
-            return list;
+            return this.Webradios[webradioId].Server.GetListeners();
         }
 
         public bool UpdateServerStats(int webradioId)
         {
+            WebradioServer server = this.Webradios[webradioId].Server;
+            server.UpdateStats();
             this.UpdateObservers(webradioId);
             return true;
         }

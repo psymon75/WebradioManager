@@ -41,7 +41,10 @@ namespace WebradioManager
 
         public WebradioServerStats()
         {
-
+            this.CurrentListeners = 0;
+            this.UniqueListeners = 0;
+            this.PeakListeners = 0;
+            this.AverageTime = new TimeSpan(0,0,0);
         }
     }
 }

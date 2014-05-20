@@ -20,6 +20,7 @@ namespace WebradioManager
     public partial class AdminView : Form
     {
         const string DEFAULT_SEARCH_STRING = "Search...";
+        const int MAX_NAME_LENGTH = 255;
 
         private AdminController _controller;
         private int _idWebradio;
@@ -219,7 +220,18 @@ namespace WebradioManager
             lblStatusServer.ForeColor = (running) ? Color.Green : Color.Red;
             btnStartServer.Enabled = (running) ? false : true;
             btnStopServer.Enabled = (running) ? true : false;
+
+            if(webradio.Server.Stats != null)
+                this.ShowServerStats(webradio.Server.Stats);
             //----            
+        }
+
+        private void ShowServerStats(WebradioServerStats stats)
+        {
+            lblNumberListeners.Text = stats.CurrentListeners.ToString();
+            lblPeakListeners.Text = stats.PeakListeners.ToString();
+            lblUniqueListeners.Text = stats.UniqueListeners.ToString();
+            lblAverageTime.Text = stats.AverageTime.ToString();
         }
 
         private void UpdateAudioDevices()
@@ -405,13 +417,13 @@ namespace WebradioManager
 
         private void btnCreatePlaylist_Click(object sender, EventArgs e)
         {
-            if (txbPlaylistName.Text.Trim() != "")
+            if (txbPlaylistName.Text.Trim() != "" && txbPlaylistName.Text.Length <= MAX_NAME_LENGTH)
             {
                 if (!this.Controller.CreatePlaylist(txbPlaylistName.Text, this.NameWebradio, this.IdWebradio, (cmbTypePlaylist.SelectedItem.ToString() == "Music") ? AudioType.Music : AudioType.Ad))
                     MessageBox.Show("Playlist already exist or the name is invalid", "Error");
             }
             else
-                MessageBox.Show("Please enter a playlist's name", "Empty name");
+                MessageBox.Show("Please enter a valid playlist's name. (1-"+ MAX_NAME_LENGTH +" characters)", "Empty name");
         }
 
         private void btnDeletePlaylistClick(object sender, EventArgs e)
@@ -529,7 +541,7 @@ namespace WebradioManager
 
         private void btnGeneratePlaylist_Click(object sender, EventArgs e)
         {
-            if (txbPlaylistNameGenerate.Text.Trim() != "")
+            if (txbPlaylistNameGenerate.Text.Trim() != "" && txbPlaylistNameGenerate.Text.Length <= MAX_NAME_LENGTH)
             {
                 TimeSpan duration = new TimeSpan(0, (int)nudDurationGenerate.Value, 0);
                 if (!this.Controller.GeneratePlaylist(txbPlaylistNameGenerate.Text, duration,
@@ -540,7 +552,7 @@ namespace WebradioManager
                 }
             }
             else
-                MessageBox.Show("Please enter a playlist's name", "Error");
+                MessageBox.Show("Please enter a valid playlist's name. (1-"+ MAX_NAME_LENGTH +" characters)", "Error");
         }
 
         private void ckbCheckedChanged(object sender, EventArgs e)
@@ -560,7 +572,7 @@ namespace WebradioManager
 
         private void btnCreateEvent_Click(object sender, EventArgs e)
         {
-            if (txbEventName.Text.Trim() != "")
+            if (txbEventName.Text.Trim() != "" && txbEventName.Text.Length <= MAX_NAME_LENGTH)
             {
                 TimeSpan start = new TimeSpan();
                 if (!TimeSpan.TryParse(mtbStartTime.Text, out start))
@@ -592,7 +604,7 @@ namespace WebradioManager
                     MessageBox.Show("Duration must be longer or equal to " + minimumDuration.ToString());
             }
             else
-                MessageBox.Show("Please enter an event's name.", "Error");
+                MessageBox.Show("Please enter a valid event's name. (1-"+ MAX_NAME_LENGTH +" characters)", "Error");
         }
 
         private void dvwTimetable_MouseUp(object sender, MouseEventArgs e)
@@ -695,7 +707,7 @@ namespace WebradioManager
 
         private void btnCreateTranscoder_Click(object sender, EventArgs e)
         {
-            if (txbStreamName.Text.Trim() != "" && txbServerPassword.Text.Trim() != "")
+            if (txbStreamName.Text.Trim() != "" && txbServerPassword.Text.Trim() != "" && txbStreamName.Text.Length <= MAX_NAME_LENGTH)
             {
                 IPAddress ip;
                 if (IPAddress.TryParse(txbServerIP.Text, out ip))
@@ -712,7 +724,7 @@ namespace WebradioManager
                     MessageBox.Show("IP Address is invalid", "Error");
             }
             else
-                MessageBox.Show("Please enter a stream's name and a server's password.", "Error");
+                MessageBox.Show("Please enter a valid stream's name and a server's password.(1-"+ MAX_NAME_LENGTH +" characters)", "Error");
         }
 
         private void btnDeleteTranscoder_Click(object sender, EventArgs e)
@@ -1037,7 +1049,7 @@ namespace WebradioManager
         {
             if (MessageBox.Show("To rename this webradio, all running process (transcoder and server) will be shutting down. Are you sure ?", "Process", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
-                if (txbWebradioName.Name.Trim() != "")
+                if (txbWebradioName.Name.Trim() != "" && txbWebradioName.Name.Length <= MAX_NAME_LENGTH)
                 {
                     if (this.Controller.ModifyWebradioName(txbWebradioName.Text, this.IdWebradio))
                         MessageBox.Show("Modification completed", "Success");
@@ -1045,7 +1057,7 @@ namespace WebradioManager
                         MessageBox.Show("This name is already used", "Error");
                 }
                 else
-                    MessageBox.Show("Please enter a valid name", "Error");
+                    MessageBox.Show("Please enter a valid name. (1-"+ MAX_NAME_LENGTH +" characters)", "Error");
             }
         }
 
@@ -1117,6 +1129,7 @@ namespace WebradioManager
                 string[] infos = new string[] { listener.Hostname, listener.Useragent, listener.ConnectionTime.ToString(), listener.Uid.ToString() };
                 dgvServerListeners.Rows.Add(infos);
             }
+            this.Controller.UpdateServerStats(this.IdWebradio);
         }
 
 

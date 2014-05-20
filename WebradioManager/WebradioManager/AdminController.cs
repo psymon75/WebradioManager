@@ -72,7 +72,8 @@ namespace WebradioManager
 
         public bool CreatePlaylist(string name, string webradioName, int webradioId, AudioType type)
         {
-            return this.Model.CreatePlaylist(name,webradioName,webradioId,type);
+            int id;
+            return this.Model.CreatePlaylist(name,webradioName,webradioId,type, out id);
         }
 
         public bool DeletePlaylist(Playlist playlist, int webradioId)
@@ -217,6 +218,11 @@ namespace WebradioManager
         public List<WebradioListener> UpdateServerListeners(int webradioId)
         {
             return this.Model.UpdateServerListeners(webradioId);
+        }
+
+        public bool UpdateServerStats(int webradioId)
+        {
+            return this.Model.UpdateServerStats(webradioId);
         }
 
 

@@ -1,43 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
-  <Class Name="WebradioManager.Webradio" Collapsed="true">
-    <Position X="6" Y="3" Width="1.5" />
+  <Class Name="WebradioManager.Ad" Collapsed="true">
+    <Position X="9.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ad.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.AdminController" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9" Y="2.75" Width="1.5" />
     <Members>
-      <Property Name="Playlists" Hidden="true" />
+      <Field Name="_model" Hidden="true" />
+      <Field Name="_view" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAASIAAAAAAAAAAEQABAAAQAAAIAAIAEBAAAEgAAAJA=</HashCode>
-      <FileName>Webradio.cs</FileName>
+      <HashCode>BAEBAQIAACBYAAIgAmAAYAgGYEAFAAgICKxAAgGgAgA=</HashCode>
+      <FileName>AdminController.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Server" />
-      <Property Name="Calendar" />
-      <Property Name="Playlists" />
+      <Property Name="View" />
+      <Property Name="Model" />
     </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Property Name="Transcoders" />
-    </ShowAsCollectionAssociation>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="WebradioManager.WebradioCalendar">
-    <Position X="2" Y="0.75" Width="3" />
+  <Class Name="WebradioManager.AudioFile" Collapsed="true">
+    <Position X="8.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACFAAAFIACQESAABBAAAMAAIAAIAAAJQAACAAAAAA=</HashCode>
+      <FileName>AudioFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.Bdd" Collapsed="true">
+    <Position X="9" Y="4.75" Width="1.5" />
     <Members>
-      <Field Name="_events" Hidden="true" />
-      <Field Name="_filename" Hidden="true" />
-      <Field Name="_id" Hidden="true" />
+      <Field Name="_controls" Hidden="true" />
+      <Field Name="ERROR" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AEACAAAAAAAAQAQAAABAAAAAAgAAAEAAAAAAAAAAAAA=</HashCode>
-      <FileName>WebradioCalendar.cs</FileName>
+      <HashCode>DAEJAQCDAEQIQAJAEEAAAIgPAAgEBAABCAAwwgAAAgA=</HashCode>
+      <FileName>Bdd.cs</FileName>
     </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Events" />
-    </ShowAsCollectionAssociation>
+    <ShowAsAssociation>
+      <Property Name="Controls" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="WebradioManager.CalendarEvent">
-    <Position X="0.5" Y="3.25" Width="6.25" />
+  <Class Name="WebradioManager.BddControls" Collapsed="true">
+    <Position X="12" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAAEABAAAAAAAABQAAAEAAAAEAAAABAQAAAAAAAAA=</HashCode>
+      <FileName>BddControls.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.CalendarEvent" Collapsed="true">
+    <Position X="3.5" Y="1" Width="1.5" />
     <Members>
       <Field Name="_duration" Hidden="true" />
+      <Field Name="_id" Hidden="true" />
       <Field Name="_loopatend" Hidden="true" />
       <Field Name="_name" Hidden="true" />
       <Field Name="_playlist" Hidden="true" />
@@ -58,191 +76,262 @@
       <FileName>CalendarEvent.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="WebradioManager.Playlist">
-    <Position X="11.5" Y="8" Width="4" />
-    <Members>
-      <Field Name="_audioFileList" Hidden="true" />
-      <Field Name="_filename" Hidden="true" />
-      <Field Name="_id" Hidden="true" />
-      <Field Name="_name" Hidden="true" />
-      <Field Name="_type" Hidden="true" />
-      <Field Name="DEFAULT_ID" Hidden="true" />
-    </Members>
+  <Class Name="WebradioManager.EventAppointment" Collapsed="true">
+    <Position X="14.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACIAAAAAAAQAQEAABAAAQAAAAEAEAEBQAAAAAAAAA=</HashCode>
-      <FileName>Playlist.cs</FileName>
+      <HashCode>AAAQAAAQAAAAAAAAAQAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EventAppointment.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WebradioManager.Music" Collapsed="true">
-    <Position X="4.75" Y="9.25" Width="1.5" />
+    <Position X="7.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Music.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="WebradioManager.WMModel" Collapsed="true">
-    <Position X="6" Y="11" Width="1.5" />
+  <Class Name="WebradioManager.Playlist" Collapsed="true">
+    <Position X="3.5" Y="9.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>DjEBAsYAAkhYCQIgCEQIYggW5lQcBpgYGIRAQxahCgg=</HashCode>
-      <FileName>WMModel.cs</FileName>
+      <HashCode>AAACIAAAAAAAQAQEAABAAAQAAAAEAEAEBQAAAAAAAAA=</HashCode>
+      <FileName>Playlist.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Bdd" />
-    </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Property Name="Observers" />
-      <Property Name="Library" />
-    </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="WebradioManager.SelectionController" Collapsed="true">
-    <Position X="9.5" Y="17.25" Width="1.75" />
+  <Class Name="WebradioManager.PlaylistAd" Collapsed="true">
+    <Position X="4.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PlaylistAd.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.PlaylistMusic" Collapsed="true">
+    <Position X="2.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PlaylistMusic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.SelectionController" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6" Y="3.75" Width="1.5" />
+    <Members>
+      <Field Name="_model" Hidden="true" />
+      <Field Name="_view" Hidden="true" />
+    </Members>
     <TypeIdentifier>
       <HashCode>CAAAAQAAAEAAIAAAAgAIAAAAAAABBACIACgAQAEAAAA=</HashCode>
       <FileName>SelectionController.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.957" />
-  </Class>
-  <Class Name="WebradioManager.AdminView" Collapsed="true">
-    <Position X="20" Y="0.5" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Fields" Collapsed="true" />
-    </Compartments>
-    <TypeIdentifier>
-      <HashCode>/2d4NXSn93ucur65SpbrE8vncfzC87N85nafceLKav4=</HashCode>
-      <FileName>AdminView.cs</FileName>
-    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Model" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="WebradioManager.SelectionView" Collapsed="true">
-    <Position X="9.75" Y="15" Width="1.5" />
+    <Position X="6" Y="1.75" Width="1.5" />
+    <Members>
+      <Field Name="_controller" Hidden="true" />
+      <Field Name="btnDelete" Hidden="true" />
+      <Field Name="btnDuplicate" Hidden="true" />
+      <Field Name="btnNew" Hidden="true" />
+      <Field Name="btnOpen" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="groupBox1" Hidden="true" />
+      <Field Name="groupBox2" Hidden="true" />
+      <Field Name="label1" Hidden="true" />
+      <Field Name="lsbSelection" Hidden="true" />
+      <Field Name="MAX_NAME_LENGTH" Hidden="true" />
+      <Field Name="txbName" Hidden="true" />
+    </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAQAYASAACBAAAACAAAACIgAIAAgAACAAAFAAAQQ=</HashCode>
+      <HashCode>AAAAAwAYASAACBAAAACAAAACIgAIAAgAACAAAFAAAQQ=</HashCode>
       <FileName>SelectionView.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Controller" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="WebradioManager.BddControls" Collapsed="true">
-    <Position X="3" Y="13" Width="1.25" />
-    <TypeIdentifier>
-      <HashCode>ABQAAEABAAAAAAAABQAAAEAAAAEAAAABAQAAAAAAAAA=</HashCode>
-      <FileName>BddControls.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="WebradioManager.Bdd" Collapsed="true">
-    <Position X="3" Y="11" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>DAEJAQCDAEQIQAJAEEAAAIgPAAgEBAABCAAwwgAAAgA=</HashCode>
-      <FileName>Bdd.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Controls" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="WebradioManager.WebradioServer" Collapsed="true">
-    <Position X="9" Y="3" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ABQgAAQgmDAAAAgAAgAASAAACIAAgkAGIgEIAAAAAAA=</HashCode>
-      <FileName>WebradioServer.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="WebradioManager.ProcessusManager" Collapsed="true">
-    <Position X="18.25" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ProcessusManager.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="WebradioManager.PlaylistMusic">
-    <Position X="14" Y="11.75" Width="3.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>PlaylistMusic.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="WebradioManager.PlaylistAd">
-    <Position X="10" Y="11.75" Width="3.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>PlaylistAd.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="WebradioManager.AudioFile" Collapsed="true">
-    <Position X="6" Y="8" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACFAAAFIACQESAABBAAAMAAIAAIAAAJQAACAAAAAA=</HashCode>
-      <FileName>AudioFile.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="WebradioManager.Ad" Collapsed="true">
-    <Position X="7" Y="9.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Ad.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="WebradioManager.WebradioTranscoder" Collapsed="true">
-    <Position X="6" Y="5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>BAQSIAAgCDBACEoEIgBCQAUECKUAgGBqPRAAAAAAIoI=</HashCode>
-      <FileName>WebradioTranscoder.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="WebradioManager.TranscoderMp3" Collapsed="true">
-    <Position X="4.75" Y="6.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>TranscoderMp3.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="WebradioManager.TranscoderAacPlus" Collapsed="true">
-    <Position X="7" Y="6.25" Width="1.75" />
+    <Position X="2.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>TranscoderAacPlus.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="WebradioManager.AdminController" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="18.25" Y="0.5" Width="1.5" />
+  <Class Name="WebradioManager.TranscoderMp3" Collapsed="true">
+    <Position X="4.5" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAEBAQIAACBYAAIgAmAAYAgGYEAFAAgICKxAAgGgAgA=</HashCode>
-      <FileName>AdminController.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TranscoderMp3.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.881" Collapsed="true" />
+  </Class>
+  <Class Name="WebradioManager.Webradio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.5" Y="5" Width="1.5" />
+    <Members>
+      <Field Name="_calendar" Hidden="true" />
+      <Field Name="_id" Hidden="true" />
+      <Field Name="_name" Hidden="true" />
+      <Field Name="_playlists" Hidden="true" />
+      <Field Name="_server" Hidden="true" />
+      <Field Name="_transcoders" Hidden="true" />
+      <Field Name="DEFAULT_ID" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAASIAAAAAAAAAAEQABAAAQAAAIAAIAEBAAAEgAAAJA=</HashCode>
+      <FileName>Webradio.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Calendar" />
+      <Property Name="Server" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Playlists" />
+      <Property Name="Transcoders" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WebradioManager.WebradioCalendar" Collapsed="true">
+    <Position X="3.5" Y="3" Width="1.5" />
+    <Members>
+      <Field Name="_events" Hidden="true" />
+      <Field Name="_filename" Hidden="true" />
+      <Field Name="_id" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AEACAAAAAAAAQAQAAABAAAAAAgAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>WebradioCalendar.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Events" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="WebradioManager.WebradioListener" Collapsed="true">
+    <Position X="16.25" Y="0.75" Width="1.5" />
+    <Members>
+      <Field Name="_connectionTime" Hidden="true" />
+      <Field Name="_hostname" Hidden="true" />
+      <Field Name="_uid" Hidden="true" />
+      <Field Name="_useragent" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAASAFAAAAAQBgAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>WebradioListener.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.WebradioServer" Collapsed="true">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <Members>
+      <Field Name="_adminPassword" Hidden="true" />
+      <Field Name="_configFilename" Hidden="true" />
+      <Field Name="_logFilename" Hidden="true" />
+      <Field Name="_maxListener" Hidden="true" />
+      <Field Name="_password" Hidden="true" />
+      <Field Name="_port" Hidden="true" />
+      <Field Name="_process" Hidden="true" />
+      <Field Name="_stats" Hidden="true" />
+      <Field Name="DEFAULT_ADMIN_LOGIN" Hidden="true" />
+      <Field Name="SC_SERVER_FILENAME" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>ABQgBAQgmDAAAAgAAgAASAAACIAAgkAGIgEIAAAAAAA=</HashCode>
+      <FileName>WebradioServer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Stats" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="WebradioManager.WebradioServerStats" Collapsed="true">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAghAAAAAEAEAQAAAgAAAAAAA=</HashCode>
+      <FileName>WebradioServerStats.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.WebradioTranscoder" Collapsed="true">
+    <Position X="3.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQSIAAgCDBACEoEIgBCQAUECKUAgGBqPRAAAAAAIoI=</HashCode>
+      <FileName>WebradioTranscoder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.WMModel" Collapsed="true">
+    <Position X="6" Y="5.75" Width="1.5" />
+    <Members>
+      <Field Name="_activeServers" Hidden="true" />
+      <Field Name="_activeTranscoders" Hidden="true" />
+      <Field Name="_bdd" Hidden="true" />
+      <Field Name="_library" Hidden="true" />
+      <Field Name="_observers" Hidden="true" />
+      <Field Name="_processWatcher" Hidden="true" />
+      <Field Name="_webradios" Hidden="true" />
+      <Field Name="DEFAULT_CALENDAR_FILENAME" Hidden="true" />
+      <Field Name="DEFAULT_CONFIGFILENAME" Hidden="true" />
+      <Field Name="DEFAULT_LOGFILENAME" Hidden="true" />
+      <Field Name="DEFAULT_MAX_LISTENER" Hidden="true" />
+      <Field Name="DEFAULT_PASSWORD" Hidden="true" />
+      <Field Name="DEFAULT_PLAYLISTS_FOLDER" Hidden="true" />
+      <Field Name="DEFAULT_SERVER_FOLDER" Hidden="true" />
+      <Field Name="DEFAULT_SERVER_PASSWORD" Hidden="true" />
+      <Field Name="DEFAULT_SERVER_PORT" Hidden="true" />
+      <Field Name="DEFAULT_SHOUTCAST_FOLDER" Hidden="true" />
+      <Field Name="DEFAULT_TRANSCODERS_FOLDER" Hidden="true" />
+      <Field Name="DEFAULT_WEBRADIOS_FOLDER" Hidden="true" />
+      <Field Name="MAX_NAME_LENGTH" Hidden="true" />
+      <Field Name="MAX_TRY_GENERATE" Hidden="true" />
+      <Property Name="Observers" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>DDEBAsYAAkhYCQIgCEQIYggW5lQcBpgYGIRAQxahCgg=</HashCode>
+      <FileName>WMModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Bdd" />
+      <Property Name="Observers" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Webradios" />
+      <Property Name="Library" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="WebradioManager.AdminView" Collapsed="true">
+    <Position X="9" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>/2d4N3Sn93ucur65SpbrE8vncfzC87N85nafceLKav4=</HashCode>
+      <FileName>AdminView.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Struct Name="WebradioManager.DayWeek" Collapsed="true">
-    <Position X="18.25" Y="2.75" Width="1.5" />
+    <Position X="14.5" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAQAIIAACAAAAAAAIAAACACMACAIAAAACAQCABAAAA=</HashCode>
       <FileName>DayWeek.cs</FileName>
     </TypeIdentifier>
   </Struct>
-  <Interface Name="WebradioManager.IController">
-    <Position X="6" Y="12.75" Width="1.5" />
+  <Interface Name="WebradioManager.IController" Collapsed="true">
+    <Position X="14.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IController.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="WebradioManager.AudioType" Collapsed="true">
-    <Position X="18.25" Y="4" Width="1.5" />
+    <Position X="14.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>AudioType.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="WebradioManager.StreamType" Collapsed="true">
-    <Position X="20" Y="4" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>StreamType.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
   <Enum Name="WebradioManager.DayValue" Collapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Position X="16.25" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAQAAIAACAAAAAAAAAAACAAIACAIAAAAAAAAAAAAAA=</HashCode>
       <FileName>CalendarEvent.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="WebradioManager.StreamType" Collapsed="true">
+    <Position X="14.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>StreamType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />

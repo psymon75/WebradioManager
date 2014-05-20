@@ -49,6 +49,10 @@
             this.label39 = new System.Windows.Forms.Label();
             this.btnUpdateListeners = new System.Windows.Forms.Button();
             this.dgvServerListeners = new System.Windows.Forms.DataGridView();
+            this.colHostname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUserAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colConnectTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox22 = new System.Windows.Forms.GroupBox();
             this.dgvCurrentTracks = new System.Windows.Forms.DataGridView();
             this.colTranscoderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -248,10 +252,6 @@
             this.label31 = new System.Windows.Forms.Label();
             this.FBD = new System.Windows.Forms.FolderBrowserDialog();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
-            this.colHostname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colUserAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colConnectTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colUID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mnsMain.SuspendLayout();
             this.tbcTabs.SuspendLayout();
             this.tbpStatus.SuspendLayout();
@@ -517,8 +517,33 @@
             this.colUID});
             this.dgvServerListeners.Location = new System.Drawing.Point(7, 56);
             this.dgvServerListeners.Name = "dgvServerListeners";
+            this.dgvServerListeners.ReadOnly = true;
             this.dgvServerListeners.Size = new System.Drawing.Size(599, 133);
             this.dgvServerListeners.TabIndex = 0;
+            // 
+            // colHostname
+            // 
+            this.colHostname.HeaderText = "Hostname";
+            this.colHostname.Name = "colHostname";
+            this.colHostname.ReadOnly = true;
+            // 
+            // colUserAgent
+            // 
+            this.colUserAgent.HeaderText = "User agent";
+            this.colUserAgent.Name = "colUserAgent";
+            this.colUserAgent.ReadOnly = true;
+            // 
+            // colConnectTime
+            // 
+            this.colConnectTime.HeaderText = "Connection time (s)";
+            this.colConnectTime.Name = "colConnectTime";
+            this.colConnectTime.ReadOnly = true;
+            // 
+            // colUID
+            // 
+            this.colUID.HeaderText = "UID";
+            this.colUID.Name = "colUID";
+            this.colUID.ReadOnly = true;
             // 
             // groupBox22
             // 
@@ -667,6 +692,7 @@
             // 
             // dgvAds
             // 
+            this.dgvAds.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvAds.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAds.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colIdAd,
@@ -692,54 +718,63 @@
             this.colIdAd.HeaderText = "Id";
             this.colIdAd.Name = "colIdAd";
             this.colIdAd.ReadOnly = true;
+            this.colIdAd.Width = 41;
             // 
             // colTitleAd
             // 
             this.colTitleAd.HeaderText = "Title";
             this.colTitleAd.Name = "colTitleAd";
             this.colTitleAd.ReadOnly = true;
+            this.colTitleAd.Width = 52;
             // 
             // colArtistAd
             // 
             this.colArtistAd.HeaderText = "Artist";
             this.colArtistAd.Name = "colArtistAd";
             this.colArtistAd.ReadOnly = true;
+            this.colArtistAd.Width = 55;
             // 
             // colAlbumAd
             // 
             this.colAlbumAd.HeaderText = "Album";
             this.colAlbumAd.Name = "colAlbumAd";
             this.colAlbumAd.ReadOnly = true;
+            this.colAlbumAd.Width = 61;
             // 
             // colYearAd
             // 
             this.colYearAd.HeaderText = "Year";
             this.colYearAd.Name = "colYearAd";
             this.colYearAd.ReadOnly = true;
+            this.colYearAd.Width = 54;
             // 
             // colLabelAd
             // 
             this.colLabelAd.HeaderText = "Label";
             this.colLabelAd.Name = "colLabelAd";
             this.colLabelAd.ReadOnly = true;
+            this.colLabelAd.Width = 58;
             // 
             // colDurationAd
             // 
             this.colDurationAd.HeaderText = "Duration";
             this.colDurationAd.Name = "colDurationAd";
             this.colDurationAd.ReadOnly = true;
+            this.colDurationAd.Width = 72;
             // 
             // colGenderAd
             // 
             this.colGenderAd.HeaderText = "Gender";
             this.colGenderAd.Name = "colGenderAd";
             this.colGenderAd.ReadOnly = true;
+            this.colGenderAd.Width = 67;
             // 
             // colPathAd
             // 
             this.colPathAd.HeaderText = "Path";
             this.colPathAd.Name = "colPathAd";
             this.colPathAd.ReadOnly = true;
+            this.colPathAd.Width = 54;
             // 
             // cmbPlaylistsAd
             // 
@@ -844,6 +879,7 @@
             // 
             // dgvMusics
             // 
+            this.dgvMusics.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvMusics.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMusics.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colIdMusic,
@@ -868,48 +904,57 @@
             this.colIdMusic.HeaderText = "Id";
             this.colIdMusic.Name = "colIdMusic";
             this.colIdMusic.ReadOnly = true;
+            this.colIdMusic.Width = 41;
             // 
             // colTitleMusic
             // 
             this.colTitleMusic.HeaderText = "Title";
             this.colTitleMusic.Name = "colTitleMusic";
+            this.colTitleMusic.Width = 52;
             // 
             // colArtistMusic
             // 
             this.colArtistMusic.HeaderText = "Artist";
             this.colArtistMusic.Name = "colArtistMusic";
+            this.colArtistMusic.Width = 55;
             // 
             // colAlbumMusic
             // 
             this.colAlbumMusic.HeaderText = "Album";
             this.colAlbumMusic.Name = "colAlbumMusic";
+            this.colAlbumMusic.Width = 61;
             // 
             // colYearMusic
             // 
             this.colYearMusic.HeaderText = "Year";
             this.colYearMusic.Name = "colYearMusic";
+            this.colYearMusic.Width = 54;
             // 
             // colLabelMusic
             // 
             this.colLabelMusic.HeaderText = "Label";
             this.colLabelMusic.Name = "colLabelMusic";
+            this.colLabelMusic.Width = 58;
             // 
             // colDurationMusic
             // 
             this.colDurationMusic.HeaderText = "Duration";
             this.colDurationMusic.Name = "colDurationMusic";
             this.colDurationMusic.ReadOnly = true;
+            this.colDurationMusic.Width = 72;
             // 
             // colGenderMusic
             // 
             this.colGenderMusic.HeaderText = "Gender";
             this.colGenderMusic.Name = "colGenderMusic";
+            this.colGenderMusic.Width = 67;
             // 
             // colPathMusic
             // 
             this.colPathMusic.HeaderText = "Path";
             this.colPathMusic.Name = "colPathMusic";
             this.colPathMusic.ReadOnly = true;
+            this.colPathMusic.Width = 54;
             // 
             // btnImportFilesMusic
             // 
@@ -985,6 +1030,7 @@
             // 
             // dgvPlaylistContent
             // 
+            this.dgvPlaylistContent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvPlaylistContent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPlaylistContent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colIdPlaylist,
@@ -1008,54 +1054,63 @@
             this.colIdPlaylist.HeaderText = "Id";
             this.colIdPlaylist.Name = "colIdPlaylist";
             this.colIdPlaylist.ReadOnly = true;
+            this.colIdPlaylist.Width = 41;
             // 
             // colTitlePlaylist
             // 
             this.colTitlePlaylist.HeaderText = "Title";
             this.colTitlePlaylist.Name = "colTitlePlaylist";
             this.colTitlePlaylist.ReadOnly = true;
+            this.colTitlePlaylist.Width = 52;
             // 
             // colArtistPlaylist
             // 
             this.colArtistPlaylist.HeaderText = "Artist";
             this.colArtistPlaylist.Name = "colArtistPlaylist";
             this.colArtistPlaylist.ReadOnly = true;
+            this.colArtistPlaylist.Width = 55;
             // 
             // colAlbumPlaylist
             // 
             this.colAlbumPlaylist.HeaderText = "Album";
             this.colAlbumPlaylist.Name = "colAlbumPlaylist";
             this.colAlbumPlaylist.ReadOnly = true;
+            this.colAlbumPlaylist.Width = 61;
             // 
             // colYearPlaylist
             // 
             this.colYearPlaylist.HeaderText = "Year";
             this.colYearPlaylist.Name = "colYearPlaylist";
             this.colYearPlaylist.ReadOnly = true;
+            this.colYearPlaylist.Width = 54;
             // 
             // colLabelPlaylist
             // 
             this.colLabelPlaylist.HeaderText = "Label";
             this.colLabelPlaylist.Name = "colLabelPlaylist";
             this.colLabelPlaylist.ReadOnly = true;
+            this.colLabelPlaylist.Width = 58;
             // 
             // colDurationPlaylist
             // 
             this.colDurationPlaylist.HeaderText = "Duration";
             this.colDurationPlaylist.Name = "colDurationPlaylist";
             this.colDurationPlaylist.ReadOnly = true;
+            this.colDurationPlaylist.Width = 72;
             // 
             // colGenderPlaylist
             // 
             this.colGenderPlaylist.HeaderText = "Gender";
             this.colGenderPlaylist.Name = "colGenderPlaylist";
             this.colGenderPlaylist.ReadOnly = true;
+            this.colGenderPlaylist.Width = 67;
             // 
             // colPathPlaylist
             // 
             this.colPathPlaylist.HeaderText = "Path";
             this.colPathPlaylist.Name = "colPathPlaylist";
             this.colPathPlaylist.ReadOnly = true;
+            this.colPathPlaylist.Width = 54;
             // 
             // groupBox7
             // 
@@ -1184,7 +1239,7 @@
             // 
             // btnGeneratePlaylist
             // 
-            this.btnGeneratePlaylist.Location = new System.Drawing.Point(462, 32);
+            this.btnGeneratePlaylist.Location = new System.Drawing.Point(462, 34);
             this.btnGeneratePlaylist.Name = "btnGeneratePlaylist";
             this.btnGeneratePlaylist.Size = new System.Drawing.Size(75, 23);
             this.btnGeneratePlaylist.TabIndex = 11;
@@ -1199,7 +1254,7 @@
             this.cmbGenderGenerate.Items.AddRange(new object[] {
             "Music",
             "Ad"});
-            this.cmbGenderGenerate.Location = new System.Drawing.Point(352, 37);
+            this.cmbGenderGenerate.Location = new System.Drawing.Point(352, 34);
             this.cmbGenderGenerate.Name = "cmbGenderGenerate";
             this.cmbGenderGenerate.Size = new System.Drawing.Size(93, 21);
             this.cmbGenderGenerate.TabIndex = 10;
@@ -1220,7 +1275,7 @@
             this.cmbTypePlaylistGenerate.Items.AddRange(new object[] {
             "Music",
             "Ad"});
-            this.cmbTypePlaylistGenerate.Location = new System.Drawing.Point(269, 37);
+            this.cmbTypePlaylistGenerate.Location = new System.Drawing.Point(269, 35);
             this.cmbTypePlaylistGenerate.Name = "cmbTypePlaylistGenerate";
             this.cmbTypePlaylistGenerate.Size = new System.Drawing.Size(58, 21);
             this.cmbTypePlaylistGenerate.TabIndex = 6;
@@ -1459,7 +1514,7 @@
             // ckbAll
             // 
             this.ckbAll.AutoSize = true;
-            this.ckbAll.Location = new System.Drawing.Point(195, 35);
+            this.ckbAll.Location = new System.Drawing.Point(191, 16);
             this.ckbAll.Name = "ckbAll";
             this.ckbAll.Size = new System.Drawing.Size(37, 17);
             this.ckbAll.TabIndex = 7;
@@ -1470,7 +1525,7 @@
             // ckbSunday
             // 
             this.ckbSunday.AutoSize = true;
-            this.ckbSunday.Location = new System.Drawing.Point(195, 16);
+            this.ckbSunday.Location = new System.Drawing.Point(191, 35);
             this.ckbSunday.Name = "ckbSunday";
             this.ckbSunday.Size = new System.Drawing.Size(41, 17);
             this.ckbSunday.TabIndex = 6;
@@ -2546,26 +2601,6 @@
             this.OFD.FileName = "*.mp3";
             this.OFD.Filter = "MP3 Files|*.mp3";
             this.OFD.Multiselect = true;
-            // 
-            // colHostname
-            // 
-            this.colHostname.HeaderText = "Hostname";
-            this.colHostname.Name = "colHostname";
-            // 
-            // colUserAgent
-            // 
-            this.colUserAgent.HeaderText = "User agent";
-            this.colUserAgent.Name = "colUserAgent";
-            // 
-            // colConnectTime
-            // 
-            this.colConnectTime.HeaderText = "Connection time (s)";
-            this.colConnectTime.Name = "colConnectTime";
-            // 
-            // colUID
-            // 
-            this.colUID.HeaderText = "UID";
-            this.colUID.Name = "colUID";
             // 
             // AdminView
             // 
