@@ -252,6 +252,7 @@
             this.label31 = new System.Windows.Forms.Label();
             this.FBD = new System.Windows.Forms.FolderBrowserDialog();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
+            this.checkLibraryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsMain.SuspendLayout();
             this.tbcTabs.SuspendLayout();
             this.tbpStatus.SuspendLayout();
@@ -347,7 +348,8 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.generateAllConfigsToolStripMenuItem});
+            this.generateAllConfigsToolStripMenuItem,
+            this.checkLibraryToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -2602,6 +2604,13 @@
             this.OFD.Filter = "MP3 Files|*.mp3";
             this.OFD.Multiselect = true;
             // 
+            // checkLibraryToolStripMenuItem
+            // 
+            this.checkLibraryToolStripMenuItem.Name = "checkLibraryToolStripMenuItem";
+            this.checkLibraryToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.checkLibraryToolStripMenuItem.Text = "Check  library";
+            this.checkLibraryToolStripMenuItem.Click += new System.EventHandler(this.checkLibraryToolStripMenuItem_Click);
+            // 
             // AdminView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2913,6 +2922,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colUserAgent;
         private System.Windows.Forms.DataGridViewTextBoxColumn colConnectTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUID;
+        private System.Windows.Forms.ToolStripMenuItem checkLibraryToolStripMenuItem;
 
 
     }

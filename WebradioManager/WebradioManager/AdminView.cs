@@ -60,7 +60,6 @@ namespace WebradioManager
             this.IdWebradio = idWebradio;
             this.EventsCalendar = new List<EventAppointment>();
             this.UpdateAudioDevices();
-            //this.Controller.CheckFolders(idWebradio);
         }
 
 
@@ -86,7 +85,7 @@ namespace WebradioManager
                 else if (file is Ad)
                     dgvAds.Rows.Add(file.GetInfosArray());
             }
-            txbSearchAd.Text = (txbSearchAd.Text != DEFAULT_SEARCH_STRING)?txbSearchAd.Text:DEFAULT_SEARCH_STRING;
+            txbSearchAd.Text = (txbSearchAd.Text != DEFAULT_SEARCH_STRING) ? txbSearchAd.Text : DEFAULT_SEARCH_STRING;
             txbSearchMusic.Text = (txbSearchMusic.Text != DEFAULT_SEARCH_STRING) ? txbSearchMusic.Text : DEFAULT_SEARCH_STRING;
             this.txbSearchTextChanged(txbSearchAd, new EventArgs());
             this.txbSearchTextChanged(txbSearchMusic, new EventArgs());
@@ -195,7 +194,7 @@ namespace WebradioManager
 
             lsbStatus.Items.Clear();
             dgvCurrentTracks.Rows.Clear();
-            foreach(WebradioTranscoder transcoder in webradio.Transcoders)
+            foreach (WebradioTranscoder transcoder in webradio.Transcoders)
             {
                 lsbStatus.Items.Add(transcoder.Name + " : " + ((transcoder.IsRunning()) ? "On" : "Off"));
                 if (transcoder.IsRunning())
@@ -221,7 +220,7 @@ namespace WebradioManager
             btnStartServer.Enabled = (running) ? false : true;
             btnStopServer.Enabled = (running) ? true : false;
 
-            if(webradio.Server.Stats != null)
+            if (webradio.Server.Stats != null)
                 this.ShowServerStats(webradio.Server.Stats);
             //----            
         }
@@ -248,7 +247,7 @@ namespace WebradioManager
                         cmbAudioDevice.Items.Add(property.Value);
                 }
             }
-            
+
             if (cmbAudioDevice.Items.Count > 0)
                 cmbAudioDevice.SelectedIndex = 0;
         }
@@ -350,27 +349,29 @@ namespace WebradioManager
 
         private void txbSearchEnter(object sender, EventArgs e)
         {
-            if ((sender as TextBox).Text == DEFAULT_SEARCH_STRING)
-                (sender as TextBox).Text = "";
+            TextBox txb = (sender as TextBox);
+            if (txb.Text == DEFAULT_SEARCH_STRING)
+                txb.Text = "";
         }
 
         private void txbSearchLeave(object sender, EventArgs e)
         {
-            if ((sender as TextBox).Text == "")
-                (sender as TextBox).Text = "Search...";
+            TextBox txb = (sender as TextBox);
+            if (!string.IsNullOrEmpty(txb.Text))
+                txb.Text = "Search...";
         }
 
         private void btnDeleteLibrary_Click(object sender, EventArgs e)
         {
             AudioType type;
             bool state = true;
-
-            if ((sender as Button).Tag.ToString() == AudioType.Music.ToString())
+            Button btn = (sender as Button);
+            if (btn.Tag.ToString() == AudioType.Music.ToString())
                 type = AudioType.Music;
             else
                 type = AudioType.Ad;
 
-            DataGridViewSelectedRowCollection rows = ((sender as Button).Tag.ToString() == AudioType.Music.ToString()) ? dgvMusics.SelectedRows : dgvAds.SelectedRows;
+            DataGridViewSelectedRowCollection rows = (btn.Tag.ToString() == AudioType.Music.ToString()) ? dgvMusics.SelectedRows : dgvAds.SelectedRows;
             foreach (DataGridViewRow row in rows)
             {
                 //Simple check if selected row is not the last empty row
@@ -390,15 +391,16 @@ namespace WebradioManager
             AudioType type;
             bool valid = false;
             string searchString = "";
-            if ((sender as TextBox).Tag.ToString() == AudioType.Music.ToString())
+            TextBox txb = sender as TextBox;
+            if (txb.Tag.ToString() == AudioType.Music.ToString())
                 type = AudioType.Music;
             else
                 type = AudioType.Ad;
 
 
-            if ((sender as TextBox).Text != "" && (sender as TextBox).Text != DEFAULT_SEARCH_STRING)
+            if (!string.IsNullOrEmpty(txb.Text) && txb.Text != DEFAULT_SEARCH_STRING)
             {
-                searchString = (sender as TextBox).Text.ToLower();
+                searchString = txb.Text.ToLower();
                 foreach (DataGridViewRow row in ((type == AudioType.Music) ? dgvMusics.Rows : dgvAds.Rows))
                 {
                     foreach (DataGridViewCell cell in row.Cells)
@@ -417,13 +419,13 @@ namespace WebradioManager
 
         private void btnCreatePlaylist_Click(object sender, EventArgs e)
         {
-            if (txbPlaylistName.Text.Trim() != "" && txbPlaylistName.Text.Length <= MAX_NAME_LENGTH)
+            if (!string.IsNullOrEmpty(txbPlaylistName.Text.Trim()) && txbPlaylistName.Text.Length <= MAX_NAME_LENGTH)
             {
                 if (!this.Controller.CreatePlaylist(txbPlaylistName.Text, this.NameWebradio, this.IdWebradio, (cmbTypePlaylist.SelectedItem.ToString() == "Music") ? AudioType.Music : AudioType.Ad))
                     MessageBox.Show("Playlist already exist or the name is invalid", "Error");
             }
             else
-                MessageBox.Show("Please enter a valid playlist's name. (1-"+ MAX_NAME_LENGTH +" characters)", "Empty name");
+                MessageBox.Show("Please enter a valid playlist's name. (1-" + MAX_NAME_LENGTH + " characters)", "Empty name");
         }
 
         private void btnDeletePlaylistClick(object sender, EventArgs e)
@@ -459,11 +461,12 @@ namespace WebradioManager
 
         private void lsbPlaylistsSelectedIndexChanged(object sender, EventArgs e)
         {
-            AudioType type = ((sender as ListBox).Tag.ToString() == AudioType.Music.ToString()) ? AudioType.Music : AudioType.Ad;
+            ListBox lsb = sender as ListBox;
+            AudioType type = (lsb.Tag.ToString() == AudioType.Music.ToString()) ? AudioType.Music : AudioType.Ad;
             btnRemoveFromPlaylist.Tag = type;
-            if ((sender as ListBox).SelectedIndex >= 0)
+            if (lsb.SelectedIndex >= 0)
             {
-                this.GetPlaylistContent((Playlist)(sender as ListBox).SelectedItem);
+                this.GetPlaylistContent((Playlist)lsb.SelectedItem);
             }
         }
 
@@ -512,7 +515,7 @@ namespace WebradioManager
         {
             string searchString = "";
             bool valid = false;
-            if (txbSearchPlaylistContent.Text != "" && txbSearchPlaylistContent.Text != DEFAULT_SEARCH_STRING)
+            if (!string.IsNullOrEmpty(txbSearchPlaylistContent.Text) && txbSearchPlaylistContent.Text != DEFAULT_SEARCH_STRING)
             {
                 searchString = txbSearchPlaylistContent.Text.ToLower();
                 foreach (DataGridViewRow row in dgvPlaylistContent.Rows)
@@ -541,7 +544,7 @@ namespace WebradioManager
 
         private void btnGeneratePlaylist_Click(object sender, EventArgs e)
         {
-            if (txbPlaylistNameGenerate.Text.Trim() != "" && txbPlaylistNameGenerate.Text.Length <= MAX_NAME_LENGTH)
+            if (!string.IsNullOrEmpty(txbPlaylistNameGenerate.Text.Trim()) && txbPlaylistNameGenerate.Text.Length <= MAX_NAME_LENGTH)
             {
                 TimeSpan duration = new TimeSpan(0, (int)nudDurationGenerate.Value, 0);
                 if (!this.Controller.GeneratePlaylist(txbPlaylistNameGenerate.Text, duration,
@@ -552,7 +555,7 @@ namespace WebradioManager
                 }
             }
             else
-                MessageBox.Show("Please enter a valid playlist's name. (1-"+ MAX_NAME_LENGTH +" characters)", "Error");
+                MessageBox.Show("Please enter a valid playlist's name. (1-" + MAX_NAME_LENGTH + " characters)", "Error");
         }
 
         private void ckbCheckedChanged(object sender, EventArgs e)
@@ -572,7 +575,7 @@ namespace WebradioManager
 
         private void btnCreateEvent_Click(object sender, EventArgs e)
         {
-            if (txbEventName.Text.Trim() != "" && txbEventName.Text.Length <= MAX_NAME_LENGTH)
+            if (!string.IsNullOrEmpty(txbEventName.Text.Trim()) && txbEventName.Text.Length <= MAX_NAME_LENGTH)
             {
                 TimeSpan start = new TimeSpan();
                 if (!TimeSpan.TryParse(mtbStartTime.Text, out start))
@@ -604,7 +607,7 @@ namespace WebradioManager
                     MessageBox.Show("Duration must be longer or equal to " + minimumDuration.ToString());
             }
             else
-                MessageBox.Show("Please enter a valid event's name. (1-"+ MAX_NAME_LENGTH +" characters)", "Error");
+                MessageBox.Show("Please enter a valid event's name. (1-" + MAX_NAME_LENGTH + " characters)", "Error");
         }
 
         private void dvwTimetable_MouseUp(object sender, MouseEventArgs e)
@@ -707,7 +710,7 @@ namespace WebradioManager
 
         private void btnCreateTranscoder_Click(object sender, EventArgs e)
         {
-            if (txbStreamName.Text.Trim() != "" && txbServerPassword.Text.Trim() != "" && txbStreamName.Text.Length <= MAX_NAME_LENGTH)
+            if (!string.IsNullOrEmpty(txbStreamName.Text.Trim()) && !string.IsNullOrEmpty(txbServerPassword.Text.Trim()) && txbStreamName.Text.Length <= MAX_NAME_LENGTH)
             {
                 IPAddress ip;
                 if (IPAddress.TryParse(txbServerIP.Text, out ip))
@@ -724,7 +727,7 @@ namespace WebradioManager
                     MessageBox.Show("IP Address is invalid", "Error");
             }
             else
-                MessageBox.Show("Please enter a valid stream's name and a server's password.(1-"+ MAX_NAME_LENGTH +" characters)", "Error");
+                MessageBox.Show("Please enter a valid stream's name and a server's password.(1-" + MAX_NAME_LENGTH + " characters)", "Error");
         }
 
         private void btnDeleteTranscoder_Click(object sender, EventArgs e)
@@ -746,7 +749,7 @@ namespace WebradioManager
         private void ShowTranscoderInfos(WebradioTranscoder transcoder)
         {
             if (transcoder != null)
-             {
+            {
                 txbStreamNameEdit.Text = transcoder.Name;
                 txbStreamUrlEdit.Text = transcoder.Url;
                 txbServerIPEdit.Text = transcoder.Ip.ToString();
@@ -777,7 +780,7 @@ namespace WebradioManager
             {
                 if (MessageBox.Show("Transcoder will restart if it's running after update. Do you really want to update ?", "Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    if (txbStreamNameEdit.Text.Trim() != "" && txbServerPasswordEdit.Text.Trim() != "")
+                    if (!string.IsNullOrEmpty(txbStreamNameEdit.Text.Trim()) && !string.IsNullOrEmpty(txbServerPasswordEdit.Text.Trim()))
                     {
                         IPAddress ip;
                         if (IPAddress.TryParse(txbServerIPEdit.Text, out ip))
@@ -816,7 +819,7 @@ namespace WebradioManager
             if (lsbTranscoders.SelectedIndex >= 0)
             {
                 WebradioTranscoder transcoder = (WebradioTranscoder)lsbTranscoders.SelectedItem;
-                if (this.Controller.StartTranscoder(transcoder,ckbTranscoderDebug.Checked, this.IdWebradio))
+                if (this.Controller.StartTranscoder(transcoder, ckbTranscoderDebug.Checked, this.IdWebradio))
                 {
                     this.ShowTranscoderInfos(transcoder);
 
@@ -871,11 +874,11 @@ namespace WebradioManager
         {
             if (MessageBox.Show("Server will restart if it's running after update. Do you really want to update ?", "Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
-                if (txbLocalServerPassword.Text.Trim() != "" && txbLocalServerAdminPassword.Text.Trim() != "")
+                if (!string.IsNullOrEmpty(txbLocalServerPassword.Text.Trim()) && !string.IsNullOrEmpty(txbLocalServerAdminPassword.Text.Trim()))
                 {
                     if (txbLocalServerPassword.Text != txbLocalServerAdminPassword.Text)
                     {
-                        if (this.Controller.UpdateServer(ckbServerDebug.Checked,(int)nudPortServer.Value, txbLocalServerPassword.Text, txbLocalServerAdminPassword.Text, (int)nudMaxListener.Value, this.IdWebradio))
+                        if (this.Controller.UpdateServer(ckbServerDebug.Checked, (int)nudPortServer.Value, txbLocalServerPassword.Text, txbLocalServerAdminPassword.Text, (int)nudMaxListener.Value, this.IdWebradio))
                             MessageBox.Show("Server informations updated.", "Success");
                         else
                             MessageBox.Show("An error has occured", "Error");
@@ -947,7 +950,7 @@ namespace WebradioManager
         }
 
         //http://www.codeproject.com/Tips/440861/Resolving-a-hostname-in-Csharp-and-retrieving-IP-v
-        private bool GetResolvedConnecionIPAddress(string serverNameOrURL,
+        private static bool GetResolvedConnecionIPAddress(string serverNameOrURL,
                    out IPAddress resolvedIPAddress)
         {
             bool isResolved = false;
@@ -986,7 +989,7 @@ namespace WebradioManager
                     isResolved = true;
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 isResolved = false;
                 resolvIP = null;
@@ -1034,7 +1037,7 @@ namespace WebradioManager
                 {
                     if (this.Controller.GenerateHistory(this.IdWebradio, ((WebradioTranscoder)lsbTranscoders.SelectedItem).Name, ((WebradioTranscoder)lsbTranscoders.SelectedItem).Id, SFD.FileName))
                     {
-                        if(MessageBox.Show("Do you want to view the pdf file ?", "Success",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                        if (MessageBox.Show("Do you want to view the pdf file ?", "Success", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                             Process.Start(SFD.FileName);
                     }
                     else
@@ -1049,7 +1052,7 @@ namespace WebradioManager
         {
             if (MessageBox.Show("To rename this webradio, all running process (transcoder and server) will be shutting down. Are you sure ?", "Process", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
-                if (txbWebradioName.Name.Trim() != "" && txbWebradioName.Name.Length <= MAX_NAME_LENGTH)
+                if (!string.IsNullOrEmpty(txbWebradioName.Name.Trim()) && txbWebradioName.Name.Length <= MAX_NAME_LENGTH)
                 {
                     if (this.Controller.ModifyWebradioName(txbWebradioName.Text, this.IdWebradio))
                         MessageBox.Show("Modification completed", "Success");
@@ -1057,7 +1060,7 @@ namespace WebradioManager
                         MessageBox.Show("This name is already used", "Error");
                 }
                 else
-                    MessageBox.Show("Please enter a valid name. (1-"+ MAX_NAME_LENGTH +" characters)", "Error");
+                    MessageBox.Show("Please enter a valid name. (1-" + MAX_NAME_LENGTH + " characters)", "Error");
             }
         }
 
@@ -1065,7 +1068,6 @@ namespace WebradioManager
         {
             DataGridView dgv = (sender as DataGridView);
             DataGridViewRow row = dgv.Rows[e.RowIndex];
-            Dictionary<string, string> data = new Dictionary<string, string>();
             AudioFile file;
             if (dgv.Tag.ToString() == AudioType.Music.ToString())
             {
@@ -1124,13 +1126,23 @@ namespace WebradioManager
         {
             List<WebradioListener> listeners = this.Controller.UpdateServerListeners(this.IdWebradio);
             dgvServerListeners.Rows.Clear();
-            foreach(WebradioListener listener in listeners)
+            foreach (WebradioListener listener in listeners)
             {
                 string[] infos = new string[] { listener.Hostname, listener.Useragent, listener.ConnectionTime.ToString(), listener.Uid.ToString() };
                 dgvServerListeners.Rows.Add(infos);
             }
             this.Controller.UpdateServerStats(this.IdWebradio);
         }
+
+        private void checkLibraryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.Controller.CheckLibrary())
+                MessageBox.Show("Library has been checked and invalids files has been deleted.", "Success");
+            else
+                MessageBox.Show("An error occured", "Error");
+        }
+
+
 
 
 

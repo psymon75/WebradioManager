@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WebradioManager
 {
-    public class Webradio : ICloneable
+    public class Webradio
     {
         const int DEFAULT_ID = 0;
 
@@ -82,11 +82,6 @@ namespace WebradioManager
             }
         }
 
-        public object Clone()
-        {
-            //TODO
-            return new Webradio("lol");
-        }
 
         public override string ToString()
         {

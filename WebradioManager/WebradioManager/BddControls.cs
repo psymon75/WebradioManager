@@ -56,7 +56,7 @@ namespace WebradioManager
             SQLiteConnection cnn = new SQLiteConnection(BDD_FILENAME);
 		    cnn.Open();
 		    SQLiteCommand mycommand = new SQLiteCommand(cnn);
-		    mycommand.CommandText = sql;
+		    mycommand.CommandText = "PRAGMA foreign_keys = 1;" + sql;
 		    int rowsUpdated = mycommand.ExecuteNonQuery();
 		    cnn.Close();
 		    return rowsUpdated;
@@ -67,7 +67,7 @@ namespace WebradioManager
 	    /// </summary>
 	    /// <param name="sql">The query to run.</param>
 	    /// <returns>A string.</returns>
-	    public string ExecuteScalar(string sql)
+	    public static string ExecuteScalar(string sql)
 	    {
             SQLiteConnection cnn = new SQLiteConnection(BDD_FILENAME);
 		    cnn.Open();

@@ -46,7 +46,7 @@ namespace WebradioManager
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            if (txbName.Text.Trim() != "" && txbName.Text.Length <= MAX_NAME_LENGTH)
+            if (!string.IsNullOrEmpty(txbName.Text.Trim()) && txbName.Text.Length <= MAX_NAME_LENGTH)
             {
                 if (this.Controller.CreateWebradio(txbName.Text))
                     MessageBox.Show("Webradio created !");

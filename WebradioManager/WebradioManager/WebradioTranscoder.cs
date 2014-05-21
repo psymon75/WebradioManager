@@ -215,7 +215,7 @@ namespace WebradioManager
             {
                 foreach (Process prc in Process.GetProcesses())
                 {
-                    if (prc.ProcessName.Contains(this.Process.ProcessName))
+                    if (prc.Id == this.Process.Id)
                     {
                         result = true;
                     }
@@ -300,14 +300,14 @@ namespace WebradioManager
             data["seq"] = "45";
             data["capturedevice"] = "Contrôleur audio haute définition";
             wb.Credentials = new NetworkCredential(DEFAULT_ADMIN, DEFAULT_ADMIN_PASSWORD);
-            var response = wb.UploadValues("http://127.0.0.1:" + this.AdminPort + "/api", "POST", data);
+            wb.UploadValues("http://127.0.0.1:" + this.AdminPort + "/api", "POST", data);
 
             data = new NameValueCollection();
             data["op"] = "capture";
             data["seq"] = "45";
             data["state"] = (active)?"on":"off";
             wb.Credentials = new NetworkCredential(WebradioTranscoder.DEFAULT_ADMIN, WebradioTranscoder.DEFAULT_ADMIN_PASSWORD);
-            response = wb.UploadValues("http://127.0.0.1:" + this.AdminPort + "/api", "POST", data);
+            wb.UploadValues("http://127.0.0.1:" + this.AdminPort + "/api", "POST", data);
         }
 
         public void NextTrack()
@@ -317,7 +317,7 @@ namespace WebradioManager
             data["op"] = "nexttrack";
             data["seq"] = "45";
             wb.Credentials = new NetworkCredential(WebradioTranscoder.DEFAULT_ADMIN, WebradioTranscoder.DEFAULT_ADMIN_PASSWORD);
-            var response = wb.UploadValues("http://127.0.0.1:" + this.AdminPort + "/api", "POST", data);
+            wb.UploadValues("http://127.0.0.1:" + this.AdminPort + "/api", "POST", data);
         }
 
         public override string ToString()

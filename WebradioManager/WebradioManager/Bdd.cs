@@ -283,10 +283,6 @@ namespace WebradioManager
             }
         }
 
-        public bool DuplicateWebradio(int id)
-        {
-            throw new System.NotImplementedException();
-        }
 
         public List<string> GetGenders()
         {

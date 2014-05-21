@@ -76,10 +76,5 @@ namespace WebradioManager
             return this.Model.StopAllProcess();
         }
 
-
-        public void AddServerLog(string line)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

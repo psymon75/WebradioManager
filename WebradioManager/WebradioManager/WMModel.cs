@@ -108,7 +108,7 @@ namespace WebradioManager
 
         private string GetCurrentTrackFromXML(string xml)
         {
-            if (xml != "")
+            if (!string.IsNullOrEmpty(xml))
             {
                 string currentTrack = "";
                 XmlDocument document = new XmlDocument();
@@ -146,7 +146,7 @@ namespace WebradioManager
                     {
                         this.ActiveTranscoders[i].CurrentTrack = currentTrack;
                         needUpdate = true;
-                        if(currentTrack.Trim() != "")
+                        if(!string.IsNullOrEmpty(currentTrack.Trim()))
                             this.Bdd.AddToHistory(this.ActiveTranscoders[i].Id, DateTime.Now, currentTrack);                         
                     }
                 }
@@ -298,6 +298,19 @@ namespace WebradioManager
             return output;
         }
 
+        private Playlist GetPlaylistByName(string name, int webradioId)
+        {
+            Playlist playlist = null;
+            foreach(Playlist p in this.Webradios[webradioId].Playlists)
+            {
+                if(p.Name == name)
+                {
+                    playlist = p;
+                    break;
+                }
+            }
+            return playlist;
+        }
         public bool DuplicateWebradio(int id)
         {
             Webradio webradio = this.Webradios[id];
@@ -313,20 +326,27 @@ namespace WebradioManager
                     //PLAYLIST CONFIGURATION
                     foreach(Playlist playlist in webradio.Playlists)
                     {
-                        int newId;
-                        this.CreatePlaylist(playlist.Name,newWebradio.Name,newWebradio.Id,playlist.Type, out newId);
-                        if(newId != Bdd.ERROR)
+                        Playlist newPlaylist;
+                        if(this.CreatePlaylist(playlist.Name,newWebradio.Name,newWebradio.Id,playlist.Type, out newPlaylist))
                         {
-
+                            newPlaylist.AudioFileList = new List<string>(playlist.AudioFileList);
                         }
                         
                     }
                     //CALENDAR CONFIGURATION
                     foreach(CalendarEvent ev in webradio.Calendar.Events)
                     {
-                        
-                        CalendarEvent newEvent = new CalendarEvent(ev.Name,ev.StartTime,ev.Duration,ev.Repeat,ev.Priority,ev.Shuffle,ev.Loopatend,)
-                        //this.CreateEvent()
+                        Playlist newPlaylistEvent = this.GetPlaylistByName(ev.Playlist.Name, newWebradio.Id);
+                        if(newPlaylistEvent != null)
+                        {
+                            CalendarEvent newEvent = new CalendarEvent(ev.Name, ev.StartTime, ev.Duration, ev.Repeat, ev.Priority, ev.Shuffle, ev.Loopatend, newPlaylistEvent);
+                            this.CreateEvent(newEvent, newWebradio.Id);
+                        }                 
+                    }
+                    //TRANSCODER CONFIGURATION
+                    foreach(WebradioTranscoder transcoder in webradio.Transcoders)
+                    {
+                        this.CreateTranscoder(transcoder.Name, transcoder.StreamType, transcoder.SampleRate, transcoder.Birate, transcoder.Url, transcoder.Ip, transcoder.Port, transcoder.AdminPort, transcoder.Password, newWebradio.Id);
                     }
                     this.UpdateObservers();
                     return true;
@@ -481,11 +501,11 @@ namespace WebradioManager
                 return false;
         }
 
-        public bool CreatePlaylist(string name, string webradioName, int webradioId, AudioType type, out int id)
+        public bool CreatePlaylist(string name, string webradioName, int webradioId, AudioType type, out Playlist newPlaylist)
         {
             Webradio selectedWebradio = this.Webradios[webradioId];
-            Playlist newPlaylist;
-            id = Bdd.ERROR;
+            int id = Bdd.ERROR;
+            newPlaylist = null;
             if (this.IsValidFilename(name))
             {
                 string filename = DEFAULT_WEBRADIOS_FOLDER + webradioName + "/" + DEFAULT_PLAYLISTS_FOLDER + name + ".lst";
@@ -1042,6 +1062,29 @@ namespace WebradioManager
             server.UpdateStats();
             this.UpdateObservers(webradioId);
             return true;
+        }
+
+        public bool CheckLibrary()
+        {
+            try
+            {
+                for (int i = 0; i < this.Library.Count; i++)
+                {
+                    AudioFile file = this.Library[i];
+                    if (!System.IO.File.Exists(file.Filename))
+                    {
+                        this.Bdd.DeleteAudioFile(file.Id);
+                        this.Library.Remove(file);
+                        i--;
+                    }
+                }
+                this.UpdateObservers();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
     }
