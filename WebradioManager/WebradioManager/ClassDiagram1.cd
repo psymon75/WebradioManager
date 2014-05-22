@@ -1,19 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
-  <Class Name="WebradioManager.Webradio">
-    <Position X="3.25" Y="1.75" Width="3.5" />
+  <Class Name="WebradioManager.WebradioServer">
+    <Position X="1.75" Y="0.5" Width="5" />
     <Members>
-      <Field Name="_calendar" Hidden="true" />
-      <Field Name="_id" Hidden="true" />
-      <Field Name="_name" Hidden="true" />
-      <Field Name="_playlists" Hidden="true" />
-      <Field Name="_server" Hidden="true" />
-      <Field Name="_transcoders" Hidden="true" />
-      <Field Name="DEFAULT_ID" Hidden="true" />
+      <Field Name="_adminPassword" Hidden="true" />
+      <Field Name="_configFilename" Hidden="true" />
+      <Field Name="_logFilename" Hidden="true" />
+      <Field Name="_maxListener" Hidden="true" />
+      <Field Name="_password" Hidden="true" />
+      <Field Name="_port" Hidden="true" />
+      <Field Name="_process" Hidden="true" />
+      <Field Name="_stats" Hidden="true" />
+      <Field Name="DEFAULT_ADMIN_LOGIN" Hidden="true" />
+      <Field Name="SC_SERVER_FILENAME" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAASIAAAAAAAAAAEQABAAAQAAAIAAIAEBAAAEgAAAJA=</HashCode>
-      <FileName>Webradio.cs</FileName>
+      <HashCode>ABQgBAQgmDAAAAgAAgAASAAACIAAgkAGIgEAAAAAAAA=</HashCode>
+      <FileName>WebradioServer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Stats" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="WebradioManager.WebradioServerStats">
+    <Position X="1.5" Y="6" Width="2.75" />
+    <Members>
+      <Field Name="_averageTime" Hidden="true" />
+      <Field Name="_currentListeners" Hidden="true" />
+      <Field Name="_peakListeners" Hidden="true" />
+      <Field Name="_uniqueListeners" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAghAAAAAEAEAQAAAgAAAAAAA=</HashCode>
+      <FileName>WebradioServerStats.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.WebradioListener">
+    <Position X="4.5" Y="6" Width="3" />
+    <Members>
+      <Field Name="_connectionTime" Hidden="true" />
+      <Field Name="_hostname" Hidden="true" />
+      <Field Name="_uid" Hidden="true" />
+      <Field Name="_useragent" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAASAFAAAAAQBgAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>WebradioListener.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

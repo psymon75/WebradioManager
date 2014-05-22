@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="WebradioManager.exe" version="1.0.0.0" publicKeyToken="d5a109600e02ce86" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="1396959347_15233.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="WebradioManager" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="WebradioManager.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          Options du manifeste de contrôle de compte d'utilisateur
+          Si vous souhaitez modifier le niveau du contrôle de compte d'utilisateur Windows, remplacez le 
+          nœud requestedExecutionLevel par l'une des propositions suivantes :
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         Si vous souhaitez utiliser la virtualisation de fichiers et du Registre pour la 
+         compatibilité descendante, supprimez le nœud requestedExecutionLevel.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Calendar.DayView.dll" size="45056">
+      <assemblyIdentity name="Calendar.DayView" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>oTE9Jgw0rhIx9CpLl4NcZQ/aKvwV8fFFI4SyV8EeBbg=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itextsharp.dll" size="3964928">
+      <assemblyIdentity name="itextsharp" version="5.4.5.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>X5JBaaiOb585cAwOog6PFvj+PDu9P2j3qz1Qsc6tASQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itextsharp.pdfa.dll" size="69632">
+      <assemblyIdentity name="itextsharp.pdfa" version="5.4.5.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>A83ZSVxX6M20LCqryZgzdaaHvE1OEZWM3ksc0oN3QB0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Data.SQLite.dll" size="893952">
+      <assemblyIdentity name="System.Data.SQLite" version="1.0.92.0" publicKeyToken="DB937BC2D44FF139" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>gvI3U0wFqpsrLox+u0w4aXKyrYnoEhInZ3JI11CxV4o=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="taglib-sharp.dll" size="443392">
+      <assemblyIdentity name="taglib-sharp" version="2.1.0.0" publicKeyToken="DB62EBA44689B5B0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>iuCVedAthcrHWIW2RUfcEpQOm58u5B0cRh9ZkIRQcYg=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WebradioManager.exe" size="363008">
+      <assemblyIdentity name="WebradioManager" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>WQ/27SZVoAtTDmH7aHqdgcl5C4bwLjRHkVX3uBmdA5w=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="1396959347_15233.ico" size="67646">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>348NgSzNst8M1lhGeWN1vIsXmB9bBUxciSUcMylgYQE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Calendar.DayView.dll" size="45056">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>oTE9Jgw0rhIx9CpLl4NcZQ/aKvwV8fFFI4SyV8EeBbg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\sc_serv.exe" size="1206904">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>XQIuDFZkBph1b3cUauqO8PG1fawtNmhZUNuTgM86Low=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\sc_trans.exe" size="3105280">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>mmP2E0L2cj4xz2GEkvmChymAsEtMiaIJ3wPf89wqlic=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="WebradioManager.exe.config" size="186">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>E5pe1Moh3SVgq+7c6PIBn640UkkP2CXKbE7OhyMoiNs=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=CFPI-R104PC04\MENETREYS_INFO" issuerKeyHash="d77573b275234db0217ca84440b84752c4b5c631" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>8suNFrNrNwvWB162vFUe/3qYxRzOOyWDdRjvCzb5pss=</DigestValue></Reference></SignedInfo><SignatureValue>QMUdeOrpaUfPnDeK6U1NJ5PcW6BU3OegrqQ6DvYzIXWYD3ucuSjAHAhOBHuB+QNSSsKYepc5BocLaURFI/LLawYmqgIlSCD57CtQGVFoUiKtIMEHrE5ahMRwBeN4tc1k9o33MGX4i8m/gzffcThJOO4T5yrB3BVC/ru94aVCEb0=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>mRC+MHpIIQ60xTdInajIQSqngyI0+vVrDM8Y0zQr9THLo9ec27hWSc8KMOr8EBxI8+nVSP6gRCKOQQRnj5ATrygGhpfqqk7ceLOuJCDvit/NnKcLbKRocZ+uRv1evdgbKcMxkWoMN4M66WA8R7FNZT+vf76I0tuz9lyzr9GKn5M=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="cba6f9360bef187583253bce1cc5987aff1e55bcb65e07d60b376bb3168dcbf2" Description="" Url=""><as:assemblyIdentity name="WebradioManager.exe" version="1.0.0.0" publicKeyToken="d5a109600e02ce86" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=CFPI-R104PC04\MENETREYS_INFO</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>Cq92Q+ud8Wleb/7wJeA5KpBVkLSpafPo+fi6kkofmMQ=</DigestValue></Reference></SignedInfo><SignatureValue>LOAwsMSYXzgDBAHL4HaRncK4IONSdfB8afrgEqgeNZI0yfhHCSA/VjAjQhQsLjMwxlwDMcBJCYyLA6jGztkKruyswCADYQf+KipMQMgWXdk4lnILoTKt6QZWRwHI1MBMw4HzuBcJh3+z1HjjJ551ePuBTpr1ns6Ub41gy3ANEWA=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>mRC+MHpIIQ60xTdInajIQSqngyI0+vVrDM8Y0zQr9THLo9ec27hWSc8KMOr8EBxI8+nVSP6gRCKOQQRnj5ATrygGhpfqqk7ceLOuJCDvit/NnKcLbKRocZ+uRv1evdgbKcMxkWoMN4M66WA8R7FNZT+vf76I0tuz9lyzr9GKn5M=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIICCTCCAXKgAwIBAgIQZHZjDko4eLhPpfbMeFZtKzANBgkqhkiG9w0BAQsFADBDMUEwPwYDVQQDHjgAQwBGAFAASQAtAFIAMQAwADQAUABDADAANABcAE0ARQBOAEUAVABSAEUAWQBTAF8ASQBOAEYATzAeFw0xNDA1MjIxMzU5MzhaFw0xNTA1MjIxOTU5MzhaMEMxQTA/BgNVBAMeOABDAEYAUABJAC0AUgAxADAANABQAEMAMAA0AFwATQBFAE4ARQBUAFIARQBZAFMAXwBJAE4ARgBPMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCZEL4wekghDrTFN0idqMhBKqeDIjT69WsMzxjTNCv1Mcuj15zbuFZJzwow6vwQHEjz6dVI/qBEIo5BBGePkBOvKAaGl+qqTtx4s64kIO+K382cpwtspGhxn65G/V692BspwzGRagw3gzrpYDxHsU1lP69/vojS27P2XLOv0YqfkwIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAJdzg5aca6cIieJQy8bwbvpcdz5BVkgetGCrOKrdMhCLPi4ZkzO+pqU7nI/9GKfOyfdILwuCKp4YkX99wynOHhhJIfMeOHOueqX1JLiNgjEpToXlelFkC1T1wVMdHQlz1QFKK12kdOPQjq67NA8cmfz0Ef31nRVHH1JUIwwsAK6H</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

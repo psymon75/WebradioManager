@@ -331,7 +331,6 @@ namespace WebradioManager
                         {
                             newPlaylist.AudioFileList = new List<string>(playlist.AudioFileList);
                         }
-                        
                     }
                     //CALENDAR CONFIGURATION
                     foreach(CalendarEvent ev in webradio.Calendar.Events)

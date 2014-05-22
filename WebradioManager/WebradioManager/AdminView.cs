@@ -236,7 +236,6 @@ namespace WebradioManager
         private void UpdateAudioDevices()
         {
             ManagementObjectSearcher objSearcher = new ManagementObjectSearcher("SELECT * FROM Win32_SoundDevice");
-
             ManagementObjectCollection objCollection = objSearcher.Get();
             cmbAudioDevice.Items.Clear();
             foreach (ManagementObject obj in objCollection)
