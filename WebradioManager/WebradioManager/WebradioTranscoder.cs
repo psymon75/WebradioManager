@@ -37,7 +37,7 @@ namespace WebradioManager
         private bool _capture;
         private StreamType _streamType;
         private Process _process;
-        private static int[] _avaliableBitrates = { 64000, 96000, 128000, 256000 };
+        private static int[] _avaliableBitrates = { 64000, 96000, 128000, 256000, 320000 };
         private static int[] _avaliableSampleRates = { 44100 };
 
 

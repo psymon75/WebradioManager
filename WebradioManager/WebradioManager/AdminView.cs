@@ -1,44 +1,88 @@
-﻿using Calendar;
+﻿/**
+/// \file AdminView.cs
+///
+/// \brief Implements the admin view class.
+**/
+
+using Calendar;
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Management;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WebradioManager
 {
+    /**
+    /// \class AdminView
+    ///
+    /// \brief An admin view.
+    ///
+    /// \author Simon Menetrey
+    /// \date 23.05.2014
+    **/
+
     public partial class AdminView : Form
     {
+        #region Const
+        /// \brief The default search string.
         const string DEFAULT_SEARCH_STRING = "Search...";
+        /// \brief The maximum name length.
         const int MAX_NAME_LENGTH = 255;
+        #endregion
 
+        #region Fields
+        /// \brief The controller.
         private AdminController _controller;
+        /// \brief The identifier of the current webradio.
         private int _idWebradio;
+        /// \brief The webradio's name.
         private string _nameWebradio;
+        /// \brief The events for calendar.
         List<EventAppointment> _events;
-
+        #endregion
 
         #region Properties
+
+        /**
+        /// \property public string NameWebradio
+        ///
+        /// \brief Gets or sets the webradio's name.
+        ///
+        /// \return The name webradio.
+        **/
+
         public string NameWebradio
         {
             get { return _nameWebradio; }
             set { _nameWebradio = value; }
         }
+
+        /**
+        /// \property public List<EventAppointment> EventsCalendar
+        ///
+        /// \brief Gets or sets the events calendar.
+        ///
+        /// \return The events calendar.
+        **/
+
         public List<EventAppointment> EventsCalendar
         {
             get { return _events; }
             set { _events = value; }
         }
+
+        /**
+        /// \property public int IdWebradio
+        ///
+        /// \brief Gets or sets the identifier of the current webradio.
+        ///
+        /// \return The identifier webradio.
+        **/
 
         public int IdWebradio
         {
@@ -46,12 +90,32 @@ namespace WebradioManager
             set { _idWebradio = value; }
         }
 
+        /**
+        /// \property public AdminController Controller
+        ///
+        /// \brief Gets or sets the controller.
+        ///
+        /// \return The controller.
+        **/
+
         public AdminController Controller
         {
             get { return _controller; }
             set { _controller = value; }
         }
         #endregion
+
+        /**
+        /// \fn public AdminView(int idWebradio, AdminController controller)
+        ///
+        /// \brief Constructor.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param idWebradio The webradio's identifier.
+        /// \param controller The controller.
+        **/
 
         public AdminView(int idWebradio, AdminController controller)
         {
@@ -62,6 +126,14 @@ namespace WebradioManager
             this.UpdateAudioDevices();
         }
 
+        /**
+        /// \fn public void UpdateView()
+        ///
+        /// \brief Updates the view.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        **/
 
         public void UpdateView()
         {
@@ -225,6 +297,17 @@ namespace WebradioManager
             //----            
         }
 
+        /**
+        /// \fn private void ShowServerStats(WebradioServerStats stats)
+        ///
+        /// \brief Shows the server statistics.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param stats The statistics.
+        **/
+
         private void ShowServerStats(WebradioServerStats stats)
         {
             lblNumberListeners.Text = stats.CurrentListeners.ToString();
@@ -232,6 +315,15 @@ namespace WebradioManager
             lblUniqueListeners.Text = stats.UniqueListeners.ToString();
             lblAverageTime.Text = stats.AverageTime.ToString();
         }
+
+        /**
+        /// \fn private void UpdateAudioDevices()
+        ///
+        /// \brief Updates the audio devices.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        **/
 
         private void UpdateAudioDevices()
         {
@@ -250,6 +342,18 @@ namespace WebradioManager
             if (cmbAudioDevice.Items.Count > 0)
                 cmbAudioDevice.SelectedIndex = 0;
         }
+
+        /**
+        /// \fn void dvwTimetable_SelectionChanged(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by dvwTimetable for selection changed events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
 
         void dvwTimetable_SelectionChanged(object sender, EventArgs e)
         {
@@ -279,6 +383,17 @@ namespace WebradioManager
             mtbDuration.Text = (end - start).ToString();
         }
 
+        /**
+        /// \fn private void dvwTimetable_ResolveAppointments(object sender, ResolveAppointmentsEventArgs args)
+        ///
+        /// \brief Event handler. Called by dvwTimetable for resolve appointments events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param args   Resolve appointments event information.
+        **/
 
         private void dvwTimetable_ResolveAppointments(object sender, ResolveAppointmentsEventArgs args)
         {
@@ -290,22 +405,52 @@ namespace WebradioManager
 
         }
 
+        /**
+        /// \fn private void AdminView_FormClosing(object sender, FormClosingEventArgs e)
+        ///
+        /// \brief Event handler. Called by AdminView for form closing events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Form closing event information.
+        **/
 
         private void AdminView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("All transcoders and the server will be shuting down. Are you sure ?", "Close", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            if (this.Controller.GetSimilarViewCount(this.IdWebradio) == 1)
             {
-                if (this.Controller.StopAllTranscoders(this.IdWebradio))
-                    this.Controller.FormClose();
-                else
+                if (MessageBox.Show("All transcoders and the server will be shuting down. Are you sure ?", "Close", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    MessageBox.Show("An error has occured", "Error");
-                    e.Cancel = true;
+                    if (this.Controller.StopAllTranscoders(this.IdWebradio))
+                        this.Controller.FormClose();
+                    else
+                    {
+                        MessageBox.Show("An error has occured", "Error");
+                        e.Cancel = true;
+                    }
                 }
+                else
+                    e.Cancel = true;
             }
             else
-                e.Cancel = true;
-        }
+            {
+                this.Controller.FormClose();
+            }
+         }
+
+        /**
+        /// \fn private void ImportFolder_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by ImportFolder for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
 
         private void ImportFolder_Click(object sender, EventArgs e)
         {
@@ -330,6 +475,18 @@ namespace WebradioManager
             }
         }
 
+        /**
+        /// \fn private void ImportFiles_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by ImportFiles for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
+
         private void ImportFiles_Click(object sender, EventArgs e)
         {
             AudioType type;
@@ -346,6 +503,18 @@ namespace WebradioManager
             }
         }
 
+        /**
+        /// \fn private void txbSearchEnter(object sender, EventArgs e)
+        ///
+        /// \brief Txb search enter.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
+
         private void txbSearchEnter(object sender, EventArgs e)
         {
             TextBox txb = (sender as TextBox);
@@ -353,12 +522,36 @@ namespace WebradioManager
                 txb.Text = "";
         }
 
+        /**
+        /// \fn private void txbSearchLeave(object sender, EventArgs e)
+        ///
+        /// \brief Txb search leave.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
+
         private void txbSearchLeave(object sender, EventArgs e)
         {
             TextBox txb = (sender as TextBox);
             if (!string.IsNullOrEmpty(txb.Text))
                 txb.Text = "Search...";
         }
+
+        /**
+        /// \fn private void btnDeleteLibrary_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnDeleteLibrary for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
 
         private void btnDeleteLibrary_Click(object sender, EventArgs e)
         {
@@ -384,6 +577,18 @@ namespace WebradioManager
             else
                 MessageBox.Show("An error occured");
         }
+
+        /**
+        /// \fn private void txbSearchTextChanged(object sender, EventArgs e)
+        ///
+        /// \brief Txb search text changed.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
 
         private void txbSearchTextChanged(object sender, EventArgs e)
         {
@@ -416,6 +621,18 @@ namespace WebradioManager
             }
         }
 
+        /**
+        /// \fn private void btnCreatePlaylist_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnCreatePlaylist for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
+
         private void btnCreatePlaylist_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txbPlaylistName.Text.Trim()) && txbPlaylistName.Text.Length <= MAX_NAME_LENGTH)
@@ -427,6 +644,18 @@ namespace WebradioManager
                 MessageBox.Show("Please enter a valid playlist's name. (1-" + MAX_NAME_LENGTH + " characters)", "Empty name");
         }
 
+        /**
+        /// \fn private void btnDeletePlaylistClick(object sender, EventArgs e)
+        ///
+        /// \brief Button delete playlist click.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
+
         private void btnDeletePlaylistClick(object sender, EventArgs e)
         {
             AudioType type;
@@ -437,6 +666,18 @@ namespace WebradioManager
             else
                 MessageBox.Show("Please select a playlist to delete.", "No playlist selected");
         }
+
+        /**
+        /// \fn private void btnAddToClick(object sender, EventArgs e)
+        ///
+        /// \brief Button add to click.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
 
         private void btnAddToClick(object sender, EventArgs e)
         {
@@ -458,6 +699,18 @@ namespace WebradioManager
 
         }
 
+        /**
+        /// \fn private void lsbPlaylistsSelectedIndexChanged(object sender, EventArgs e)
+        ///
+        /// \brief LSB playlists selected index changed.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
+
         private void lsbPlaylistsSelectedIndexChanged(object sender, EventArgs e)
         {
             ListBox lsb = sender as ListBox;
@@ -468,6 +721,17 @@ namespace WebradioManager
                 this.GetPlaylistContent((Playlist)lsb.SelectedItem);
             }
         }
+
+        /**
+        /// \fn private void GetPlaylistContent(Playlist playlist)
+        ///
+        /// \brief Gets playlist content.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param playlist The playlist.
+        **/
 
         private void GetPlaylistContent(Playlist playlist)
         {
@@ -481,6 +745,18 @@ namespace WebradioManager
             }
             lblPlaylistDuration.Text = "Duration : " + totalDuration.ToString();
         }
+
+        /**
+        /// \fn private void btnRemoveFromPlaylist_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnRemoveFromPlaylist for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
 
         private void btnRemoveFromPlaylist_Click(object sender, EventArgs e)
         {
@@ -510,6 +786,18 @@ namespace WebradioManager
 
         }
 
+        /**
+        /// \fn private void txbSearchPlaylistContent_TextChanged(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by txbSearchPlaylistContent for text changed events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
+
         private void txbSearchPlaylistContent_TextChanged(object sender, EventArgs e)
         {
             string searchString = "";
@@ -533,6 +821,19 @@ namespace WebradioManager
             }
         }
 
+        /**
+        /// \fn private void cmbTypePlaylistGenerate_SelectedIndexChanged(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by cmbTypePlaylistGenerate for selected index changed
+        /// events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
+
         private void cmbTypePlaylistGenerate_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbTypePlaylistGenerate.SelectedItem.ToString() == AudioType.Ad.ToString())
@@ -540,6 +841,18 @@ namespace WebradioManager
             else
                 cmbGenderGenerate.Enabled = true;
         }
+
+        /**
+        /// \fn private void btnGeneratePlaylist_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnGeneratePlaylist for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
 
         private void btnGeneratePlaylist_Click(object sender, EventArgs e)
         {
@@ -557,6 +870,18 @@ namespace WebradioManager
                 MessageBox.Show("Please enter a valid playlist's name. (1-" + MAX_NAME_LENGTH + " characters)", "Error");
         }
 
+        /**
+        /// \fn private void ckbCheckedChanged(object sender, EventArgs e)
+        ///
+        /// \brief Ckb checked changed.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
+
         private void ckbCheckedChanged(object sender, EventArgs e)
         {
             if ((sender as CheckBox).Name == "ckbAll")
@@ -571,6 +896,18 @@ namespace WebradioManager
             }
 
         }
+
+        /**
+        /// \fn private void btnCreateEvent_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnCreateEvent for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
 
         private void btnCreateEvent_Click(object sender, EventArgs e)
         {
@@ -609,6 +946,18 @@ namespace WebradioManager
                 MessageBox.Show("Please enter a valid event's name. (1-" + MAX_NAME_LENGTH + " characters)", "Error");
         }
 
+        /**
+        /// \fn private void dvwTimetable_MouseUp(object sender, MouseEventArgs e)
+        ///
+        /// \brief Event handler. Called by dvwTimetable for mouse up events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Mouse event information.
+        **/
+
         private void dvwTimetable_MouseUp(object sender, MouseEventArgs e)
         {
             if (dvwTimetable.Selection == SelectionType.Appointment)
@@ -634,6 +983,17 @@ namespace WebradioManager
             }
         }
 
+        /**
+        /// \fn private int GetRepeatValue()
+        ///
+        /// \brief Gets repeat value.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \return The repeat value.
+        **/
+
         private int GetRepeatValue()
         {
             int repeat = 0;
@@ -647,6 +1007,19 @@ namespace WebradioManager
             return repeat;
         }
 
+        /**
+        /// \fn private List<EventAppointment> GetAllRelatedAppointment(EventAppointment app)
+        ///
+        /// \brief Gets all related appointment.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param app The application.
+        ///
+        /// \return all related appointment.
+        **/
+
         private List<EventAppointment> GetAllRelatedAppointment(EventAppointment app)
         {
             List<EventAppointment> eventList = new List<EventAppointment>();
@@ -658,6 +1031,19 @@ namespace WebradioManager
 
             return eventList;
         }
+
+        /**
+        /// \fn private int GetRepeatValueFromAppointement(List<EventAppointment> eventList)
+        ///
+        /// \brief Gets repeat value from appointement.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param eventList List of events.
+        ///
+        /// \return The repeat value from appointement.
+        **/
 
         private int GetRepeatValueFromAppointement(List<EventAppointment> eventList)
         {
@@ -674,6 +1060,19 @@ namespace WebradioManager
             }
             return repeat;
         }
+
+        /**
+        /// \fn private bool CheckMovePossible(EventAppointment app)
+        ///
+        /// \brief Check move possible.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param app The application.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
 
         private bool CheckMovePossible(EventAppointment app)
         {
@@ -692,6 +1091,18 @@ namespace WebradioManager
             return result;
         }
 
+        /**
+        /// \fn private void dvwTimetable_MouseClick(object sender, MouseEventArgs e)
+        ///
+        /// \brief Event handler. Called by dvwTimetable for mouse click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Mouse event information.
+        **/
+
         private void dvwTimetable_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
@@ -706,6 +1117,18 @@ namespace WebradioManager
                 }
             }
         }
+
+        /**
+        /// \fn private void btnCreateTranscoder_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnCreateTranscoder for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
 
         private void btnCreateTranscoder_Click(object sender, EventArgs e)
         {
@@ -729,6 +1152,18 @@ namespace WebradioManager
                 MessageBox.Show("Please enter a valid stream's name and a server's password.(1-" + MAX_NAME_LENGTH + " characters)", "Error");
         }
 
+        /**
+        /// \fn private void btnDeleteTranscoder_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnDeleteTranscoder for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
+
         private void btnDeleteTranscoder_Click(object sender, EventArgs e)
         {
             if (lsbTranscoders.SelectedIndex >= 0)
@@ -740,10 +1175,33 @@ namespace WebradioManager
                 MessageBox.Show("Please select a transcoder to delete", "Error");
         }
 
+        /**
+        /// \fn private void lsbTranscoders_SelectedIndexChanged(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by lsbTranscoders for selected index changed events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
+
         private void lsbTranscoders_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.ShowTranscoderInfos((WebradioTranscoder)lsbTranscoders.SelectedItem);
         }
+
+        /**
+        /// \fn private void ShowTranscoderInfos(WebradioTranscoder transcoder)
+        ///
+        /// \brief Shows the transcoder infos.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param transcoder The transcoder.
+        **/
 
         private void ShowTranscoderInfos(WebradioTranscoder transcoder)
         {
@@ -772,6 +1230,17 @@ namespace WebradioManager
             }
         }
 
+        /**
+        /// \fn private void btnUpdate_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnUpdate for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -813,6 +1282,18 @@ namespace WebradioManager
                 MessageBox.Show("Please select a transcoder", "Error");
         }
 
+        /**
+        /// \fn private void btnStartTranscoder_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnStartTranscoder for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
+
         private void btnStartTranscoder_Click(object sender, EventArgs e)
         {
             if (lsbTranscoders.SelectedIndex >= 0)
@@ -830,6 +1311,17 @@ namespace WebradioManager
                 MessageBox.Show("Please select a transcoder", "Error");
         }
 
+        /**
+        /// \fn private void btnStopTranscoder_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnStopTranscoder for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
 
         private void btnStopTranscoder_Click(object sender, EventArgs e)
         {
@@ -849,6 +1341,18 @@ namespace WebradioManager
 
         }
 
+        /**
+        /// \fn private void btnShowTranscoderLog_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnShowTranscoderLog for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
+
         private void btnShowTranscoderLog_Click(object sender, EventArgs e)
         {
             if (lsbTranscoders.SelectedIndex >= 0)
@@ -864,10 +1368,34 @@ namespace WebradioManager
             }
         }
 
+        /**
+        /// \fn private void generateAllConfigsToolStripMenuItem_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by generateAllConfigsToolStripMenuItem for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
+
         private void generateAllConfigsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Controller.GenerateAllConfigs(this.IdWebradio);
         }
+
+        /**
+        /// \fn private void btnSaveServer_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnSaveServer for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
 
         private void btnSaveServer_Click(object sender, EventArgs e)
         {
@@ -890,11 +1418,35 @@ namespace WebradioManager
             }
         }
 
+        /**
+        /// \fn private void btnStartServer_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnStartServer for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
+
         private void btnStartServer_Click(object sender, EventArgs e)
         {
             if (!this.Controller.StartServer(this.IdWebradio, ckbServerDebug.Checked))
                 MessageBox.Show("An error has occured.\n- Please terminate sc_server process.\n- Please check that sc_serv.exe is in the shoutcast folder.", "Error");
         }
+
+        /**
+        /// \fn private void btnStopServer_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnStopServer for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
 
         private void btnStopServer_Click(object sender, EventArgs e)
         {
@@ -902,20 +1454,68 @@ namespace WebradioManager
                 MessageBox.Show("An error has occured. Please terminate sc_server process.", "Error");
         }
 
+        /**
+        /// \fn private void btnShowWebInterface_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnShowWebInterface for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
+
         private void btnShowWebInterface_Click(object sender, EventArgs e)
         {
             this.Controller.ShowServerWebInterface(this.IdWebradio);
         }
+
+        /**
+        /// \fn private void btnShowWebAdministration_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnShowWebAdministration for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
 
         private void btnShowWebAdministration_Click(object sender, EventArgs e)
         {
             this.Controller.ShowServerWebAdmin(this.IdWebradio);
         }
 
+        /**
+        /// \fn private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by aboutToolStripMenuItem for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
+
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("WebradioManager V0.1\nSimon Menetrey\nTravail de diplôme 2014", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        /**
+        /// \fn private void btnShowServerLog_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnShowServerLog for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
 
         private void btnShowServerLog_Click(object sender, EventArgs e)
         {
@@ -929,6 +1529,17 @@ namespace WebradioManager
             }
         }
 
+        /**
+        /// \fn private void btnResolve_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnResolve for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
 
         private void btnResolve_Click(object sender, EventArgs e)
         {
@@ -948,7 +1559,21 @@ namespace WebradioManager
 
         }
 
-        //http://www.codeproject.com/Tips/440861/Resolving-a-hostname-in-Csharp-and-retrieving-IP-v
+        /**
+        /// \fn private static bool GetResolvedConnecionIPAddress(string serverNameOrURL, out IPAddress resolvedIPAddress)
+        ///
+        /// \brief http://www.codeproject.com/Tips/440861/Resolving-a-hostname-in-Csharp-and-retrieving-
+        /// IP-v.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param serverNameOrURL         URL of the server name or.
+        /// \param [out] resolvedIPAddress The resolved IP address.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
+
         private static bool GetResolvedConnecionIPAddress(string serverNameOrURL,
                    out IPAddress resolvedIPAddress)
         {
@@ -1001,6 +1626,18 @@ namespace WebradioManager
             return isResolved;
         }
 
+        /**
+        /// \fn private void btnNextTrack_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnNextTrack for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
+
         private void btnNextTrack_Click(object sender, EventArgs e)
         {
             if (lsbTranscoders.SelectedIndex >= 0)
@@ -1011,6 +1648,18 @@ namespace WebradioManager
             else
                 MessageBox.Show("Please select a running transcoder.", "Error");
         }
+
+        /**
+        /// \fn private void btnClearHistory_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnClearHistory for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
 
         private void btnClearHistory_Click(object sender, EventArgs e)
         {
@@ -1024,6 +1673,18 @@ namespace WebradioManager
             else
                 MessageBox.Show("Please select a transcoder.", "Error");
         }
+
+        /**
+        /// \fn private void btnGenerateHistory_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnGenerateHistory for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
 
         private void btnGenerateHistory_Click(object sender, EventArgs e)
         {
@@ -1047,6 +1708,18 @@ namespace WebradioManager
                 MessageBox.Show("Please select a transcoder.", "Error");
         }
 
+        /**
+        /// \fn private void btnModifyName_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnModifyName for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
+
         private void btnModifyName_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("To rename this webradio, all running process (transcoder and server) will be shutting down. Are you sure ?", "Process", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
@@ -1062,6 +1735,18 @@ namespace WebradioManager
                     MessageBox.Show("Please enter a valid name. (1-" + MAX_NAME_LENGTH + " characters)", "Error");
             }
         }
+
+        /**
+        /// \fn private void dgvCellEndEdit(object sender, DataGridViewCellEventArgs e)
+        ///
+        /// \brief Dgv cell end edit.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Data grid view cell event information.
+        **/
 
         private void dgvCellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -1096,10 +1781,34 @@ namespace WebradioManager
                 MessageBox.Show("An error has occured", "Error");
         }
 
+        /**
+        /// \fn private void btnUpdateAudioDevice_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnUpdateAudioDevice for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
+
         private void btnUpdateAudioDevice_Click(object sender, EventArgs e)
         {
             this.UpdateAudioDevices();
         }
+
+        /**
+        /// \fn private void btnStartCapture_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnStartCapture for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
 
         private void btnStartCapture_Click(object sender, EventArgs e)
         {
@@ -1111,6 +1820,18 @@ namespace WebradioManager
                 MessageBox.Show("Please select a transcoder.", "Error");
         }
 
+        /**
+        /// \fn private void btnStopCapture_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnStopCapture for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
+
         private void btnStopCapture_Click(object sender, EventArgs e)
         {
             if (lsbTranscoders.SelectedIndex >= 0)
@@ -1121,9 +1842,21 @@ namespace WebradioManager
                 MessageBox.Show("Please select a transcoder.", "Error");
         }
 
+        /**
+        /// \fn private void btnUpdateListeners_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by btnUpdateListeners for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
+
         private void btnUpdateListeners_Click(object sender, EventArgs e)
         {
-            List<WebradioListener> listeners = this.Controller.UpdateServerListeners(this.IdWebradio);
+            List<WebradioListener> listeners = this.Controller.GetServerListeners(this.IdWebradio);
             dgvServerListeners.Rows.Clear();
             foreach (WebradioListener listener in listeners)
             {
@@ -1132,6 +1865,18 @@ namespace WebradioManager
             }
             this.Controller.UpdateServerStats(this.IdWebradio);
         }
+
+        /**
+        /// \fn private void checkLibraryToolStripMenuItem_Click(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by checkLibraryToolStripMenuItem for click events.
+        ///
+        /// \author Simon Menetrey
+        /// \date 23.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
 
         private void checkLibraryToolStripMenuItem_Click(object sender, EventArgs e)
         {

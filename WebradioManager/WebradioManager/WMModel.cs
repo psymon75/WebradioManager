@@ -174,6 +174,20 @@ namespace WebradioManager
             this.Observers.Remove(observer);
         }
 
+        public int GetSimiliarViewCount(int webradioId)
+        {
+            int ret = 0;
+            foreach(IController controler in this.Observers)
+            {
+                if(controler is AdminController)
+                {
+                    if ((controler as AdminController).View.IdWebradio == webradioId)
+                        ret++;
+                }
+            }
+            return ret;
+        }
+
         private void UpdateObservers(int webradioId)
         {
             foreach (IController controller in this.Observers)
