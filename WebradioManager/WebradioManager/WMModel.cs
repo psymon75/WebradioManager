@@ -1,73 +1,154 @@
-﻿using iTextSharp.text;
+﻿/**
+/// \file WMModel.cs
+///
+/// \brief Implements the wm model class.
+**/
+
+using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
-using System.Windows.Forms;
 using System.Xml;
-using System.Xml.Linq;
-using TagLib;
 
 namespace WebradioManager
 {
+    /**
+    /// \class WMModel
+    ///
+    /// \brief A data Model for the WebradioManager project.
+    ///
+    /// \author Simon Menetrey
+    /// \date 26.05.2014
+    **/
 
     public class WMModel
     {
-        //Defaults constants
+        #region Const
+        //Default
+        /// \brief Defaults webradio's folder.
         public const string DEFAULT_WEBRADIOS_FOLDER = "webradios/";
+        /// \brief The default shoutcast folder.
         public const string DEFAULT_SHOUTCAST_FOLDER = "shoutcast/";
+        /// \brief The default logfilename.
         const string DEFAULT_LOGFILENAME = "log.txt";
+        /// \brief The default configfilename.
         const string DEFAULT_CONFIGFILENAME = "config.config";
+        /// \brief The default password.
         const string DEFAULT_PASSWORD = "1234";
+        /// \brief The maximum name length.
         const int MAX_NAME_LENGTH = 255;
 
-        //SERVER CONSTANTS
+        //Server
+        /// \brief Default server folder
         const string DEFAULT_SERVER_FOLDER = "server/";
+        /// \brief The default server port.
         const int DEFAULT_SERVER_PORT = 8000;
+        /// \brief The default maximum listener.
         const int DEFAULT_MAX_LISTENER = 32;
+        /// \brief The default server password.
         const string DEFAULT_SERVER_PASSWORD = "1234";
-        //CALENDAR CONSTANTS
+        
+        //Calendar
+        /// \brief Default calendar's filename
         public const string DEFAULT_CALENDAR_FILENAME = "calendar.xml";
-        //PLAYLISTS CONSTANTS
+
+        //Playlist
+        /// \brief Default playlist folder
         const string DEFAULT_PLAYLISTS_FOLDER = "playlists/";
+        /// \brief The maximum try generate.
         const int MAX_TRY_GENERATE = 10;
-        //TRANSCODERS CONSTANTS
+
+        //Transcoder
+        /// \brief Default transcoders folder
         const string DEFAULT_TRANSCODERS_FOLDER = "transcoders/";
+        #endregion
 
+        #region Fields
+        /// \brief The webradios list (id,webradio object).
         private Dictionary<int, Webradio> _webradios;
+        /// \brief The observers list.
         private List<IController> _observers;
+        /// \brief The bdd.
         private Bdd _bdd;
+        /// \brief The library.
         private List<AudioFile> _library;
+        /// \brief The process watcher.
         private System.Windows.Forms.Timer _processWatcher;
+        /// \brief The active transcoders list.
         private List<WebradioTranscoder> _activeTranscoders;
+        /// \brief The active servers list.
         private List<WebradioServer> _activeServers;
-
+        #endregion
 
         #region Properties
+
+        /**
+        /// \property public List<WebradioServer> ActiveServers
+        ///
+        /// \brief Gets or sets the active servers list.
+        ///
+        /// \return The active servers.
+        **/
+
+        public List<WebradioServer> ActiveServers
+        {
+            get { return _activeServers; }
+            set { _activeServers = value; }
+        }
+
+        /**
+        /// \property public List<WebradioTranscoder> ActiveTranscoders
+        ///
+        /// \brief Gets or sets the active transcoders list.
+        ///
+        /// \return The active transcoders.
+        **/
 
         public List<WebradioTranscoder> ActiveTranscoders
         {
             get { return _activeTranscoders; }
             set { _activeTranscoders = value; }
         }
+
+        /**
+        /// \property public System.Windows.Forms.Timer ProcessWatcher
+        ///
+        /// \brief Gets or sets the process watcher.
+        ///
+        /// \return The process watcher.
+        **/
+
         public System.Windows.Forms.Timer ProcessWatcher
         {
             get { return _processWatcher; }
             set { _processWatcher = value; }
         }
+
+        /**
+        /// \property public Bdd Bdd
+        ///
+        /// \brief Gets or sets the bdd.
+        ///
+        /// \return The bdd.
+        **/
+
         public Bdd Bdd
         {
             get { return _bdd; }
             set { _bdd = value; }
         }
+
+        /**
+        /// \property public List<IController> Observers
+        ///
+        /// \brief Gets or sets the observers.
+        ///
+        /// \return The observers.
+        **/
 
         public List<IController> Observers
         {
@@ -75,11 +156,27 @@ namespace WebradioManager
             set { _observers = value; }
         }
 
+        /**
+        /// \property public Dictionary<int, Webradio> Webradios
+        ///
+        /// \brief Gets or sets the webradios.
+        ///
+        /// \return The webradios.
+        **/
+
         public Dictionary<int, Webradio> Webradios
         {
             get { return _webradios; }
             set { _webradios = value; }
         }
+
+        /**
+        /// \property public List<AudioFile> Library
+        ///
+        /// \brief Gets or sets the library.
+        ///
+        /// \return The library.
+        **/
 
         public List<AudioFile> Library
         {
@@ -87,11 +184,18 @@ namespace WebradioManager
             set { _library = value; }
         }
         #endregion
-        public List<WebradioServer> ActiveServers
-        {
-            get { return _activeServers; }
-            set { _activeServers = value; }
-        }
+
+        #region Methods
+
+        /**
+        /// \fn public WMModel()
+        ///
+        /// \brief Default constructor.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        **/
+
         public WMModel()
         {
             this.Webradios = new Dictionary<int, Webradio>();
@@ -105,6 +209,20 @@ namespace WebradioManager
             this.ProcessWatcher.Interval = 1000;
             this.ProcessWatcher.Start();
         }
+
+        /**
+        /// \fn private string GetCurrentTrackFromXML(string xml)
+        ///
+        /// \brief Gets current track from XML.
+        ///        http://wiki.winamp.com/wiki/SHOUTcast_Transcoder_AJAX_api_Specification#GetStatus
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param xml The XML.
+        ///
+        /// \return The current track's filename.
+        **/
 
         private string GetCurrentTrackFromXML(string xml)
         {
@@ -127,6 +245,19 @@ namespace WebradioManager
             else
                 return xml;
         }
+
+        /**
+        /// \fn void ProcessWatcher_Tick(object sender, EventArgs e)
+        ///
+        /// \brief Event handler. Called by ProcessWatcher for tick events.
+        ///        Check all active process and get current track for each active transcoder
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param sender Source of the event.
+        /// \param e      Event information.
+        **/
 
         void ProcessWatcher_Tick(object sender, EventArgs e)
         {
@@ -164,15 +295,50 @@ namespace WebradioManager
                 this.UpdateObservers();
         }
 
+        /**
+        /// \fn public void AddObserver(IController observer)
+        ///
+        /// \brief Adds an observer.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param observer The observer.
+        **/
+
         public void AddObserver(IController observer)
         {
             this.Observers.Add(observer);
         }
 
+        /**
+        /// \fn public void RemoveObserver(IController observer)
+        ///
+        /// \brief Removes the observer described by observer.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param observer The observer.
+        **/
+
         public void RemoveObserver(IController observer)
         {
             this.Observers.Remove(observer);
         }
+
+        /**
+        /// \fn public int GetSimiliarViewCount(int webradioId)
+        ///
+        /// \brief Gets similiar view count.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param webradioId Identifier for the webradio.
+        ///
+        /// \return The similiar view count.
+        **/
 
         public int GetSimiliarViewCount(int webradioId)
         {
@@ -188,6 +354,17 @@ namespace WebradioManager
             return ret;
         }
 
+        /**
+        /// \fn private void UpdateObservers(int webradioId)
+        ///
+        /// \brief Updates the observers described by webradioId.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param webradioId Identifier for the webradio.
+        **/
+
         private void UpdateObservers(int webradioId)
         {
             foreach (IController controller in this.Observers)
@@ -200,6 +377,15 @@ namespace WebradioManager
             }
         }
 
+        /**
+        /// \fn private void UpdateObservers()
+        ///
+        /// \brief Updates the observers.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        **/
+
         private void UpdateObservers()
         {
             foreach (IController controller in this.Observers)
@@ -208,16 +394,45 @@ namespace WebradioManager
             }
         }
 
+        /**
+        /// \fn public void LoadLibrary()
+        ///
+        /// \brief Loads the library.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        **/
+
         public void LoadLibrary()
         {
             this.Library = this.Bdd.LoadLibrary();
         }
+
+        /**
+        /// \fn public void CheckFolders(int webradioId)
+        ///
+        /// \brief Check folders.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param webradioId Identifier for the webradio.
+        **/
 
         public void CheckFolders(int webradioId)
         {
             if (!Directory.Exists(DEFAULT_WEBRADIOS_FOLDER + this.Webradios[webradioId].Name))
                 Directory.CreateDirectory(DEFAULT_WEBRADIOS_FOLDER + this.Webradios[webradioId].Name);
         }
+
+        /**
+        /// \fn public void LoadWebradios()
+        ///
+        /// \brief Loads the webradios.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        **/
 
         public void LoadWebradios()
         {
@@ -228,10 +443,36 @@ namespace WebradioManager
             this.Webradios = this.Bdd.LoadWebradios();
         }
 
+        /**
+        /// \fn public Webradio GetWebradio(int id)
+        ///
+        /// \brief Gets a webradio.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param id The identifier.
+        ///
+        /// \return The webradio.
+        **/
+
         public Webradio GetWebradio(int id)
         {
             return this.Webradios[id];
         }
+
+        /**
+        /// \fn public Webradio GetWebradioByName(string name)
+        ///
+        /// \brief Gets webradio by name.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param name The name.
+        ///
+        /// \return The webradio by name.
+        **/
 
         public Webradio GetWebradioByName(string name)
         {
@@ -247,6 +488,17 @@ namespace WebradioManager
             return ret;
         }
 
+        /**
+        /// \fn public List<Webradio> GetWebradios()
+        ///
+        /// \brief Gets the webradios list.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \return The webradios list.
+        **/
+
         public List<Webradio> GetWebradios()
         {
             //Get only webradios with its name and id and without useless stuffs for SelectionView
@@ -257,6 +509,19 @@ namespace WebradioManager
             }
             return list;
         }
+
+        /**
+        /// \fn public bool CreateWebradio(string name)
+        ///
+        /// \brief Creates a webradio.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param name The name.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
 
         public bool CreateWebradio(string name)
         {
@@ -293,6 +558,19 @@ namespace WebradioManager
                 return false;
         }
 
+        /**
+        /// \fn public bool DeleteWebradio(int id)
+        ///
+        /// \brief Deletes the webradio described by ID.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param id The identifier.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
+
         public bool DeleteWebradio(int id)
         {
             bool output = false;
@@ -301,6 +579,20 @@ namespace WebradioManager
             //Delete webradio from model
             try
             {
+                for(int i = 0; i < this.Observers.Count; i++)
+                {
+                    AdminController ac = null;
+                    if(this.Observers[i] is AdminController)
+                    {
+                        ac = this.Observers[i] as AdminController;
+                        if(ac.View.IdWebradio == id)
+                        {
+                            ac.View.Close();
+                            this.RemoveObserver(ac);
+                            i--;
+                        }
+                    }
+                }
                 this.Webradios.Remove(id);
                 output = true;
             }
@@ -311,6 +603,20 @@ namespace WebradioManager
 
             return output;
         }
+
+        /**
+        /// \fn private Playlist GetPlaylistByName(string name, int webradioId)
+        ///
+        /// \brief Gets playlist by name.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param name       The name.
+        /// \param webradioId Identifier for the webradio.
+        ///
+        /// \return The playlist by name.
+        **/
 
         private Playlist GetPlaylistByName(string name, int webradioId)
         {
@@ -325,6 +631,20 @@ namespace WebradioManager
             }
             return playlist;
         }
+
+        /**
+        /// \fn public bool DuplicateWebradio(int id)
+        ///
+        /// \brief Duplicate webradio.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param id The identifier.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
+
         public bool DuplicateWebradio(int id)
         {
             Webradio webradio = this.Webradios[id];
@@ -374,15 +694,51 @@ namespace WebradioManager
 
         }
 
+        /**
+        /// \fn public List<AudioFile> GetLibrary()
+        ///
+        /// \brief Gets the library.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \return The library.
+        **/
+
         public List<AudioFile> GetLibrary()
         {
             return this.Library;
         }
 
+        /**
+        /// \fn public List<string> GetGenders()
+        ///
+        /// \brief Gets the genders list.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \return The genders list.
+        **/
+
         public List<string> GetGenders()
         {
             return this.Bdd.GetGenders();
         }
+
+        /**
+        /// \fn public bool ImportFilesToLibrary(string[] filenames, AudioType type)
+        ///
+        /// \brief Import files to library.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param filenames The filenames array.
+        /// \param type      The type.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
 
         public bool ImportFilesToLibrary(string[] filenames, AudioType type)
         {
@@ -429,6 +785,20 @@ namespace WebradioManager
             return state;
         }
 
+        /**
+        /// \fn public bool DeleteAudioFile(int id, string audioFilename)
+        ///
+        /// \brief Deletes the audio file.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param id            The identifier.
+        /// \param audioFilename Filename of the audio file.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
+
         public bool DeleteAudioFile(int id, string audioFilename)
         {
             foreach (KeyValuePair<int, Webradio> webradio in this.Webradios)
@@ -455,6 +825,20 @@ namespace WebradioManager
             }
             return this.Bdd.DeleteAudioFile(id);
         }
+
+        /**
+        /// \fn public bool UpdateAudioFile(AudioFile file)
+        ///
+        /// \brief Updates the audio file with param one's value.
+        ///        Retag file.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param file The file.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
 
         public bool UpdateAudioFile(AudioFile file)
         {
@@ -496,6 +880,19 @@ namespace WebradioManager
                 return false;
         }
 
+        /**
+        /// \fn private bool IsValidFilename(string testName)
+        ///
+        /// \brief Query if 'testName' is a valid filename.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param testName Name of the test.
+        ///
+        /// \return true if valid filename, false if not.
+        **/
+
         private bool IsValidFilename(string testName)
         {
             char[] invalidFileChars = Path.GetInvalidFileNameChars();
@@ -505,6 +902,19 @@ namespace WebradioManager
                 return false;
         }
 
+        /**
+        /// \fn private bool IsValidPath(string testName)
+        ///
+        /// \brief Query if 'testName' is a valid path.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param testName Name of the test.
+        ///
+        /// \return true if valid path, false if not.
+        **/
+
         private bool IsValidPath(string testName)
         {
             char[] invalidFileChars = Path.GetInvalidPathChars();
@@ -513,6 +923,23 @@ namespace WebradioManager
             else
                 return false;
         }
+
+        /**
+        /// \fn public bool CreatePlaylist(string name, string webradioName, int webradioId, AudioType type, out Playlist newPlaylist)
+        ///
+        /// \brief Creates a playlist.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param name              The name.
+        /// \param webradioName      Name of the webradio.
+        /// \param webradioId        Identifier for the webradio.
+        /// \param type              The type.
+        /// \param [out] newPlaylist The new playlist.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
 
         public bool CreatePlaylist(string name, string webradioName, int webradioId, AudioType type, out Playlist newPlaylist)
         {
@@ -553,6 +980,20 @@ namespace WebradioManager
 
         }
 
+        /**
+        /// \fn public bool DeletePlaylist(Playlist playlist, int webradioId)
+        ///
+        /// \brief Deletes the playlist.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param playlist   The playlist.
+        /// \param webradioId Identifier for the webradio.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
+
         public bool DeletePlaylist(Playlist playlist, int webradioId)
         {
             if (this.Bdd.DeletePlaylist(playlist.Id))
@@ -566,6 +1007,20 @@ namespace WebradioManager
                 return false;
 
         }
+
+        /**
+        /// \fn public bool AddToPlaylist(Playlist playlist, Dictionary<int, string> audioFiles)
+        ///
+        /// \brief Adds to the playlist.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param playlist   The playlist.
+        /// \param audioFiles The audio files.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
 
         public bool AddToPlaylist(Playlist playlist, Dictionary<int, string> audioFiles)
         {
@@ -589,6 +1044,20 @@ namespace WebradioManager
 
         }
 
+        /**
+        /// \fn public bool RemoveFromPlaylist(Dictionary<int, string> audioFiles, Playlist playlist)
+        ///
+        /// \brief Removes from playlist.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param audioFiles The audio files.
+        /// \param playlist   The playlist.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
+
         public bool RemoveFromPlaylist(Dictionary<int, string> audioFiles, Playlist playlist)
         {
             bool state = true;
@@ -609,6 +1078,20 @@ namespace WebradioManager
             playlist.GenerateConfigFile();
             return state;
         }
+
+        /**
+        /// \fn public List<AudioFile> GetPlaylistContent(Playlist playlist)
+        ///
+        /// \brief Gets playlist content.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param playlist The playlist.
+        ///
+        /// \return The playlist content (AudioFile list).
+        **/
+
         public List<AudioFile> GetPlaylistContent(Playlist playlist)
         {
             List<AudioFile> audioFiles = new List<AudioFile>();
@@ -622,6 +1105,24 @@ namespace WebradioManager
             }
             return audioFiles;
         }
+
+        /**
+        /// \fn public bool GeneratePlaylist(string name, TimeSpan duration, AudioType type, string gender, int webradioId, string webradioName)
+        ///
+        /// \brief Generates a playlist.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param name         The name.
+        /// \param duration     The duration.
+        /// \param type         The type.
+        /// \param gender       The gender.
+        /// \param webradioId   Identifier for the webradio.
+        /// \param webradioName Name of the webradio.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
 
         public bool GeneratePlaylist(string name, TimeSpan duration, AudioType type, string gender, int webradioId, string webradioName)
         {
@@ -676,6 +1177,20 @@ namespace WebradioManager
             return true;
         }
 
+        /**
+        /// \fn public bool CreateEvent(CalendarEvent newEvent, int webradioId)
+        ///
+        /// \brief Creates an event.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param newEvent   The new event.
+        /// \param webradioId Identifier for the webradio.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
+
         public bool CreateEvent(CalendarEvent newEvent, int webradioId)
         {
             if (this.Bdd.EventExist(newEvent, this.Webradios[webradioId].Calendar.Id))
@@ -688,6 +1203,20 @@ namespace WebradioManager
             this.UpdateObservers(webradioId);
             return true;
         }
+
+        /**
+        /// \fn public bool UpdateEvent(CalendarEvent aEvent, int webradioId)
+        ///
+        /// \brief Updates the event with param one's values.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param aEvent     The event.
+        /// \param webradioId Identifier for the webradio.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
 
         public bool UpdateEvent(CalendarEvent aEvent, int webradioId)
         {
@@ -711,6 +1240,20 @@ namespace WebradioManager
                 return false;
         }
 
+        /**
+        /// \fn public bool DeleteEvent(CalendarEvent aEvent, int webradioId)
+        ///
+        /// \brief Deletes the event.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param aEvent     The event.
+        /// \param webradioId Identifier for the webradio.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
+
         public bool DeleteEvent(CalendarEvent aEvent, int webradioId)
         {
             if (this.Bdd.DeleteEvent(aEvent))
@@ -723,6 +1266,28 @@ namespace WebradioManager
             else
                 return false;
         }
+
+        /**
+        /// \fn public bool CreateTranscoder(string name, StreamType st, int sampleRate, int bitrate, string url, IPAddress ip, int port, int adminport, string password, int webradioId)
+        ///
+        /// \brief Creates a transcoder.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param name       The name.
+        /// \param st         The st.
+        /// \param sampleRate The sample rate.
+        /// \param bitrate    The bitrate.
+        /// \param url        URL of the document.
+        /// \param ip         The IP.
+        /// \param port       The port.
+        /// \param adminport  The administration port.
+        /// \param password   The password.
+        /// \param webradioId Identifier for the webradio.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
 
         public bool CreateTranscoder(string name, StreamType st, int sampleRate, int bitrate, string url, IPAddress ip, int port, int adminport, string password, int webradioId)
         {
@@ -765,6 +1330,20 @@ namespace WebradioManager
             return true;
         }
 
+        /**
+        /// \fn public bool DeleteTranscoder(WebradioTranscoder transcoder, int webradioId)
+        ///
+        /// \brief Deletes the transcoder.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param transcoder The transcoder.
+        /// \param webradioId Identifier for the webradio.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
+
         public bool DeleteTranscoder(WebradioTranscoder transcoder, int webradioId)
         {
             if (this.Bdd.DeleteTranscoder(transcoder.Id))
@@ -779,6 +1358,21 @@ namespace WebradioManager
             else
                 return false;
         }
+
+        /**
+        /// \fn public bool UpdateTranscoder(WebradioTranscoder transcoder, bool debug, int webradioId)
+        ///
+        /// \brief Updates the transcoder.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param transcoder The transcoder.
+        /// \param debug      true to debug.
+        /// \param webradioId Identifier for the webradio.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
 
         public bool UpdateTranscoder(WebradioTranscoder transcoder, bool debug, int webradioId)
         {
@@ -804,6 +1398,21 @@ namespace WebradioManager
             }
         }
 
+        /**
+        /// \fn public bool StartTranscoder(WebradioTranscoder transcoder, bool debug, int webradioId)
+        ///
+        /// \brief Starts a transcoder.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param transcoder The transcoder.
+        /// \param debug      true to debug.
+        /// \param webradioId Identifier for the webradio.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
+
         public bool StartTranscoder(WebradioTranscoder transcoder, bool debug, int webradioId)
         {
             try
@@ -825,6 +1434,20 @@ namespace WebradioManager
 
         }
 
+        /**
+        /// \fn public bool StopTranscoder(WebradioTranscoder transcoder, int webradioId)
+        ///
+        /// \brief Stops a transcoder.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param transcoder The transcoder.
+        /// \param webradioId Identifier for the webradio.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
+
         public bool StopTranscoder(WebradioTranscoder transcoder, int webradioId)
         {
             try
@@ -845,6 +1468,19 @@ namespace WebradioManager
             }
         }
 
+        /**
+        /// \fn public bool StopAllProcess(int webradioId)
+        ///
+        /// \brief Stops all process of a webradio.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param webradioId Identifier for the webradio.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
+
         public bool StopAllProcess(int webradioId)
         {
             try
@@ -861,6 +1497,17 @@ namespace WebradioManager
                 return false;
             }
         }
+
+        /**
+        /// \fn public bool StopAllProcess()
+        ///
+        /// \brief Stops all process of the program.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
 
         public bool StopAllProcess()
         {
@@ -882,10 +1529,39 @@ namespace WebradioManager
             }
         }
 
+        /**
+        /// \fn public void GenerateConfigFiles(int webradioId)
+        ///
+        /// \brief Generates a configuration files.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param webradioId Identifier for the webradio.
+        **/
+
         public void GenerateConfigFiles(int webradioId)
         {
             this.Webradios[webradioId].GenerateConfigFiles();
         }
+
+        /**
+        /// \fn public bool UpdateServer(bool debug, int port, string password, string adminPassword, int maxListener, int webradioId)
+        ///
+        /// \brief Updates the server.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param debug         true to debug.
+        /// \param port          The port.
+        /// \param password      The password.
+        /// \param adminPassword The admin password.
+        /// \param maxListener   The maximum listener.
+        /// \param webradioId    Identifier for the webradio.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
 
         public bool UpdateServer(bool debug, int port, string password, string adminPassword, int maxListener, int webradioId)
         {
@@ -921,6 +1597,20 @@ namespace WebradioManager
 
         }
 
+        /**
+        /// \fn public bool StartServer(int webradioId, bool debug)
+        ///
+        /// \brief Starts a server.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param webradioId Identifier for the webradio.
+        /// \param debug      true to debug.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
+
         public bool StartServer(int webradioId, bool debug)
         {
             if (this.Webradios[webradioId].Server.Start(debug))
@@ -932,6 +1622,19 @@ namespace WebradioManager
             else
                 return false;
         }
+
+        /**
+        /// \fn public bool StopServer(int webradioId)
+        ///
+        /// \brief Stops a server.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param webradioId Identifier for the webradio.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
 
         public bool StopServer(int webradioId)
         {
@@ -945,15 +1648,50 @@ namespace WebradioManager
                 return false;
         }
 
+        /**
+        /// \fn public void ShowServerWebInterface(int webradioId)
+        ///
+        /// \brief Shows the server web interface.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param webradioId Identifier for the webradio.
+        **/
+
         public void ShowServerWebInterface(int webradioId)
         {
             Process.Start(this.Webradios[webradioId].Server.WebInterfaceUrl);
         }
 
+        /**
+        /// \fn public void ShowServerWebAdmin(int webradioId)
+        ///
+        /// \brief Shows the server web admin.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param webradioId Identifier for the webradio.
+        **/
+
         public void ShowServerWebAdmin(int webradioId)
         {
             Process.Start(this.Webradios[webradioId].Server.WebAdminUrl);
         }
+
+        /**
+        /// \fn public bool TranscoderNextTrack(WebradioTranscoder transcoder)
+        ///
+        /// \brief Transcoder goes next track.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param transcoder The transcoder.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
 
         public bool TranscoderNextTrack(WebradioTranscoder transcoder)
         {
@@ -968,10 +1706,39 @@ namespace WebradioManager
             }
         }
 
+        /**
+        /// \fn public bool ClearHistory(int transcoderId)
+        ///
+        /// \brief Clears the transcoder's history described by transcoderId.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param transcoderId Identifier for the transcoder.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
+
         public bool ClearHistory(int transcoderId)
         {
             return this.Bdd.ClearHistory(transcoderId);
         }
+
+        /**
+        /// \fn public bool GenerateHistory(int webradioId, string transcoderName, int transcoderId, string outputFilename)
+        ///
+        /// \brief Generates a transcoder's history.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param webradioId     Identifier for the webradio.
+        /// \param transcoderName Name of the transcoder.
+        /// \param transcoderId   Identifier for the transcoder.
+        /// \param outputFilename Filename of the output file.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
 
         public bool GenerateHistory(int webradioId, string transcoderName, int transcoderId, string outputFilename)
         {
@@ -1005,6 +1772,19 @@ namespace WebradioManager
             return true;
         }
 
+        /**
+        /// \fn public AudioFile GetAudioFileByFilename(string filename)
+        ///
+        /// \brief Gets audio file by filename.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param filename Filename of the file.
+        ///
+        /// \return The audio file by filename.
+        **/
+
         public AudioFile GetAudioFileByFilename(string filename)
         {
             AudioFile result = null;
@@ -1018,6 +1798,20 @@ namespace WebradioManager
             }
             return result;
         }
+
+        /**
+        /// \fn public bool ModifyWebradioName(string newName, int webradioId)
+        ///
+        /// \brief Modify webradio name.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param newName    Name of the new webradio.
+        /// \param webradioId Identifier for the webradio.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
 
         public bool ModifyWebradioName(string newName, int webradioId)
         {
@@ -1050,6 +1844,22 @@ namespace WebradioManager
                 return false;
         }
 
+        /**
+        /// \fn public bool TranscoderCapture(bool active, string device, WebradioTranscoder transcoder, int webradioId)
+        ///
+        /// \brief Transcoder capture set.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param active     true to active.
+        /// \param device     The device.
+        /// \param transcoder The transcoder.
+        /// \param webradioId Identifier for the webradio.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
+
         public bool TranscoderCapture(bool active, string device, WebradioTranscoder transcoder, int webradioId)
         {
             try
@@ -1064,10 +1874,36 @@ namespace WebradioManager
             }
         }
 
+        /**
+        /// \fn public List<WebradioListener> UpdateServerListeners(int webradioId)
+        ///
+        /// \brief Updates the webradio's server listeners.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param webradioId Identifier for the webradio.
+        ///
+        /// \return A List&lt;WebradioListener&gt;
+        **/
+
         public List<WebradioListener> UpdateServerListeners(int webradioId)
         {
             return this.Webradios[webradioId].Server.GetListeners();
         }
+
+        /**
+        /// \fn public bool UpdateServerStats(int webradioId)
+        ///
+        /// \brief Updates the webradio's server statistics.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \param webradioId Identifier for the webradio.
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
 
         public bool UpdateServerStats(int webradioId)
         {
@@ -1076,6 +1912,17 @@ namespace WebradioManager
             this.UpdateObservers(webradioId);
             return true;
         }
+
+        /**
+        /// \fn public bool CheckLibrary()
+        ///
+        /// \brief Check if audio files from library exists on the disc.
+        ///
+        /// \author Simon Menetrey
+        /// \date 26.05.2014
+        ///
+        /// \return true if it succeeds, false if it fails.
+        **/
 
         public bool CheckLibrary()
         {
@@ -1099,6 +1946,7 @@ namespace WebradioManager
                 return false;
             }
         }
+        #endregion
 
     }
 }

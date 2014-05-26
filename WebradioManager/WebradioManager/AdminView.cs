@@ -105,6 +105,7 @@ namespace WebradioManager
         }
         #endregion
 
+        #region Methods
         /**
         /// \fn public AdminView(int idWebradio, AdminController controller)
         ///
@@ -319,7 +320,7 @@ namespace WebradioManager
         /**
         /// \fn private void UpdateAudioDevices()
         ///
-        /// \brief Updates the audio devices.
+        /// \brief Updates the audio devices list.
         ///
         /// \author Simon Menetrey
         /// \date 23.05.2014
@@ -443,7 +444,7 @@ namespace WebradioManager
         /**
         /// \fn private void ImportFolder_Click(object sender, EventArgs e)
         ///
-        /// \brief Event handler. Called by ImportFolder for click events.
+        /// \brief Event handler. Called by ImportFolder buttons for click events.
         ///
         /// \author Simon Menetrey
         /// \date 23.05.2014
@@ -478,7 +479,7 @@ namespace WebradioManager
         /**
         /// \fn private void ImportFiles_Click(object sender, EventArgs e)
         ///
-        /// \brief Event handler. Called by ImportFiles for click events.
+        /// \brief Event handler. Called by ImportFiles buttons for click events.
         ///
         /// \author Simon Menetrey
         /// \date 23.05.2014
@@ -506,7 +507,7 @@ namespace WebradioManager
         /**
         /// \fn private void txbSearchEnter(object sender, EventArgs e)
         ///
-        /// \brief Txb search enter.
+        /// \brief TextBox search enter focus.
         ///
         /// \author Simon Menetrey
         /// \date 23.05.2014
@@ -525,7 +526,7 @@ namespace WebradioManager
         /**
         /// \fn private void txbSearchLeave(object sender, EventArgs e)
         ///
-        /// \brief Txb search leave.
+        /// \brief TextBox search leave focus.
         ///
         /// \author Simon Menetrey
         /// \date 23.05.2014
@@ -545,6 +546,7 @@ namespace WebradioManager
         /// \fn private void btnDeleteLibrary_Click(object sender, EventArgs e)
         ///
         /// \brief Event handler. Called by btnDeleteLibrary for click events.
+        ///        Delete selected items from library
         ///
         /// \author Simon Menetrey
         /// \date 23.05.2014
@@ -581,7 +583,7 @@ namespace WebradioManager
         /**
         /// \fn private void txbSearchTextChanged(object sender, EventArgs e)
         ///
-        /// \brief Txb search text changed.
+        /// \brief TextBox search text changed.
         ///
         /// \author Simon Menetrey
         /// \date 23.05.2014
@@ -625,6 +627,7 @@ namespace WebradioManager
         /// \fn private void btnCreatePlaylist_Click(object sender, EventArgs e)
         ///
         /// \brief Event handler. Called by btnCreatePlaylist for click events.
+        ///        Create a playlist
         ///
         /// \author Simon Menetrey
         /// \date 23.05.2014
@@ -648,6 +651,7 @@ namespace WebradioManager
         /// \fn private void btnDeletePlaylistClick(object sender, EventArgs e)
         ///
         /// \brief Button delete playlist click.
+        ///        Delete a playlist
         ///
         /// \author Simon Menetrey
         /// \date 23.05.2014
@@ -670,7 +674,8 @@ namespace WebradioManager
         /**
         /// \fn private void btnAddToClick(object sender, EventArgs e)
         ///
-        /// \brief Button add to click.
+        /// \brief AddTo buttons's click event.
+        ///        Add audiofile to paylist
         ///
         /// \author Simon Menetrey
         /// \date 23.05.2014
@@ -702,7 +707,7 @@ namespace WebradioManager
         /**
         /// \fn private void lsbPlaylistsSelectedIndexChanged(object sender, EventArgs e)
         ///
-        /// \brief LSB playlists selected index changed.
+        /// \brief ListBox playlists selected index changed.
         ///
         /// \author Simon Menetrey
         /// \date 23.05.2014
@@ -750,6 +755,7 @@ namespace WebradioManager
         /// \fn private void btnRemoveFromPlaylist_Click(object sender, EventArgs e)
         ///
         /// \brief Event handler. Called by btnRemoveFromPlaylist for click events.
+        ///        Remove from playlist
         ///
         /// \author Simon Menetrey
         /// \date 23.05.2014
@@ -873,7 +879,7 @@ namespace WebradioManager
         /**
         /// \fn private void ckbCheckedChanged(object sender, EventArgs e)
         ///
-        /// \brief Ckb checked changed.
+        /// \brief CheckBox's checked changed.
         ///
         /// \author Simon Menetrey
         /// \date 23.05.2014
@@ -1010,7 +1016,7 @@ namespace WebradioManager
         /**
         /// \fn private List<EventAppointment> GetAllRelatedAppointment(EventAppointment app)
         ///
-        /// \brief Gets all related appointment.
+        /// \brief Gets all related appointment to an event.
         ///
         /// \author Simon Menetrey
         /// \date 23.05.2014
@@ -1064,7 +1070,7 @@ namespace WebradioManager
         /**
         /// \fn private bool CheckMovePossible(EventAppointment app)
         ///
-        /// \brief Check move possible.
+        /// \brief Check move possible for an appointment.
         ///
         /// \author Simon Menetrey
         /// \date 23.05.2014
@@ -1886,9 +1892,7 @@ namespace WebradioManager
                 MessageBox.Show("An error occured", "Error");
         }
 
-
-
-
+        #endregion
 
     }
 }

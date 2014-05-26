@@ -1,14 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿/**
+/// \file AudioType.cs
+///
+/// \brief Implements the audio type enum.
+**/
 
 namespace WebradioManager
 {
-    //Define from db
+    /**
+    /// \enum AudioType
+    ///
+    /// \brief Values that represent AudioType's id. Defined in DB.
+    **/
+
     public enum AudioType
     {
+        ///< An enum constant representing the music option
         Music = 2,
+        ///< An enum constant representing the ad option
         Ad = 1,
     }
 }
