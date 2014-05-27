@@ -1,7 +1,7 @@
 ﻿/**
-/// \file webradioserver.cs
-///
-/// \brief Implements the webradioserver class.
+// \file webradioserver.cs
+//
+// \brief Implements the webradioserver class.
 **/
 
 using System;
@@ -15,37 +15,37 @@ using System.Xml;
 namespace WebradioManager
 {
     /**
-    /// \class WebradioServer
-    ///
-    /// \brief A shoutcast webradio server.
-    ///
-    /// \author Simon Menetrey
-    /// \date 21.05.2014
+    // \class WebradioServer
+    //
+    // \brief A shoutcast webradio server.
+    //
+    // \author Simon Menetrey
+    // \date 21.05.2014
     **/
 
     public class WebradioServer
     {
         #region Fields
-        /// \brief Filename of the server file.
+        // \brief Filename of the server file.
         const string SC_SERVER_FILENAME = "\\shoutcast\\sc_serv.exe";
-        /// \brief The default admin login.
+        // \brief The default admin login.
         public const string DEFAULT_ADMIN_LOGIN = "admin";
 
-        /// \brief The port.
+        // \brief The port.
         private int _port;
-        /// \brief Filename of the log file.
+        // \brief Filename of the log file.
         private string _logFilename;
-        /// \brief Filename of the configuration file.
+        // \brief Filename of the configuration file.
         private string _configFilename;
-        /// \brief The password.
+        // \brief The password.
         private string _password;
-        /// \brief The admin password.
+        // \brief The admin password.
         private string _adminPassword;
-        /// \brief The process.
+        // \brief The process.
         private Process _process;
-        /// \brief The number of maximum listener.
+        // \brief The number of maximum listener.
         private int _maxListener;
-        /// \brief The statistics.
+        // \brief The statistics.
         private WebradioServerStats _stats;
 
         #endregion
@@ -53,11 +53,11 @@ namespace WebradioManager
         #region Properties
 
         /**
-        /// \property internal WebradioServerStats Stats
-        ///
-        /// \brief Gets or sets the statistics.
-        ///
-        /// \return The statistics.
+        // \property internal WebradioServerStats Stats
+        //
+        // \brief Gets or sets the statistics.
+        //
+        // \return The statistics.
         **/
 
         internal WebradioServerStats Stats
@@ -67,11 +67,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public string WebInterfaceUrl
-        ///
-        /// \brief Gets URL of the web interface.
-        ///
-        /// \return The web interface URL.
+        // \property public string WebInterfaceUrl
+        //
+        // \brief Gets URL of the web interface.
+        //
+        // \return The web interface URL.
         **/
 
         public string WebInterfaceUrl
@@ -83,11 +83,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public string WebAdminUrl
-        ///
-        /// \brief Gets URL of the web admin.
-        ///
-        /// \return The web admin URL.
+        // \property public string WebAdminUrl
+        //
+        // \brief Gets URL of the web admin.
+        //
+        // \return The web admin URL.
         **/
 
         public string WebAdminUrl
@@ -99,11 +99,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public int MaxListener
-        ///
-        /// \brief Gets or sets the number of maximum listener.
-        ///
-        /// \return The maximum listener.
+        // \property public int MaxListener
+        //
+        // \brief Gets or sets the number of maximum listener.
+        //
+        // \return The maximum listener.
         **/
 
         public int MaxListener
@@ -113,11 +113,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public Process Process
-        ///
-        /// \brief Gets or sets the process.
-        ///
-        /// \return The process.
+        // \property public Process Process
+        //
+        // \brief Gets or sets the process.
+        //
+        // \return The process.
         **/
 
         public Process Process
@@ -127,11 +127,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public string LogFilename
-        ///
-        /// \brief Gets or sets the filename of the log file.
-        ///
-        /// \return The filename of the log file.
+        // \property public string LogFilename
+        //
+        // \brief Gets or sets the filename of the log file.
+        //
+        // \return The filename of the log file.
         **/
 
         public string LogFilename
@@ -141,11 +141,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public string ConfigFilename
-        ///
-        /// \brief Gets or sets the filename of the configuration file.
-        ///
-        /// \return The filename of the configuration file.
+        // \property public string ConfigFilename
+        //
+        // \brief Gets or sets the filename of the configuration file.
+        //
+        // \return The filename of the configuration file.
         **/
 
         public string ConfigFilename
@@ -155,11 +155,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public string Password
-        ///
-        /// \brief Gets or sets the password.
-        ///
-        /// \return The password.
+        // \property public string Password
+        //
+        // \brief Gets or sets the password.
+        //
+        // \return The password.
         **/
 
         public string Password
@@ -169,11 +169,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public string AdminPassword
-        ///
-        /// \brief Gets or sets the admin password.
-        ///
-        /// \return The admin password.
+        // \property public string AdminPassword
+        //
+        // \brief Gets or sets the admin password.
+        //
+        // \return The admin password.
         **/
 
         public string AdminPassword
@@ -183,11 +183,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public int Port
-        ///
-        /// \brief Gets or sets the port.
-        ///
-        /// \return The port.
+        // \property public int Port
+        //
+        // \brief Gets or sets the port.
+        //
+        // \return The port.
         **/
 
         public int Port
@@ -200,19 +200,19 @@ namespace WebradioManager
 
         #region Methods
         /**
-        /// \fn public WebradioServer(int port, string logfilename, string configfilename, string password, string adminPassword, int maxlistener)
-        ///
-        /// \brief Constructor.
-        ///
-        /// \author Simon Menetrey
-        /// \date 21.05.2014
-        ///
-        /// \param port           The port.
-        /// \param logfilename    The filename of the log file.
-        /// \param configfilename The filename of the configuration file.
-        /// \param password       The password.
-        /// \param adminPassword  The admin password.
-        /// \param maxlistener    The number of max listener.
+        // \fn public WebradioServer(int port, string logfilename, string configfilename, string password, string adminPassword, int maxlistener)
+        //
+        // \brief Constructor.
+        //
+        // \author Simon Menetrey
+        // \date 21.05.2014
+        //
+        // \param port           The port.
+        // \param logfilename    The filename of the log file.
+        // \param configfilename The filename of the configuration file.
+        // \param password       The password.
+        // \param adminPassword  The admin password.
+        // \param maxlistener    The number of max listener.
         **/
 
         public WebradioServer(int port, string logFilename, string configFilename, string password, string adminPassword, int maxListener)
@@ -227,12 +227,12 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public void GenerateConfigFile()
-        ///
-        /// \brief Generates the configuration file.
-        ///
-        /// \author Simon Menetrey
-        /// \date 21.05.2014
+        // \fn public void GenerateConfigFile()
+        //
+        // \brief Generates the configuration file.
+        //
+        // \author Simon Menetrey
+        // \date 21.05.2014
         **/
 
         public void GenerateConfigFile()
@@ -252,14 +252,14 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool IsRunning()
-        ///
-        /// \brief Query if the process is running.
-        ///
-        /// \author Simon Menetrey
-        /// \date 21.05.2014
-        ///
-        /// \return true if running, false if not.
+        // \fn public bool IsRunning()
+        //
+        // \brief Query if the process is running.
+        //
+        // \author Simon Menetrey
+        // \date 21.05.2014
+        //
+        // \return true if running, false if not.
         **/
 
         public bool IsRunning()
@@ -283,16 +283,16 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool Start(bool debug)
-        ///
-        /// \brief Starts the process.
-        ///
-        /// \author Simon Menetrey
-        /// \date 21.05.2014
-        ///
-        /// \param debug True to debug mode.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool Start(bool debug)
+        //
+        // \brief Starts the process.
+        //
+        // \author Simon Menetrey
+        // \date 21.05.2014
+        //
+        // \param debug True to debug mode.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool Start(bool debug)
@@ -317,14 +317,14 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool Stop()
-        ///
-        /// \brief Stops the process.
-        ///
-        /// \author Simon Menetrey
-        /// \date 21.05.2014
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool Stop()
+        //
+        // \brief Stops the process.
+        //
+        // \author Simon Menetrey
+        // \date 21.05.2014
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool Stop()
@@ -345,14 +345,14 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn private string LocalIPAddress()
-        ///
-        /// \brief Get local IP address.
-        ///
-        /// \author Simon Menetrey
-        /// \date 21.05.2014
-        ///
-        /// \return The local IP address as string.
+        // \fn private string LocalIPAddress()
+        //
+        // \brief Get local IP address.
+        //
+        // \author Simon Menetrey
+        // \date 21.05.2014
+        //
+        // \return The local IP address as string.
         **/
 
         private string GetLocalIPAddress()
@@ -372,14 +372,14 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool UpdateStats()
-        ///
-        /// \brief Updates the statistics.
-        ///
-        /// \author Simon Menetrey
-        /// \date 21.05.2014
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool UpdateStats()
+        //
+        // \brief Updates the statistics.
+        //
+        // \author Simon Menetrey
+        // \date 21.05.2014
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool UpdateStats()
@@ -408,32 +408,35 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public List<WebradioListener> GetListeners()
-        ///
-        /// \brief Gets the list of listeners.
-        ///
-        /// \author Simon Menetrey
-        /// \date 21.05.2014
-        ///
-        /// \return The list of listeners.
+        // \fn public List<WebradioListener> GetListeners()
+        //
+        // \brief Gets the list of listeners.
+        //
+        // \author Simon Menetrey
+        // \date 21.05.2014
+        //
+        // \return The list of listeners.
         **/
 
         public List<WebradioListener> GetListeners()
         {
             List<WebradioListener> list = new List<WebradioListener>();
-            WebClient wc = new WebClient();
-            wc.Credentials = new NetworkCredential(DEFAULT_ADMIN_LOGIN, this.AdminPassword);
-            string response = wc.DownloadString("http://127.0.0.1:" + this.Port + "/admin.cgi?mode=viewxml&page=3&sid=1");
-
-            XmlDocument doc = new XmlDocument();
-            doc.LoadXml(response);
-            XmlNodeList nodes = doc.SelectNodes("/SHOUTCASTSERVER/LISTENERS/LISTENER");
-            if (nodes.Count > 0)
+            if (this.IsRunning())
             {
-                foreach (XmlNode xn in nodes)
+                WebClient wc = new WebClient();
+                wc.Credentials = new NetworkCredential(DEFAULT_ADMIN_LOGIN, this.AdminPassword);
+                string response = wc.DownloadString("http://127.0.0.1:" + this.Port + "/admin.cgi?mode=viewxml&page=3&sid=1");
+
+                XmlDocument doc = new XmlDocument();
+                doc.LoadXml(response);
+                XmlNodeList nodes = doc.SelectNodes("/SHOUTCASTSERVER/LISTENERS/LISTENER");
+                if (nodes.Count > 0)
                 {
-                    WebradioListener listener = new WebradioListener(xn["HOSTNAME"].InnerText, xn["USERAGENT"].InnerText, uint.Parse(xn["CONNECTTIME"].InnerText), int.Parse(xn["UID"].InnerText));
-                    list.Add(listener);
+                    foreach (XmlNode xn in nodes)
+                    {
+                        WebradioListener listener = new WebradioListener(xn["HOSTNAME"].InnerText, xn["USERAGENT"].InnerText, uint.Parse(xn["CONNECTTIME"].InnerText), int.Parse(xn["UID"].InnerText));
+                        list.Add(listener);
+                    }
                 }
             }
             return list;

@@ -1,7 +1,7 @@
 ﻿/**
-/// \file WebradioServerStats.cs
-///
-/// \brief Implements the webradio server statistics class.
+// \file WebradioServerStats.cs
+//
+// \brief Implements the webradio server statistics class.
 **/
 
 using System;
@@ -9,35 +9,35 @@ using System;
 namespace WebradioManager
 {
     /**
-    /// \class WebradioServerStats
-    ///
-    /// \brief A webradio server statistics.
-    ///
-    /// \author Simon Menetrey
-    /// \date 26.05.2014
+    // \class WebradioServerStats
+    //
+    // \brief A webradio server statistics.
+    //
+    // \author Simon Menetrey
+    // \date 26.05.2014
     **/
 
     public class WebradioServerStats
     {
         #region Fields
-        /// \brief The current listeners count.
+        // \brief The current listeners count.
         private int _currentListeners;
-        /// \brief The unique listeners count.
+        // \brief The unique listeners count.
         private int _uniqueListeners;
-        /// \brief The peak listeners count.
+        // \brief The peak listeners count.
         private int _peakListeners;
-        /// \brief The average time listening.
+        // \brief The average time listening.
         private TimeSpan _averageTime;
         #endregion
 
         #region Properties
 
         /**
-        /// \property public TimeSpan AverageTime
-        ///
-        /// \brief Gets or sets the average time listening.
-        ///
-        /// \return The average time.
+        // \property public TimeSpan AverageTime
+        //
+        // \brief Gets or sets the average time listening.
+        //
+        // \return The average time.
         **/
 
         public TimeSpan AverageTime
@@ -47,11 +47,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public int PeakListeners
-        ///
-        /// \brief Gets or sets the peak listeners count.
-        ///
-        /// \return The peak listeners.
+        // \property public int PeakListeners
+        //
+        // \brief Gets or sets the peak listeners count.
+        //
+        // \return The peak listeners.
         **/
 
         public int PeakListeners
@@ -61,11 +61,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public int UniqueListeners
-        ///
-        /// \brief Gets or sets the unique listeners count.
-        ///
-        /// \return The unique listeners.
+        // \property public int UniqueListeners
+        //
+        // \brief Gets or sets the unique listeners count.
+        //
+        // \return The unique listeners.
         **/
 
         public int UniqueListeners
@@ -75,11 +75,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public int CurrentListeners
-        ///
-        /// \brief Gets or sets the current listeners count.
-        ///
-        /// \return The current listeners.
+        // \property public int CurrentListeners
+        //
+        // \brief Gets or sets the current listeners count.
+        //
+        // \return The current listeners.
         **/
 
         public int CurrentListeners
@@ -92,12 +92,12 @@ namespace WebradioManager
         #region Methods
 
         /**
-        /// \fn public WebradioServerStats()
-        ///
-        /// \brief Default constructor.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
+        // \fn public WebradioServerStats()
+        //
+        // \brief Default constructor.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
         **/
 
         public WebradioServerStats()

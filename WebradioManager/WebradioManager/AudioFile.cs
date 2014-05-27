@@ -1,7 +1,7 @@
 ﻿/**
-/// \file AudioFile.cs
-///
-/// \brief Implements the audio file class.
+// \file AudioFile.cs
+//
+// \brief Implements the audio file class.
 **/
 
 using System;
@@ -9,54 +9,54 @@ using System;
 namespace WebradioManager
 {
     /**
-    /// \class AudioFile
-    ///
-    /// \brief An audio file. Abstract class.
-    ///
-    /// \author Simon Menetrey
-    /// \date 26.05.2014
+    // \class AudioFile
+    //
+    // \brief An audio file. Abstract class.
+    //
+    // \author Simon Menetrey
+    // \date 26.05.2014
     **/
 
     public abstract class AudioFile
     {
         #region Const
-        /// \brief Number of elements (for an audiofile).
+        // \brief Number of elements (for an audiofile).
         const int NUMBER_OF_ELEMENTS = 9;
-        /// \brief The default identifier.
+        // \brief The default identifier.
         const int DEFAULT_ID = 0;
         #endregion
 
         #region Fields
-        /// \brief The identifier.
+        // \brief The identifier.
         private int _id;
-        /// \brief Filename of the audiofile.
+        // \brief Filename of the audiofile.
         private string _filename;
-        /// \brief The title.
+        // \brief The title.
         private string _title;
-        /// \brief The artist.
+        // \brief The artist.
         private string _artist;
-        /// \brief The album.
+        // \brief The album.
         private string _album;
-        /// \brief The year.
+        // \brief The year.
         private int _year;
-        /// \brief The label.
+        // \brief The label.
         private string _label;
-        /// \brief The duration.
+        // \brief The duration.
         private TimeSpan _duration;
-        /// \brief The gender.
+        // \brief The gender.
         private string _gender;
-        /// \brief The type.
+        // \brief The type.
         private AudioType _type;
         #endregion
 
         #region Properties
 
         /**
-        /// \property public int Id
-        ///
-        /// \brief Gets or sets the identifier.
-        ///
-        /// \return The identifier.
+        // \property public int Id
+        //
+        // \brief Gets or sets the identifier.
+        //
+        // \return The identifier.
         **/
 
         public int Id
@@ -66,11 +66,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public string Filename
-        ///
-        /// \brief Gets or sets the filename of the audiofile.
-        ///
-        /// \return The filename.
+        // \property public string Filename
+        //
+        // \brief Gets or sets the filename of the audiofile.
+        //
+        // \return The filename.
         **/
 
         public string Filename
@@ -80,11 +80,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public string Title
-        ///
-        /// \brief Gets or sets the title.
-        ///
-        /// \return The title.
+        // \property public string Title
+        //
+        // \brief Gets or sets the title.
+        //
+        // \return The title.
         **/
 
         public string Title
@@ -94,11 +94,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public string Artist
-        ///
-        /// \brief Gets or sets the artist.
-        ///
-        /// \return The artist.
+        // \property public string Artist
+        //
+        // \brief Gets or sets the artist.
+        //
+        // \return The artist.
         **/
 
         public string Artist
@@ -108,11 +108,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public string Album
-        ///
-        /// \brief Gets or sets the album.
-        ///
-        /// \return The album.
+        // \property public string Album
+        //
+        // \brief Gets or sets the album.
+        //
+        // \return The album.
         **/
 
         public string Album
@@ -122,11 +122,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public int Year
-        ///
-        /// \brief Gets or sets the year.
-        ///
-        /// \return The year.
+        // \property public int Year
+        //
+        // \brief Gets or sets the year.
+        //
+        // \return The year.
         **/
 
         public int Year
@@ -136,11 +136,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public string Label
-        ///
-        /// \brief Gets or sets the label.
-        ///
-        /// \return The label.
+        // \property public string Label
+        //
+        // \brief Gets or sets the label.
+        //
+        // \return The label.
         **/
 
         public string Label
@@ -150,11 +150,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public TimeSpan Duration
-        ///
-        /// \brief Gets or sets the duration.
-        ///
-        /// \return The duration.
+        // \property public TimeSpan Duration
+        //
+        // \brief Gets or sets the duration.
+        //
+        // \return The duration.
         **/
 
         public TimeSpan Duration
@@ -164,11 +164,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public string Gender
-        ///
-        /// \brief Gets or sets the gender.
-        ///
-        /// \return The gender.
+        // \property public string Gender
+        //
+        // \brief Gets or sets the gender.
+        //
+        // \return The gender.
         **/
 
         public string Gender
@@ -178,11 +178,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public AudioType Type
-        ///
-        /// \brief Gets or sets the type.
-        ///
-        /// \return The type.
+        // \property public AudioType Type
+        //
+        // \brief Gets or sets the type.
+        //
+        // \return The type.
         **/
 
         public AudioType Type
@@ -196,23 +196,23 @@ namespace WebradioManager
         #region Methods
 
         /**
-        /// \fn public AudioFile(int id, string filename, string title, string artist, string album, int year, string label, TimeSpan duration, string gender, AudioType audiotype)
-        ///
-        /// \brief Constructor.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
-        ///
-        /// \param id        The identifier.
-        /// \param filename  Filename of the audiofile.
-        /// \param title     The title.
-        /// \param artist    The artist.
-        /// \param album     The album.
-        /// \param year      The year.
-        /// \param label     The label.
-        /// \param duration  The duration.
-        /// \param gender    The gender.
-        /// \param audiotype The audiotype.
+        // \fn public AudioFile(int id, string filename, string title, string artist, string album, int year, string label, TimeSpan duration, string gender, AudioType audiotype)
+        //
+        // \brief Constructor.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
+        //
+        // \param id        The identifier.
+        // \param filename  Filename of the audiofile.
+        // \param title     The title.
+        // \param artist    The artist.
+        // \param album     The album.
+        // \param year      The year.
+        // \param label     The label.
+        // \param duration  The duration.
+        // \param gender    The gender.
+        // \param audiotype The audiotype.
         **/
 
         public AudioFile(int id, string filename, string title, string artist, string album, int year, string label, TimeSpan duration, string gender, AudioType audiotype)
@@ -230,22 +230,22 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public AudioFile(string filename, string title, string artist, string album, int year, string label, TimeSpan duration, string gender, AudioType audiotype) :this(DEFAULT_ID,filename, title, artist, album, year, label, duration, gender, audiotype)
-        ///
-        /// \brief Constructor.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
-        ///
-        /// \param filename  Filename of the audiofile.
-        /// \param title     The title.
-        /// \param artist    The artist.
-        /// \param album     The album.
-        /// \param year      The year.
-        /// \param label     The label.
-        /// \param duration  The duration.
-        /// \param gender    The gender.
-        /// \param audiotype The audiotype.
+        // \fn public AudioFile(string filename, string title, string artist, string album, int year, string label, TimeSpan duration, string gender, AudioType audiotype) :this(DEFAULT_ID,filename, title, artist, album, year, label, duration, gender, audiotype)
+        //
+        // \brief Constructor.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
+        //
+        // \param filename  Filename of the audiofile.
+        // \param title     The title.
+        // \param artist    The artist.
+        // \param album     The album.
+        // \param year      The year.
+        // \param label     The label.
+        // \param duration  The duration.
+        // \param gender    The gender.
+        // \param audiotype The audiotype.
         **/
 
         public AudioFile(string filename, string title, string artist, string album, int year, string label, TimeSpan duration, string gender, AudioType audiotype)
@@ -255,14 +255,14 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public string[] GetInfosArray()
-        ///
-        /// \brief Gets infos in an array.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
-        ///
-        /// \return An array of string.
+        // \fn public string[] GetInfosArray()
+        //
+        // \brief Gets infos in an array.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
+        //
+        // \return An array of string.
         **/
 
         public string[] GetInfosArray()

@@ -1,7 +1,7 @@
 ﻿/**
-/// \file SelectionController.cs
-///
-/// \brief Implements the selection controller class.
+// \file SelectionController.cs
+//
+// \brief Implements the selection controller class.
 **/
 
 using System.Collections.Generic;
@@ -9,31 +9,31 @@ using System.Collections.Generic;
 namespace WebradioManager
 {
     /**
-    /// \class SelectionController
-    ///
-    /// \brief A controller for SelectionView.
-    ///
-    /// \author Simon Menetrey
-    /// \date 26.05.2014
+    // \class SelectionController
+    //
+    // \brief A controller for SelectionView.
+    //
+    // \author Simon Menetrey
+    // \date 26.05.2014
     **/
 
     public class SelectionController : IController
     {
         #region Fields
-        /// \brief The view.
+        // \brief The view.
         private SelectionView _view;
-        /// \brief The model.
+        // \brief The model.
         private WMModel _model;
         #endregion
 
         #region Properties
 
         /**
-        /// \property public WMModel Model
-        ///
-        /// \brief Gets or sets the model.
-        ///
-        /// \return The model.
+        // \property public WMModel Model
+        //
+        // \brief Gets or sets the model.
+        //
+        // \return The model.
         **/
 
         public WMModel Model
@@ -43,11 +43,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public SelectionView View
-        ///
-        /// \brief Gets or sets the view.
-        ///
-        /// \return The view.
+        // \property public SelectionView View
+        //
+        // \brief Gets or sets the view.
+        //
+        // \return The view.
         **/
 
         public SelectionView View
@@ -60,14 +60,14 @@ namespace WebradioManager
         #region Methods
 
         /**
-        /// \fn public SelectionController(SelectionView view)
-        ///
-        /// \brief Constructor.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
-        ///
-        /// \param view The view.
+        // \fn public SelectionController(SelectionView view)
+        //
+        // \brief Constructor.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
+        //
+        // \param view The view.
         **/
 
         public SelectionController(SelectionView view)
@@ -78,12 +78,12 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public void LoadLibrary()
-        ///
-        /// \brief Loads the library.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
+        // \fn public void LoadLibrary()
+        //
+        // \brief Loads the library.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
         **/
 
         public void LoadLibrary()
@@ -92,12 +92,12 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public void LoadWebradios()
-        ///
-        /// \brief Loads the webradios.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
+        // \fn public void LoadWebradios()
+        //
+        // \brief Loads the webradios.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
         **/
 
         public void LoadWebradios()
@@ -106,12 +106,12 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public void UpdateView()
-        ///
-        /// \brief Updates the view.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
+        // \fn public void UpdateView()
+        //
+        // \brief Updates the view.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
         **/
 
         public void UpdateView()
@@ -120,14 +120,14 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public List<Webradio> GetWebradios()
-        ///
-        /// \brief Gets the webradios list.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
-        ///
-        /// \return The webradios list.
+        // \fn public List<Webradio> GetWebradios()
+        //
+        // \brief Gets the webradios list.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
+        //
+        // \return The webradios list.
         **/
 
         public List<Webradio> GetWebradios()
@@ -136,16 +136,16 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool CreateWebradio(string name)
-        ///
-        /// \brief Creates a webradio.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
-        ///
-        /// \param name The webradio's name.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool CreateWebradio(string name)
+        //
+        // \brief Creates a webradio.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
+        //
+        // \param name The webradio's name.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool CreateWebradio(string name)
@@ -154,16 +154,16 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool DeleteWebradio(int id)
-        ///
-        /// \brief Deletes the webradio described by ID.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
-        ///
-        /// \param id The identifier.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool DeleteWebradio(int id)
+        //
+        // \brief Deletes the webradio described by ID.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
+        //
+        // \param id The identifier.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool DeleteWebradio(int id)
@@ -172,16 +172,16 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool DuplicateWebradio(int id)
-        ///
-        /// \brief Duplicate webradio described by id.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
-        ///
-        /// \param id The identifier.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool DuplicateWebradio(int id)
+        //
+        // \brief Duplicate webradio described by id.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
+        //
+        // \param id The identifier.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool DuplicateWebradio(int id)
@@ -190,14 +190,14 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public void OpenWebradio(int id)
-        ///
-        /// \brief Opens a webradio described by id in an AdminView.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
-        ///
-        /// \param id The identifier.
+        // \fn public void OpenWebradio(int id)
+        //
+        // \brief Opens a webradio described by id in an AdminView.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
+        //
+        // \param id The identifier.
         **/
 
         public void OpenWebradio(int id)
@@ -208,14 +208,14 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool StopAllProcess()
-        ///
-        /// \brief Stops all process.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool StopAllProcess()
+        //
+        // \brief Stops all process.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool StopAllProcess()

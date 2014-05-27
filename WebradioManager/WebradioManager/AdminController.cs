@@ -1,7 +1,7 @@
 ﻿/**
-/// \file AdminController.cs
-///
-/// \brief Implements the admin controller class.
+// \file AdminController.cs
+//
+// \brief Implements the admin controller class.
 **/
 
 using System;
@@ -11,31 +11,31 @@ using System.Net;
 namespace WebradioManager
 {
     /**
-    /// \class AdminController
-    ///
-    /// \brief A controller for handling admin view.
-    ///
-    /// \author Simon Menetrey
-    /// \date 23.05.2014
+    // \class AdminController
+    //
+    // \brief A controller for handling admin view.
+    //
+    // \author Simon Menetrey
+    // \date 23.05.2014
     **/
 
     public class AdminController : IController
     {
         #region Fields
-        /// \brief The model.
+        // \brief The model.
         private WMModel _model;
-        /// \brief The view.
+        // \brief The view.
         private AdminView _view;
         #endregion
 
         #region Properties
 
         /**
-        /// \property public AdminView View
-        ///
-        /// \brief Gets or sets the view.
-        ///
-        /// \return The view.
+        // \property public AdminView View
+        //
+        // \brief Gets or sets the view.
+        //
+        // \return The view.
         **/
 
         public AdminView View
@@ -45,11 +45,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public WMModel Model
-        ///
-        /// \brief Gets or sets the model.
-        ///
-        /// \return The model.
+        // \property public WMModel Model
+        //
+        // \brief Gets or sets the model.
+        //
+        // \return The model.
         **/
 
         public WMModel Model
@@ -62,15 +62,15 @@ namespace WebradioManager
         #region Methods
 
         /**
-        /// \fn public AdminController(int id, WMModel model)
-        ///
-        /// \brief Constructor.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param id    The webradio identifier.
-        /// \param model The model.
+        // \fn public AdminController(int id, WMModel model)
+        //
+        // \brief Constructor.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param id    The webradio identifier.
+        // \param model The model.
         **/
 
         public AdminController(int id, WMModel model)
@@ -82,12 +82,12 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public void UpdateView()
-        ///
-        /// \brief Updates the view.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
+        // \fn public void UpdateView()
+        //
+        // \brief Updates the view.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
         **/
 
         public void UpdateView()
@@ -96,16 +96,16 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public Webradio GetWebradio(int id)
-        ///
-        /// \brief Gets a webradio.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param id The webradio identifier.
-        ///
-        /// \return The webradio.
+        // \fn public Webradio GetWebradio(int id)
+        //
+        // \brief Gets a webradio.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param id The webradio identifier.
+        //
+        // \return The webradio.
         **/
 
         public Webradio GetWebradio(int id)
@@ -114,14 +114,14 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public List<AudioFile> GetLibrary()
-        ///
-        /// \brief Gets the library.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \return The library.
+        // \fn public List<AudioFile> GetLibrary()
+        //
+        // \brief Gets the library.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \return The library.
         **/
 
         public List<AudioFile> GetLibrary()
@@ -130,14 +130,14 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public List<string> GetGenders()
-        ///
-        /// \brief Gets the genders.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \return The genders.
+        // \fn public List<string> GetGenders()
+        //
+        // \brief Gets the genders.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \return The genders.
         **/
 
         public List<string> GetGenders()
@@ -146,14 +146,14 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public void CheckFolders(int webradioId)
-        ///
-        /// \brief Check folders.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param webradioId Identifier of the webradio.
+        // \fn public void CheckFolders(int webradioId)
+        //
+        // \brief Check folders.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param webradioId Identifier of the webradio.
         **/
 
         public void CheckFolders(int webradioId)
@@ -162,12 +162,12 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public void FormClose()
-        ///
-        /// \brief Form close. Remove observer.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
+        // \fn public void FormClose()
+        //
+        // \brief Form close. Remove observer.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
         **/
 
         public void FormClose()
@@ -176,17 +176,17 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool ImportFilesToLibrary(string[] filenames, AudioType type)
-        ///
-        /// \brief Import files to library.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param filenames The filenames.
-        /// \param type      The type.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool ImportFilesToLibrary(string[] filenames, AudioType type)
+        //
+        // \brief Import files to library.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param filenames The filenames.
+        // \param type      The type.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool ImportFilesToLibrary(string[] filenames, AudioType type)
@@ -195,17 +195,17 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool DeleteAudioFile(int id,string filename)
-        ///
-        /// \brief Deletes the audio file.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param id       The identifier.
-        /// \param filename Filename of the file.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool DeleteAudioFile(int id,string filename)
+        //
+        // \brief Deletes the audio file.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param id       The identifier.
+        // \param filename Filename of the file.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool DeleteAudioFile(int id,string filename)
@@ -214,19 +214,19 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool CreatePlaylist(string name, string webradioName, int webradioId, AudioType type)
-        ///
-        /// \brief Creates a playlist.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param name         The playlis's name.
-        /// \param webradioName Name of the webradio.
-        /// \param webradioId   Identifier of the webradio.
-        /// \param type         The type.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool CreatePlaylist(string name, string webradioName, int webradioId, AudioType type)
+        //
+        // \brief Creates a playlist.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param name         The playlis's name.
+        // \param webradioName Name of the webradio.
+        // \param webradioId   Identifier of the webradio.
+        // \param type         The type.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool CreatePlaylist(string name, string webradioName, int webradioId, AudioType type)
@@ -236,17 +236,17 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool DeletePlaylist(Playlist playlist, int webradioId)
-        ///
-        /// \brief Deletes the playlist.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param playlist   The playlist.
-        /// \param webradioId Identifier of the webradio.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool DeletePlaylist(Playlist playlist, int webradioId)
+        //
+        // \brief Deletes the playlist.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param playlist   The playlist.
+        // \param webradioId Identifier of the webradio.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool DeletePlaylist(Playlist playlist, int webradioId)
@@ -255,17 +255,17 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool AddToPlaylist(Playlist playlist, Dictionary<int, string> audioFiles)
-        ///
-        /// \brief Adds to the playlist.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param playlist   The playlist.
-        /// \param audioFiles The audio files.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool AddToPlaylist(Playlist playlist, Dictionary<int, string> audioFiles)
+        //
+        // \brief Adds to the playlist.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param playlist   The playlist.
+        // \param audioFiles The audio files.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool AddToPlaylist(Playlist playlist, Dictionary<int, string> audioFiles)
@@ -277,17 +277,17 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool RemoveFromPlaylist(Playlist playlist, Dictionary<int,string> audioFiles)
-        ///
-        /// \brief Removes from playlist.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param playlist   The playlist.
-        /// \param audioFiles The audio files.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool RemoveFromPlaylist(Playlist playlist, Dictionary<int,string> audioFiles)
+        //
+        // \brief Removes from playlist.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param playlist   The playlist.
+        // \param audioFiles The audio files.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool RemoveFromPlaylist(Playlist playlist, Dictionary<int,string> audioFiles)
@@ -296,16 +296,16 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public List<AudioFile> GetPlaylistContent(Playlist playlist)
-        ///
-        /// \brief Gets playlist content.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param playlist The playlist.
-        ///
-        /// \return The playlist content.
+        // \fn public List<AudioFile> GetPlaylistContent(Playlist playlist)
+        //
+        // \brief Gets playlist content.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param playlist The playlist.
+        //
+        // \return The playlist content.
         **/
 
         public List<AudioFile> GetPlaylistContent(Playlist playlist)
@@ -314,21 +314,21 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool GeneratePlaylist(string name, TimeSpan duration, AudioType type, string gender, int webradioId, string webradioName)
-        ///
-        /// \brief Generates a playlist.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param name         The name.
-        /// \param duration     The duration.
-        /// \param type         The type.
-        /// \param gender       The gender.
-        /// \param webradioId   Identifier of the webradio.
-        /// \param webradioName Name of the webradio.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool GeneratePlaylist(string name, TimeSpan duration, AudioType type, string gender, int webradioId, string webradioName)
+        //
+        // \brief Generates a playlist.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param name         The name.
+        // \param duration     The duration.
+        // \param type         The type.
+        // \param gender       The gender.
+        // \param webradioId   Identifier of the webradio.
+        // \param webradioName Name of the webradio.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool GeneratePlaylist(string name, TimeSpan duration, AudioType type, string gender, int webradioId, string webradioName)
@@ -337,17 +337,17 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool CreateEvent(CalendarEvent newEvent, int webradioId)
-        ///
-        /// \brief Creates an event.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param newEvent   The new event.
-        /// \param webradioId Identifier of the webradio.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool CreateEvent(CalendarEvent newEvent, int webradioId)
+        //
+        // \brief Creates an event.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param newEvent   The new event.
+        // \param webradioId Identifier of the webradio.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool CreateEvent(CalendarEvent newEvent, int webradioId)
@@ -356,17 +356,17 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool UpdateEvent(CalendarEvent aEvent, int webradioId)
-        ///
-        /// \brief Updates the event.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param aEvent     The event.
-        /// \param webradioId Identifier of the webradio.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool UpdateEvent(CalendarEvent aEvent, int webradioId)
+        //
+        // \brief Updates the event.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param aEvent     The event.
+        // \param webradioId Identifier of the webradio.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool UpdateEvent(CalendarEvent aEvent, int webradioId)
@@ -375,17 +375,17 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool DeleteEvent(CalendarEvent aEvent, int webradioId)
-        ///
-        /// \brief Deletes the event.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param aEvent     The event.
-        /// \param webradioId Identifier of the webradio.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool DeleteEvent(CalendarEvent aEvent, int webradioId)
+        //
+        // \brief Deletes the event.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param aEvent     The event.
+        // \param webradioId Identifier of the webradio.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool DeleteEvent(CalendarEvent aEvent, int webradioId)
@@ -394,25 +394,25 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool CreateTranscoder(string name, StreamType st, int sampleRate, int bitrate, string url, IPAddress ip, int port, int adminport, string password, int webradioId)
-        ///
-        /// \brief Creates a transcoder.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param name       The name.
-        /// \param st         The streamtype.
-        /// \param sampleRate The sample rate.
-        /// \param bitrate    The bitrate.
-        /// \param url        URL of the stream.
-        /// \param ip         The IP.
-        /// \param port       The port.
-        /// \param adminport  The adminport.
-        /// \param password   The password.
-        /// \param webradioId Identifier of the webradio.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool CreateTranscoder(string name, StreamType st, int sampleRate, int bitrate, string url, IPAddress ip, int port, int adminport, string password, int webradioId)
+        //
+        // \brief Creates a transcoder.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param name       The name.
+        // \param st         The streamtype.
+        // \param sampleRate The sample rate.
+        // \param bitrate    The bitrate.
+        // \param url        URL of the stream.
+        // \param ip         The IP.
+        // \param port       The port.
+        // \param adminport  The adminport.
+        // \param password   The password.
+        // \param webradioId Identifier of the webradio.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool CreateTranscoder(string name, StreamType st, int sampleRate, int bitrate, string url, IPAddress ip, int port, int adminport, string password, int webradioId)
@@ -421,17 +421,17 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool DeleteTranscoder(WebradioTranscoder transcoder, int webradioId)
-        ///
-        /// \brief Deletes the transcoder.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param transcoder The transcoder.
-        /// \param webradioId Identifier of the webradio.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool DeleteTranscoder(WebradioTranscoder transcoder, int webradioId)
+        //
+        // \brief Deletes the transcoder.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param transcoder The transcoder.
+        // \param webradioId Identifier of the webradio.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool DeleteTranscoder(WebradioTranscoder transcoder, int webradioId)
@@ -440,18 +440,18 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool UpdateTranscoder(WebradioTranscoder transcoder, bool debug, int webradioId)
-        ///
-        /// \brief Updates the transcoder.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param transcoder The transcoder.
-        /// \param debug      Debug or not.
-        /// \param webradioId Identifier of the webradio.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool UpdateTranscoder(WebradioTranscoder transcoder, bool debug, int webradioId)
+        //
+        // \brief Updates the transcoder.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param transcoder The transcoder.
+        // \param debug      Debug or not.
+        // \param webradioId Identifier of the webradio.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool UpdateTranscoder(WebradioTranscoder transcoder, bool debug, int webradioId)
@@ -460,18 +460,18 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool StartTranscoder(WebradioTranscoder transcoder,bool debug, int webradioId)
-        ///
-        /// \brief Starts a transcoder.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param transcoder The transcoder.
-        /// \param debug      Debug or not.
-        /// \param webradioId Identifier of the webradio.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool StartTranscoder(WebradioTranscoder transcoder,bool debug, int webradioId)
+        //
+        // \brief Starts a transcoder.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param transcoder The transcoder.
+        // \param debug      Debug or not.
+        // \param webradioId Identifier of the webradio.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool StartTranscoder(WebradioTranscoder transcoder,bool debug, int webradioId)
@@ -480,17 +480,17 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool StopTranscoder(WebradioTranscoder transcoder, int webradioId)
-        ///
-        /// \brief Stops a transcoder.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param transcoder The transcoder.
-        /// \param webradioId Identifier of the webradio.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool StopTranscoder(WebradioTranscoder transcoder, int webradioId)
+        //
+        // \brief Stops a transcoder.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param transcoder The transcoder.
+        // \param webradioId Identifier of the webradio.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool StopTranscoder(WebradioTranscoder transcoder, int webradioId)
@@ -499,16 +499,16 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool StopAllTranscoders(int webradioId)
-        ///
-        /// \brief Stops all transcoders.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param webradioId Identifier of the webradio.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool StopAllTranscoders(int webradioId)
+        //
+        // \brief Stops all transcoders.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param webradioId Identifier of the webradio.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool StopAllTranscoders(int webradioId)
@@ -517,14 +517,14 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public void GenerateAllConfigs(int webradioId)
-        ///
-        /// \brief Generates all configs.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param webradioId Identifier of the webradio.
+        // \fn public void GenerateAllConfigs(int webradioId)
+        //
+        // \brief Generates all configs.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param webradioId Identifier of the webradio.
         **/
 
         public void GenerateAllConfigs(int webradioId)
@@ -533,21 +533,21 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool UpdateServer(bool debug, int port, string password, string adminPassword, int maxListener, int webradioId)
-        ///
-        /// \brief Updates the server.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param debug         Debug or not.
-        /// \param port          The port.
-        /// \param password      The password.
-        /// \param adminPassword The admin password.
-        /// \param maxListener   The maximum listener.
-        /// \param webradioId    Identifier of the webradio.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool UpdateServer(bool debug, int port, string password, string adminPassword, int maxListener, int webradioId)
+        //
+        // \brief Updates the server.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param debug         Debug or not.
+        // \param port          The port.
+        // \param password      The password.
+        // \param adminPassword The admin password.
+        // \param maxListener   The maximum listener.
+        // \param webradioId    Identifier of the webradio.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool UpdateServer(bool debug, int port, string password, string adminPassword, int maxListener, int webradioId)
@@ -556,17 +556,17 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool StartServer(int webradioId, bool debug)
-        ///
-        /// \brief Starts a server.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param webradioId Identifier of the webradio.
-        /// \param debug      Debug or not.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool StartServer(int webradioId, bool debug)
+        //
+        // \brief Starts a server.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param webradioId Identifier of the webradio.
+        // \param debug      Debug or not.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool StartServer(int webradioId, bool debug)
@@ -575,16 +575,16 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool StopServer(int webradioId)
-        ///
-        /// \brief Stops a server.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param webradioId Identifier of the webradio.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool StopServer(int webradioId)
+        //
+        // \brief Stops a server.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param webradioId Identifier of the webradio.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool StopServer(int webradioId)
@@ -593,14 +593,14 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public void ShowServerWebInterface(int webradioId)
-        ///
-        /// \brief Shows the server web interface.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param webradioId Identifier of the webradio.
+        // \fn public void ShowServerWebInterface(int webradioId)
+        //
+        // \brief Shows the server web interface.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param webradioId Identifier of the webradio.
         **/
 
         public void ShowServerWebInterface(int webradioId)
@@ -609,14 +609,14 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public void ShowServerWebAdmin(int webradioId)
-        ///
-        /// \brief Shows the server web admin.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param webradioId Identifier of the webradio.
+        // \fn public void ShowServerWebAdmin(int webradioId)
+        //
+        // \brief Shows the server web admin.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param webradioId Identifier of the webradio.
         **/
 
         public void ShowServerWebAdmin(int webradioId)
@@ -625,16 +625,16 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool TranscoderNextTrack(WebradioTranscoder transcoder)
-        ///
-        /// \brief Transcoder next track.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param transcoder The transcoder.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool TranscoderNextTrack(WebradioTranscoder transcoder)
+        //
+        // \brief Transcoder next track.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param transcoder The transcoder.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool TranscoderNextTrack(WebradioTranscoder transcoder)
@@ -643,16 +643,16 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool ClearHistory(int transcoderId)
-        ///
-        /// \brief Clears the transcoder's history.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param transcoderId Identifier for the transcoder.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool ClearHistory(int transcoderId)
+        //
+        // \brief Clears the transcoder's history.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param transcoderId Identifier for the transcoder.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool ClearHistory(int transcoderId)
@@ -661,19 +661,19 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool GenerateHistory(int webradioId, string transcoderName, int transcoderId, string outputFilename)
-        ///
-        /// \brief Generates a history.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param webradioId     Identifier of the webradio.
-        /// \param transcoderName Name of the transcoder.
-        /// \param transcoderId   Identifier of the transcoder.
-        /// \param outputFilename Filename of the output file.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool GenerateHistory(int webradioId, string transcoderName, int transcoderId, string outputFilename)
+        //
+        // \brief Generates a history.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param webradioId     Identifier of the webradio.
+        // \param transcoderName Name of the transcoder.
+        // \param transcoderId   Identifier of the transcoder.
+        // \param outputFilename Filename of the output file.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool GenerateHistory(int webradioId, string transcoderName, int transcoderId, string outputFilename)
@@ -682,17 +682,17 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool ModifyWebradioName(string name, int webradioId)
-        ///
-        /// \brief Modify webradio's name.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param name       The name.
-        /// \param webradioId Identifier of the webradio.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool ModifyWebradioName(string name, int webradioId)
+        //
+        // \brief Modify webradio's name.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param name       The name.
+        // \param webradioId Identifier of the webradio.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool ModifyWebradioName(string name, int webradioId)
@@ -701,16 +701,16 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public AudioFile GetAudioFileByFilename(string filename)
-        ///
-        /// \brief Gets audio file by filename.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param filename Filename of the file.
-        ///
-        /// \return The audio file by filename.
+        // \fn public AudioFile GetAudioFileByFilename(string filename)
+        //
+        // \brief Gets audio file by filename.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param filename Filename of the file.
+        //
+        // \return The audio file by filename.
         **/
 
         public AudioFile GetAudioFileByFilename(string filename)
@@ -719,16 +719,16 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool UpdateAudioFile(AudioFile file)
-        ///
-        /// \brief Updates the audio file described by file.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param file The file.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool UpdateAudioFile(AudioFile file)
+        //
+        // \brief Updates the audio file described by file.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param file The file.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool UpdateAudioFile(AudioFile file)
@@ -737,19 +737,19 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool TranscoderCapture(bool active, string device, WebradioTranscoder transcoder,int webradioId)
-        ///
-        /// \brief Transcoder capture mode set.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param active     true to active.
-        /// \param device     The device's name.
-        /// \param transcoder The transcoder.
-        /// \param webradioId Identifier of the webradio.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool TranscoderCapture(bool active, string device, WebradioTranscoder transcoder,int webradioId)
+        //
+        // \brief Transcoder capture mode set.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param active     true to active.
+        // \param device     The device's name.
+        // \param transcoder The transcoder.
+        // \param webradioId Identifier of the webradio.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool TranscoderCapture(bool active, string device, WebradioTranscoder transcoder,int webradioId)
@@ -758,16 +758,16 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public List<WebradioListener> GetServerListeners(int webradioId)
-        ///
-        /// \brief Get server's listeners.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param webradioId Identifier of the webradio.
-        ///
-        /// \return A List&lt;WebradioListener&gt;
+        // \fn public List<WebradioListener> GetServerListeners(int webradioId)
+        //
+        // \brief Get server's listeners.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param webradioId Identifier of the webradio.
+        //
+        // \return A List&lt;WebradioListener&gt;
         **/
 
         public List<WebradioListener> GetServerListeners(int webradioId)
@@ -776,16 +776,16 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool UpdateServerStats(int webradioId)
-        ///
-        /// \brief Updates the server statistics.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param webradioId Identifier of the webradio.
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool UpdateServerStats(int webradioId)
+        //
+        // \brief Updates the server statistics.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param webradioId Identifier of the webradio.
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool UpdateServerStats(int webradioId)
@@ -794,14 +794,14 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public bool CheckLibrary()
-        ///
-        /// \brief Check library integrity.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \return true if it succeeds, false if it fails.
+        // \fn public bool CheckLibrary()
+        //
+        // \brief Check library integrity.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \return true if it succeeds, false if it fails.
         **/
 
         public bool CheckLibrary()
@@ -810,16 +810,16 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public int GetSimilarViewCount(int webradioId)
-        ///
-        /// \brief Gets similar view count.
-        ///
-        /// \author Simon Menetrey
-        /// \date 23.05.2014
-        ///
-        /// \param webradioId Identifier of the webradio.
-        ///
-        /// \return The similar view count.
+        // \fn public int GetSimilarViewCount(int webradioId)
+        //
+        // \brief Gets similar view count.
+        //
+        // \author Simon Menetrey
+        // \date 23.05.2014
+        //
+        // \param webradioId Identifier of the webradio.
+        //
+        // \return The similar view count.
         **/
 
         public int GetSimilarViewCount(int webradioId)

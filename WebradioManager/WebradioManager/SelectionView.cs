@@ -1,7 +1,7 @@
 ﻿/**
-/// \file SelectionView.cs
-///
-/// \brief Implements the selection view class.
+// \file SelectionView.cs
+//
+// \brief Implements the selection view class.
 **/
 
 using System;
@@ -11,34 +11,34 @@ using System.Windows.Forms;
 namespace WebradioManager
 {
     /**
-    /// \class SelectionView
-    ///
-    /// \brief A selection view.
-    ///
-    /// \author Simon Menetrey
-    /// \date 26.05.2014
+    // \class SelectionView
+    //
+    // \brief A selection view.
+    //
+    // \author Simon Menetrey
+    // \date 26.05.2014
     **/
 
     public partial class SelectionView : Form
     {
         #region Const
-        /// \brief The maximum name length.
+        // \brief The maximum name length.
         const int MAX_NAME_LENGTH = 255;
         #endregion
 
         #region Fields
-        /// \brief The controller.
+        // \brief The controller.
         private SelectionController _controller;
         #endregion
 
         #region Properties
 
         /**
-        /// \property public SelectionController Controller
-        ///
-        /// \brief Gets or sets the controller.
-        ///
-        /// \return The controller.
+        // \property public SelectionController Controller
+        //
+        // \brief Gets or sets the controller.
+        //
+        // \return The controller.
         **/
 
         public SelectionController Controller
@@ -51,12 +51,12 @@ namespace WebradioManager
         #region Methods
 
         /**
-        /// \fn public SelectionView()
-        ///
-        /// \brief Default constructor.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
+        // \fn public SelectionView()
+        //
+        // \brief Default constructor.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
         **/
 
         public SelectionView()
@@ -71,12 +71,12 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public void UpdateView()
-        ///
-        /// \brief Updates the view.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
+        // \fn public void UpdateView()
+        //
+        // \brief Updates the view.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
         **/
 
         public void UpdateView()
@@ -90,16 +90,16 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn private void btnNew_Click(object sender, EventArgs e)
-        ///
-        /// \brief Event handler. Called by btnNew for click events.
-        ///        Create a webradio
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
-        ///
-        /// \param sender Source of the event.
-        /// \param e      Event information.
+        // \fn private void btnNew_Click(object sender, EventArgs e)
+        //
+        // \brief Event handler. Called by btnNew for click events.
+        //        Create a webradio
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
+        //
+        // \param sender Source of the event.
+        // \param e      Event information.
         **/
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -117,16 +117,16 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn private void btnDelete_Click(object sender, EventArgs e)
-        ///
-        /// \brief Event handler. Called by btnDelete for click events.
-        ///        Delete a webradio
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
-        ///
-        /// \param sender Source of the event.
-        /// \param e      Event information.
+        // \fn private void btnDelete_Click(object sender, EventArgs e)
+        //
+        // \brief Event handler. Called by btnDelete for click events.
+        //        Delete a webradio
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
+        //
+        // \param sender Source of the event.
+        // \param e      Event information.
         **/
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -143,16 +143,16 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn private void btnDuplicate_Click(object sender, EventArgs e)
-        ///
-        /// \brief Event handler. Called by btnDuplicate for click events.
-        ///        Duplicate a webradio
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
-        ///
-        /// \param sender Source of the event.
-        /// \param e      Event information.
+        // \fn private void btnDuplicate_Click(object sender, EventArgs e)
+        //
+        // \brief Event handler. Called by btnDuplicate for click events.
+        //        Duplicate a webradio
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
+        //
+        // \param sender Source of the event.
+        // \param e      Event information.
         **/
 
         private void btnDuplicate_Click(object sender, EventArgs e)
@@ -168,16 +168,16 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn private void btnOpen_Click(object sender, EventArgs e)
-        ///
-        /// \brief Event handler. Called by btnOpen for click events.
-        ///        Open a webradio
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
-        ///
-        /// \param sender Source of the event.
-        /// \param e      Event information.
+        // \fn private void btnOpen_Click(object sender, EventArgs e)
+        //
+        // \brief Event handler. Called by btnOpen for click events.
+        //        Open a webradio
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
+        //
+        // \param sender Source of the event.
+        // \param e      Event information.
         **/
 
         private void btnOpen_Click(object sender, EventArgs e)
@@ -188,15 +188,15 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn private void SelectionView_FormClosing(object sender, FormClosingEventArgs e)
-        ///
-        /// \brief Event handler. Called by SelectionView for form closing events.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
-        ///
-        /// \param sender Source of the event.
-        /// \param e      Form closing event information.
+        // \fn private void SelectionView_FormClosing(object sender, FormClosingEventArgs e)
+        //
+        // \brief Event handler. Called by SelectionView for form closing events.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
+        //
+        // \param sender Source of the event.
+        // \param e      Form closing event information.
         **/
 
         private void SelectionView_FormClosing(object sender, FormClosingEventArgs e)

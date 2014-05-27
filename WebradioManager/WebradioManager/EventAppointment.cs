@@ -1,7 +1,7 @@
 ﻿/**
-/// \file EventAppointment.cs
-///
-/// \brief Implements the event appointment class.
+// \file EventAppointment.cs
+//
+// \brief Implements the event appointment class.
 **/
 
 using Calendar;
@@ -9,30 +9,30 @@ using Calendar;
 namespace WebradioManager
 {
     /**
-    /// \class EventAppointment
-    ///
-    /// \brief An event appointment. Add 2 properties to the original Appointment class (from Calendar library).
-    ///
-    /// \author Simon Menetrey
-    /// \date 26.05.2014
+    // \class EventAppointment
+    //
+    // \brief An event appointment. Add 2 properties to the original Appointment class (from Calendar library).
+    //
+    // \author Simon Menetrey
+    // \date 26.05.2014
     **/
 
     public class EventAppointment : Appointment
     {
         #region Fields
-        /// \brief The playlist.
+        // \brief The playlist.
         private Playlist _playlist;
-        /// \brief The event object.
+        // \brief The event object.
         private CalendarEvent _eventObject;
         #endregion
 
         #region Properties
         /**
-        /// \property public CalendarEvent EventObject
-        ///
-        /// \brief Gets or sets the event object.
-        ///
-        /// \return The event object.
+        // \property public CalendarEvent EventObject
+        //
+        // \brief Gets or sets the event object.
+        //
+        // \return The event object.
         **/
 
         public CalendarEvent EventObject
@@ -42,11 +42,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public Playlist Playlist
-        ///
-        /// \brief Gets or sets the playlist.
-        ///
-        /// \return The playlist.
+        // \property public Playlist Playlist
+        //
+        // \brief Gets or sets the playlist.
+        //
+        // \return The playlist.
         **/
 
         public Playlist Playlist
@@ -58,12 +58,12 @@ namespace WebradioManager
 
         #region Methods
         /**
-        /// \fn public EventAppointment():base()
-        ///
-        /// \brief Default constructor.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
+        // \fn public EventAppointment():base()
+        //
+        // \brief Default constructor.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
         **/
 
         public EventAppointment():base()

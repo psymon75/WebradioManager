@@ -34,6 +34,7 @@
             this.mnsMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateAllConfigsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkLibraryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tbcTabs = new System.Windows.Forms.TabControl();
             this.tbpStatus = new System.Windows.Forms.TabPage();
@@ -231,7 +232,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
             this.btnShowServerLog = new System.Windows.Forms.Button();
-            this.btnClearLogServer = new System.Windows.Forms.Button();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
             this.btnSaveServer = new System.Windows.Forms.Button();
             this.nudMaxListener = new System.Windows.Forms.NumericUpDown();
@@ -252,7 +252,6 @@
             this.label31 = new System.Windows.Forms.Label();
             this.FBD = new System.Windows.Forms.FolderBrowserDialog();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
-            this.checkLibraryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsMain.SuspendLayout();
             this.tbcTabs.SuspendLayout();
             this.tbpStatus.SuspendLayout();
@@ -360,6 +359,13 @@
             this.generateAllConfigsToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.generateAllConfigsToolStripMenuItem.Text = "Generate all configs";
             this.generateAllConfigsToolStripMenuItem.Click += new System.EventHandler(this.generateAllConfigsToolStripMenuItem_Click);
+            // 
+            // checkLibraryToolStripMenuItem
+            // 
+            this.checkLibraryToolStripMenuItem.Name = "checkLibraryToolStripMenuItem";
+            this.checkLibraryToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.checkLibraryToolStripMenuItem.Text = "Check  library";
+            this.checkLibraryToolStripMenuItem.Click += new System.EventHandler(this.checkLibraryToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -2366,32 +2372,22 @@
             // groupBox19
             // 
             this.groupBox19.Controls.Add(this.btnShowServerLog);
-            this.groupBox19.Controls.Add(this.btnClearLogServer);
             this.groupBox19.Location = new System.Drawing.Point(215, 59);
             this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Size = new System.Drawing.Size(184, 54);
+            this.groupBox19.Size = new System.Drawing.Size(98, 54);
             this.groupBox19.TabIndex = 2;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "Log";
             // 
             // btnShowServerLog
             // 
-            this.btnShowServerLog.Location = new System.Drawing.Point(89, 19);
+            this.btnShowServerLog.Location = new System.Drawing.Point(6, 19);
             this.btnShowServerLog.Name = "btnShowServerLog";
             this.btnShowServerLog.Size = new System.Drawing.Size(75, 23);
             this.btnShowServerLog.TabIndex = 2;
             this.btnShowServerLog.Text = "Show logfile";
             this.btnShowServerLog.UseVisualStyleBackColor = true;
             this.btnShowServerLog.Click += new System.EventHandler(this.btnShowServerLog_Click);
-            // 
-            // btnClearLogServer
-            // 
-            this.btnClearLogServer.Location = new System.Drawing.Point(7, 20);
-            this.btnClearLogServer.Name = "btnClearLogServer";
-            this.btnClearLogServer.Size = new System.Drawing.Size(75, 23);
-            this.btnClearLogServer.TabIndex = 1;
-            this.btnClearLogServer.Text = "Clear";
-            this.btnClearLogServer.UseVisualStyleBackColor = true;
             // 
             // groupBox18
             // 
@@ -2604,13 +2600,6 @@
             this.OFD.Filter = "MP3 Files|*.mp3";
             this.OFD.Multiselect = true;
             // 
-            // checkLibraryToolStripMenuItem
-            // 
-            this.checkLibraryToolStripMenuItem.Name = "checkLibraryToolStripMenuItem";
-            this.checkLibraryToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.checkLibraryToolStripMenuItem.Text = "Check  library";
-            this.checkLibraryToolStripMenuItem.Click += new System.EventHandler(this.checkLibraryToolStripMenuItem_Click);
-            // 
             // AdminView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2819,7 +2808,6 @@
         private System.Windows.Forms.Label lblStatusTranscoder;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.GroupBox groupBox19;
-        private System.Windows.Forms.Button btnClearLogServer;
         private System.Windows.Forms.GroupBox groupBox18;
         private System.Windows.Forms.Button btnSaveServer;
         private System.Windows.Forms.NumericUpDown nudMaxListener;

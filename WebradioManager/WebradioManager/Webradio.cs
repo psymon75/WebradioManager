@@ -1,7 +1,7 @@
 ﻿/**
-/// \file Webradio.cs
-///
-/// \brief Implements the webradio class.
+// \file Webradio.cs
+//
+// \brief Implements the webradio class.
 **/
 
 using System.Collections.Generic;
@@ -9,44 +9,44 @@ using System.Collections.Generic;
 namespace WebradioManager
 {
     /**
-    /// \class Webradio
-    ///
-    /// \brief A webradio.
-    ///
-    /// \author Simon Menetrey
-    /// \date 26.05.2014
+    // \class Webradio
+    //
+    // \brief A webradio.
+    //
+    // \author Simon Menetrey
+    // \date 26.05.2014
     **/
 
     public class Webradio
     {
         #region Const
-        /// \brief The default identifier.
+        // \brief The default identifier.
         const int DEFAULT_ID = 0;
         #endregion
 
         #region Fields
-        /// \brief The playlists list.
+        // \brief The playlists list.
         private List<Playlist> _playlists;
-        /// \brief The calendar.
+        // \brief The calendar.
         private WebradioCalendar _calendar;
-        /// \brief The name.
+        // \brief The name.
         private string _name;
-        /// \brief The server.
+        // \brief The server.
         private WebradioServer _server;
-        /// \brief The identifier.
+        // \brief The identifier.
         private int _id;
-        /// \brief The transcoders list.
+        // \brief The transcoders list.
         private List<WebradioTranscoder> _transcoders;
         #endregion
 
         #region Properties
 
         /**
-        /// \property public List<WebradioTranscoder> Transcoders
-        ///
-        /// \brief Gets or sets the transcoders list.
-        ///
-        /// \return The transcoders.
+        // \property public List<WebradioTranscoder> Transcoders
+        //
+        // \brief Gets or sets the transcoders list.
+        //
+        // \return The transcoders.
         **/
 
         public List<WebradioTranscoder> Transcoders
@@ -56,11 +56,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public WebradioServer Server
-        ///
-        /// \brief Gets or sets the server.
-        ///
-        /// \return The server.
+        // \property public WebradioServer Server
+        //
+        // \brief Gets or sets the server.
+        //
+        // \return The server.
         **/
 
         public WebradioServer Server
@@ -70,11 +70,11 @@ namespace WebradioManager
         } 
 
         /**
-        /// \property public string Name
-        ///
-        /// \brief Gets or sets the name.
-        ///
-        /// \return The name.
+        // \property public string Name
+        //
+        // \brief Gets or sets the name.
+        //
+        // \return The name.
         **/
 
         public string Name
@@ -84,11 +84,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public WebradioCalendar Calendar
-        ///
-        /// \brief Gets or sets the calendar.
-        ///
-        /// \return The calendar.
+        // \property public WebradioCalendar Calendar
+        //
+        // \brief Gets or sets the calendar.
+        //
+        // \return The calendar.
         **/
 
         public WebradioCalendar Calendar
@@ -98,11 +98,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public List<Playlist> Playlists
-        ///
-        /// \brief Gets or sets the playlists list.
-        ///
-        /// \return The playlists.
+        // \property public List<Playlist> Playlists
+        //
+        // \brief Gets or sets the playlists list.
+        //
+        // \return The playlists.
         **/
 
         public List<Playlist> Playlists
@@ -112,11 +112,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public int Id
-        ///
-        /// \brief Gets or sets the identifier.
-        ///
-        /// \return The identifier.
+        // \property public int Id
+        //
+        // \brief Gets or sets the identifier.
+        //
+        // \return The identifier.
         **/
 
         public int Id
@@ -129,15 +129,15 @@ namespace WebradioManager
         #region Methods
 
         /**
-        /// \fn public Webradio(string name, int id)
-        ///
-        /// \brief Constructor.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
-        ///
-        /// \param name The name.
-        /// \param id   The identifier.
+        // \fn public Webradio(string name, int id)
+        //
+        // \brief Constructor.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
+        //
+        // \param name The name.
+        // \param id   The identifier.
         **/
 
         public Webradio(string name, int id)
@@ -149,14 +149,14 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public Webradio(string name):this(name,DEFAULT_ID)
-        ///
-        /// \brief Constructor.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
-        ///
-        /// \param name The name.
+        // \fn public Webradio(string name):this(name,DEFAULT_ID)
+        //
+        // \brief Constructor.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
+        //
+        // \param name The name.
         **/
 
         public Webradio(string name):this(name,DEFAULT_ID)
@@ -165,12 +165,12 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public void GenerateConfigFiles()
-        ///
-        /// \brief Generates a configuration files.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
+        // \fn public void GenerateConfigFiles()
+        //
+        // \brief Generates a configuration files.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
         **/
 
         public void GenerateConfigFiles()
@@ -188,16 +188,16 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public override string ToString()
-        ///
-        /// \brief Convert this object into a string representation.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
-        ///
-        /// \return Chaîne qui représente l'objet actif.
-        ///
-        /// ### summary Retourne une chaîne qui représente l'objet actif.
+        // \fn public override string ToString()
+        //
+        // \brief Convert this object into a string representation.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
+        //
+        // \return Chaîne qui représente l'objet actif.
+        //
+        // ### summary Retourne une chaîne qui représente l'objet actif.
         **/
 
         public override string ToString()

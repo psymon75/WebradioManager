@@ -147,6 +147,9 @@
     <EmbeddedResource Include="SelectionView.resx">
       <DependentUpon>SelectionView.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="bin\Release\database.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ClassDiagram.cd" />
     <None Include="ClassDiagram1.cd" />
     <None Include="Model.cd" />
@@ -169,9 +172,9 @@
     <Content Include="Calendar.DayView.dll" />
     <Content Include="Resources\sc_serv.exe" />
     <Content Include="Resources\sc_trans.exe" />
-    <None Include="Resources\cleardatabase.db">
+    <Content Include="Resources\cleardatabase.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="Resources\shoutcast.gif" />
   </ItemGroup>
   <ItemGroup>

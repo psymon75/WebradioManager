@@ -1,7 +1,7 @@
 ﻿/**
-/// \file WebradioCalendar.cs
-///
-/// \brief Implements the webradio calendar class.
+// \file WebradioCalendar.cs
+//
+// \brief Implements the webradio calendar class.
 **/
 
 using System.Collections.Generic;
@@ -11,33 +11,33 @@ using System.Xml;
 namespace WebradioManager
 {
     /**
-    /// \class WebradioCalendar
-    ///
-    /// \brief A webradio calendar.
-    ///
-    /// \author Simon Menetrey
-    /// \date 26.05.2014
+    // \class WebradioCalendar
+    //
+    // \brief A webradio calendar.
+    //
+    // \author Simon Menetrey
+    // \date 26.05.2014
     **/
 
     public class WebradioCalendar
     {
         #region Fields
-        /// \brief The events.
+        // \brief The events.
         private List<CalendarEvent> _events;
-        /// \brief Filename of the calendar's file.
+        // \brief Filename of the calendar's file.
         private string _filename;
-        /// \brief The identifier.
+        // \brief The identifier.
         private int _id;
         #endregion
 
         #region Properties
 
         /**
-        /// \property public int Id
-        ///
-        /// \brief Gets or sets the identifier.
-        ///
-        /// \return The identifier.
+        // \property public int Id
+        //
+        // \brief Gets or sets the identifier.
+        //
+        // \return The identifier.
         **/
 
         public int Id
@@ -47,11 +47,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public string Filename
-        ///
-        /// \brief Gets or sets the filename of the calendar's file.
-        ///
-        /// \return The filename.
+        // \property public string Filename
+        //
+        // \brief Gets or sets the filename of the calendar's file.
+        //
+        // \return The filename.
         **/
 
         public string Filename
@@ -61,11 +61,11 @@ namespace WebradioManager
         }
 
         /**
-        /// \property public List<CalendarEvent> Events
-        ///
-        /// \brief Gets or sets the events.
-        ///
-        /// \return The events.
+        // \property public List<CalendarEvent> Events
+        //
+        // \brief Gets or sets the events.
+        //
+        // \return The events.
         **/
 
         public List<CalendarEvent> Events
@@ -78,15 +78,15 @@ namespace WebradioManager
         #region Methods
 
         /**
-        /// \fn public WebradioCalendar(int id, string filename)
-        ///
-        /// \brief Constructor.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
-        ///
-        /// \param id       The identifier.
-        /// \param filename Filename of the file.
+        // \fn public WebradioCalendar(int id, string filename)
+        //
+        // \brief Constructor.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
+        //
+        // \param id       The identifier.
+        // \param filename Filename of the file.
         **/
 
         public WebradioCalendar(int id, string filename)
@@ -97,14 +97,14 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public WebradioCalendar(string filename)
-        ///
-        /// \brief Constructor.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
-        ///
-        /// \param filename Filename of the file.
+        // \fn public WebradioCalendar(string filename)
+        //
+        // \brief Constructor.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
+        //
+        // \param filename Filename of the file.
         **/
 
         public WebradioCalendar(string filename)
@@ -114,12 +114,12 @@ namespace WebradioManager
         }
 
         /**
-        /// \fn public void GenerateConfigFile()
-        ///
-        /// \brief Generates a configuration file.
-        ///
-        /// \author Simon Menetrey
-        /// \date 26.05.2014
+        // \fn public void GenerateConfigFile()
+        //
+        // \brief Generates a configuration file.
+        //
+        // \author Simon Menetrey
+        // \date 26.05.2014
         **/
 
         public void GenerateConfigFile()

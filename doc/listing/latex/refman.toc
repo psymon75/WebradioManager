@@ -1,0 +1,479 @@
+\contentsline {chapter}{\numberline {1}Namespace Index}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Packages}{1}{section.1.1}
+\contentsline {chapter}{\numberline {2}Hierarchical Index}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Class Hierarchy}{3}{section.2.1}
+\contentsline {chapter}{\numberline {3}Class Index}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}Class List}{5}{section.3.1}
+\contentsline {chapter}{\numberline {4}File Index}{7}{chapter.4}
+\contentsline {section}{\numberline {4.1}File List}{7}{section.4.1}
+\contentsline {chapter}{\numberline {5}Namespace Documentation}{9}{chapter.5}
+\contentsline {section}{\numberline {5.1}Package Webradio\discretionary {-}{}{}Manager}{9}{section.5.1}
+\contentsline {chapter}{\numberline {6}Class Documentation}{11}{chapter.6}
+\contentsline {section}{\numberline {6.1}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Ad Class Reference}{11}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Detailed Description}{11}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Constructor \& Destructor Documentation}{12}{subsection.6.1.2}
+\contentsline {subsubsection}{\numberline {6.1.2.1}Ad}{12}{subsubsection.6.1.2.1}
+\contentsline {subsubsection}{\numberline {6.1.2.2}Ad}{12}{subsubsection.6.1.2.2}
+\contentsline {section}{\numberline {6.2}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Admin\discretionary {-}{}{}Controller Class Reference}{13}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Detailed Description}{15}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Constructor \& Destructor Documentation}{15}{subsection.6.2.2}
+\contentsline {subsubsection}{\numberline {6.2.2.1}Admin\discretionary {-}{}{}Controller}{15}{subsubsection.6.2.2.1}
+\contentsline {subsection}{\numberline {6.2.3}Member Function Documentation}{15}{subsection.6.2.3}
+\contentsline {subsubsection}{\numberline {6.2.3.1}Add\discretionary {-}{}{}To\discretionary {-}{}{}Playlist}{15}{subsubsection.6.2.3.1}
+\contentsline {subsubsection}{\numberline {6.2.3.2}Check\discretionary {-}{}{}Folders}{16}{subsubsection.6.2.3.2}
+\contentsline {subsubsection}{\numberline {6.2.3.3}Check\discretionary {-}{}{}Library}{16}{subsubsection.6.2.3.3}
+\contentsline {subsubsection}{\numberline {6.2.3.4}Clear\discretionary {-}{}{}History}{16}{subsubsection.6.2.3.4}
+\contentsline {subsubsection}{\numberline {6.2.3.5}Create\discretionary {-}{}{}Event}{17}{subsubsection.6.2.3.5}
+\contentsline {subsubsection}{\numberline {6.2.3.6}Create\discretionary {-}{}{}Playlist}{17}{subsubsection.6.2.3.6}
+\contentsline {subsubsection}{\numberline {6.2.3.7}Create\discretionary {-}{}{}Transcoder}{18}{subsubsection.6.2.3.7}
+\contentsline {subsubsection}{\numberline {6.2.3.8}Delete\discretionary {-}{}{}Audio\discretionary {-}{}{}File}{18}{subsubsection.6.2.3.8}
+\contentsline {subsubsection}{\numberline {6.2.3.9}Delete\discretionary {-}{}{}Event}{19}{subsubsection.6.2.3.9}
+\contentsline {subsubsection}{\numberline {6.2.3.10}Delete\discretionary {-}{}{}Playlist}{19}{subsubsection.6.2.3.10}
+\contentsline {subsubsection}{\numberline {6.2.3.11}Delete\discretionary {-}{}{}Transcoder}{19}{subsubsection.6.2.3.11}
+\contentsline {subsubsection}{\numberline {6.2.3.12}Form\discretionary {-}{}{}Close}{20}{subsubsection.6.2.3.12}
+\contentsline {subsubsection}{\numberline {6.2.3.13}Generate\discretionary {-}{}{}All\discretionary {-}{}{}Configs}{20}{subsubsection.6.2.3.13}
+\contentsline {subsubsection}{\numberline {6.2.3.14}Generate\discretionary {-}{}{}History}{20}{subsubsection.6.2.3.14}
+\contentsline {subsubsection}{\numberline {6.2.3.15}Generate\discretionary {-}{}{}Playlist}{21}{subsubsection.6.2.3.15}
+\contentsline {subsubsection}{\numberline {6.2.3.16}Get\discretionary {-}{}{}Audio\discretionary {-}{}{}File\discretionary {-}{}{}By\discretionary {-}{}{}Filename}{21}{subsubsection.6.2.3.16}
+\contentsline {subsubsection}{\numberline {6.2.3.17}Get\discretionary {-}{}{}Genders}{22}{subsubsection.6.2.3.17}
+\contentsline {subsubsection}{\numberline {6.2.3.18}Get\discretionary {-}{}{}Library}{22}{subsubsection.6.2.3.18}
+\contentsline {subsubsection}{\numberline {6.2.3.19}Get\discretionary {-}{}{}Playlist\discretionary {-}{}{}Content}{22}{subsubsection.6.2.3.19}
+\contentsline {subsubsection}{\numberline {6.2.3.20}Get\discretionary {-}{}{}Server\discretionary {-}{}{}Listeners}{23}{subsubsection.6.2.3.20}
+\contentsline {subsubsection}{\numberline {6.2.3.21}Get\discretionary {-}{}{}Similar\discretionary {-}{}{}View\discretionary {-}{}{}Count}{23}{subsubsection.6.2.3.21}
+\contentsline {subsubsection}{\numberline {6.2.3.22}Get\discretionary {-}{}{}Webradio}{24}{subsubsection.6.2.3.22}
+\contentsline {subsubsection}{\numberline {6.2.3.23}Import\discretionary {-}{}{}Files\discretionary {-}{}{}To\discretionary {-}{}{}Library}{24}{subsubsection.6.2.3.23}
+\contentsline {subsubsection}{\numberline {6.2.3.24}Modify\discretionary {-}{}{}Webradio\discretionary {-}{}{}Name}{24}{subsubsection.6.2.3.24}
+\contentsline {subsubsection}{\numberline {6.2.3.25}Remove\discretionary {-}{}{}From\discretionary {-}{}{}Playlist}{25}{subsubsection.6.2.3.25}
+\contentsline {subsubsection}{\numberline {6.2.3.26}Show\discretionary {-}{}{}Server\discretionary {-}{}{}Web\discretionary {-}{}{}Admin}{25}{subsubsection.6.2.3.26}
+\contentsline {subsubsection}{\numberline {6.2.3.27}Show\discretionary {-}{}{}Server\discretionary {-}{}{}Web\discretionary {-}{}{}Interface}{25}{subsubsection.6.2.3.27}
+\contentsline {subsubsection}{\numberline {6.2.3.28}Start\discretionary {-}{}{}Server}{26}{subsubsection.6.2.3.28}
+\contentsline {subsubsection}{\numberline {6.2.3.29}Start\discretionary {-}{}{}Transcoder}{26}{subsubsection.6.2.3.29}
+\contentsline {subsubsection}{\numberline {6.2.3.30}Stop\discretionary {-}{}{}All\discretionary {-}{}{}Transcoders}{27}{subsubsection.6.2.3.30}
+\contentsline {subsubsection}{\numberline {6.2.3.31}Stop\discretionary {-}{}{}Server}{27}{subsubsection.6.2.3.31}
+\contentsline {subsubsection}{\numberline {6.2.3.32}Stop\discretionary {-}{}{}Transcoder}{28}{subsubsection.6.2.3.32}
+\contentsline {subsubsection}{\numberline {6.2.3.33}Transcoder\discretionary {-}{}{}Capture}{28}{subsubsection.6.2.3.33}
+\contentsline {subsubsection}{\numberline {6.2.3.34}Transcoder\discretionary {-}{}{}Next\discretionary {-}{}{}Track}{28}{subsubsection.6.2.3.34}
+\contentsline {subsubsection}{\numberline {6.2.3.35}Update\discretionary {-}{}{}Audio\discretionary {-}{}{}File}{29}{subsubsection.6.2.3.35}
+\contentsline {subsubsection}{\numberline {6.2.3.36}Update\discretionary {-}{}{}Event}{29}{subsubsection.6.2.3.36}
+\contentsline {subsubsection}{\numberline {6.2.3.37}Update\discretionary {-}{}{}Server}{30}{subsubsection.6.2.3.37}
+\contentsline {subsubsection}{\numberline {6.2.3.38}Update\discretionary {-}{}{}Server\discretionary {-}{}{}Stats}{30}{subsubsection.6.2.3.38}
+\contentsline {subsubsection}{\numberline {6.2.3.39}Update\discretionary {-}{}{}Transcoder}{30}{subsubsection.6.2.3.39}
+\contentsline {subsubsection}{\numberline {6.2.3.40}Update\discretionary {-}{}{}View}{31}{subsubsection.6.2.3.40}
+\contentsline {subsection}{\numberline {6.2.4}Property Documentation}{31}{subsection.6.2.4}
+\contentsline {subsubsection}{\numberline {6.2.4.1}Model}{31}{subsubsection.6.2.4.1}
+\contentsline {subsubsection}{\numberline {6.2.4.2}View}{31}{subsubsection.6.2.4.2}
+\contentsline {section}{\numberline {6.3}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Admin\discretionary {-}{}{}View Class Reference}{32}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Detailed Description}{32}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Constructor \& Destructor Documentation}{32}{subsection.6.3.2}
+\contentsline {subsubsection}{\numberline {6.3.2.1}Admin\discretionary {-}{}{}View}{32}{subsubsection.6.3.2.1}
+\contentsline {subsection}{\numberline {6.3.3}Member Function Documentation}{33}{subsection.6.3.3}
+\contentsline {subsubsection}{\numberline {6.3.3.1}Update\discretionary {-}{}{}View}{33}{subsubsection.6.3.3.1}
+\contentsline {subsection}{\numberline {6.3.4}Property Documentation}{33}{subsection.6.3.4}
+\contentsline {subsubsection}{\numberline {6.3.4.1}Controller}{33}{subsubsection.6.3.4.1}
+\contentsline {subsubsection}{\numberline {6.3.4.2}Events\discretionary {-}{}{}Calendar}{33}{subsubsection.6.3.4.2}
+\contentsline {subsubsection}{\numberline {6.3.4.3}Id\discretionary {-}{}{}Webradio}{33}{subsubsection.6.3.4.3}
+\contentsline {subsubsection}{\numberline {6.3.4.4}Name\discretionary {-}{}{}Webradio}{34}{subsubsection.6.3.4.4}
+\contentsline {section}{\numberline {6.4}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Audio\discretionary {-}{}{}File Class Reference}{34}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}Detailed Description}{35}{subsection.6.4.1}
+\contentsline {subsection}{\numberline {6.4.2}Constructor \& Destructor Documentation}{35}{subsection.6.4.2}
+\contentsline {subsubsection}{\numberline {6.4.2.1}Audio\discretionary {-}{}{}File}{35}{subsubsection.6.4.2.1}
+\contentsline {subsubsection}{\numberline {6.4.2.2}Audio\discretionary {-}{}{}File}{35}{subsubsection.6.4.2.2}
+\contentsline {subsection}{\numberline {6.4.3}Property Documentation}{36}{subsection.6.4.3}
+\contentsline {subsubsection}{\numberline {6.4.3.1}Album}{36}{subsubsection.6.4.3.1}
+\contentsline {subsubsection}{\numberline {6.4.3.2}Artist}{36}{subsubsection.6.4.3.2}
+\contentsline {subsubsection}{\numberline {6.4.3.3}Duration}{36}{subsubsection.6.4.3.3}
+\contentsline {subsubsection}{\numberline {6.4.3.4}Filename}{37}{subsubsection.6.4.3.4}
+\contentsline {subsubsection}{\numberline {6.4.3.5}Gender}{37}{subsubsection.6.4.3.5}
+\contentsline {subsubsection}{\numberline {6.4.3.6}Id}{37}{subsubsection.6.4.3.6}
+\contentsline {subsubsection}{\numberline {6.4.3.7}Label}{37}{subsubsection.6.4.3.7}
+\contentsline {subsubsection}{\numberline {6.4.3.8}Title}{37}{subsubsection.6.4.3.8}
+\contentsline {subsubsection}{\numberline {6.4.3.9}Type}{37}{subsubsection.6.4.3.9}
+\contentsline {subsubsection}{\numberline {6.4.3.10}Year}{38}{subsubsection.6.4.3.10}
+\contentsline {section}{\numberline {6.5}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Bdd Class Reference}{38}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}Detailed Description}{39}{subsection.6.5.1}
+\contentsline {subsection}{\numberline {6.5.2}Constructor \& Destructor Documentation}{40}{subsection.6.5.2}
+\contentsline {subsubsection}{\numberline {6.5.2.1}Bdd}{40}{subsubsection.6.5.2.1}
+\contentsline {subsection}{\numberline {6.5.3}Member Function Documentation}{40}{subsection.6.5.3}
+\contentsline {subsubsection}{\numberline {6.5.3.1}Add\discretionary {-}{}{}Audio\discretionary {-}{}{}File}{40}{subsubsection.6.5.3.1}
+\contentsline {subsubsection}{\numberline {6.5.3.2}Add\discretionary {-}{}{}Event}{40}{subsubsection.6.5.3.2}
+\contentsline {subsubsection}{\numberline {6.5.3.3}Add\discretionary {-}{}{}Gender}{41}{subsubsection.6.5.3.3}
+\contentsline {subsubsection}{\numberline {6.5.3.4}Add\discretionary {-}{}{}Generated\discretionary {-}{}{}Playlist}{41}{subsubsection.6.5.3.4}
+\contentsline {subsubsection}{\numberline {6.5.3.5}Add\discretionary {-}{}{}To\discretionary {-}{}{}History}{42}{subsubsection.6.5.3.5}
+\contentsline {subsubsection}{\numberline {6.5.3.6}Add\discretionary {-}{}{}To\discretionary {-}{}{}Playlist}{42}{subsubsection.6.5.3.6}
+\contentsline {subsubsection}{\numberline {6.5.3.7}Add\discretionary {-}{}{}Transcoder}{42}{subsubsection.6.5.3.7}
+\contentsline {subsubsection}{\numberline {6.5.3.8}Add\discretionary {-}{}{}Webradio}{43}{subsubsection.6.5.3.8}
+\contentsline {subsubsection}{\numberline {6.5.3.9}Audio\discretionary {-}{}{}File\discretionary {-}{}{}Exist}{43}{subsubsection.6.5.3.9}
+\contentsline {subsubsection}{\numberline {6.5.3.10}Clear\discretionary {-}{}{}History}{44}{subsubsection.6.5.3.10}
+\contentsline {subsubsection}{\numberline {6.5.3.11}Create\discretionary {-}{}{}Playlist}{44}{subsubsection.6.5.3.11}
+\contentsline {subsubsection}{\numberline {6.5.3.12}Delete\discretionary {-}{}{}Audio\discretionary {-}{}{}File}{44}{subsubsection.6.5.3.12}
+\contentsline {subsubsection}{\numberline {6.5.3.13}Delete\discretionary {-}{}{}Event}{45}{subsubsection.6.5.3.13}
+\contentsline {subsubsection}{\numberline {6.5.3.14}Delete\discretionary {-}{}{}Playlist}{45}{subsubsection.6.5.3.14}
+\contentsline {subsubsection}{\numberline {6.5.3.15}Delete\discretionary {-}{}{}Transcoder}{46}{subsubsection.6.5.3.15}
+\contentsline {subsubsection}{\numberline {6.5.3.16}Delete\discretionary {-}{}{}Webradio}{46}{subsubsection.6.5.3.16}
+\contentsline {subsubsection}{\numberline {6.5.3.17}Event\discretionary {-}{}{}Exist}{46}{subsubsection.6.5.3.17}
+\contentsline {subsubsection}{\numberline {6.5.3.18}Get\discretionary {-}{}{}Gender\discretionary {-}{}{}Id}{47}{subsubsection.6.5.3.18}
+\contentsline {subsubsection}{\numberline {6.5.3.19}Get\discretionary {-}{}{}Genders}{47}{subsubsection.6.5.3.19}
+\contentsline {subsubsection}{\numberline {6.5.3.20}Get\discretionary {-}{}{}History}{47}{subsubsection.6.5.3.20}
+\contentsline {subsubsection}{\numberline {6.5.3.21}Load\discretionary {-}{}{}Library}{48}{subsubsection.6.5.3.21}
+\contentsline {subsubsection}{\numberline {6.5.3.22}Load\discretionary {-}{}{}Webradios}{48}{subsubsection.6.5.3.22}
+\contentsline {subsubsection}{\numberline {6.5.3.23}Modify\discretionary {-}{}{}Webradio\discretionary {-}{}{}Name}{49}{subsubsection.6.5.3.23}
+\contentsline {subsubsection}{\numberline {6.5.3.24}Remove\discretionary {-}{}{}From\discretionary {-}{}{}Playlist}{49}{subsubsection.6.5.3.24}
+\contentsline {subsubsection}{\numberline {6.5.3.25}Transcoder\discretionary {-}{}{}Exist}{49}{subsubsection.6.5.3.25}
+\contentsline {subsubsection}{\numberline {6.5.3.26}Update\discretionary {-}{}{}Audio\discretionary {-}{}{}File}{50}{subsubsection.6.5.3.26}
+\contentsline {subsubsection}{\numberline {6.5.3.27}Update\discretionary {-}{}{}Event}{50}{subsubsection.6.5.3.27}
+\contentsline {subsubsection}{\numberline {6.5.3.28}Update\discretionary {-}{}{}Filenames}{51}{subsubsection.6.5.3.28}
+\contentsline {subsubsection}{\numberline {6.5.3.29}Update\discretionary {-}{}{}Server}{51}{subsubsection.6.5.3.29}
+\contentsline {subsubsection}{\numberline {6.5.3.30}Update\discretionary {-}{}{}Transcoder}{51}{subsubsection.6.5.3.30}
+\contentsline {subsubsection}{\numberline {6.5.3.31}Webradio\discretionary {-}{}{}Exist}{52}{subsubsection.6.5.3.31}
+\contentsline {subsection}{\numberline {6.5.4}Property Documentation}{52}{subsection.6.5.4}
+\contentsline {subsubsection}{\numberline {6.5.4.1}Controls}{52}{subsubsection.6.5.4.1}
+\contentsline {section}{\numberline {6.6}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Bdd\discretionary {-}{}{}Controls Class Reference}{53}{section.6.6}
+\contentsline {subsection}{\numberline {6.6.1}Detailed Description}{53}{subsection.6.6.1}
+\contentsline {subsection}{\numberline {6.6.2}Member Function Documentation}{53}{subsection.6.6.2}
+\contentsline {subsubsection}{\numberline {6.6.2.1}Clear\discretionary {-}{}{}D\discretionary {-}{}{}B}{53}{subsubsection.6.6.2.1}
+\contentsline {subsubsection}{\numberline {6.6.2.2}Clear\discretionary {-}{}{}Table}{53}{subsubsection.6.6.2.2}
+\contentsline {subsubsection}{\numberline {6.6.2.3}Delete}{54}{subsubsection.6.6.2.3}
+\contentsline {subsubsection}{\numberline {6.6.2.4}Execute\discretionary {-}{}{}Data\discretionary {-}{}{}Reader}{55}{subsubsection.6.6.2.4}
+\contentsline {subsubsection}{\numberline {6.6.2.5}Execute\discretionary {-}{}{}Non\discretionary {-}{}{}Query}{55}{subsubsection.6.6.2.5}
+\contentsline {subsubsection}{\numberline {6.6.2.6}Execute\discretionary {-}{}{}Scalar}{55}{subsubsection.6.6.2.6}
+\contentsline {subsubsection}{\numberline {6.6.2.7}Get\discretionary {-}{}{}Data\discretionary {-}{}{}Table}{55}{subsubsection.6.6.2.7}
+\contentsline {subsubsection}{\numberline {6.6.2.8}Insert}{56}{subsubsection.6.6.2.8}
+\contentsline {subsubsection}{\numberline {6.6.2.9}Update}{57}{subsubsection.6.6.2.9}
+\contentsline {section}{\numberline {6.7}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Calendar\discretionary {-}{}{}Event Class Reference}{57}{section.6.7}
+\contentsline {subsection}{\numberline {6.7.1}Detailed Description}{58}{subsection.6.7.1}
+\contentsline {subsection}{\numberline {6.7.2}Constructor \& Destructor Documentation}{58}{subsection.6.7.2}
+\contentsline {subsubsection}{\numberline {6.7.2.1}Calendar\discretionary {-}{}{}Event}{58}{subsubsection.6.7.2.1}
+\contentsline {subsubsection}{\numberline {6.7.2.2}Calendar\discretionary {-}{}{}Event}{59}{subsubsection.6.7.2.2}
+\contentsline {subsection}{\numberline {6.7.3}Member Function Documentation}{59}{subsection.6.7.3}
+\contentsline {subsubsection}{\numberline {6.7.3.1}Get\discretionary {-}{}{}Selected\discretionary {-}{}{}Days}{59}{subsubsection.6.7.3.1}
+\contentsline {subsection}{\numberline {6.7.4}Property Documentation}{60}{subsection.6.7.4}
+\contentsline {subsubsection}{\numberline {6.7.4.1}Duration}{60}{subsubsection.6.7.4.1}
+\contentsline {subsubsection}{\numberline {6.7.4.2}Id}{60}{subsubsection.6.7.4.2}
+\contentsline {subsubsection}{\numberline {6.7.4.3}Loopatend}{60}{subsubsection.6.7.4.3}
+\contentsline {subsubsection}{\numberline {6.7.4.4}Name}{60}{subsubsection.6.7.4.4}
+\contentsline {subsubsection}{\numberline {6.7.4.5}Playlist}{60}{subsubsection.6.7.4.5}
+\contentsline {subsubsection}{\numberline {6.7.4.6}Priority}{61}{subsubsection.6.7.4.6}
+\contentsline {subsubsection}{\numberline {6.7.4.7}Repeat}{61}{subsubsection.6.7.4.7}
+\contentsline {subsubsection}{\numberline {6.7.4.8}Shuffle}{61}{subsubsection.6.7.4.8}
+\contentsline {subsubsection}{\numberline {6.7.4.9}Start\discretionary {-}{}{}Time}{61}{subsubsection.6.7.4.9}
+\contentsline {section}{\numberline {6.8}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Day\discretionary {-}{}{}Week Struct Reference}{61}{section.6.8}
+\contentsline {subsection}{\numberline {6.8.1}Detailed Description}{62}{subsection.6.8.1}
+\contentsline {subsection}{\numberline {6.8.2}Property Documentation}{62}{subsection.6.8.2}
+\contentsline {subsubsection}{\numberline {6.8.2.1}Friday}{62}{subsubsection.6.8.2.1}
+\contentsline {subsubsection}{\numberline {6.8.2.2}Monday}{62}{subsubsection.6.8.2.2}
+\contentsline {subsubsection}{\numberline {6.8.2.3}Saturday}{63}{subsubsection.6.8.2.3}
+\contentsline {subsubsection}{\numberline {6.8.2.4}Sunday}{63}{subsubsection.6.8.2.4}
+\contentsline {subsubsection}{\numberline {6.8.2.5}Thursday}{63}{subsubsection.6.8.2.5}
+\contentsline {subsubsection}{\numberline {6.8.2.6}Tuesday}{63}{subsubsection.6.8.2.6}
+\contentsline {subsubsection}{\numberline {6.8.2.7}Wednesday}{63}{subsubsection.6.8.2.7}
+\contentsline {section}{\numberline {6.9}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Event\discretionary {-}{}{}Appointment Class Reference}{64}{section.6.9}
+\contentsline {subsection}{\numberline {6.9.1}Detailed Description}{64}{subsection.6.9.1}
+\contentsline {subsection}{\numberline {6.9.2}Constructor \& Destructor Documentation}{64}{subsection.6.9.2}
+\contentsline {subsubsection}{\numberline {6.9.2.1}Event\discretionary {-}{}{}Appointment}{64}{subsubsection.6.9.2.1}
+\contentsline {subsection}{\numberline {6.9.3}Property Documentation}{65}{subsection.6.9.3}
+\contentsline {subsubsection}{\numberline {6.9.3.1}Event\discretionary {-}{}{}Object}{65}{subsubsection.6.9.3.1}
+\contentsline {subsubsection}{\numberline {6.9.3.2}Playlist}{65}{subsubsection.6.9.3.2}
+\contentsline {section}{\numberline {6.10}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}I\discretionary {-}{}{}Controller Interface Reference}{65}{section.6.10}
+\contentsline {subsection}{\numberline {6.10.1}Detailed Description}{65}{subsection.6.10.1}
+\contentsline {section}{\numberline {6.11}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Music Class Reference}{66}{section.6.11}
+\contentsline {subsection}{\numberline {6.11.1}Detailed Description}{66}{subsection.6.11.1}
+\contentsline {subsection}{\numberline {6.11.2}Constructor \& Destructor Documentation}{66}{subsection.6.11.2}
+\contentsline {subsubsection}{\numberline {6.11.2.1}Music}{66}{subsubsection.6.11.2.1}
+\contentsline {subsubsection}{\numberline {6.11.2.2}Music}{67}{subsubsection.6.11.2.2}
+\contentsline {section}{\numberline {6.12}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Playlist Class Reference}{67}{section.6.12}
+\contentsline {subsection}{\numberline {6.12.1}Detailed Description}{68}{subsection.6.12.1}
+\contentsline {subsection}{\numberline {6.12.2}Constructor \& Destructor Documentation}{68}{subsection.6.12.2}
+\contentsline {subsubsection}{\numberline {6.12.2.1}Playlist}{68}{subsubsection.6.12.2.1}
+\contentsline {subsubsection}{\numberline {6.12.2.2}Playlist}{69}{subsubsection.6.12.2.2}
+\contentsline {subsection}{\numberline {6.12.3}Member Function Documentation}{69}{subsection.6.12.3}
+\contentsline {subsubsection}{\numberline {6.12.3.1}Generate\discretionary {-}{}{}Config\discretionary {-}{}{}File}{69}{subsubsection.6.12.3.1}
+\contentsline {subsubsection}{\numberline {6.12.3.2}To\discretionary {-}{}{}String}{69}{subsubsection.6.12.3.2}
+\contentsline {subsection}{\numberline {6.12.4}Property Documentation}{70}{subsection.6.12.4}
+\contentsline {subsubsection}{\numberline {6.12.4.1}Audio\discretionary {-}{}{}File\discretionary {-}{}{}List}{70}{subsubsection.6.12.4.1}
+\contentsline {subsubsection}{\numberline {6.12.4.2}Filename}{70}{subsubsection.6.12.4.2}
+\contentsline {subsubsection}{\numberline {6.12.4.3}Id}{70}{subsubsection.6.12.4.3}
+\contentsline {subsubsection}{\numberline {6.12.4.4}Name}{70}{subsubsection.6.12.4.4}
+\contentsline {subsubsection}{\numberline {6.12.4.5}Type}{71}{subsubsection.6.12.4.5}
+\contentsline {section}{\numberline {6.13}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Playlist\discretionary {-}{}{}Ad Class Reference}{71}{section.6.13}
+\contentsline {subsection}{\numberline {6.13.1}Detailed Description}{71}{subsection.6.13.1}
+\contentsline {subsection}{\numberline {6.13.2}Constructor \& Destructor Documentation}{71}{subsection.6.13.2}
+\contentsline {subsubsection}{\numberline {6.13.2.1}Playlist\discretionary {-}{}{}Ad}{71}{subsubsection.6.13.2.1}
+\contentsline {subsubsection}{\numberline {6.13.2.2}Playlist\discretionary {-}{}{}Ad}{72}{subsubsection.6.13.2.2}
+\contentsline {section}{\numberline {6.14}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Playlist\discretionary {-}{}{}Music Class Reference}{72}{section.6.14}
+\contentsline {subsection}{\numberline {6.14.1}Detailed Description}{73}{subsection.6.14.1}
+\contentsline {subsection}{\numberline {6.14.2}Constructor \& Destructor Documentation}{73}{subsection.6.14.2}
+\contentsline {subsubsection}{\numberline {6.14.2.1}Playlist\discretionary {-}{}{}Music}{73}{subsubsection.6.14.2.1}
+\contentsline {subsubsection}{\numberline {6.14.2.2}Playlist\discretionary {-}{}{}Music}{73}{subsubsection.6.14.2.2}
+\contentsline {section}{\numberline {6.15}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Selection\discretionary {-}{}{}Controller Class Reference}{74}{section.6.15}
+\contentsline {subsection}{\numberline {6.15.1}Detailed Description}{75}{subsection.6.15.1}
+\contentsline {subsection}{\numberline {6.15.2}Constructor \& Destructor Documentation}{75}{subsection.6.15.2}
+\contentsline {subsubsection}{\numberline {6.15.2.1}Selection\discretionary {-}{}{}Controller}{75}{subsubsection.6.15.2.1}
+\contentsline {subsection}{\numberline {6.15.3}Member Function Documentation}{75}{subsection.6.15.3}
+\contentsline {subsubsection}{\numberline {6.15.3.1}Create\discretionary {-}{}{}Webradio}{75}{subsubsection.6.15.3.1}
+\contentsline {subsubsection}{\numberline {6.15.3.2}Delete\discretionary {-}{}{}Webradio}{76}{subsubsection.6.15.3.2}
+\contentsline {subsubsection}{\numberline {6.15.3.3}Duplicate\discretionary {-}{}{}Webradio}{76}{subsubsection.6.15.3.3}
+\contentsline {subsubsection}{\numberline {6.15.3.4}Get\discretionary {-}{}{}Webradios}{76}{subsubsection.6.15.3.4}
+\contentsline {subsubsection}{\numberline {6.15.3.5}Load\discretionary {-}{}{}Library}{77}{subsubsection.6.15.3.5}
+\contentsline {subsubsection}{\numberline {6.15.3.6}Load\discretionary {-}{}{}Webradios}{77}{subsubsection.6.15.3.6}
+\contentsline {subsubsection}{\numberline {6.15.3.7}Open\discretionary {-}{}{}Webradio}{77}{subsubsection.6.15.3.7}
+\contentsline {subsubsection}{\numberline {6.15.3.8}Stop\discretionary {-}{}{}All\discretionary {-}{}{}Process}{77}{subsubsection.6.15.3.8}
+\contentsline {subsubsection}{\numberline {6.15.3.9}Update\discretionary {-}{}{}View}{78}{subsubsection.6.15.3.9}
+\contentsline {subsection}{\numberline {6.15.4}Property Documentation}{78}{subsection.6.15.4}
+\contentsline {subsubsection}{\numberline {6.15.4.1}Model}{78}{subsubsection.6.15.4.1}
+\contentsline {subsubsection}{\numberline {6.15.4.2}View}{78}{subsubsection.6.15.4.2}
+\contentsline {section}{\numberline {6.16}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Selection\discretionary {-}{}{}View Class Reference}{78}{section.6.16}
+\contentsline {subsection}{\numberline {6.16.1}Detailed Description}{79}{subsection.6.16.1}
+\contentsline {subsection}{\numberline {6.16.2}Constructor \& Destructor Documentation}{79}{subsection.6.16.2}
+\contentsline {subsubsection}{\numberline {6.16.2.1}Selection\discretionary {-}{}{}View}{79}{subsubsection.6.16.2.1}
+\contentsline {subsection}{\numberline {6.16.3}Member Function Documentation}{79}{subsection.6.16.3}
+\contentsline {subsubsection}{\numberline {6.16.3.1}Dispose}{79}{subsubsection.6.16.3.1}
+\contentsline {subsubsection}{\numberline {6.16.3.2}Update\discretionary {-}{}{}View}{80}{subsubsection.6.16.3.2}
+\contentsline {subsection}{\numberline {6.16.4}Property Documentation}{80}{subsection.6.16.4}
+\contentsline {subsubsection}{\numberline {6.16.4.1}Controller}{80}{subsubsection.6.16.4.1}
+\contentsline {section}{\numberline {6.17}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Transcoder\discretionary {-}{}{}Aac\discretionary {-}{}{}Plus Class Reference}{80}{section.6.17}
+\contentsline {subsection}{\numberline {6.17.1}Detailed Description}{81}{subsection.6.17.1}
+\contentsline {subsection}{\numberline {6.17.2}Constructor \& Destructor Documentation}{81}{subsection.6.17.2}
+\contentsline {subsubsection}{\numberline {6.17.2.1}Transcoder\discretionary {-}{}{}Aac\discretionary {-}{}{}Plus}{81}{subsubsection.6.17.2.1}
+\contentsline {subsubsection}{\numberline {6.17.2.2}Transcoder\discretionary {-}{}{}Aac\discretionary {-}{}{}Plus}{81}{subsubsection.6.17.2.2}
+\contentsline {section}{\numberline {6.18}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Transcoder\discretionary {-}{}{}Mp3 Class Reference}{82}{section.6.18}
+\contentsline {subsection}{\numberline {6.18.1}Detailed Description}{82}{subsection.6.18.1}
+\contentsline {subsection}{\numberline {6.18.2}Constructor \& Destructor Documentation}{83}{subsection.6.18.2}
+\contentsline {subsubsection}{\numberline {6.18.2.1}Transcoder\discretionary {-}{}{}Mp3}{83}{subsubsection.6.18.2.1}
+\contentsline {subsubsection}{\numberline {6.18.2.2}Transcoder\discretionary {-}{}{}Mp3}{83}{subsubsection.6.18.2.2}
+\contentsline {section}{\numberline {6.19}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Webradio Class Reference}{84}{section.6.19}
+\contentsline {subsection}{\numberline {6.19.1}Detailed Description}{84}{subsection.6.19.1}
+\contentsline {subsection}{\numberline {6.19.2}Constructor \& Destructor Documentation}{85}{subsection.6.19.2}
+\contentsline {subsubsection}{\numberline {6.19.2.1}Webradio}{85}{subsubsection.6.19.2.1}
+\contentsline {subsubsection}{\numberline {6.19.2.2}Webradio}{85}{subsubsection.6.19.2.2}
+\contentsline {subsection}{\numberline {6.19.3}Member Function Documentation}{85}{subsection.6.19.3}
+\contentsline {subsubsection}{\numberline {6.19.3.1}Generate\discretionary {-}{}{}Config\discretionary {-}{}{}Files}{85}{subsubsection.6.19.3.1}
+\contentsline {subsubsection}{\numberline {6.19.3.2}To\discretionary {-}{}{}String}{86}{subsubsection.6.19.3.2}
+\contentsline {subsection}{\numberline {6.19.4}Property Documentation}{86}{subsection.6.19.4}
+\contentsline {subsubsection}{\numberline {6.19.4.1}Calendar}{86}{subsubsection.6.19.4.1}
+\contentsline {subsubsection}{\numberline {6.19.4.2}Id}{86}{subsubsection.6.19.4.2}
+\contentsline {subsubsection}{\numberline {6.19.4.3}Name}{86}{subsubsection.6.19.4.3}
+\contentsline {subsubsection}{\numberline {6.19.4.4}Playlists}{86}{subsubsection.6.19.4.4}
+\contentsline {subsubsection}{\numberline {6.19.4.5}Server}{87}{subsubsection.6.19.4.5}
+\contentsline {subsubsection}{\numberline {6.19.4.6}Transcoders}{87}{subsubsection.6.19.4.6}
+\contentsline {section}{\numberline {6.20}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Webradio\discretionary {-}{}{}Calendar Class Reference}{87}{section.6.20}
+\contentsline {subsection}{\numberline {6.20.1}Detailed Description}{87}{subsection.6.20.1}
+\contentsline {subsection}{\numberline {6.20.2}Constructor \& Destructor Documentation}{88}{subsection.6.20.2}
+\contentsline {subsubsection}{\numberline {6.20.2.1}Webradio\discretionary {-}{}{}Calendar}{88}{subsubsection.6.20.2.1}
+\contentsline {subsubsection}{\numberline {6.20.2.2}Webradio\discretionary {-}{}{}Calendar}{88}{subsubsection.6.20.2.2}
+\contentsline {subsection}{\numberline {6.20.3}Member Function Documentation}{88}{subsection.6.20.3}
+\contentsline {subsubsection}{\numberline {6.20.3.1}Generate\discretionary {-}{}{}Config\discretionary {-}{}{}File}{88}{subsubsection.6.20.3.1}
+\contentsline {subsection}{\numberline {6.20.4}Property Documentation}{89}{subsection.6.20.4}
+\contentsline {subsubsection}{\numberline {6.20.4.1}Events}{89}{subsubsection.6.20.4.1}
+\contentsline {subsubsection}{\numberline {6.20.4.2}Filename}{89}{subsubsection.6.20.4.2}
+\contentsline {subsubsection}{\numberline {6.20.4.3}Id}{89}{subsubsection.6.20.4.3}
+\contentsline {section}{\numberline {6.21}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Webradio\discretionary {-}{}{}Listener Class Reference}{89}{section.6.21}
+\contentsline {subsection}{\numberline {6.21.1}Detailed Description}{90}{subsection.6.21.1}
+\contentsline {subsection}{\numberline {6.21.2}Constructor \& Destructor Documentation}{90}{subsection.6.21.2}
+\contentsline {subsubsection}{\numberline {6.21.2.1}Webradio\discretionary {-}{}{}Listener}{90}{subsubsection.6.21.2.1}
+\contentsline {subsection}{\numberline {6.21.3}Property Documentation}{90}{subsection.6.21.3}
+\contentsline {subsubsection}{\numberline {6.21.3.1}Connection\discretionary {-}{}{}Time}{90}{subsubsection.6.21.3.1}
+\contentsline {subsubsection}{\numberline {6.21.3.2}Hostname}{90}{subsubsection.6.21.3.2}
+\contentsline {subsubsection}{\numberline {6.21.3.3}Uid}{91}{subsubsection.6.21.3.3}
+\contentsline {subsubsection}{\numberline {6.21.3.4}Useragent}{91}{subsubsection.6.21.3.4}
+\contentsline {section}{\numberline {6.22}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Webradio\discretionary {-}{}{}Server Class Reference}{91}{section.6.22}
+\contentsline {subsection}{\numberline {6.22.1}Detailed Description}{92}{subsection.6.22.1}
+\contentsline {subsection}{\numberline {6.22.2}Constructor \& Destructor Documentation}{92}{subsection.6.22.2}
+\contentsline {subsubsection}{\numberline {6.22.2.1}Webradio\discretionary {-}{}{}Server}{92}{subsubsection.6.22.2.1}
+\contentsline {subsection}{\numberline {6.22.3}Member Function Documentation}{93}{subsection.6.22.3}
+\contentsline {subsubsection}{\numberline {6.22.3.1}Generate\discretionary {-}{}{}Config\discretionary {-}{}{}File}{93}{subsubsection.6.22.3.1}
+\contentsline {subsubsection}{\numberline {6.22.3.2}Get\discretionary {-}{}{}Listeners}{93}{subsubsection.6.22.3.2}
+\contentsline {subsubsection}{\numberline {6.22.3.3}Is\discretionary {-}{}{}Running}{93}{subsubsection.6.22.3.3}
+\contentsline {subsubsection}{\numberline {6.22.3.4}Start}{94}{subsubsection.6.22.3.4}
+\contentsline {subsubsection}{\numberline {6.22.3.5}Stop}{94}{subsubsection.6.22.3.5}
+\contentsline {subsubsection}{\numberline {6.22.3.6}Update\discretionary {-}{}{}Stats}{94}{subsubsection.6.22.3.6}
+\contentsline {subsection}{\numberline {6.22.4}Property Documentation}{95}{subsection.6.22.4}
+\contentsline {subsubsection}{\numberline {6.22.4.1}Admin\discretionary {-}{}{}Password}{95}{subsubsection.6.22.4.1}
+\contentsline {subsubsection}{\numberline {6.22.4.2}Config\discretionary {-}{}{}Filename}{95}{subsubsection.6.22.4.2}
+\contentsline {subsubsection}{\numberline {6.22.4.3}Log\discretionary {-}{}{}Filename}{95}{subsubsection.6.22.4.3}
+\contentsline {subsubsection}{\numberline {6.22.4.4}Max\discretionary {-}{}{}Listener}{95}{subsubsection.6.22.4.4}
+\contentsline {subsubsection}{\numberline {6.22.4.5}Password}{95}{subsubsection.6.22.4.5}
+\contentsline {subsubsection}{\numberline {6.22.4.6}Port}{96}{subsubsection.6.22.4.6}
+\contentsline {subsubsection}{\numberline {6.22.4.7}Process}{96}{subsubsection.6.22.4.7}
+\contentsline {subsubsection}{\numberline {6.22.4.8}Web\discretionary {-}{}{}Admin\discretionary {-}{}{}Url}{96}{subsubsection.6.22.4.8}
+\contentsline {subsubsection}{\numberline {6.22.4.9}Web\discretionary {-}{}{}Interface\discretionary {-}{}{}Url}{96}{subsubsection.6.22.4.9}
+\contentsline {section}{\numberline {6.23}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Webradio\discretionary {-}{}{}Server\discretionary {-}{}{}Stats Class Reference}{96}{section.6.23}
+\contentsline {subsection}{\numberline {6.23.1}Detailed Description}{97}{subsection.6.23.1}
+\contentsline {subsection}{\numberline {6.23.2}Constructor \& Destructor Documentation}{97}{subsection.6.23.2}
+\contentsline {subsubsection}{\numberline {6.23.2.1}Webradio\discretionary {-}{}{}Server\discretionary {-}{}{}Stats}{97}{subsubsection.6.23.2.1}
+\contentsline {subsection}{\numberline {6.23.3}Property Documentation}{97}{subsection.6.23.3}
+\contentsline {subsubsection}{\numberline {6.23.3.1}Average\discretionary {-}{}{}Time}{97}{subsubsection.6.23.3.1}
+\contentsline {subsubsection}{\numberline {6.23.3.2}Current\discretionary {-}{}{}Listeners}{98}{subsubsection.6.23.3.2}
+\contentsline {subsubsection}{\numberline {6.23.3.3}Peak\discretionary {-}{}{}Listeners}{98}{subsubsection.6.23.3.3}
+\contentsline {subsubsection}{\numberline {6.23.3.4}Unique\discretionary {-}{}{}Listeners}{98}{subsubsection.6.23.3.4}
+\contentsline {section}{\numberline {6.24}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}Webradio\discretionary {-}{}{}Transcoder Class Reference}{98}{section.6.24}
+\contentsline {subsection}{\numberline {6.24.1}Detailed Description}{100}{subsection.6.24.1}
+\contentsline {subsection}{\numberline {6.24.2}Constructor \& Destructor Documentation}{100}{subsection.6.24.2}
+\contentsline {subsubsection}{\numberline {6.24.2.1}Webradio\discretionary {-}{}{}Transcoder}{100}{subsubsection.6.24.2.1}
+\contentsline {subsubsection}{\numberline {6.24.2.2}Webradio\discretionary {-}{}{}Transcoder}{101}{subsubsection.6.24.2.2}
+\contentsline {subsection}{\numberline {6.24.3}Member Function Documentation}{101}{subsection.6.24.3}
+\contentsline {subsubsection}{\numberline {6.24.3.1}Generate\discretionary {-}{}{}Config\discretionary {-}{}{}File}{101}{subsubsection.6.24.3.1}
+\contentsline {subsubsection}{\numberline {6.24.3.2}Get\discretionary {-}{}{}Status}{102}{subsubsection.6.24.3.2}
+\contentsline {subsubsection}{\numberline {6.24.3.3}Is\discretionary {-}{}{}Running}{102}{subsubsection.6.24.3.3}
+\contentsline {subsubsection}{\numberline {6.24.3.4}Next\discretionary {-}{}{}Track}{102}{subsubsection.6.24.3.4}
+\contentsline {subsubsection}{\numberline {6.24.3.5}Set\discretionary {-}{}{}Capture\discretionary {-}{}{}Mode}{103}{subsubsection.6.24.3.5}
+\contentsline {subsubsection}{\numberline {6.24.3.6}Start}{103}{subsubsection.6.24.3.6}
+\contentsline {subsubsection}{\numberline {6.24.3.7}Stop}{103}{subsubsection.6.24.3.7}
+\contentsline {subsubsection}{\numberline {6.24.3.8}To\discretionary {-}{}{}String}{104}{subsubsection.6.24.3.8}
+\contentsline {subsection}{\numberline {6.24.4}Property Documentation}{104}{subsection.6.24.4}
+\contentsline {subsubsection}{\numberline {6.24.4.1}Admin\discretionary {-}{}{}Port}{104}{subsubsection.6.24.4.1}
+\contentsline {subsubsection}{\numberline {6.24.4.2}Birate}{104}{subsubsection.6.24.4.2}
+\contentsline {subsubsection}{\numberline {6.24.4.3}Calendar\discretionary {-}{}{}File}{104}{subsubsection.6.24.4.3}
+\contentsline {subsubsection}{\numberline {6.24.4.4}Capture}{104}{subsubsection.6.24.4.4}
+\contentsline {subsubsection}{\numberline {6.24.4.5}Config\discretionary {-}{}{}Filename}{105}{subsubsection.6.24.4.5}
+\contentsline {subsubsection}{\numberline {6.24.4.6}Current\discretionary {-}{}{}Track}{105}{subsubsection.6.24.4.6}
+\contentsline {subsubsection}{\numberline {6.24.4.7}Id}{105}{subsubsection.6.24.4.7}
+\contentsline {subsubsection}{\numberline {6.24.4.8}Ip}{105}{subsubsection.6.24.4.8}
+\contentsline {subsubsection}{\numberline {6.24.4.9}Log\discretionary {-}{}{}Filename}{105}{subsubsection.6.24.4.9}
+\contentsline {subsubsection}{\numberline {6.24.4.10}Name}{105}{subsubsection.6.24.4.10}
+\contentsline {subsubsection}{\numberline {6.24.4.11}Password}{106}{subsubsection.6.24.4.11}
+\contentsline {subsubsection}{\numberline {6.24.4.12}Port}{106}{subsubsection.6.24.4.12}
+\contentsline {subsubsection}{\numberline {6.24.4.13}Process}{106}{subsubsection.6.24.4.13}
+\contentsline {subsubsection}{\numberline {6.24.4.14}Sample\discretionary {-}{}{}Rate}{106}{subsubsection.6.24.4.14}
+\contentsline {subsubsection}{\numberline {6.24.4.15}Stream\discretionary {-}{}{}Type}{106}{subsubsection.6.24.4.15}
+\contentsline {subsubsection}{\numberline {6.24.4.16}Url}{106}{subsubsection.6.24.4.16}
+\contentsline {section}{\numberline {6.25}Webradio\discretionary {-}{}{}Manager.\discretionary {-}{}{}W\discretionary {-}{}{}M\discretionary {-}{}{}Model Class Reference}{107}{section.6.25}
+\contentsline {subsection}{\numberline {6.25.1}Detailed Description}{109}{subsection.6.25.1}
+\contentsline {subsection}{\numberline {6.25.2}Constructor \& Destructor Documentation}{110}{subsection.6.25.2}
+\contentsline {subsubsection}{\numberline {6.25.2.1}W\discretionary {-}{}{}M\discretionary {-}{}{}Model}{110}{subsubsection.6.25.2.1}
+\contentsline {subsection}{\numberline {6.25.3}Member Function Documentation}{110}{subsection.6.25.3}
+\contentsline {subsubsection}{\numberline {6.25.3.1}Add\discretionary {-}{}{}Observer}{110}{subsubsection.6.25.3.1}
+\contentsline {subsubsection}{\numberline {6.25.3.2}Add\discretionary {-}{}{}To\discretionary {-}{}{}Playlist}{110}{subsubsection.6.25.3.2}
+\contentsline {subsubsection}{\numberline {6.25.3.3}Check\discretionary {-}{}{}Folders}{111}{subsubsection.6.25.3.3}
+\contentsline {subsubsection}{\numberline {6.25.3.4}Check\discretionary {-}{}{}Library}{111}{subsubsection.6.25.3.4}
+\contentsline {subsubsection}{\numberline {6.25.3.5}Clear\discretionary {-}{}{}History}{111}{subsubsection.6.25.3.5}
+\contentsline {subsubsection}{\numberline {6.25.3.6}Create\discretionary {-}{}{}Event}{112}{subsubsection.6.25.3.6}
+\contentsline {subsubsection}{\numberline {6.25.3.7}Create\discretionary {-}{}{}Playlist}{112}{subsubsection.6.25.3.7}
+\contentsline {subsubsection}{\numberline {6.25.3.8}Create\discretionary {-}{}{}Transcoder}{112}{subsubsection.6.25.3.8}
+\contentsline {subsubsection}{\numberline {6.25.3.9}Create\discretionary {-}{}{}Webradio}{113}{subsubsection.6.25.3.9}
+\contentsline {subsubsection}{\numberline {6.25.3.10}Delete\discretionary {-}{}{}Audio\discretionary {-}{}{}File}{113}{subsubsection.6.25.3.10}
+\contentsline {subsubsection}{\numberline {6.25.3.11}Delete\discretionary {-}{}{}Event}{114}{subsubsection.6.25.3.11}
+\contentsline {subsubsection}{\numberline {6.25.3.12}Delete\discretionary {-}{}{}Playlist}{114}{subsubsection.6.25.3.12}
+\contentsline {subsubsection}{\numberline {6.25.3.13}Delete\discretionary {-}{}{}Transcoder}{115}{subsubsection.6.25.3.13}
+\contentsline {subsubsection}{\numberline {6.25.3.14}Delete\discretionary {-}{}{}Webradio}{115}{subsubsection.6.25.3.14}
+\contentsline {subsubsection}{\numberline {6.25.3.15}Duplicate\discretionary {-}{}{}Webradio}{115}{subsubsection.6.25.3.15}
+\contentsline {subsubsection}{\numberline {6.25.3.16}Generate\discretionary {-}{}{}Config\discretionary {-}{}{}Files}{116}{subsubsection.6.25.3.16}
+\contentsline {subsubsection}{\numberline {6.25.3.17}Generate\discretionary {-}{}{}History}{116}{subsubsection.6.25.3.17}
+\contentsline {subsubsection}{\numberline {6.25.3.18}Generate\discretionary {-}{}{}Playlist}{117}{subsubsection.6.25.3.18}
+\contentsline {subsubsection}{\numberline {6.25.3.19}Get\discretionary {-}{}{}Audio\discretionary {-}{}{}File\discretionary {-}{}{}By\discretionary {-}{}{}Filename}{117}{subsubsection.6.25.3.19}
+\contentsline {subsubsection}{\numberline {6.25.3.20}Get\discretionary {-}{}{}Genders}{117}{subsubsection.6.25.3.20}
+\contentsline {subsubsection}{\numberline {6.25.3.21}Get\discretionary {-}{}{}Library}{118}{subsubsection.6.25.3.21}
+\contentsline {subsubsection}{\numberline {6.25.3.22}Get\discretionary {-}{}{}Playlist\discretionary {-}{}{}Content}{118}{subsubsection.6.25.3.22}
+\contentsline {subsubsection}{\numberline {6.25.3.23}Get\discretionary {-}{}{}Similiar\discretionary {-}{}{}View\discretionary {-}{}{}Count}{118}{subsubsection.6.25.3.23}
+\contentsline {subsubsection}{\numberline {6.25.3.24}Get\discretionary {-}{}{}Webradio}{119}{subsubsection.6.25.3.24}
+\contentsline {subsubsection}{\numberline {6.25.3.25}Get\discretionary {-}{}{}Webradio\discretionary {-}{}{}By\discretionary {-}{}{}Name}{119}{subsubsection.6.25.3.25}
+\contentsline {subsubsection}{\numberline {6.25.3.26}Get\discretionary {-}{}{}Webradios}{120}{subsubsection.6.25.3.26}
+\contentsline {subsubsection}{\numberline {6.25.3.27}Import\discretionary {-}{}{}Files\discretionary {-}{}{}To\discretionary {-}{}{}Library}{120}{subsubsection.6.25.3.27}
+\contentsline {subsubsection}{\numberline {6.25.3.28}Load\discretionary {-}{}{}Library}{120}{subsubsection.6.25.3.28}
+\contentsline {subsubsection}{\numberline {6.25.3.29}Load\discretionary {-}{}{}Webradios}{121}{subsubsection.6.25.3.29}
+\contentsline {subsubsection}{\numberline {6.25.3.30}Modify\discretionary {-}{}{}Webradio\discretionary {-}{}{}Name}{121}{subsubsection.6.25.3.30}
+\contentsline {subsubsection}{\numberline {6.25.3.31}Remove\discretionary {-}{}{}From\discretionary {-}{}{}Playlist}{121}{subsubsection.6.25.3.31}
+\contentsline {subsubsection}{\numberline {6.25.3.32}Remove\discretionary {-}{}{}Observer}{122}{subsubsection.6.25.3.32}
+\contentsline {subsubsection}{\numberline {6.25.3.33}Show\discretionary {-}{}{}Server\discretionary {-}{}{}Web\discretionary {-}{}{}Admin}{122}{subsubsection.6.25.3.33}
+\contentsline {subsubsection}{\numberline {6.25.3.34}Show\discretionary {-}{}{}Server\discretionary {-}{}{}Web\discretionary {-}{}{}Interface}{122}{subsubsection.6.25.3.34}
+\contentsline {subsubsection}{\numberline {6.25.3.35}Start\discretionary {-}{}{}Server}{123}{subsubsection.6.25.3.35}
+\contentsline {subsubsection}{\numberline {6.25.3.36}Start\discretionary {-}{}{}Transcoder}{123}{subsubsection.6.25.3.36}
+\contentsline {subsubsection}{\numberline {6.25.3.37}Stop\discretionary {-}{}{}All\discretionary {-}{}{}Process}{124}{subsubsection.6.25.3.37}
+\contentsline {subsubsection}{\numberline {6.25.3.38}Stop\discretionary {-}{}{}All\discretionary {-}{}{}Process}{124}{subsubsection.6.25.3.38}
+\contentsline {subsubsection}{\numberline {6.25.3.39}Stop\discretionary {-}{}{}Server}{124}{subsubsection.6.25.3.39}
+\contentsline {subsubsection}{\numberline {6.25.3.40}Stop\discretionary {-}{}{}Transcoder}{125}{subsubsection.6.25.3.40}
+\contentsline {subsubsection}{\numberline {6.25.3.41}Transcoder\discretionary {-}{}{}Capture}{125}{subsubsection.6.25.3.41}
+\contentsline {subsubsection}{\numberline {6.25.3.42}Transcoder\discretionary {-}{}{}Next\discretionary {-}{}{}Track}{126}{subsubsection.6.25.3.42}
+\contentsline {subsubsection}{\numberline {6.25.3.43}Update\discretionary {-}{}{}Audio\discretionary {-}{}{}File}{126}{subsubsection.6.25.3.43}
+\contentsline {subsubsection}{\numberline {6.25.3.44}Update\discretionary {-}{}{}Event}{126}{subsubsection.6.25.3.44}
+\contentsline {subsubsection}{\numberline {6.25.3.45}Update\discretionary {-}{}{}Server}{127}{subsubsection.6.25.3.45}
+\contentsline {subsubsection}{\numberline {6.25.3.46}Update\discretionary {-}{}{}Server\discretionary {-}{}{}Listeners}{127}{subsubsection.6.25.3.46}
+\contentsline {subsubsection}{\numberline {6.25.3.47}Update\discretionary {-}{}{}Server\discretionary {-}{}{}Stats}{128}{subsubsection.6.25.3.47}
+\contentsline {subsubsection}{\numberline {6.25.3.48}Update\discretionary {-}{}{}Transcoder}{128}{subsubsection.6.25.3.48}
+\contentsline {subsection}{\numberline {6.25.4}Property Documentation}{129}{subsection.6.25.4}
+\contentsline {subsubsection}{\numberline {6.25.4.1}Active\discretionary {-}{}{}Servers}{129}{subsubsection.6.25.4.1}
+\contentsline {subsubsection}{\numberline {6.25.4.2}Active\discretionary {-}{}{}Transcoders}{129}{subsubsection.6.25.4.2}
+\contentsline {subsubsection}{\numberline {6.25.4.3}Bdd}{129}{subsubsection.6.25.4.3}
+\contentsline {subsubsection}{\numberline {6.25.4.4}Library}{129}{subsubsection.6.25.4.4}
+\contentsline {subsubsection}{\numberline {6.25.4.5}Observers}{129}{subsubsection.6.25.4.5}
+\contentsline {subsubsection}{\numberline {6.25.4.6}Process\discretionary {-}{}{}Watcher}{129}{subsubsection.6.25.4.6}
+\contentsline {subsubsection}{\numberline {6.25.4.7}Webradios}{130}{subsubsection.6.25.4.7}
+\contentsline {chapter}{\numberline {7}File Documentation}{131}{chapter.7}
+\contentsline {section}{\numberline {7.1}Ad.\discretionary {-}{}{}cs File Reference}{131}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Detailed Description}{131}{subsection.7.1.1}
+\contentsline {section}{\numberline {7.2}Ad.\discretionary {-}{}{}cs}{131}{section.7.2}
+\contentsline {section}{\numberline {7.3}Admin\discretionary {-}{}{}Controller.\discretionary {-}{}{}cs File Reference}{132}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Detailed Description}{132}{subsection.7.3.1}
+\contentsline {section}{\numberline {7.4}Admin\discretionary {-}{}{}Controller.\discretionary {-}{}{}cs}{132}{section.7.4}
+\contentsline {section}{\numberline {7.5}Admin\discretionary {-}{}{}View.\discretionary {-}{}{}cs File Reference}{135}{section.7.5}
+\contentsline {subsection}{\numberline {7.5.1}Detailed Description}{135}{subsection.7.5.1}
+\contentsline {section}{\numberline {7.6}Admin\discretionary {-}{}{}View.\discretionary {-}{}{}cs}{136}{section.7.6}
+\contentsline {section}{\numberline {7.7}Audio\discretionary {-}{}{}File.\discretionary {-}{}{}cs File Reference}{150}{section.7.7}
+\contentsline {subsection}{\numberline {7.7.1}Detailed Description}{150}{subsection.7.7.1}
+\contentsline {section}{\numberline {7.8}Audio\discretionary {-}{}{}File.\discretionary {-}{}{}cs}{150}{section.7.8}
+\contentsline {section}{\numberline {7.9}Audio\discretionary {-}{}{}Type.\discretionary {-}{}{}cs File Reference}{152}{section.7.9}
+\contentsline {subsection}{\numberline {7.9.1}Detailed Description}{152}{subsection.7.9.1}
+\contentsline {section}{\numberline {7.10}Audio\discretionary {-}{}{}Type.\discretionary {-}{}{}cs}{152}{section.7.10}
+\contentsline {section}{\numberline {7.11}Bdd.\discretionary {-}{}{}cs File Reference}{153}{section.7.11}
+\contentsline {subsection}{\numberline {7.11.1}Detailed Description}{153}{subsection.7.11.1}
+\contentsline {section}{\numberline {7.12}Bdd.\discretionary {-}{}{}cs}{153}{section.7.12}
+\contentsline {section}{\numberline {7.13}Calendar\discretionary {-}{}{}Event.\discretionary {-}{}{}cs File Reference}{162}{section.7.13}
+\contentsline {subsection}{\numberline {7.13.1}Detailed Description}{163}{subsection.7.13.1}
+\contentsline {section}{\numberline {7.14}Calendar\discretionary {-}{}{}Event.\discretionary {-}{}{}cs}{163}{section.7.14}
+\contentsline {section}{\numberline {7.15}Day\discretionary {-}{}{}Week.\discretionary {-}{}{}cs File Reference}{165}{section.7.15}
+\contentsline {subsection}{\numberline {7.15.1}Detailed Description}{165}{subsection.7.15.1}
+\contentsline {section}{\numberline {7.16}Day\discretionary {-}{}{}Week.\discretionary {-}{}{}cs}{165}{section.7.16}
+\contentsline {section}{\numberline {7.17}Event\discretionary {-}{}{}Appointment.\discretionary {-}{}{}cs File Reference}{166}{section.7.17}
+\contentsline {subsection}{\numberline {7.17.1}Detailed Description}{166}{subsection.7.17.1}
+\contentsline {section}{\numberline {7.18}Event\discretionary {-}{}{}Appointment.\discretionary {-}{}{}cs}{166}{section.7.18}
+\contentsline {section}{\numberline {7.19}I\discretionary {-}{}{}Controller.\discretionary {-}{}{}cs File Reference}{167}{section.7.19}
+\contentsline {subsection}{\numberline {7.19.1}Detailed Description}{167}{subsection.7.19.1}
+\contentsline {section}{\numberline {7.20}I\discretionary {-}{}{}Controller.\discretionary {-}{}{}cs}{167}{section.7.20}
+\contentsline {section}{\numberline {7.21}Music.\discretionary {-}{}{}cs File Reference}{168}{section.7.21}
+\contentsline {subsection}{\numberline {7.21.1}Detailed Description}{168}{subsection.7.21.1}
+\contentsline {section}{\numberline {7.22}Music.\discretionary {-}{}{}cs}{168}{section.7.22}
+\contentsline {section}{\numberline {7.23}Playlist.\discretionary {-}{}{}cs File Reference}{168}{section.7.23}
+\contentsline {subsection}{\numberline {7.23.1}Detailed Description}{169}{subsection.7.23.1}
+\contentsline {section}{\numberline {7.24}Playlist.\discretionary {-}{}{}cs}{169}{section.7.24}
+\contentsline {section}{\numberline {7.25}Playlist\discretionary {-}{}{}Ad.\discretionary {-}{}{}cs File Reference}{170}{section.7.25}
+\contentsline {subsection}{\numberline {7.25.1}Detailed Description}{170}{subsection.7.25.1}
+\contentsline {section}{\numberline {7.26}Playlist\discretionary {-}{}{}Ad.\discretionary {-}{}{}cs}{170}{section.7.26}
+\contentsline {section}{\numberline {7.27}Playlist\discretionary {-}{}{}Music.\discretionary {-}{}{}cs File Reference}{171}{section.7.27}
+\contentsline {subsection}{\numberline {7.27.1}Detailed Description}{171}{subsection.7.27.1}
+\contentsline {section}{\numberline {7.28}Playlist\discretionary {-}{}{}Music.\discretionary {-}{}{}cs}{171}{section.7.28}
+\contentsline {section}{\numberline {7.29}Selection\discretionary {-}{}{}Controller.\discretionary {-}{}{}cs File Reference}{171}{section.7.29}
+\contentsline {subsection}{\numberline {7.29.1}Detailed Description}{172}{subsection.7.29.1}
+\contentsline {section}{\numberline {7.30}Selection\discretionary {-}{}{}Controller.\discretionary {-}{}{}cs}{172}{section.7.30}
+\contentsline {section}{\numberline {7.31}Selection\discretionary {-}{}{}View.\discretionary {-}{}{}cs File Reference}{173}{section.7.31}
+\contentsline {subsection}{\numberline {7.31.1}Detailed Description}{173}{subsection.7.31.1}
+\contentsline {section}{\numberline {7.32}Selection\discretionary {-}{}{}View.\discretionary {-}{}{}cs}{173}{section.7.32}
+\contentsline {section}{\numberline {7.33}Stream\discretionary {-}{}{}Type.\discretionary {-}{}{}cs File Reference}{175}{section.7.33}
+\contentsline {subsection}{\numberline {7.33.1}Detailed Description}{175}{subsection.7.33.1}
+\contentsline {section}{\numberline {7.34}Stream\discretionary {-}{}{}Type.\discretionary {-}{}{}cs}{175}{section.7.34}
+\contentsline {section}{\numberline {7.35}Transcoder\discretionary {-}{}{}Aac\discretionary {-}{}{}Plus.\discretionary {-}{}{}cs File Reference}{175}{section.7.35}
+\contentsline {subsection}{\numberline {7.35.1}Detailed Description}{176}{subsection.7.35.1}
+\contentsline {section}{\numberline {7.36}Transcoder\discretionary {-}{}{}Aac\discretionary {-}{}{}Plus.\discretionary {-}{}{}cs}{176}{section.7.36}
+\contentsline {section}{\numberline {7.37}Transcoder\discretionary {-}{}{}Mp3.\discretionary {-}{}{}cs File Reference}{176}{section.7.37}
+\contentsline {subsection}{\numberline {7.37.1}Detailed Description}{176}{subsection.7.37.1}
+\contentsline {section}{\numberline {7.38}Transcoder\discretionary {-}{}{}Mp3.\discretionary {-}{}{}cs}{176}{section.7.38}
+\contentsline {section}{\numberline {7.39}Webradio.\discretionary {-}{}{}cs File Reference}{177}{section.7.39}
+\contentsline {subsection}{\numberline {7.39.1}Detailed Description}{177}{subsection.7.39.1}
+\contentsline {section}{\numberline {7.40}Webradio.\discretionary {-}{}{}cs}{177}{section.7.40}
+\contentsline {section}{\numberline {7.41}Webradio\discretionary {-}{}{}Calendar.\discretionary {-}{}{}cs File Reference}{178}{section.7.41}
+\contentsline {subsection}{\numberline {7.41.1}Detailed Description}{179}{subsection.7.41.1}
+\contentsline {section}{\numberline {7.42}Webradio\discretionary {-}{}{}Calendar.\discretionary {-}{}{}cs}{179}{section.7.42}
+\contentsline {section}{\numberline {7.43}Webradio\discretionary {-}{}{}Listener.\discretionary {-}{}{}cs File Reference}{180}{section.7.43}
+\contentsline {subsection}{\numberline {7.43.1}Detailed Description}{180}{subsection.7.43.1}
+\contentsline {section}{\numberline {7.44}Webradio\discretionary {-}{}{}Listener.\discretionary {-}{}{}cs}{180}{section.7.44}
+\contentsline {section}{\numberline {7.45}Webradio\discretionary {-}{}{}Server.\discretionary {-}{}{}cs File Reference}{181}{section.7.45}
+\contentsline {subsection}{\numberline {7.45.1}Detailed Description}{181}{subsection.7.45.1}
+\contentsline {section}{\numberline {7.46}Webradio\discretionary {-}{}{}Server.\discretionary {-}{}{}cs}{181}{section.7.46}
+\contentsline {section}{\numberline {7.47}Webradio\discretionary {-}{}{}Server\discretionary {-}{}{}Stats.\discretionary {-}{}{}cs File Reference}{185}{section.7.47}
+\contentsline {subsection}{\numberline {7.47.1}Detailed Description}{185}{subsection.7.47.1}
+\contentsline {section}{\numberline {7.48}Webradio\discretionary {-}{}{}Server\discretionary {-}{}{}Stats.\discretionary {-}{}{}cs}{185}{section.7.48}
+\contentsline {section}{\numberline {7.49}Webradio\discretionary {-}{}{}Transcoder.\discretionary {-}{}{}cs File Reference}{186}{section.7.49}
+\contentsline {subsection}{\numberline {7.49.1}Detailed Description}{186}{subsection.7.49.1}
+\contentsline {section}{\numberline {7.50}Webradio\discretionary {-}{}{}Transcoder.\discretionary {-}{}{}cs}{186}{section.7.50}
+\contentsline {section}{\numberline {7.51}W\discretionary {-}{}{}M\discretionary {-}{}{}Model.\discretionary {-}{}{}cs File Reference}{191}{section.7.51}
+\contentsline {subsection}{\numberline {7.51.1}Detailed Description}{191}{subsection.7.51.1}
+\contentsline {section}{\numberline {7.52}W\discretionary {-}{}{}M\discretionary {-}{}{}Model.\discretionary {-}{}{}cs}{191}{section.7.52}
+\contentsline {part}{Index}{206}{section*.115}
