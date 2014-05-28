@@ -1,0 +1,541 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="WebradioManager.Ad" Collapsed="true">
+    <Position X="9.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ad.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.AdminController" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <Members>
+      <Field Name="_model" Hidden="true" />
+      <Field Name="_view" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>BAEBAQIAACBYAAIgAmAAYAgGYEAFAAgICKxAAgGgAgA=</HashCode>
+      <FileName>AdminController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WebradioManager.AudioFile" Collapsed="true">
+    <Position X="8.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACFAAAFIACQESAABBAAAMAAIAAIAAAJQAACAAAAAA=</HashCode>
+      <FileName>AudioFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.Bdd" Collapsed="true">
+    <Position X="7.25" Y="5" Width="1.5" />
+    <Members>
+      <Field Name="_controls" Hidden="true" />
+      <Field Name="ERROR" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>DAEJAQCDAEQIQAJAEEAAAIgPAAgEBAABCAAwwgAAAgA=</HashCode>
+      <FileName>Bdd.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Controls" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="WebradioManager.BddControls" Collapsed="true">
+    <Position X="7.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAAEABAAAAAAAABQAAAEAAAAEAAAABAQAAAAAAAAA=</HashCode>
+      <FileName>BddControls.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.CalendarEvent" Collapsed="true">
+    <Position X="3.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ARDSICABIEACgACEABBEAAQAKgAAAAAAAAIAAAAIEAA=</HashCode>
+      <FileName>CalendarEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.EventAppointment" Collapsed="true">
+    <Position X="12.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAQAAAAAAAAAQAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EventAppointment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.Music" Collapsed="true">
+    <Position X="7.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Music.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.Playlist" Collapsed="true">
+    <Position X="3.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAAAAAAAQAQEAABAAAQAAAAEAEAEBQAAAAAAAAA=</HashCode>
+      <FileName>Playlist.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.PlaylistAd" Collapsed="true">
+    <Position X="4.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PlaylistAd.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.PlaylistMusic" Collapsed="true">
+    <Position X="2.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PlaylistMusic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.SelectionController" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <Members>
+      <Field Name="_model" Hidden="true" />
+      <Field Name="_view" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>CAAAAQAAAEAAIAAAAgAIAAAAAAABBACIACgAQAEAAAA=</HashCode>
+      <FileName>SelectionController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WebradioManager.SelectionView" Collapsed="true">
+    <Position X="7.25" Y="2" Width="1.5" />
+    <Members>
+      <Field Name="_controller" Hidden="true" />
+      <Field Name="btnDelete" Hidden="true" />
+      <Field Name="btnDuplicate" Hidden="true" />
+      <Field Name="btnNew" Hidden="true" />
+      <Field Name="btnOpen" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="groupBox1" Hidden="true" />
+      <Field Name="groupBox2" Hidden="true" />
+      <Field Name="label1" Hidden="true" />
+      <Field Name="lsbSelection" Hidden="true" />
+      <Field Name="MAX_NAME_LENGTH" Hidden="true" />
+      <Field Name="txbName" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAwAYASAACBAAAACAAAACIgAIAAgAACAAAFAAAQQ=</HashCode>
+      <FileName>SelectionView.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Controller" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="WebradioManager.TranscoderAacPlus" Collapsed="true">
+    <Position X="2.5" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TranscoderAacPlus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.TranscoderMp3" Collapsed="true">
+    <Position X="5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TranscoderMp3.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.Webradio" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="4.75" Width="1.5" />
+    <Members>
+      <Field Name="_calendar" Hidden="true" />
+      <Field Name="_id" Hidden="true" />
+      <Field Name="_name" Hidden="true" />
+      <Field Name="_playlists" Hidden="true" />
+      <Field Name="_server" Hidden="true" />
+      <Field Name="_transcoders" Hidden="true" />
+      <Field Name="DEFAULT_ID" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAASIAAAAAAAAAAEQABAAAQAAAIAAIAEBAAAEgAAAJA=</HashCode>
+      <FileName>Webradio.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Server" />
+      <Property Name="Calendar" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Transcoders" />
+      <Property Name="Playlists" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WebradioManager.WebradioCalendar" Collapsed="true">
+    <Position X="3.75" Y="2.75" Width="1.5" />
+    <Members>
+      <Field Name="_events" Hidden="true" />
+      <Field Name="_filename" Hidden="true" />
+      <Field Name="_id" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AEACAAAAAAAAQAQAAABAAAAAAgAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>WebradioCalendar.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Events" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="WebradioManager.WebradioListener" Collapsed="true">
+    <Position X="14.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAASAFAAAAAQBgAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>WebradioListener.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.WebradioServer" Collapsed="true">
+    <Position X="0.75" Y="4.75" Width="1.5" />
+    <Members>
+      <Field Name="_adminPassword" Hidden="true" />
+      <Field Name="_configFilename" Hidden="true" />
+      <Field Name="_logFilename" Hidden="true" />
+      <Field Name="_maxListener" Hidden="true" />
+      <Field Name="_password" Hidden="true" />
+      <Field Name="_port" Hidden="true" />
+      <Field Name="_process" Hidden="true" />
+      <Field Name="_stats" Hidden="true" />
+      <Field Name="DEFAULT_ADMIN_LOGIN" Hidden="true" />
+      <Field Name="SC_SERVER_FILENAME" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>ABQgBAQgmDAAAAgAAgAASAAACIAAgkAGIgEIAAAAAAA=</HashCode>
+      <FileName>WebradioServer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Stats" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="WebradioManager.WebradioServerStats" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAghAAAAAEAEAQAAAgAAAAAAA=</HashCode>
+      <FileName>WebradioServerStats.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.WebradioTranscoder" Collapsed="true">
+    <Position X="3.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQSIAAgCDBACEoEIgBCQAUECKUAgGBqPRAAAAAAIoI=</HashCode>
+      <FileName>WebradioTranscoder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebradioManager.WMModel" Collapsed="true">
+    <Position X="7.25" Y="7" Width="1.5" />
+    <Members>
+      <Field Name="_activeServers" Hidden="true" />
+      <Field Name="_activeTranscoders" Hidden="true" />
+      <Field Name="_bdd" Hidden="true" />
+      <Field Name="_library" Hidden="true" />
+      <Field Name="_observers" Hidden="true" />
+      <Field Name="_processWatcher" Hidden="true" />
+      <Field Name="_webradios" Hidden="true" />
+      <Field Name="DEFAULT_CALENDAR_FILENAME" Hidden="true" />
+      <Field Name="DEFAULT_CONFIGFILENAME" Hidden="true" />
+      <Field Name="DEFAULT_LOGFILENAME" Hidden="true" />
+      <Field Name="DEFAULT_MAX_LISTENER" Hidden="true" />
+      <Field Name="DEFAULT_PASSWORD" Hidden="true" />
+      <Field Name="DEFAULT_PLAYLISTS_FOLDER" Hidden="true" />
+      <Field Name="DEFAULT_SERVER_FOLDER" Hidden="true" />
+      <Field Name="DEFAULT_SERVER_PASSWORD" Hidden="true" />
+      <Field Name="DEFAULT_SERVER_PORT" Hidden="true" />
+      <Field Name="DEFAULT_SHOUTCAST_FOLDER" Hidden="true" />
+      <Field Name="DEFAULT_TRANSCODERS_FOLDER" Hidden="true" />
+      <Field Name="DEFAULT_WEBRADIOS_FOLDER" Hidden="true" />
+      <Field Name="MAX_NAME_LENGTH" Hidden="true" />
+      <Field Name="MAX_TRY_GENERATE" Hidden="true" />
+      <Property Name="Observers" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>DDEBAsYAAkhYCQIgCEQIYggW5lScBpgYGIRAQxahCgw=</HashCode>
+      <FileName>WMModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Bdd" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Observers" />
+      <Property Name="Webradios" />
+      <Property Name="Library" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="WebradioManager.AdminView" Collapsed="true">
+    <Position X="9.25" Y="2" Width="1.5" />
+    <Members>
+      <Field Name="_controller" Hidden="true" />
+      <Field Name="_events" Hidden="true" />
+      <Field Name="_idWebradio" Hidden="true" />
+      <Field Name="_nameWebradio" Hidden="true" />
+      <Field Name="aboutToolStripMenuItem" Hidden="true" />
+      <Field Name="btnAddToAd" Hidden="true" />
+      <Field Name="btnAddToMusic" Hidden="true" />
+      <Field Name="btnClearHistory" Hidden="true" />
+      <Field Name="btnClearLogServer" Hidden="true" />
+      <Field Name="btnCreateEvent" Hidden="true" />
+      <Field Name="btnCreatePlaylist" Hidden="true" />
+      <Field Name="btnCreateTranscoder" Hidden="true" />
+      <Field Name="btnDeleteAd" Hidden="true" />
+      <Field Name="btnDeleteMusic" Hidden="true" />
+      <Field Name="btnDeletePlaylistAd" Hidden="true" />
+      <Field Name="btnDeletePlaylistMusic" Hidden="true" />
+      <Field Name="btnDeleteTranscoder" Hidden="true" />
+      <Field Name="btnGenerateHistory" Hidden="true" />
+      <Field Name="btnGeneratePlaylist" Hidden="true" />
+      <Field Name="btnImportFilesAd" Hidden="true" />
+      <Field Name="btnImportFilesMusic" Hidden="true" />
+      <Field Name="btnImportFolderAd" Hidden="true" />
+      <Field Name="btnImportFolderMusic" Hidden="true" />
+      <Field Name="btnModifyName" Hidden="true" />
+      <Field Name="btnNextTrack" Hidden="true" />
+      <Field Name="btnRemoveFromPlaylist" Hidden="true" />
+      <Field Name="btnResolve" Hidden="true" />
+      <Field Name="btnResolveEdit" Hidden="true" />
+      <Field Name="btnSaveServer" Hidden="true" />
+      <Field Name="btnShowServerLog" Hidden="true" />
+      <Field Name="btnShowTranscoderLog" Hidden="true" />
+      <Field Name="btnShowWebAdministration" Hidden="true" />
+      <Field Name="btnShowWebInterface" Hidden="true" />
+      <Field Name="btnStartCapture" Hidden="true" />
+      <Field Name="btnStartServer" Hidden="true" />
+      <Field Name="btnStartTranscoder" Hidden="true" />
+      <Field Name="btnStopCapture" Hidden="true" />
+      <Field Name="btnStopServer" Hidden="true" />
+      <Field Name="btnStopTranscoder" Hidden="true" />
+      <Field Name="btnUpdate" Hidden="true" />
+      <Field Name="btnUpdateAudioDevice" Hidden="true" />
+      <Field Name="btnUpdateListeners" Hidden="true" />
+      <Field Name="ckbAll" Hidden="true" />
+      <Field Name="ckbFriday" Hidden="true" />
+      <Field Name="ckbMonday" Hidden="true" />
+      <Field Name="ckbSaturday" Hidden="true" />
+      <Field Name="ckbServerDebug" Hidden="true" />
+      <Field Name="ckbShuffle" Hidden="true" />
+      <Field Name="ckbSunday" Hidden="true" />
+      <Field Name="ckbThursday" Hidden="true" />
+      <Field Name="ckbTranscoderDebug" Hidden="true" />
+      <Field Name="ckbTuesday" Hidden="true" />
+      <Field Name="ckbWednesday" Hidden="true" />
+      <Field Name="cmbAudioDevice" Hidden="true" />
+      <Field Name="cmbBitrate" Hidden="true" />
+      <Field Name="cmbBitrateEdit" Hidden="true" />
+      <Field Name="cmbEncoder" Hidden="true" />
+      <Field Name="cmbEncoderEdit" Hidden="true" />
+      <Field Name="cmbGenderGenerate" Hidden="true" />
+      <Field Name="cmbPlaylistEvent" Hidden="true" />
+      <Field Name="cmbPlaylistsAd" Hidden="true" />
+      <Field Name="cmbPlaylistsMusic" Hidden="true" />
+      <Field Name="cmbSampleRate" Hidden="true" />
+      <Field Name="cmbSampleRateEdit" Hidden="true" />
+      <Field Name="cmbTypePlaylist" Hidden="true" />
+      <Field Name="cmbTypePlaylistGenerate" Hidden="true" />
+      <Field Name="colAlbum" Hidden="true" />
+      <Field Name="colAlbumAd" Hidden="true" />
+      <Field Name="colAlbumMusic" Hidden="true" />
+      <Field Name="colAlbumPlaylist" Hidden="true" />
+      <Field Name="colArtist" Hidden="true" />
+      <Field Name="colArtistAd" Hidden="true" />
+      <Field Name="colArtistMusic" Hidden="true" />
+      <Field Name="colArtistPlaylist" Hidden="true" />
+      <Field Name="colConnectTime" Hidden="true" />
+      <Field Name="colDurationAd" Hidden="true" />
+      <Field Name="colDurationMusic" Hidden="true" />
+      <Field Name="colDurationPlaylist" Hidden="true" />
+      <Field Name="colGenderAd" Hidden="true" />
+      <Field Name="colGenderMusic" Hidden="true" />
+      <Field Name="colGenderPlaylist" Hidden="true" />
+      <Field Name="colHostname" Hidden="true" />
+      <Field Name="colIdAd" Hidden="true" />
+      <Field Name="colIdMusic" Hidden="true" />
+      <Field Name="colIdPlaylist" Hidden="true" />
+      <Field Name="colLabelAd" Hidden="true" />
+      <Field Name="colLabelMusic" Hidden="true" />
+      <Field Name="colLabelPlaylist" Hidden="true" />
+      <Field Name="colPathAd" Hidden="true" />
+      <Field Name="colPathMusic" Hidden="true" />
+      <Field Name="colPathPlaylist" Hidden="true" />
+      <Field Name="colTitle" Hidden="true" />
+      <Field Name="colTitleAd" Hidden="true" />
+      <Field Name="colTitleMusic" Hidden="true" />
+      <Field Name="colTitlePlaylist" Hidden="true" />
+      <Field Name="colTranscoderName" Hidden="true" />
+      <Field Name="colUID" Hidden="true" />
+      <Field Name="colUserAgent" Hidden="true" />
+      <Field Name="colYearAd" Hidden="true" />
+      <Field Name="colYearMusic" Hidden="true" />
+      <Field Name="colYearPlaylist" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="DEFAULT_SEARCH_STRING" Hidden="true" />
+      <Field Name="dgvAds" Hidden="true" />
+      <Field Name="dgvCurrentTracks" Hidden="true" />
+      <Field Name="dgvMusics" Hidden="true" />
+      <Field Name="dgvPlaylistContent" Hidden="true" />
+      <Field Name="dgvServerListeners" Hidden="true" />
+      <Field Name="dvwTimetable" Hidden="true" />
+      <Field Name="FBD" Hidden="true" />
+      <Field Name="fileToolStripMenuItem" Hidden="true" />
+      <Field Name="generateAllConfigsToolStripMenuItem" Hidden="true" />
+      <Field Name="groupBox1" Hidden="true" />
+      <Field Name="groupBox10" Hidden="true" />
+      <Field Name="groupBox11" Hidden="true" />
+      <Field Name="groupBox12" Hidden="true" />
+      <Field Name="groupBox13" Hidden="true" />
+      <Field Name="groupBox14" Hidden="true" />
+      <Field Name="groupBox15" Hidden="true" />
+      <Field Name="groupBox16" Hidden="true" />
+      <Field Name="groupBox17" Hidden="true" />
+      <Field Name="groupBox18" Hidden="true" />
+      <Field Name="groupBox19" Hidden="true" />
+      <Field Name="groupBox2" Hidden="true" />
+      <Field Name="groupBox20" Hidden="true" />
+      <Field Name="groupBox21" Hidden="true" />
+      <Field Name="groupBox22" Hidden="true" />
+      <Field Name="groupBox23" Hidden="true" />
+      <Field Name="groupBox24" Hidden="true" />
+      <Field Name="groupBox25" Hidden="true" />
+      <Field Name="groupBox3" Hidden="true" />
+      <Field Name="groupBox4" Hidden="true" />
+      <Field Name="groupBox5" Hidden="true" />
+      <Field Name="groupBox6" Hidden="true" />
+      <Field Name="groupBox7" Hidden="true" />
+      <Field Name="groupBox8" Hidden="true" />
+      <Field Name="groupBox9" Hidden="true" />
+      <Field Name="label1" Hidden="true" />
+      <Field Name="label10" Hidden="true" />
+      <Field Name="label11" Hidden="true" />
+      <Field Name="label12" Hidden="true" />
+      <Field Name="label13" Hidden="true" />
+      <Field Name="label14" Hidden="true" />
+      <Field Name="label15" Hidden="true" />
+      <Field Name="label16" Hidden="true" />
+      <Field Name="label17" Hidden="true" />
+      <Field Name="label18" Hidden="true" />
+      <Field Name="label19" Hidden="true" />
+      <Field Name="label2" Hidden="true" />
+      <Field Name="label20" Hidden="true" />
+      <Field Name="label21" Hidden="true" />
+      <Field Name="label22" Hidden="true" />
+      <Field Name="label23" Hidden="true" />
+      <Field Name="label24" Hidden="true" />
+      <Field Name="label25" Hidden="true" />
+      <Field Name="label26" Hidden="true" />
+      <Field Name="label27" Hidden="true" />
+      <Field Name="label28" Hidden="true" />
+      <Field Name="label29" Hidden="true" />
+      <Field Name="label3" Hidden="true" />
+      <Field Name="label30" Hidden="true" />
+      <Field Name="label31" Hidden="true" />
+      <Field Name="label32" Hidden="true" />
+      <Field Name="label33" Hidden="true" />
+      <Field Name="label34" Hidden="true" />
+      <Field Name="label35" Hidden="true" />
+      <Field Name="label36" Hidden="true" />
+      <Field Name="label37" Hidden="true" />
+      <Field Name="label38" Hidden="true" />
+      <Field Name="label39" Hidden="true" />
+      <Field Name="label4" Hidden="true" />
+      <Field Name="label40" Hidden="true" />
+      <Field Name="label41" Hidden="true" />
+      <Field Name="label42" Hidden="true" />
+      <Field Name="label5" Hidden="true" />
+      <Field Name="label6" Hidden="true" />
+      <Field Name="label7" Hidden="true" />
+      <Field Name="label8" Hidden="true" />
+      <Field Name="label9" Hidden="true" />
+      <Field Name="lblAverageTime" Hidden="true" />
+      <Field Name="lblNumberListeners" Hidden="true" />
+      <Field Name="lblPeakListeners" Hidden="true" />
+      <Field Name="lblPlaylistDuration" Hidden="true" />
+      <Field Name="lblStatusServer" Hidden="true" />
+      <Field Name="lblStatusTranscoder" Hidden="true" />
+      <Field Name="lblUniqueListeners" Hidden="true" />
+      <Field Name="lblWebradioTitle" Hidden="true" />
+      <Field Name="lsbPlaylistsAd" Hidden="true" />
+      <Field Name="lsbPlaylistsMusic" Hidden="true" />
+      <Field Name="lsbStatus" Hidden="true" />
+      <Field Name="lsbTranscoders" Hidden="true" />
+      <Field Name="MAX_NAME_LENGTH" Hidden="true" />
+      <Field Name="mnsMain" Hidden="true" />
+      <Field Name="mtbDuration" Hidden="true" />
+      <Field Name="mtbStartTime" Hidden="true" />
+      <Field Name="nudAdminPort" Hidden="true" />
+      <Field Name="nudAdminPortEdit" Hidden="true" />
+      <Field Name="nudDurationGenerate" Hidden="true" />
+      <Field Name="nudMaxListener" Hidden="true" />
+      <Field Name="nudPort" Hidden="true" />
+      <Field Name="nudPortEdit" Hidden="true" />
+      <Field Name="nudPortServer" Hidden="true" />
+      <Field Name="nudPriority" Hidden="true" />
+      <Field Name="OFD" Hidden="true" />
+      <Field Name="pictureBox1" Hidden="true" />
+      <Field Name="tbcTabs" Hidden="true" />
+      <Field Name="tbpLibrary" Hidden="true" />
+      <Field Name="tbpPlaylists" Hidden="true" />
+      <Field Name="tbpServer" Hidden="true" />
+      <Field Name="tbpStatus" Hidden="true" />
+      <Field Name="tbpTimetable" Hidden="true" />
+      <Field Name="tbpTranscoders" Hidden="true" />
+      <Field Name="txbEventName" Hidden="true" />
+      <Field Name="txbLocalServerAdminPassword" Hidden="true" />
+      <Field Name="txbLocalServerPassword" Hidden="true" />
+      <Field Name="txbPlaylistName" Hidden="true" />
+      <Field Name="txbPlaylistNameGenerate" Hidden="true" />
+      <Field Name="txbSearchAd" Hidden="true" />
+      <Field Name="txbSearchMusic" Hidden="true" />
+      <Field Name="txbSearchPlaylistContent" Hidden="true" />
+      <Field Name="txbServerIP" Hidden="true" />
+      <Field Name="txbServerIPEdit" Hidden="true" />
+      <Field Name="txbServerPassword" Hidden="true" />
+      <Field Name="txbServerPasswordEdit" Hidden="true" />
+      <Field Name="txbStreamName" Hidden="true" />
+      <Field Name="txbStreamNameEdit" Hidden="true" />
+      <Field Name="txbStreamUrl" Hidden="true" />
+      <Field Name="txbStreamUrlEdit" Hidden="true" />
+      <Field Name="txbWebradioName" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>/2d4N3Sn93ucur65SpbrE8vncfzC87N85nafceLKav4=</HashCode>
+      <FileName>AdminView.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Controller" />
+    </ShowAsAssociation>
+  </Class>
+  <Struct Name="WebradioManager.DayWeek" Collapsed="true">
+    <Position X="12.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAIIAACAAAAAAAIAAACACMACAIAAAACAQCABAAAA=</HashCode>
+      <FileName>DayWeek.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="WebradioManager.IController" Collapsed="true">
+    <Position X="12.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IController.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="WebradioManager.AudioType" Collapsed="true">
+    <Position X="12.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AudioType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="WebradioManager.DayValue" Collapsed="true">
+    <Position X="14.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAIAACAAAAAAAAAAACAAIACAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CalendarEvent.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="WebradioManager.StreamType" Collapsed="true">
+    <Position X="12.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>StreamType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

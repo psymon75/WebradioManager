@@ -56,7 +56,7 @@ namespace WebradioManager
             SQLiteConnection cnn = new SQLiteConnection(BDD_FILENAME);
 		    cnn.Open();
 		    SQLiteCommand mycommand = new SQLiteCommand(cnn);
-		    mycommand.CommandText = "PRAGMA foreign_keys = 1;" + sql;
+		    mycommand.CommandText = sql;
 		    int rowsUpdated = mycommand.ExecuteNonQuery();
 		    cnn.Close();
 		    return rowsUpdated;
@@ -139,7 +139,7 @@ namespace WebradioManager
 		    Boolean returnCode = true;
 		    try
 		    {
-			    this.ExecuteNonQuery(String.Format("delete from {0} where {1};", tableName, where));
+                this.ExecuteNonQuery(String.Format("PRAGMA foreign_keys = 1;delete from {0} where {1};", tableName, where));
 		    }
 		    catch (Exception fail)
 		    {
