@@ -171,7 +171,7 @@ namespace WebradioManager
 		    {
 			    this.ExecuteNonQuery(String.Format("insert into {0}({1}) values({2});", tableName, columns, values));
 		    }
-		    catch(Exception fail)
+            catch(Exception fail)
 		    {
 			    MessageBox.Show(fail.Message);
 			    returnCode = false;
